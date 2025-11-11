@@ -1,0 +1,331 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paletas — Site de Adoção de Gatos</title>
+<style>
+  :root {
+    --radius: 14px;
+    --shadow: 0 6px 18px rgba(0,0,0,.08);
+    --border: 1px solid rgba(0,0,0,.08);
+    --font: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    transition: background .2s ease, color .2s ease;
+  }
+
+  /* ---------- THEMES (Set via data-theme + data-palette) ---------- */
+  /* Defaults (overwritten below) */
+  :root {
+    --bg:#fff; --text:#111;
+    --primary:#000; --secondary:#888; --accent:#999;
+    --muted:#f2f2f2; --muted-text:#555;
+  }
+
+  /* MeowSoft (Pastel) */
+  [data-palette="meowsoft"][data-theme="light"] {
+    --bg:#FFF8F7; --text:#3C3C3C;
+    --primary:#FFB6B9; --secondary:#FAE3D9; --accent:#BBDED6;
+    --muted:#FFEFEF; --muted-text:#6b6b6b;
+  }
+  [data-palette="meowsoft"][data-theme="dark"] {
+    --bg:#1C1C1C; --text:#FAE3D9;
+    --primary:#FF6B81; --secondary:#3C3C3C; --accent:#88E1D7;
+    --muted:#2a2a2a; --muted-text:#cfcfcf;
+  }
+
+  /* UrbanCat (Vibrante) */
+  [data-palette="urbancat"][data-theme="light"] {
+    --bg:#F9FAFB; --text:#1E293B;
+    --primary:#FBBF24; --secondary:#F97316; --accent:#2563EB;
+    --muted:#EEF2F7; --muted-text:#334155;
+  }
+  [data-palette="urbancat"][data-theme="dark"] {
+    --bg:#0F172A; --text:#F1F5F9;
+    --primary:#FACC15; --secondary:#FB923C; --accent:#3B82F6;
+    --muted:#0b1324; --muted-text:#cbd5e1;
+  }
+
+  /* CatNature (Orgânica) */
+  [data-palette="catnature"][data-theme="light"] {
+    --bg:#FAF6F3; --text:#2E2E2E;
+    --primary:#8B5E3C; --secondary:#D9CBBF; --accent:#5E9C76;
+    --muted:#F1E9E2; --muted-text:#4b4b4b;
+  }
+  [data-palette="catnature"][data-theme="dark"] {
+    --bg:#1B1510; --text:#EAE0D5;
+    --primary:#C89666; --secondary:#3A2C23; --accent:#8CD4A1;
+    --muted:#271e17; --muted-text:#e0d6c9;
+  }
+
+  /* CyberCat (Tech) */
+  [data-palette="cybercat"][data-theme="light"] {
+    --bg:#F8FAFC; --text:#0F172A;
+    --primary:#6366F1; --secondary:#06B6D4; --accent:#FACC15;
+    --muted:#EEF2F7; --muted-text:#394867;
+  }
+  [data-palette="cybercat"][data-theme="dark"] {
+    --bg:#0B1120; --text:#E2E8F0;
+    --primary:#818CF8; --secondary:#22D3EE; --accent:#FDE047;
+    --muted:#0a0e1b; --muted-text:#cbd5e1;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .wrap {
+    max-width: 1150px;
+    margin: 24px auto;
+    padding: 0 20px 40px;
+  }
+  header {
+    position: sticky; top: 0;
+    backdrop-filter: blur(10px);
+    background: color-mix(in oklab, var(--bg) 84%, transparent);
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 16%, transparent);
+  }
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 20px;
+  }
+  h1 { font-size: 20px; margin: 0; }
+  .select, .toggle {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--muted);
+    color: var(--muted-text);
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    box-shadow: var(--shadow);
+  }
+  select, button {
+    background: transparent; border: none; color: inherit; font: inherit;
+  }
+  button { cursor: pointer; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 18px;
+    margin-top: 24px;
+  }
+
+  .card {
+    grid-column: span 6;
+    background: var(--muted);
+    color: var(--text);
+    border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px;
+  }
+  @media (max-width: 900px) {
+    .card { grid-column: span 12; }
+    .toolbar { grid-template-columns: 1fr; }
+  }
+
+  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 12px; }
+  .swatch {
+    border-radius: 10px; height: 80px; position: relative; border: var(--border);
+    overflow: hidden;
+  }
+  .swatch span {
+    position: absolute; bottom: 8px; left: 8px; right: 8px;
+    background: rgba(0,0,0,.45);
+    color: #fff; border-radius: 6px; padding: 4px 6px; font-size: 12px;
+  }
+
+  .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+  .btn {
+    padding: 10px 14px; border-radius: 12px; border: none; font-weight: 600; cursor: pointer;
+  }
+  .btn-primary { background: var(--primary); color: #111; mix-blend-mode: normal; }
+  .btn-secondary { background: var(--secondary); color: #111; }
+  .btn-accent { background: var(--accent); color: #111; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 10px; border-radius: 999px; font-size: 12px;
+    background: color-mix(in oklab, var(--text) 10%, var(--bg));
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+  }
+  .pill { background: var(--accent); color: #111; padding: 4px 8px; border-radius: 999px; font-size: 11px; }
+
+  .cat-card {
+    display: grid; grid-template-columns: 120px 1fr; gap: 14px;
+    background: var(--bg); border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .cat-card img {
+    width: 120px; height: 120px; object-fit: cover;
+  }
+  .cat-card .info { padding: 12px; }
+  .meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+  .footer {
+    margin-top: 28px; padding-top: 16px;
+    font-size: 12px; color: color-mix(in oklab, var(--text) 55%, transparent);
+  }
+</style>
+</head>
+<body data-palette="meowsoft" data-theme="light">
+  <header>
+    <div class="wrap">
+      <div class="toolbar">
+        <h1>🎨 Paletas para Site de Adoção de Gatos</h1>
+        <div class="select">
+          <strong>Paleta:</strong>
+          <select id="palette">
+            <option value="meowsoft">MeowSoft (Pastel)</option>
+            <option value="urbancat">UrbanCat (Vibrante)</option>
+            <option value="catnature">CatNature (Orgânica)</option>
+            <option value="cybercat">CyberCat (Tech)</option>
+          </select>
+        </div>
+        <div class="toggle">
+          <strong>Tema:</strong>
+          <button id="themeBtn" aria-label="Alternar tema">☀️ Claro</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <section class="card" style="grid-column: span 12;">
+        <div class="badge">Prévia de componentes <span class="pill">Dinâmico</span></div>
+        <p>Alterne a paleta e o tema para visualizar botões, cartões e amostras de cor com os <strong>tokens CSS</strong> (<code>--bg</code>, <code>--text</code>, <code>--primary</code>, <code>--secondary</code>, <code>--accent</code>).</p>
+        <div class="swatches">
+          <div class="swatch" id="s-bg"><span>Fundo — <code>--bg</code></span></div>
+          <div class="swatch" id="s-text"><span>Texto — <code>--text</code></span></div>
+          <div class="swatch" id="s-primary"><span>Primária — <code>--primary</code></span></div>
+          <div class="swatch" id="s-secondary"><span>Secundária — <code>--secondary</code></span></div>
+          <div class="swatch" id="s-accent"><span>Destaque — <code>--accent</code></span></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Botões</h3>
+        <p>Use <code>--primary</code> para CTAs principais; <code>--secondary</code> para ações secundárias; <code>--accent</code> para destaques.</p>
+        <div class="btns">
+          <button class="btn btn-primary">Quero Adotar</button>
+          <button class="btn btn-secondary">Ver Abrigos</button>
+          <button class="btn btn-accent">Doar Agora</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Cartão de Gato (Exemplo)</h3>
+        <div class="cat-card">
+          <img alt="Gato listrado cinza" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><rect width='120' height='120' fill='%23cccccc'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='14' fill='%23666'>Foto</text></svg>">
+          <div class="info">
+            <strong>Axel — 2 anos</strong>
+            <p style="margin:6px 0 10px;color:var(--muted-text)">Calmo, adora carinho e brincar com bolinhas.</p>
+            <div class="meta">
+              <span class="badge">Vacinado</span>
+              <span class="badge">Castrado</span>
+              <span class="badge">Sociável</span>
+            </div>
+            <div class="btns" style="margin-top:12px">
+              <button class="btn btn-primary">Adotar</button>
+              <button class="btn btn-accent">Compartilhar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Barra Informativa</h3>
+        <p class="badge">📣 Campanha de doação aberta — precisamos de ração e areia!</p>
+        <p style="margin-top:12px">Texto padrão em parágrafo. Verifique legibilidade e contraste em cada combinação.</p>
+      </section>
+
+      <section class="card">
+        <h3>Lista de Ações</h3>
+        <ul>
+          <li>Cadastrar novo gato</li>
+          <li>Visualizar ONGs parceiras</li>
+          <li>Agendar visita</li>
+          <li>Política de adoção responsável</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h3>Formulário (Mock)</h3>
+        <label>Seu nome<br/><input style="width:100%;padding:10px;border-radius:10px;border:1px solid color-mix(in oklab, var(--text) 14%, transparent);background:var(--bg);color:var(--text)"></label>
+        <div style="height:10px"></div>
+        <label>Email<br/><input style="width:100%;padding:10px;border-radius:10px;border:1px solid color-mix(in oklab, var(--text) 14%, transparent);background:var(--bg);color:var(--text)"></label>
+        <div style="height:10px"></div>
+        <button class="btn btn-primary">Enviar</button>
+      </section>
+    </div>
+
+    <div class="footer">Dica: copie os tokens CSS para seu projeto e aplique-os ao <code>:root</code> conforme a paleta/tema escolhidos.</div>
+  </main>
+
+<script>
+  const root = document.body;
+  const paletteSel = document.getElementById('palette');
+  const themeBtn = document.getElementById('themeBtn');
+
+  function setSwatches() {
+    const styles = getComputedStyle(root);
+    const map = {
+      's-bg':'--bg',
+      's-text':'--text',
+      's-primary':'--primary',
+      's-secondary':'--secondary',
+      's-accent':'--accent',
+    };
+    for (const id in map) {
+      const el = document.getElementById(id);
+      const varName = map[id];
+      const val = styles.getPropertyValue(varName).trim();
+      if (id === 's-text') {
+        el.style.background = 'linear-gradient(135deg, ' + val + ' 0 100%)';
+      } else {
+        el.style.background = val;
+      }
+      el.querySelector('span').innerHTML = el.querySelector('span').innerHTML.split(' — ')[0] + ' — <code>'+ val +'</code>';
+    }
+  }
+
+  function applyPalette(p) {
+    root.setAttribute('data-palette', p);
+    setSwatches();
+    localStorage.setItem('palette', p);
+  }
+  function toggleTheme() {
+    const t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', t);
+    themeBtn.textContent = (t === 'light' ? '☀️ Claro' : '🌙 Escuro');
+    setSwatches();
+    localStorage.setItem('theme', t);
+  }
+
+  // Events
+  paletteSel.addEventListener('change', (e)=> applyPalette(e.target.value));
+  themeBtn.addEventListener('click', toggleTheme);
+
+  // Persistência simples
+  const savedPalette = localStorage.getItem('palette') || 'meowsoft';
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  paletteSel.value = savedPalette;
+  root.setAttribute('data-palette', savedPalette);
+  root.setAttribute('data-theme', savedTheme);
+  themeBtn.textContent = (savedTheme === 'light' ? '☀️ Claro' : '🌙 Escuro');
+
+  // Inicializa swatches
+  setSwatches();
+</script>
+</body>
+</html>
