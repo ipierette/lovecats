@@ -25,3 +25,11 @@ $RECYCLE.BIN/
 *.suo
 *.userosscache
 *.sln.docstates
+
+# Env files
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+.env.test
