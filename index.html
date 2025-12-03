@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LoveCats</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/AnuncieDoacao.css" />
   </head>
   <body>
     <header>
       <a href="#" class="logo">
-        <img src="./images/logo-icone.png" alt="Ícone LoveCats" />
-        <img src="./images/texto-logo.png" alt="Texto LoveCats" />
+        <img src="./src/images/logo-icone.png" alt="Ícone LoveCats" />
+        <img src="./src/images/texto-logo.png" alt="Texto LoveCats" />
       </a>
       <nav>
         <ul>
@@ -22,14 +23,69 @@
         </ul>
       </nav>
       <button class="theme-toggle" aria-label="Alternar tema">
-        <img src="./images//moon.svg" alt="icone-lua" />
+        <img src="./src/images//moon.svg" alt="icone-lua" />
       </button>
     </header>
-    
 
     <section id="anuncie-doacao">
+      <div class="form-card">
+        <h1>Anuncie Doação de Gatinho</h1>
+        <p>
+          Preencha as informações do gatinho que você deseja doar.
+          Seja honesto e detalhado para encontrar o melhor lar!
+        </p>
 
+        <form action="">
+          <div class="form-row">
+            <label for="nome">Nome *</label>
+            <label for="idade">Idade *</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Mel" required />
+            <input type="text" id="idade" name="idade" placeholder="Ex: 3 meses" required />
+          </div>
+
+          <div class="form-row">
+            <label for="sexo">Sexo *</label>
+            <label for="cor">Cor *</label>
+            <select id="sexo" name="sexo" required>
+              <option value="">Selecione</option>
+              <option value="femea">Fêmea</option>
+              <option value="macho">Macho</option>
+            </select>
+            <input type="text" id="cor" name="cor" placeholder="Ex: Laranja" required />
+          </div>
+
+          <div class="form-row descricao-row">
+            <label for="descricao">Descrição *</label>
+            <button type="button" class="ai-help">Ajuda da IA</button>
+            <textarea
+              id="descricao"
+              name="descricao"
+              placeholder="Conte sobre a personalidade, comportamento e características especiais do gatinho..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="telefone">Telefone (WhatsApp) *</label>
+            <label for="localizacao">Localização *</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="Ex: 11999999999" required />
+            <input type="text" id="localizacao" name="localizacao" placeholder="Ex: São Paulo, SP" required />
+          </div>
+
+          <div class="form-row">
+            <label for="foto">URL da Foto (opcional)</label>
+            <input type="url" id="foto" name="foto" placeholder="https://exemplo.com/foto.jpg" />
+          </div>
+
+          <div class="checkboxes">
+            <label><input type="checkbox" name="vacinado" /> Vacinado</label>
+            <label><input type="checkbox" name="castrado" /> Castrado</label>
+          </div>
+
+          <button type="submit" class="submit-btn">Publicar Anúncio</button>
+        </form>
+      </div>
     </section>
-    <script src="./js/index.js"></script>
+    <script src=".src/js/index.js"></script>
   </body>
 </html>

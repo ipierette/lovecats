@@ -1,0 +1,117 @@
+#anuncie-doacao {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 48px;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 720px;
+  background-color: #fdf7ef;
+  border: 1px solid #e0d6c8;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  color: #4f3c2a;
+}
+
+.form-card h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: #5a4631;
+}
+
+.form-card p {
+  margin: 0 0 20px;
+  color: #6c5842;
+  line-height: 1.4;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.form-row label {
+  font-size: 14px;
+  color: #5a4631;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0d6c8;
+  border-radius: 10px;
+  background-color: #fffdf9;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-row select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%236c5842' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.descricao-row {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.descricao-row textarea {
+  grid-column: 1 / 3;
+  min-height: 120px;
+  resize: vertical;
+}
+
+.ai-help {
+  padding: 10px 12px;
+  border: 1px solid #e0d6c8;
+  background-color: #fffdf9;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #5a4631;
+  cursor: pointer;
+}
+
+.checkboxes {
+  display: flex;
+  gap: 16px;
+  padding: 6px 0 14px;
+  color: #5a4631;
+  font-size: 14px;
+}
+
+.checkboxes input {
+  margin-right: 6px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background-color: #e3743d;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #d4632e;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .descricao-row textarea {
+    grid-column: 1;
+  }
+}
