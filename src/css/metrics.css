@@ -1,0 +1,75 @@
+.metrics {
+  width: 100%;
+  background-color: #fbefe6;
+  padding: 48px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.metrics-inner {
+  max-width: 920px;
+  text-align: center;
+  position: relative;
+}
+
+.metrics-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: rgba(227, 116, 61, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px auto;
+  box-shadow: 0 6px 18px rgba(91, 68, 49, 0.06);
+}
+
+.metrics-icon img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.metrics-number {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #3f2f24;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.number-highlight {
+  color: #e3743d;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.metrics-title {
+  color: #3f2f24;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.metrics-desc {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  color: #7d6757;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.metrics-small {
+  margin-top: 8px;
+  color: #7d6757;
+  font-size: 14px;
+}
+
+.small-highlight {
+  color: #e3743d;
+  font-weight: 700;
+  margin-right: 6px;
+}
