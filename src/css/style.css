@@ -1,0 +1,139 @@
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #f5eee3;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+header {
+  background-color: #fdf7ef;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0d6c8;
+  gap: 16px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.logo img {
+  height: 70px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #5a4631;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+nav li:first-child a {
+  color: #e3743d;
+}
+
+.theme-toggle {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #5a4631;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.site-footer {
+  background: linear-gradient(180deg, #f4c28b 0%, #e18249 100%);
+  color: #4f3c2a;
+  padding: 32px 24px 20px;
+  border-top: 1px solid #d9b18a;
+  margin-top: 32px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto 24px;
+}
+
+.footer-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-title {
+  font-weight: 700;
+  color: #3e2f21;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-block p {
+  margin: 0;
+  color: #5a4631;
+}
+
+.footer-block a {
+  color: #4f3c2a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-block a:hover {
+  text-decoration: underline;
+}
+
+.footer-heart {
+  font-weight: 700;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #4f3c2a;
+  font-size: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(79, 60, 42, 0.2);
+}
