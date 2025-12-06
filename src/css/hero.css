@@ -1,12 +1,12 @@
 .hero {
   width: 100%;
-  min-height: 85vh;
-  padding: 60px 20px;
+  min-height: 60vh;
+  padding: 42px 20px 28px;
   background-color: #f5eee3;
 
   background-image: url("../images/fundo.png");
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   opacity: 1;
   position: relative;
@@ -76,4 +76,48 @@
   background-color: #fff;
   border: 1px solid #d4c8b9;
   color: #5a4631;
+}
+
+.btn-primary .search-icon {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    background-size: 900px auto;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 32px 16px 24px;
+    background-size: 540px auto;
+    background-position: center 10px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .hero .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

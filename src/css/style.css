@@ -1,7 +1,7 @@
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-color: #f5eee3;
+  background-color: #fff;
 }
 
 html,
@@ -78,7 +78,7 @@ nav li:first-child a {
   color: #4f3c2a;
   padding: 32px 24px 20px;
   border-top: 1px solid #d9b18a;
-  margin-top: 32px;
+  margin-top: 0;
 }
 
 .footer-content {
