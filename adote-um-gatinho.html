@@ -5,13 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LoveCats</title>
-  <script src="https://kit.fontawesome.com/3b2cdf92a0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="./src/css/reset.css" />
   <link rel="stylesheet" href="./src/css/header.css" />
   <link rel="stylesheet" href="./src/css/hero.css" />
   <link rel="stylesheet" href="./src/css/metrics.css" />
   <link rel="stylesheet" href="./src/css/information.css" />
   <link rel="stylesheet" href="./src/css/style.css" />
+  <link rel="stylesheet" href="./src/css/adote-um-gatinho.css" />
 </head>
 
 <body>
@@ -35,132 +36,190 @@
       </button>
     </header>
 
-   <main>
-    <div class="container">
-      <section id="adocao-gatinhos">
-        <h2>Adote um Gatinho</h2>
-        <span class="gatinhos-encontrados">8 gatinhos encontrados</span>
-        <div class="adocao-content">
-          <aside class="filtros">
-            <h3>Filtros</h3>
-            <div class="filtro-group">
-              <label for="buscar">Buscar</label>
-              <input type="text" id="buscar" placeholder="Nome ou cidade..." />
-            </div>
-            <div class="filtro-group">
-              <label for="cor">Cor</label>
-              <select id="cor">
-                <option>Todas</option>
-                <option>Laranja</option>
-                <option>Preto</option>
-                <option>Branco</option>
-                <option>Tigrado</option>
-                <option>Cinza</option>
-              </select>
-            </div>
-            <div class="filtro-group">
-              <label for="sexo">Sexo</label>
-              <select id="sexo">
-                <option>Ambos</option>
-                <option>Fêmea</option>
-                <option>Macho</option>
-              </select>
-            </div>
-            <div class="filtro-group">
-              <label for="idade">Idade</label>
-              <select id="idade">
-                <option>Todas</option>
-                <option>Filhote</option>
-                <option>Adulto</option>
-              </select>
-            </div>
-            <div class="filtro-group check-group">
-              <input type="checkbox" id="filtro-vacinado" />
-              <label for="filtro-vacinado">Vacinado</label>
-            </div>
-            <div class="filtro-group check-group">
-              <input type="checkbox" id="filtro-castrado" />
-              <label for="filtro-castrado">Castrado</label>
-            </div>
-          </aside>
-          <div class="cards-gatinhos">
-            <div class="card-gatinho">
-              <img src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg" alt="Mel" />
-              <div class="card-info">
-                <h4>Mel</h4>
-                <span class="idade">3 meses</span> · <span class="sexo">Fêmea</span> · <span class="cor">Laranja</span>
-                <div class="badges"><span class="badge vacinado">Vacinado</span></div>
-                <p class="descricao">Gatinha super carinhosa e brincalhona, adora estar perto das pessoas.</p>
-                <div class="localizacao"><i class="fa-solid fa-location-dot"></i> São Paulo, SP</div>
-                <button class="btn-contato">Entrar em Contato</button>
-                <div class="adotado-check"><input type="checkbox" id="adotado-mel" /><label for="adotado-mel">Já foi adotado?</label></div>
+    <main>
+      <div class="container">
+        <section id="adocao-gatinhos">
+          <h2>Adote um Gatinho</h2>
+          <div class="adocao-content">
+            <aside class="filtros">
+              <h3>Filtros</h3>
+              <div class="filtro-group">
+                <label for="buscar">Buscar</label>
+                <div class="input-icon-wrapper">
+                  <input type="text" id="buscar" placeholder="Nome ou cidade..." />
+                  <span class="icon-lupa"><i class="fa-solid fa-magnifying-glass"></i></span>
+                </div>
               </div>
-            </div>
-            <div class="card-gatinho">
-              <img src="https://images.pexels.com/photos/320014/pexels-photo-320014.jpeg" alt="Shadow" />
-              <div class="card-info">
-                <h4>Shadow</h4>
-                <span class="idade">1 ano</span> · <span class="sexo">Macho</span> · <span class="cor">Preto</span>
-                <div class="badges"><span class="badge vacinado">Vacinado</span> <span class="badge castrado">Castrado</span></div>
-                <p class="descricao">Gato calmo e independente, perfeito para quem busca companhia tranquila.</p>
-                <div class="localizacao"><i class="fa-solid fa-location-dot"></i> Rio de Janeiro, RJ</div>
-                <button class="btn-contato">Entrar em Contato</button>
-                <div class="adotado-check"><input type="checkbox" id="adotado-shadow" /><label for="adotado-shadow">Já foi adotado?</label></div>
+              <div class="filtro-group">
+                <label for="cor">Cor</label>
+                <select id="cor">
+                  <option>Todas</option>
+                  <option>Laranja</option>
+                  <option>Preto</option>
+                  <option>Branco</option>
+                  <option>Tigrado</option>
+                  <option>Cinza</option>
+                </select>
               </div>
-            </div>
-            <div class="card-gatinho">
-              <img src="https://images.pexels.com/photos/45243/kitty-cat-kitten-pet-45243.jpeg" alt="Nuvem" />
-              <div class="card-info">
-                <h4>Nuvem</h4>
-                <span class="idade">2 meses</span> · <span class="sexo">Fêmea</span> · <span class="cor">Branco</span>
-                <p class="descricao">Filhote super fofa e peluda, adora brincar com bolinhas.</p>
-                <div class="localizacao"><i class="fa-solid fa-location-dot"></i> Belo Horizonte, MG</div>
-                <button class="btn-contato">Entrar em Contato</button>
-                <div class="adotado-check"><input type="checkbox" id="adotado-nuvem" /><label for="adotado-nuvem">Já foi adotado?</label></div>
+              <div class="filtro-group">
+                <label for="sexo">Sexo</label>
+                <select id="sexo">
+                  <option>Ambos</option>
+                  <option>Fêmea</option>
+                  <option>Macho</option>
+                </select>
               </div>
-            </div>
-            <div class="card-gatinho">
-              <img src="https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg" alt="Tigre" />
-              <div class="card-info">
-                <h4>Tigre</h4>
-                <span class="idade">6 meses</span> · <span class="sexo">Macho</span> · <span class="cor">Tigrado</span>
-                <div class="badges"><span class="badge vacinado">Vacinado</span></div>
-                <p class="descricao">Gatinho aventureiro e curioso, sempre pronto para explorar.</p>
-                <div class="localizacao"><i class="fa-solid fa-location-dot"></i> São Paulo, SP</div>
-                <button class="btn-contato">Entrar em Contato</button>
-                <div class="adotado-check"><input type="checkbox" id="adotado-tigre" /><label for="adotado-tigre">Já foi adotado?</label></div>
+              <div class="filtro-group">
+                <label for="idade">Idade</label>
+                <select id="idade">
+                  <option>Todas</option>
+                  <option>Filhote</option>
+                  <option>Adulto</option>
+                </select>
               </div>
-            </div>
-            <div class="card-gatinho">
-              <img src="https://images.pexels.com/photos/45246/kitty-cat-kitten-pet-45246.jpeg" alt="Luna" />
-              <div class="card-info">
-                <h4>Luna</h4>
-                <span class="idade">2 anos</span> · <span class="sexo">Fêmea</span> · <span class="cor">Cinza</span>
-                <div class="badges"><span class="badge vacinado">Vacinado</span> <span class="badge castrado">Castrado</span></div>
-                <p class="descricao">Gatinha elegante e afetuosa, procura um lar tranquilo.</p>
-                <div class="localizacao"><i class="fa-solid fa-location-dot"></i> São Paulo, SP</div>
-                <button class="btn-contato">Entrar em Contato</button>
-                <div class="adotado-check"><input type="checkbox" id="adotado-luna" /><label for="adotado-luna">Já foi adotado?</label></div>
+              <div class="filtro-group check-group">
+                <input type="checkbox" id="filtro-vacinado" />
+                <label for="filtro-vacinado">Vacinado</label>
               </div>
-            </div>
-            <div class="card-gatinho">
-              <img src="https://images.pexels.com/photos/45247/kitty-cat-kitten-pet-45247.jpeg" alt="Caramelo" />
-              <div class="card-info">
-                <h4>Caramelo</h4>
-                <span class="idade">4 meses</span> · <span class="sexo">Macho</span> · <span class="cor">Laranja</span>
-                <div class="badges"><span class="badge vacinado">Vacinado</span></div>
-                <p class="descricao">Filhote cheio de energia, adora brincar e correr pela casa.</p>
-                <div class="localizacao"><i class="fa-solid fa-location-dot"></i> São Paulo, SP</div>
-                <button class="btn-contato">Entrar em Contato</button>
-                <div class="adotado-check"><input type="checkbox" id="adotado-caramelo" /><label for="adotado-caramelo">Já foi adotado?</label></div>
+              <div class="filtro-group check-group">
+                <input type="checkbox" id="filtro-castrado" />
+                <label for="filtro-castrado">Castrado</label>
+              </div>
+            </aside>
+
+            <div style="flex:1;display:flex;flex-direction:column;">
+              <span class="gatinhos-encontrados">8 gatinhos encontrados</span>
+              <div class="cards-gatinhos">
+                <div class="card-gatinho">
+                  <img src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg" alt="Mel" />
+                  <div class="card-info">
+                    <h4>Mel</h4>
+                    <div class="card-info-details">
+                      <span class="idade">3 meses</span> · <span class="sexo">Fêmea</span> · <span
+                        class="cor">Laranja</span>
+                    </div>
+                    <div class="badges"><span class="badge vacinado">Vacinado</span></div>
+                    <p class="descricao">Gatinha super carinhosa e brincalhona, adora estar perto das pessoas.</p>
+                    <div class="localizacao">📍São Paulo, SP</div>
+                    <button class="btn-contato"><i class="fa fa-phone"></i> Entrar em Contato</button>
+                    <div class="adotado-check"><input type="checkbox" id="adotado-mel" /><label for="adotado-mel">Já foi
+                        adotado?</label></div>
+                  </div>
+                </div>
+                <div class="card-gatinho">
+                  <img src="https://images.pexels.com/photos/320014/pexels-photo-320014.jpeg" alt="Shadow" />
+                  <div class="card-info">
+                    <h4>Shadow</h4>
+                    <div class="card-info-details"><span class="idade">1 ano</span> · <span class="sexo">Macho</span> ·
+                      <span class="cor">Preto</span>
+                    </div>
+                    <div class="badges"><span class="badge vacinado">Vacinado</span> <span
+                        class="badge castrado">Castrado</span></div>
+                    <p class="descricao">Gato calmo e independente, perfeito para quem busca companhia tranquila.</p>
+                    <div class="localizacao">📍 Rio de Janeiro, RJ</div>
+                    <button class="btn-contato"><i class="fa fa-phone"></i> Entrar em Contato</button>
+                    <div class="adotado-check"><input type="checkbox" id="adotado-shadow" /><label
+                        for="adotado-shadow">Já foi adotado?</label></div>
+                  </div>
+                </div>
+                <div class="card-gatinho">
+                  <img src="https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg" alt="Nuvem" />
+                  <div class="card-info">
+                    <h4>Nuvem</h4>
+                    <div class="card-info-details"><span class="idade">2 meses</span> · <span class="sexo">Fêmea</span>
+                      · <span class="cor">Branco</span>
+                    </div>
+                    <p class="descricao">Filhote super fofa e peluda, adora brincar com bolinhas.</p>
+                    <div class="localizacao">📍Belo Horizonte, MG</div>
+                    <button class="btn-contato"><i class="fa fa-phone"></i> Entrar em Contato</button>
+                    <div class="adotado-check"><input type="checkbox" id="adotado-nuvem" /><label for="adotado-nuvem">Já
+                        foi adotado?</label></div>
+                  </div>
+                </div>
+                <div class="card-gatinho">
+                  <img src="https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg" alt="Tigre" />
+                  <div class="card-info">
+                    <h4>Tigre</h4>
+                    <div class="card-info-details">
+                      <span class="idade">6 meses</span> · <span class="sexo">Macho</span> · <span
+                        class="cor">Tigre</span>
+                    </div>
+                    <div class="badges"><span class="badge vacinado">Vacinado</span></div>
+                    <p class="descricao">Gatinho aventureiro e curioso, sempre pronto para explorar.</p>
+                    <div class="localizacao">📍São Paulo, SP</div>
+                    <button class="btn-contato"><i class="fa fa-phone"></i> Entrar em Contato</button>
+                    <div class="adotado-check"><input type="checkbox" id="adotado-tigre" /><label for="adotado-tigre">Já
+                        foi adotado?</label></div>
+                  </div>
+                </div>
+                <div class="card-gatinho">
+                  <img src="https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg" alt="Luna" />
+                  <div class="card-info">
+                    <h4>Luna</h4>
+                    <div class="card-info-details">
+                      <span class="idade">2 anos</span> · <span class="sexo">Fêmea</span> · <span
+                        class="cor">Cinza</span>
+                    </div>
+                    <div class="badges"><span class="badge vacinado">Vacinado</span> <span
+                        class="badge castrado">Castrado</span></div>
+                    <p class="descricao">Gatinha elegante e afetuosa, procura um lar tranquilo.</p>
+                    <div class="localizacao">📍 São Paulo, SP</div>
+                    <button class="btn-contato"><i class="fa fa-phone"></i> Entrar em Contato</button>
+                    <div class="adotado-check"><input type="checkbox" id="adotado-luna" /><label for="adotado-luna">Já
+                        foi adotado?</label></div>
+                  </div>
+                </div>
+                <div class="card-gatinho">
+                  <img src="https://images.pexels.com/photos/2181171/pexels-photo-2181171.jpeg" alt="Caramelo" />
+                  <div class="card-info">
+                    <h4>Caramelo</h4>
+                    <div class="card-info-details">
+                      <span class="idade">4 meses</span> · <span class="sexo">Macho</span> · <span
+                        class="cor">Laranja</span>
+                    </div>
+                    <div class="badges"><span class="badge vacinado">Vacinado</span></div>
+                    <p class="descricao">Filhote cheio de energia, adora brincar e correr pela casa.</p>
+                    <div class="localizacao">📍 São Paulo, SP</div>
+                    <button class="btn-contato"><i class="fa fa-phone"></i> Entrar em Contato</button>
+                    <div class="adotado-check"><input type="checkbox" id="adotado-caramelo" /><label
+                        for="adotado-caramelo">Já foi adotado?</label></div>
+                  </div>
+              </div>
+              <div class="card-gatinho">
+                <img src="https://images.pexels.com/photos/34026607/pexels-photo-34026607.jpeg" alt="Mia" />
+                <div class="card-info">
+                  <h4>Mia</h4>
+                  <div class="card-info-details">
+                    <span class="idade">5 meses</span> · <span class="sexo">Fêmea</span> · <span class="cor">Malhado</span>
+                  </div>
+                  <p class="descricao">Gatinha docil e carente, perfeita para quem tem tempo para dar atenção.</p>
+                  <div class="localizacao">📍 Salvador, BA</div>
+                  <button class="btn-contato"><i class="fa fa-phone"></i> Entrar em Contato</button>
+                  <div class="adotado-check"><input type="checkbox" id="adotado-mia" /><label for="adotado-mia">Já foi
+                      adotado?</label></div>
+                </div>
+              </div>
+              <div class="card-gatinho">
+                <img src="https://images.pexels.com/photos/33337218/pexels-photo-33337218.jpeg" alt="Thor" />
+                <div class="card-info">
+                  <h4>Thor</h4>
+                  <div class="card-info-details">
+                    <span class="idade">3 anos</span> · <span class="sexo">Macho</span> · <span class="cor">Laranja</span>
+                  </div>
+                  <div class="badges"><span class="badge vacinado">Vacinado</span> <span class="badge castrado">Castrado</span></div>
+                  <p class="descricao">Gato forte e protetor, ideal para lares com espaço.</p>
+                  <div class="localizacao">📍 Fortaleza, CE</div>
+                  <button class="btn-contato"><i class="fa fa-phone"></i> Entrar em Contato</button>
+                  <div class="adotado-check"><input type="checkbox" id="adotado-thor" /><label for="adotado-thor">Já foi
+                      adotado?</label></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div> 
-    
-   </main>
+        </section>
+      </div>
+
+    </main>
 
     <footer class="site-footer">
       <div class="footer-content">
@@ -193,6 +252,7 @@
     </footer>
   </div>
   <script src="./src/js/index.js"></script>
+  <script src="https://kit.fontawesome.com/3b2cdf92a0.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
