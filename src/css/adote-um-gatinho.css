@@ -1,0 +1,356 @@
+body {
+    background: #f8f5ef;
+}
+
+main>.container {
+    width: 100%;
+    max-width: none;
+    padding: 40px 40px;
+    margin: 0;
+}
+
+#adocao-gatinhos {
+    padding: 20px 0 0 0;
+    min-height: 100vh;
+}
+
+#adocao-gatinhos h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #47301E;
+}
+
+.gatinhos-encontrados {
+    color: #8A6F5C;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.adocao-content {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+}
+
+.filtros {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    padding: 2rem 1.5rem;
+    min-width: 270px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.filtro-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.filtros h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #47301E;
+}
+
+.filtro-group label {
+    font-size: 1rem;
+    color: #47301E;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input::placeholder {
+    color: #8A6F5C;
+    padding: 0 0 0 2.2rem;
+    opacity: 0.8;
+}
+
+.icon-lupa {
+    position: absolute;
+    left: 1.4rem;
+    color: #8A6F5C;
+    opacity: 0.8;
+    font-size: 1.1rem;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-icon-wrapper input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 2.2rem;
+    padding-right: 0.8rem;
+}
+
+.filtro-group input[type="text"],
+.filtro-group select {
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #e2e2e2;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #faf9f6;
+    outline: none;
+    transition: border 0.2s;
+    color: #47301E;
+    background-color: #F8F5EC;
+    margin-left: 10px;
+}
+
+.filtro-group input[type="text"]:focus,
+.filtro-group select:focus {
+    border-color: #f47c2a;
+}
+
+.check-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.check-group input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #f47c2a;
+    border-radius: 50%;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+}
+
+.check-group input[type="checkbox"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #f47c2a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cards-gatinhos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+.card-gatinho {
+    width: 350px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    border: 1px solid #E5DACD;
+    transition: box-shadow 0.2s;
+    position: relative;
+}
+
+.card-gatinho:hover {
+    box-shadow: 0 4px 24px rgba(244, 124, 42, 0.12);
+}
+
+.card-gatinho img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background: #eee;
+}
+
+.card-info {
+    padding: 1.2rem 1.2rem 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.card-info h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #47301E;
+    margin-bottom: 0.2rem;
+}
+
+.card-info .idade,
+.card-info .sexo,
+.card-info .cor {
+    font-size: 1rem;
+    color: #8A6F5C;
+    font-weight: 400;
+}
+
+.badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 35px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.2rem 0.7rem;
+    border-radius: 12px;
+    color: #3a7c3a;
+    background: #DCFCE7;
+}
+
+.badge.vacinado {
+    color: #3a7c3a;
+}
+
+.badge.castrado {
+    color: #2a6cf4;
+}
+
+.card-info .descricao {
+    font-size: 1rem;
+    color: #8A6F5C;
+    margin-bottom: 0.2rem;
+}
+
+.localizacao {
+    font-size: 0.95rem;
+    color: #47301E;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 600;
+}
+
+.btn-contato {
+    background: #f47c2a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+}
+
+.btn-contato:hover {
+    background: #d9651c;
+}
+
+.adotado-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+    font-size: 1rem;
+    color: #47301E;
+    background: #F8F5EC;
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #EDE7DE;
+}
+
+.adotado-check input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #47301E;
+    border-radius: 50%;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+}
+
+.adotado-check input[type="checkbox"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background:#47301E;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.adotado-check label {
+    font-size: 1rem;
+    color: #47301E;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .adocao-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .filtros {
+        max-width: 90%;
+        min-width: unset;
+        width: 100%;
+    }
+
+    .cards-gatinhos {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #adocao-gatinhos {
+        padding: 20px 0;
+    }
+
+    .filtros {
+        padding: 1rem;
+    }
+
+    .card-gatinho img {
+        height: 160px;
+    }
+
+    .card-info {
+        padding: 0.8rem;
+    }
+}
+
