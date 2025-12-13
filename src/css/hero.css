@@ -10,6 +10,11 @@
   background-repeat: no-repeat;
   opacity: 1;
   position: relative;
+  overflow: hidden;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* camada para deixar o fundo claro */
@@ -53,14 +58,17 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   padding: 14px 24px;
   border-radius: 8px;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-
-  transition: 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 12px 28px rgba(91, 68, 49, 0.12);
+  transition: transform 0.26s ease, box-shadow 0.26s ease, filter 0.26s ease,
+    border-color 0.26s ease, background 0.26s ease;
 }
 
 .btn img {
@@ -68,12 +76,85 @@
 }
 
 .btn-primary {
-  background-color: #e3743d;
+  background: linear-gradient(135deg, #e3743d 0%, #f29761 100%);
   color: #fff;
+  box-shadow: 0 14px 34px rgba(227, 116, 61, 0.28);
 }
 
 .btn-secondary {
   background-color: #fff;
   border: 1px solid #d4c8b9;
   color: #5a4631;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -60%;
+  width: 80%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  transform: translateX(-30%) rotate(18deg);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(91, 68, 49, 0.16);
+  filter: saturate(1.05);
+}
+
+.btn:hover::before {
+  opacity: 1;
+  transform: translateX(260%) rotate(18deg);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 10px 26px rgba(91, 68, 49, 0.16);
+}
+
+.btn:focus-visible {
+  outline: 2px solid #e3743d;
+  outline-offset: 3px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ea8146 0%, #f5a26f 100%);
+}
+
+.btn-primary:active {
+  background: linear-gradient(135deg, #d86d3a 0%, #ec8f5c 100%);
+}
+
+.btn-secondary:hover {
+  border-color: #e3743d;
+  color: #3f2f24;
+  box-shadow: 0 16px 32px rgba(91, 68, 49, 0.12);
+}
+
+.btn-secondary:active {
+  background-color: #fbf1e8;
+}
+
+.btn.is-pressed {
+  animation: buttonPress 0.22s ease;
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(1px) scale(0.99);
+  }
+  100% {
+    transform: translateY(-1px);
+  }
 }
