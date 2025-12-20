@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+
+# Node/npm
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Windows
+# Thumbnail cache
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Recycle Bin
+$RECYCLE.BIN/
+
+# Windows shortcut files
+*.lnk
+
+# Visual Studio temporary files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Env files
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+.env.test
