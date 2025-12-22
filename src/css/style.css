@@ -171,7 +171,7 @@ nav a:focus-visible {
 .footer-heart {
   font-weight: 700;
 }
-
+ 
 .footer-link {
   display: inline-flex;
   align-items: center;
@@ -192,7 +192,7 @@ nav a:focus-visible {
   opacity: 1;
   transform: none;
 }
-
+ 
 html.has-js [data-animate] {
   opacity: 0;
   transform: translateY(24px);
