@@ -27,7 +27,7 @@
                 <ul>
                     <li><a href="./index.html">Home</a></li>
                     <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
-                    <li><a href="#anuncie-doacao">Anuncie Doação</a></li>
+                    <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#api">API</a></li>
                 </ul>
@@ -37,33 +37,86 @@
             </button>
         </header>
 
-        <main>
-            <div class="container">
-                <form action="form-anuncie-doacao" method="POST" class="form-anuncie-doacao">
-                    <div class="title-form-anuncie-doacao">
-                        <h1>Anuncie Doação de Gatinho</h1>
-                        <span>Preencha as informações do gatinho que você deseja doar. Seja honesto e detalhado para
-                            encontrar o melhor lar!</span>
-                    </div>
+        <main class="container-form">
+            <section class="form-wrapper">
+                <div class="title-form-anuncie-doacao">
+                    <h1>Anuncie Doação de Gatinho</h1>
+                    <p>Preencha as informações do gatinho que você deseja doar. Seja honesto e detalhado para
+                        encontrar o melhor lar!</p>
+                </div>
+
+                <form action="#" method="POST" class="form-anuncie-doacao">
                     <div class="info-cat">
-                        <label for="name-cat">Nome *</label>
-                        <input type="text" placeholder="Ex: Mel" id="name-cat">
-
-                        <label for="years-cat">Idade *</label>
-                        <input type="text" placeholder="Ex: 3 meses" id="years-cat">
-
-                        <label for="sex-cat">Sexo *</label>
-                        <select name="sexo" id="sex-cat">
-                            <option value="" disabled selected>Selecione</option>
-                            <option value="macho">Macho</option>
-                            <option value="femea">Fêmea</option>
-                        </select>
-
-                        <label for="color-cat">Cor *</label>
-                        <input type="text" name="cor-do-gatinho" placeholder="Ex: Laranja" id="color-cat">
+                        <div class="field">
+                            <label for="name-cat">Nome *</label>
+                            <input type="text" placeholder="Ex: Mel" id="name-cat" required>
+                        </div>
+                        <div class="field">
+                            <label for="years-cat">Idade *</label>
+                            <input type="text" placeholder="Ex: 3 meses" id="years-cat" required>
+                        </div>
                     </div>
+
+                    <div class="info-cat">
+                        <div class="field">
+                            <label for="sex-cat">Sexo *</label>
+                            <select name="sexo" id="sex-cat" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="macho">Macho</option>
+                                <option value="femea">Fêmea</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="color-cat">Cor *</label>
+                            <input type="text" name="cor-do-gatinho" placeholder="Ex: Laranja" id="color-cat" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="label-with-ai">
+                            <label for="descricao">Descrição *</label>
+                            <button type="button" class="btn-ai">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Ajuda da IA
+                            </button>
+                        </div>
+                        <textarea id="descricao" name="descricao" rows="5"
+                            placeholder="Conte sobre a personalidade, comportamento e características especiais do gatinho..."
+                            required></textarea>
+                    </div>
+
+                    <div class="info-cat">
+                        <div class="field">
+                            <label for="whatsapp">Telefone (WhatsApp) *</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ex: 11999999999" required>
+                        </div>
+                        <div class="field">
+                            <label for="localizacao">Localização *</label>
+                            <input type="text" id="localizacao" name="localizacao" placeholder="Ex: São Paulo, SP"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="foto">URL da Foto (opcional)</label>
+                        <input type="url" id="foto" name="foto" placeholder="https://exemplo.com/foto.jpg" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="vacinado">
+                            <span class="checkmark"></span>
+                            Vacinado
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="castrado">
+                            <span class="checkmark"></span>
+                            Castrado
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Publicar Anúncio</button>
                 </form>
-            </div>
+            </section>
         </main>
 
         <footer class="site-footer">
@@ -80,7 +133,7 @@
                     <div class="footer-title">Navegação</div>
                     <a href="./index.html">Home</a>
                     <a href="./adote-um-gatinho.html">Adote um Gatinho</a>
-                    <a href="#anuncie-doacao">Anuncie Doação</a>
+                    <a href="./anuncie-doacao.html">Anuncie Doação</a>
                     <a href="#sobre">Sobre Nós</a>
                     <a href="#api">API</a>
                 </div>
@@ -101,4 +154,5 @@
     <script src="https://kit.fontawesome.com/3b2cdf92a0.js" crossorigin="anonymous"></script>
     <script src="./src/js/anuncie-doacao.js"></script>
 </body>
+
 </html>
