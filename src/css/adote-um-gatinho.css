@@ -6,7 +6,7 @@ main>.container {
     width: 100%;
     max-width: none;
     padding: 40px 40px;
-    margin: 0;
+    margin: 0; 
 }
 
 #adocao-gatinhos {
@@ -72,7 +72,7 @@ main>.container {
     align-items: center;
 }
 
-input::placeholder {
+input::placeholder { 
     color: #8A6F5C;
     padding: 0 0 0 2.2rem;
     opacity: 0.8;

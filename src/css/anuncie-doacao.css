@@ -1,0 +1,223 @@
+.container-form {
+    display: flex;
+    padding: 60px 20px;
+    justify-content: center;
+    background-color: #fcf8f1;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.title-form-anuncie-doacao {
+    margin-bottom: 30px;
+}
+
+.title-form-anuncie-doacao h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.title-form-anuncie-doacao p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.form-anuncie-doacao {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-cat {
+    display: flex;
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.field label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+select,
+textarea {
+    padding: 12px 16px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+textarea {
+    resize: none;
+}
+
+input:focus, 
+textarea:focus {
+    border-color: #f47c2a;
+}
+
+.label-with-ai {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-ai {
+    display: flex;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s;
+}
+
+.btn-ai:hover {
+    background: #ebebeb;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 10px 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.checkbox-container input {
+    width: 18px;
+    height: 18px;
+    accent-color: #f27429;
+}
+
+.btn-submit {
+    background-color: #f47c2a;
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #f47c2a;
+}
+
+/* Estilo Global e Container */
+.container-form {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #fcf8f1;
+    min-height: 100vh; /* Garante que o fundo cubra a tela toda */
+}
+
+.form-wrapper {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* 1. Tablets e Telas Médias (Até 768px) */
+@media (max-width: 768px) {
+    .container-form {
+        padding: 40px 15px;
+    }
+
+    .form-wrapper {
+        padding: 30px;
+    }
+
+    .title-form-anuncie-doacao h1 {
+        font-size: 1.75rem;
+    }
+    
+    .info-cat {
+        gap: 15px;
+    }
+}
+
+/* 2. Smartphones Grandes (Até 600px) */
+@media (max-width: 600px) {
+    .info-cat {
+        flex-direction: column; 
+        gap: 20px;
+    }
+
+    .form-wrapper {
+        padding: 20px;
+        border-radius: 8px; 
+    }
+
+    .title-form-anuncie-doacao h1 {
+        font-size: 1.5rem;
+    }
+
+    .btn-ai {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+
+    .btn-submit {
+        width: 100%; 
+        padding: 14px;
+    }
+}
+
+/* 3. Smartphones Pequenos (Até 380px) */
+@media (max-width: 380px) {
+    .container-form {
+        padding: 20px 10px;
+    }
+
+    .label-with-ai {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .btn-ai {
+        width: 100%;
+        justify-content: center;
+    }
+}
