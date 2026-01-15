@@ -1,3 +1,10 @@
+.section-about,
+.cta,
+.work-with-us {
+    width: 100%;
+}
+
+
 .section-about {
     display: flex;
     flex-direction: column;
@@ -54,7 +61,12 @@
     line-height: 1.3;
 }
 
-.info-member p{
+.presentation h2,
+.presentation p {
+    text-align: left;
+}
+
+.info-member p {
     text-align: justify;
 }
 
@@ -88,7 +100,8 @@
     border: 1px solid #ddd;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     padding: 15px;
-    width: 250px;
+    width: 100%;
+    max-width: 280px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -120,16 +133,16 @@
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
-  background: #f47c2a;
-  color: white;
-  font-weight: 700;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 15px;
+    width: 80px;
+    height: 80px;
+    background: #f47c2a;
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
 }
 
 .tags-member {
@@ -197,120 +210,229 @@
 
 /* ===== CTA ===== */
 .cta {
-  background-color: #fcf8f1;
-  padding: 80px 20px;
-  text-align: center;
+    background-color: #fcf8f1;
+    padding: 80px 20px;
+    text-align: center;
 }
 
 .cta h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 16px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 16px;
 }
 
 .cta-text {
-  max-width: 640px;
-  margin: 0 auto 32px;
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto 32px;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
 }
 
 /* Botões */
 .cta-btn {
-  padding: 12px 22px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  text-decoration: none;
-  border: 1px solid #e6e1d8;
-  background-color: #fff;
-  color: #333;
-  transition: all 0.25s ease;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid #e6e1d8;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.25s ease;
 }
 
 .cta-btn:hover {
-  background-color: #f5f1ea;
+    background-color: #f5f1ea;
 }
 
 /* Botão principal */
 .cta-primary {
-  background-color: #f47c2a;
-  border-color: #f47c2a;
-  color: #fff;
+    background-color: #f47c2a;
+    border-color: #f47c2a;
+    color: #fff;
 }
 
 .cta-primary:hover {
-  background-color: #e56f22;
+    background-color: #e56f22;
 }
 
 /* ===== TRABALHE CONOSCO ===== */
 .work-with-us {
-  background-color: #fcf8f1;
-  padding: 60px 20px 90px;
-  display: flex;
-  justify-content: center;
+    background-color: #fcf8f1;
+    padding: 60px 20px 90px;
+    display: flex;
+    justify-content: center;
 }
 
 .work-card {
-  background-color: #fff7f3;
-  max-width: 720px;
-  width: 100%;
-  padding: 50px 30px;
-  border-radius: 18px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    background-color: #fff7f3;
+    max-width: 720px;
+    width: 100%;
+    padding: 50px 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 /* Ícone */
 .work-icon {
-  width: 56px;
-  height: 56px;
-  background-color: #ffe3dc;
-  color: #f47c2a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 18px;
-  font-size: 1.3rem;
+    width: 56px;
+    height: 56px;
+    background-color: #ffe3dc;
+    color: #f47c2a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 1.3rem;
 }
 
 .work-card h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 12px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
 }
 
 .work-card p {
-  max-width: 520px;
-  margin: 0 auto 28px;
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.6;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* Botão */
 .work-btn {
-  display: inline-block;
-  background-color: #f47c2a;
-  color: #fff;
-  padding: 12px 26px;
-  border-radius: 26px;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: background-color 0.25s ease;
+    display: inline-block;
+    background-color: #f47c2a;
+    color: #fff;
+    padding: 12px 26px;
+    border-radius: 26px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.25s ease;
 }
 
 .work-btn:hover {
-  background-color: #e56f22;
+    background-color: #e56f22;
 }
 
+@media (max-width: 768px) {
+
+    /* ===== SEÇÃO SOBRE ===== */
+    .section-about {
+        padding: 30px 16px;
+    }
+
+    .section-about h1 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .container-about,
+    .lovecats-api {
+        padding: 16px;
+    }
+
+    .presentation {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .presentation h2,
+    .presentation p {
+        text-align: center;
+    }
+
+    .presentation i {
+        padding-top: 0;
+    }
+
+    .presentation p {
+        text-align: center;
+    }
+
+    /* ===== EQUIPE ===== */
+    .info-team {
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .card-team {
+        width: 100%;
+        max-width: 320px;
+        min-height: auto;
+    }
+
+    .info-member p {
+        text-align: center;
+    }
+
+    /* Esconde setas no mobile */
+    .arrow {
+        display: none;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+        padding: 50px 16px;
+    }
+
+    .cta h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* ===== TRABALHE CONOSCO ===== */
+    .work-card {
+        padding: 30px 20px;
+    }
+
+    .work-card h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .section-about {
+        padding: 40px 24px;
+    }
+
+    .presentation {
+        gap: 15px;
+    }
+
+    .info-team {
+        justify-content: center;
+    }
+
+    .card-team {
+        width: 280px;
+    }
+
+    .cta h2 {
+        font-size: 1.8rem;
+    }
+}
