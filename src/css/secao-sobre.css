@@ -1,3 +1,173 @@
+.section-about {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcf8f1;
+}
+
+.section-about h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.container-about,
+.lovecats-api {
+    background-color: #fff9f9;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.presentation {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.presentation i {
+    min-width: 50px;
+    padding-top: 18px;
+}
+
+.presentation h2,
+.lovecats-api h2,
+.info-member h2,
+.our-team h2 {
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.presentation p,
+.lovecats-api p,
+.info-member p {
+    color: #555;
+    line-height: 1.3;
+}
+
+.lovecats-api {
+    margin-top: 60px;
+}
+
+.lovecats-api a {
+    margin-top: 15px;
+}
+
+.our-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-team {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card-team {
+    background-color: #fff9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    width: 250px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+}
+
+.info-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-member img {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px;
+}
+
+.info-member h2 {
+    font-size: 18px;
+}
+
+.info-member h3 {
+    font-size: 15px;
+    color: #f47c2a;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.tags-member {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 18px;
+}
+
+.tags-member span {
+    background-color: #f47c2a;
+    border-radius: 50px;
+    padding: 3px;
+}
+
+.networks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.networks a {
+    font-size: 18px;
+}
+
+.team-carousel-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+}
+
+.arrow {
+    background: #333;
+    color: rgb(255, 254, 254);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.arrow:hover {
+    background: #f47c2a;
+}
+
 .btn-api {
     text-decoration: none;
     color: #ff6b6b;
