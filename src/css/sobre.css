@@ -88,20 +88,24 @@
     display: flex;
     flex-direction: row;
     gap: 30px;
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: center;
-    flex-wrap: wrap;
+    /* padding: 20px;
+    width: 100%; */
+    max-width: 900px; /* 3 cards de 280px + gaps */
+    overflow: hidden; /* ESCONDE os cards fora da tela */
+    scroll-behavior: smooth;
+    flex-wrap: nowrap;
 }
+
 
 .card-team {
     background-color: #fff9f9;
     border: 1px solid #ddd;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     padding: 15px;
-    width: 100%;
-    max-width: 280px;
+
+    width: 280px;        /* FIXO */
+    flex: 0 0 280px;     /* NÃO deixa encolher */
+    
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -194,6 +198,17 @@
     justify-content: center;
     transition: background 0.3s;
     z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.arrow:first-of-type {
+    left: 170px;
+}
+
+.arrow.next {
+    right: 170px;
 }
 
 .arrow:hover {
@@ -411,6 +426,16 @@
 
     .work-card h2 {
         font-size: 1.4rem;
+    }
+}
+
+@media(max-width: 821px) {
+    .arrow{
+        display: none;
+    }
+
+    .info-team{
+        flex-wrap: wrap;
     }
 }
 
