@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentIndex = 0;
 
-  //console.log(cardWidth);
-
   function updateSlider() {
     const scrollAmount = currentIndex * cardWidth * cardsPerView;
     container.scrollTo({

@@ -460,4 +460,12 @@
     .cta h2 {
         font-size: 1.8rem;
     }
+
+    .arrow{
+        display: none;
+    }
+
+    .info-team{
+        flex-wrap: wrap;
+    }
 }
