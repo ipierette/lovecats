@@ -87,30 +87,31 @@
 .info-team {
     display: flex;
     flex-direction: row;
-    gap: 30px;
-    /* padding: 20px;
-    width: 100%; */
-    max-width: 900px; /* 3 cards de 280px + gaps */
-    overflow: hidden; /* ESCONDE os cards fora da tela */
+    gap: 30px; /* Gap fixo para o cálculo do JS bater */
+    width: 100%; /* Ocupa o container pai */
+    max-width: 900px; /* 3 cards de 280px + 2 gaps de 30px */
+    overflow-x: hidden; /* Esconde a barra para as setas controlarem */
     scroll-behavior: smooth;
-    flex-wrap: nowrap;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
 }
-
 
 .card-team {
     background-color: #fff9f9;
     border: 1px solid #ddd;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     padding: 15px;
-
-    width: 280px;        /* FIXO */
-    flex: 0 0 280px;     /* NÃO deixa encolher */
+    
+    /* Largura fixa para manter consistência no cálculo */
+    width: 280px;
+    flex: 0 0 280px; 
     
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 450px;
+    scroll-snap-align: center;
 }
 
 .info-member {
@@ -181,8 +182,10 @@
     display: flex;
     align-items: center;
     width: 100%;
+    max-width: 1000px; 
     position: relative;
     justify-content: center;
+    margin: 0 auto;
 }
 
 .arrow {
@@ -204,11 +207,11 @@
 }
 
 .arrow:first-of-type {
-    left: 10%;
+    left: -50px;
 }
 
 .arrow.next {
-    right: 10%;
+    right: -50px;
 }
 
 .arrow:hover {
@@ -378,16 +381,48 @@
         text-align: center;
     }
 
-    /* ===== EQUIPE ===== */
+/* ===== EQUIPE ===== */
+    .our-team {
+        padding: 0 45px; /* CRUCIAL: Abre espaço nas laterais para as setas aparecerem dentro da tela */
+        overflow: hidden; /* Evita que as setas criem barra de rolagem no site */
+    }
+
     .info-team {
-        gap: 20px;
-        padding: 10px;
+        max-width: 280px; 
+        overflow-x: auto; 
+        scrollbar-width: none; 
+        gap: 20px; /* Reduzi um pouco o gap no mobile */
+    }
+
+    .info-team::-webkit-scrollbar {
+        display: none; 
+    }
+
+    .team-carousel-container {
+        max-width: 100%; /* Permite que ele use o espaço do padding do pai */
+        position: relative;
+    }
+
+    .arrow {
+        display: flex; 
+        width: 35px;
+        height: 35px;
+        position: absolute; /* Garante o posicionamento em relação ao container */
+        z-index: 10;
+    }
+
+    /* Ajuste de posição para não sumir da tela */
+    .arrow:first-of-type { 
+        left: -40px; 
+    }
+
+    .arrow.next { 
+        right: -40px; 
     }
 
     .card-team {
-        width: 100%;
-        max-width: 320px;
-        min-height: auto;
+        scroll-snap-align: center;
+        flex: 0 0 280px; /* Garante que o card mantenha o tamanho */
     }
 
     .info-member p {
@@ -395,9 +430,6 @@
     }
 
     /* Esconde setas no mobile */
-    .arrow {
-        display: none;
-    }
 
     /* ===== CTA ===== */
     .cta {
@@ -429,16 +461,6 @@
     }
 }
 
-@media(max-width: 821px) {
-    .arrow{
-        display: none;
-    }
-
-    .info-team{
-        flex-wrap: wrap;
-    }
-}
-
 @media (max-width: 1024px) {
 
     .section-about {
@@ -450,22 +472,20 @@
     }
 
     .info-team {
-        justify-content: center;
+        max-width: 590px; /* 2 cards de 280px + 1 gap de 30px */
+    }
+    .team-carousel-container {
+        max-width: 650px;
+    }
+    .arrow {
+        display: flex; /* Garante que a seta apareça no tablet */
     }
 
-    .card-team {
-        width: 280px;
-    }
+    .arrow:first-of-type { left: -40px; }
+    .arrow.next { right: -40px; }
 
     .cta h2 {
         font-size: 1.8rem;
     }
 
-    .arrow{
-        display: none;
-    }
-
-    .info-team{
-        flex-wrap: wrap;
-    }
 }

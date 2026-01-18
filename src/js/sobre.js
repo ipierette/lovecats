@@ -4,35 +4,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn = document.querySelector(".arrow:not(.next)");
   const nextBtn = document.querySelector(".arrow.next");
 
-  const cardsPerView = 3;
-  const cardWidth = cards[0].offsetWidth + 30; // largura + gap
-  const maxIndex = Math.ceil(cards.length / cardsPerView) - 1;
-
-  let currentIndex = 0;
-
-  function updateSlider() {
-    const scrollAmount = currentIndex * cardWidth * cardsPerView;
-    container.scrollTo({
-      left: scrollAmount,
-      behavior: "smooth"
-    });
+  // 1. Define quantos cards saltar por clique
+  function getScrollStep() {
+    const width = window.innerWidth;
+    if (width <= 768) {
+      return 1; // No mobile, pula de 1 em 1
+    } else if (width <= 1024) {
+      return 2; // No tablet, pula de 2 em 2
+    } else {
+      return 3; // No desktop, pula o bloco de 3
+    }
   }
 
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < maxIndex) {
-      currentIndex++;
-    } else {
-      currentIndex = 0; // volta para o início
-    }
-    updateSlider();
-  });
+  function moveSlider(direction) {
+    // Pegamos a largura real do card + o gap de 30px definido no CSS
+    const cardFullWidth = cards[0].offsetWidth + 30; 
+    const step = getScrollStep();
+    const scrollAmount = cardFullWidth * step;
 
-  prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
+    if (direction === "next") {
+      // Verifica se chegou ao fim (com margem de erro de 10px)
+      const isEnd = container.scrollLeft + container.offsetWidth >= container.scrollWidth - 10;
+      
+      if (isEnd) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }
     } else {
-      currentIndex = maxIndex; // vai para o final
+      // Verifica se está no início
+      if (container.scrollLeft <= 5) {
+        container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      }
     }
-    updateSlider();
-  });
+  }
+
+  nextBtn.addEventListener("click", () => moveSlider("next"));
+  prevBtn.addEventListener("click", () => moveSlider("prev"));
 });
