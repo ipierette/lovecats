@@ -358,3 +358,174 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* --- Estilos Novos para o Final da Página --- */
+
+/* Agradecimentos */
+.thanks-container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.thanks-box {
+    background-color: #fff9f6; /* Tom levemente rosado da imagem */
+    border: 1px solid #f1e4dc;
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 1300px;
+    width: 100%;
+}
+
+.heart-icon {
+    color: #75bcac;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.thanks-box h2 {
+    color: #4a3728;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+}
+
+.thanks-box p {
+    color: #8c786a;
+    margin-bottom: 1rem;
+}
+
+/* Menções Honrosas */
+.honors-section {
+    text-align: center;
+    margin: 5rem 0;
+}
+
+.honors-subtitle {
+    color: #8c786a;
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.dev-card {
+    background: white;
+    border: 1px solid #d3d0d0;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.dev-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #75bcac, #ecb796);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.dev-role {
+    color: #75bcac;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.dev-tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag-api, .tag-backend {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-weight: bold;
+}
+
+.tag-api { background: #e0f2ef; color: #4fa1a1; }
+.tag-backend { background: #fdf2e9; color: #e67e22; }
+
+.dev-contribution {
+    font-size: 0.85rem;
+    color: #706c67;
+    margin-bottom: 1.5rem;
+}
+
+.dev-social i {
+    margin: 0 0.5rem;
+    color: #8c786a;
+    cursor: pointer;
+}
+
+/* Banner CTA */
+.cta-banner {
+    background: linear-gradient(to right, #fdf2e9, #f6f1ee);
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.cta-banner h2 {
+    color: #4a3728;
+    margin-bottom: 1rem;
+}
+
+.cta-banner p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: #8c786a;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background-color: #75bcac;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: #f3dbd1;
+    color: #4a3728;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .cta-buttons {
+        flex-direction: column;
+    }
+    .dev-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
