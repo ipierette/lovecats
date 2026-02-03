@@ -1,9 +1,8 @@
 .hero {
   width: 100%;
-  min-height: 85vh;
+  min-height: 90vh;
   padding: 60px 20px;
   background-color: #f5eee3;
-
   background-image: url("../images/fundo.png");
   background-size: cover;
   background-position: center;
@@ -29,21 +28,25 @@
 .hero-content {
   position: relative;
   text-align: center;
-  max-width: 850px;
+  max-width: 1100px;
   margin: 0 auto;
   z-index: 2;
 }
 
 .hero h1 {
-  font-size: 48px;
-  color: #e3743d;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  background: linear-gradient(90deg, #5ECFB1 0%, #8B9D7A 35%, #B8885A 65%, #E86E3F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 20px;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .hero p {
-  font-size: 18px;
-  color: #5a4631;
+  font-size: clamp(1rem, 3vw, 1.65rem);
+  color: #93837e;
   margin-bottom: 40px;
   line-height: 1.6;
 }
