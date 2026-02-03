@@ -4,15 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const animated = Array.from(document.querySelectorAll("[data-animate]"));
   const buttons = document.querySelectorAll(".btn, .theme-toggle");
   const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
-  const navItems = navLinks.map((link) => ({
-    link,
-    target: document.querySelector(link.getAttribute("href")),
-  }));
+  const highlightNav = document.querySelectorAll("#highlight-nav a");
 
-  // Deixa o primeiro link (Home) ativo ao carregar a página.
-  if (navLinks[0]) navLinks[0].classList.add("is-active");
+  function setHighlightNav() {
+    const currentPage = window.location.pathname;
 
-  // Mostra os elementos marcados com data-animate quando entram na área visível.
+    highlightNav.forEach((link) => {
+      const href = link.getAttribute("href");
+      link.classList.remove("active");
+
+      if (
+        href === currentPage ||
+        currentPage.includes(href.replace("./", ""))
+      ) {
+        link.classList.add("active");
+      }
+    });
+  }
+
   function revealOnScroll() {
     animated.forEach((el) => {
       if (el.classList.contains("is-visible")) return;
@@ -24,23 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Mantém o link do menu ativo de acordo com a seção visível na tela.
-  function highlightNav() {
-    const tracked = navItems.filter((item) => item.target);
-    if (tracked.length <= 1) return; // evita sobrescrever clique quando só há uma seção
-
-    const marker = window.innerHeight * 0.3;
-    tracked.forEach(({ link, target }) => {
-      const rect = target.getBoundingClientRect();
-      const isVisible = rect.top <= marker && rect.bottom >= marker;
-      link.classList.toggle("is-active", isVisible);
-    });
-  }
-
   // Chama as rotinas de animação e destaque a cada rolagem/redimensionamento.
   function handleScroll() {
     revealOnScroll();
-    highlightNav();
+    setHighlightNav();
   }
 
   window.addEventListener("scroll", handleScroll);
