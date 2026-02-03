@@ -7,6 +7,7 @@
   <title>LoveCats</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="./src/css/reset.css" />
+  <link rel="stylesheet" href="./src/css/hamburguer.css">
   <link rel="stylesheet" href="./src/css/header.css" />
   <link rel="stylesheet" href="./src/css/hero.css" />
   <link rel="stylesheet" href="./src/css/metrics.css" />
@@ -22,19 +23,43 @@
         <img src="./src/images/logo-icone.png" alt="Ícone LoveCats" />
         <img src="./src/images/texto-logo.png" alt="Texto LoveCats" />
       </a>
-      <nav>
-        <ul> 
-          <li><a href="./index.html">Home</a></li>
+       <nav class="nav-desktop">
+        <ul id="highlight-nav">
+          <li><a class="active" href="./index.html">Home</a></li>
           <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
           <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#api">API</a></li>
+          <li><a href="./sobre.html">Sobre</a></li>
+          <li><a href="./feature-api.html">API</a></li>
         </ul>
       </nav>
-      <button class="theme-toggle" aria-label="Alternar tema">
-        <img src="./src/images/moon.svg" alt="icone-lua" />
-      </button>
+
+      <!-- Botões Mobile (tema + menu) -->
+      <div class="group-mobile">
+        <button class="theme-toggle" aria-label="Alternar tema">
+          <img src="./src/images/moon.svg" alt="icone-lua" />
+        </button>
+
+        <button class="menu-hamburguer" aria-label="Menu" aria-expanded="false">
+          <span class="linha"></span>
+          <span class="linha"></span>
+          <span class="linha"></span>
+        </button>
+      </div>
     </header>
+
+      <!-- Overlay (fundo escuro) -->
+    <div class="menu-overlay"></div>
+
+    <!-- Menu Mobile Dropdown -->
+    <nav class="nav-mobile">
+      <ul class="highlight-nav">
+        <li><a class="link-mobile" href="./index.html">Home</a></li>
+        <li><a class="link-mobile" href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+        <li><a class="link-mobile" href="./anuncie-doacao.html">Anuncie Doação</a></li>
+        <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
+        <li><a class="link-mobile" href="./feature-api.html">API</a></li>
+      </ul>
+    </nav>
 
     <main> 
       <div class="container">
@@ -254,6 +279,7 @@
   <script src="./src/js/index.js"></script>
   <script src="https://kit.fontawesome.com/3b2cdf92a0.js" crossorigin="anonymous"></script>
   <script src="./src/js/adote-um-gatinho.js"></script>
+  <script src="./src/js/hamburguer.js"></script>
 </body>
 
 </html> 

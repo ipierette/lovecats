@@ -18,25 +18,56 @@
 
 <body>
     <div class="page">
-        <header>
-            <a href="./index.html" class="logo">
-                <img src="./src/images/logo-icone.png" alt="Ícone LoveCats" />
-                <img src="./src/images/texto-logo.png" alt="Texto LoveCats" />
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
-                    <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#api">API</a></li>
-                </ul>
-            </nav>
-            <button class="theme-toggle" aria-label="Alternar tema">
-                <img src="./src/images/moon.svg" alt="icone-lua" />
-            </button>
-        </header>
+       <header>
+        <a href="./index.html" class="logo">
+          <img src="./src/images/logo-icone.png" alt="Ícone LoveCats" />
+          <img src="./src/images/texto-logo.png" alt="Texto LoveCats" />
+        </a>
+        <nav class="nav-desktop">
+          <ul id="highlight-nav">
+            <li><a class="active" href="./index.html">Home</a></li>
+            <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
+            <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+            <li><a href="./sobre.html">Sobre</a></li>
+            <li><a href="./feature-api.html">API</a></li>
+          </ul>
+        </nav>
 
+        <div class="group-mobile">
+          <button class="theme-toggle" aria-label="Alternar tema">
+            <img src="./src/images/moon.svg" alt="icone-lua" />
+          </button>
+
+          <button
+            class="menu-hamburguer"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <span class="linha"></span>
+            <span class="linha"></span>
+            <span class="linha"></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="menu-overlay"></div>
+      <nav class="nav-mobile">
+        <ul class="highlight-nav">
+          <li><a class="link-mobile" href="./index.html">Home</a></li>
+          <li>
+            <a class="link-mobile" href="./adote-um-gatinho.html"
+              >Adote um Gatinho</a
+            >
+          </li>
+          <li>
+            <a class="link-mobile" href="./anuncie-doacao.html"
+              >Anuncie Doação</a
+            >
+          </li>
+          <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
+          <li><a class="link-mobile" href="./feature-api.html">API</a></li>
+        </ul>
+      </nav>
         <main class="container-form">
             <section class="form-wrapper">
                 <div class="title-form-anuncie-doacao">

@@ -1,174 +1,243 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoveCats</title>
+    <script
+      src="https://kit.fontawesome.com/3b2cdf92a0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/hamburguer.css" />
+    <link rel="stylesheet" href="./src/css/hero.css" />
+    <link rel="stylesheet" href="./src/css/metrics.css" />
+    <link rel="stylesheet" href="./src/css/information.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LoveCats</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="./src/css/reset.css" />
-  <link rel="stylesheet" href="./src/css/hero.css" />
-  <link rel="stylesheet" href="./src/css/metrics.css" />
-  <link rel="stylesheet" href="./src/css/information.css" />
-  <link rel="stylesheet" href="./src/css/style.css" />
-</head>
+  <body>
+    <div class="page">
+      <header>
+        <a href="./index.html" class="logo">
+          <img src="./src/images/logo-icone.png" alt="Ícone LoveCats" />
+          <img src="./src/images/texto-logo.png" alt="Texto LoveCats" />
+        </a>
+        <nav class="nav-desktop">
+          <ul id="highlight-nav">
+            <li><a class="active" href="./index.html">Home</a></li>
+            <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
+            <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+            <li><a href="./sobre.html">Sobre</a></li>
+            <li><a href="./feature-api.html">API</a></li>
+          </ul>
+        </nav>
 
-<body>
-  <div class="page">
-    <header>
-      <a href="./index.html" class="logo">
-        <img src="./src/images/logo-icone.png" alt="Ícone LoveCats" />
-        <img src="./src/images/texto-logo.png" alt="Texto LoveCats" />
-      </a>
-      <nav>
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
-          <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="./feature-api.html">API</a></li>
+        <div class="group-mobile">
+          <button class="theme-toggle" aria-label="Alternar tema">
+            <img src="./src/images/moon.svg" alt="icone-lua" />
+          </button>
+
+          <button
+            class="menu-hamburguer"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <span class="linha"></span>
+            <span class="linha"></span>
+            <span class="linha"></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="menu-overlay"></div>
+      <nav class="nav-mobile">
+        <ul class="highlight-nav">
+          <li><a class="link-mobile" href="./index.html">Home</a></li>
+          <li>
+            <a class="link-mobile" href="./adote-um-gatinho.html"
+              >Adote um Gatinho</a
+            >
+          </li>
+          <li>
+            <a class="link-mobile" href="./anuncie-doacao.html"
+              >Anuncie Doação</a
+            >
+          </li>
+          <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
+          <li><a class="link-mobile" href="./feature-api.html">API</a></li>
         </ul>
       </nav>
-      <button class="theme-toggle" aria-label="Alternar tema">
-        <img src="./src/images/moon.svg" alt="icone-lua" />
-      </button>
-    </header>
-    <main>
-      <section id="hero" class="hero" data-animate>
-        <div class="hero-content" data-animate>
-          <h1>Encontre Seu Novo Melhor Amigo</h1>
-          <p>
-            LoveCats conecta gatinhos carentes de um lar com pessoas prontas para
-            oferecer amor incondicional. Cada adoção é uma história de amor esperando
-            para acontecer.
-          </p>
 
-          <div class="hero-buttons">
-            <a href="./adote-um-gatinho.html" class="btn btn-primary" data-animate>
-              Adotar um Gatinho
-            </a>
-            <a href="./anuncie-doacao.html" class="btn btn-secondary" data-animate>
-              Anunciar Doação
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="metrics" data-animate>
-        <div class="metrics-inner" data-animate>
-          <div class="metrics-icon" aria-hidden="true">
-            <i class="fa-solid fa-paw" style="color: #e3743d;"></i>
-          </div>
-          <h2 class="metrics-number"><span class="number-highlight">234</span> <span class="metrics-title">Gatinhos
-              Adotados</span></h2>
-
-          <p class="metrics-desc">
-            Através da nossa plataforma, já conectamos centenas de gatinhos com lares amorosos.
-          </p>
-
-          <p class="metrics-small">
-            <span class="small-highlight">18</span> adoções realizadas neste mês!
-          </p>
-        </div>
-      </section>
-
-      <section class="information" data-animate>
-        <div class="container inf-inner" data-animate>
-          <h2 class="inf-title">Como Funciona</h2>
-          <div class="inf-cards">
-            <article class="inf-card" data-animate>
-              <div class="inf-card-icon" aria-hidden="true">
-                <i class="fa-solid fa-magnifying-glass" style="color: #e3743d;"></i>
-              </div>
-              <h3 class="inf-card-title">1. Busque</h3>
-              <p class="inf-card-desc">
-                Navegue pelos perfis de gatinhos disponíveis usando nossos filtros
-                inteligentes.
-              </p>
-            </article>
-
-            <article class="inf-card" data-animate>
-              <div class="inf-card-icon" aria-hidden="true">
-                <i class="fa-regular fa-heart" style="color: #e3743d;"></i>
-              </div>
-              <h3 class="inf-card-title">2. Conecte-se</h3>
-              <p class="inf-card-desc">
-                Entre em contato direto com quem está doando através do WhatsApp.
-              </p>
-            </article>
-
-            <article class="inf-card" data-animate>
-              <div class="inf-card-icon" aria-hidden="true">
-                <i class="fa-solid fa-shield-cat" style="color: #e3743d;"></i>
-              </div>
-              <h3 class="inf-card-title">3. Adote</h3>
-              <p class="inf-card-desc">
-                Complete o processo de adoção responsável e ganhe um novo membro da
-                família.
-              </p>
-            </article>
-          </div>
-
-          <div class="responsible">
-            <h3 class="responsible-title">Adoção Responsável</h3>
-            <p class="responsible-desc">
-              Na LoveCats, acreditamos que cada gatinho merece um lar cheio de amor,
-              cuidado e segurança. Incentivamos a adoção consciente e o compromisso
-              de longo prazo com o bem-estar felino.
+      <main>
+        <section id="hero" class="hero" data-animate>
+          <div class="hero-content" data-animate>
+            <h1>Encontre Seu Novo Melhor Amigo</h1>
+            <p>
+              LoveCats conecta gatinhos carentes de um lar com pessoas prontas
+              para oferecer amor incondicional. Cada adoção é uma história de
+              amor esperando para acontecer.
             </p>
 
-            <ul class="responsible-list">
-              <li><span class="li-icon" aria-hidden="true">♡</span> Certifique-se de ter
-                tempo e recursos para cuidar do gatinho</li>
-              <li><span class="li-icon" aria-hidden="true">♡</span> Prepare sua casa com
-                segurança e conforto</li>
-              <li><span class="li-icon" aria-hidden="true">♡</span> Comprometa-se com
-                cuidados veterinários regulares</li>
-              <li><span class="li-icon" aria-hidden="true">♡</span> Ofereça amor,
-                atenção e carinho diariamente</li>
-            </ul>
-
-            <div class="responsible-cta">
-              <a href="#sobre" class="btn btn-primary-inf">Saiba Mais Sobre Nós</a>
+            <div class="hero-buttons">
+              <a
+                href="./adote-um-gatinho.html"
+                class="btn btn-primary"
+                data-animate
+              >
+                Adotar um Gatinho
+              </a>
+              <a
+                href="./anuncie-doacao.html"
+                class="btn btn-secondary"
+                data-animate
+              >
+                Anunciar Doação
+              </a>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-    </main>
+        <section class="metrics" data-animate>
+          <div class="metrics-inner" data-animate>
+            <div class="metrics-icon" aria-hidden="true">
+              <i class="fa-solid fa-paw" style="color: #e3743d"></i>
+            </div>
+            <h2 class="metrics-number">
+              <span class="number-highlight">234</span>
+              <span class="metrics-title">Gatinhos Adotados</span>
+            </h2>
 
-    <footer class="site-footer">
-      <div class="footer-content">
-        <div class="footer-block">
-          <div class="footer-title">
-            <span class="footer-heart" aria-hidden="true">♥</span>
-            <span>LoveCats</span>
+            <p class="metrics-desc">
+              Através da nossa plataforma, já conectamos centenas de gatinhos
+              com lares amorosos.
+            </p>
+
+            <p class="metrics-small">
+              <span class="small-highlight">18</span> adoções realizadas neste
+              mês!
+            </p>
           </div>
-          <p>Conectando corações felinos com lares amorosos desde 2025.</p>
-        </div>
+        </section>
 
-        <div class="footer-block">
-          <div class="footer-title">Navegação</div>
-          <a href="./index.html">Home</a>
-          <a href="./adote-um-gatinho.html">Adote um Gatinho</a>
-          <a href="./anuncie-doacao.html">Anuncie Doação</a>
-          <a href="#sobre">Sobre Nós</a>
-          <a href="#api">API</a>
-        </div>
+        <section class="information" data-animate>
+          <div class="container inf-inner" data-animate>
+            <h2 class="inf-title">Como Funciona</h2>
+            <div class="inf-cards">
+              <article class="inf-card" data-animate>
+                <div class="inf-card-icon" aria-hidden="true">
+                  <i
+                    class="fa-solid fa-magnifying-glass"
+                    style="color: #e3743d"
+                  ></i>
+                </div>
+                <h3 class="inf-card-title">1. Busque</h3>
+                <p class="inf-card-desc">
+                  Navegue pelos perfis de gatinhos disponíveis usando nossos
+                  filtros inteligentes.
+                </p>
+              </article>
 
-        <div class="footer-block">
-          <div class="footer-title">Trabalhe Conosco</div>
-          <p>É desenvolvedor e quer ajudar a criar/manter nossa API?</p>
-          <a class="footer-link" href="mailto:contato@lovecats.com">Envie uma mensagem →</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        © 2025 LoveCats. Todos os direitos reservados. Feito com <span aria-hidden="true">♥</span> para os gatinhos.
-      </div>
-    </footer>
-  </div>
-  <script src="./src/js/index.js"></script>
-  <script src="https://kit.fontawesome.com/3b2cdf92a0.js" crossorigin="anonymous"></script>
-</body>
+              <article class="inf-card" data-animate>
+                <div class="inf-card-icon" aria-hidden="true">
+                  <i class="fa-regular fa-heart" style="color: #e3743d"></i>
+                </div>
+                <h3 class="inf-card-title">2. Conecte-se</h3>
+                <p class="inf-card-desc">
+                  Entre em contato direto com quem está doando através do
+                  WhatsApp.
+                </p>
+              </article>
 
+              <article class="inf-card" data-animate>
+                <div class="inf-card-icon" aria-hidden="true">
+                  <i class="fa-solid fa-shield-cat" style="color: #e3743d"></i>
+                </div>
+                <h3 class="inf-card-title">3. Adote</h3>
+                <p class="inf-card-desc">
+                  Complete o processo de adoção responsável e ganhe um novo
+                  membro da família.
+                </p>
+              </article>
+            </div>
+
+            <div class="responsible">
+              <h3 class="responsible-title">Adoção Responsável</h3>
+              <p class="responsible-desc">
+                Na LoveCats, acreditamos que cada gatinho merece um lar cheio de
+                amor, cuidado e segurança. Incentivamos a adoção consciente e o
+                compromisso de longo prazo com o bem-estar felino.
+              </p>
+
+              <ul class="responsible-list">
+                <li>
+                  <span class="li-icon" aria-hidden="true">♡</span>
+                  Certifique-se de ter tempo e recursos para cuidar do gatinho
+                </li>
+                <li>
+                  <span class="li-icon" aria-hidden="true">♡</span> Prepare sua
+                  casa com segurança e conforto
+                </li>
+                <li>
+                  <span class="li-icon" aria-hidden="true">♡</span>
+                  Comprometa-se com cuidados veterinários regulares
+                </li>
+                <li>
+                  <span class="li-icon" aria-hidden="true">♡</span> Ofereça
+                  amor, atenção e carinho diariamente
+                </li>
+              </ul>
+
+              <div class="responsible-cta">
+                <a href="#sobre" class="btn btn-primary-inf"
+                  >Saiba Mais Sobre Nós</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-block">
+            <div class="footer-title">
+              <span class="footer-heart" aria-hidden="true">♥</span>
+              <span>LoveCats</span>
+            </div>
+            <p>Conectando corações felinos com lares amorosos desde 2025.</p>
+          </div>
+
+          <div class="footer-block">
+            <div class="footer-title">Navegação</div>
+            <a href="./index.html">Home</a>
+            <a href="./adote-um-gatinho.html">Adote um Gatinho</a>
+            <a href="./anuncie-doacao.html">Anuncie Doação</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#api">API</a>
+          </div>
+
+          <div class="footer-block">
+            <div class="footer-title">Trabalhe Conosco</div>
+            <p>É desenvolvedor e quer ajudar a criar/manter nossa API?</p>
+            <a class="footer-link" href="mailto:contato@lovecats.com"
+              >Envie uma mensagem →</a
+            >
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © 2025 LoveCats. Todos os direitos reservados. Feito com
+          <span aria-hidden="true">♥</span> para os gatinhos.
+        </div>
+      </footer>
+    </div>
+
+    <script src="./src/js/index.js"></script>
+    <script src="./src/js/hamburguer.js"></script>
+  </body>
 </html>
