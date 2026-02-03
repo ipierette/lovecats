@@ -1,0 +1,146 @@
+.menu-hamburguer {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1.1rem;
+  height: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.menu-hamburguer .linha {
+  width: 100%;
+  height: 2px;
+  background-color: #5a4631;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.menu-hamburguer:hover .linha {
+  background-color: #6fb4b4;
+}
+
+.menu-hamburguer.active .linha:nth-child(1) {
+  transform: translateY(4.2px) rotate(45deg);
+}
+
+.menu-hamburguer.active .linha:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-hamburguer.active .linha:nth-child(3) {
+  transform: translateY(-9.5px) rotate(-45deg);
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 998;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-mobile {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  background-color: #fefaf9;
+  box-shadow: 0 4px 12px rgba(90, 70, 49, 0.1);
+  padding: 1rem 0 1.5rem;
+  transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.nav-mobile.active {
+  top: 4rem;
+}
+
+.nav-mobile ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.nav-mobile li {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-mobile.active li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-mobile.active li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.nav-mobile.active li:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.nav-mobile.active li:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.nav-mobile.active li:nth-child(4) {
+  transition-delay: 0.25s;
+}
+.nav-mobile.active li:nth-child(5) {
+  transition-delay: 0.3s;
+}
+
+.nav-mobile .link-mobile {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #5a4631;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* .nav-mobile li:first-child a, .nav-desktop li:first-child a {
+  color: #6fb4b4;
+  font-weight: 600;
+} */
+
+.nav-mobile .link-mobile:hover {
+  color: #6fb4b4;
+  padding-left: 2rem;
+}
+
+@media (min-width: 769px) {
+  .menu-hamburguer,
+  .nav-mobile,
+  .menu-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-hamburguer {
+    display: flex;
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+}
