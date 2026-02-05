@@ -22,56 +22,66 @@
 
   <body>
     <div class="page">
-      <header>
-        <a href="./index.html" class="logo">
-          <img src="./src/images/logo-icone.png" alt="Ícone LoveCats" />
-          <img src="./src/images/texto-logo.png" alt="Texto LoveCats" />
-        </a>
-        <nav class="nav-desktop">
-          <ul id="highlight-nav">
-            <li><a class="active" href="./index.html">Home</a></li>
-            <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
-            <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
-            <li><a href="./sobre.html">Sobre</a></li>
-            <li><a href="./feature-api.html">API</a></li>
+      <section class="group-header">
+        <header>
+          <a href="./index.html" class="logo">
+            <img
+              class="cat-image"
+              src="./src/images/logo-icone.png"
+              alt="Ícone LoveCats"
+            />
+            <img
+              class="logo-image"
+              src="./src/images/texto-logo.png"
+              alt="Texto LoveCats"
+            />
+          </a>
+          <nav class="nav-desktop">
+            <ul id="highlight-nav">
+              <li><a class="active" href="./index.html">Home</a></li>
+              <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
+              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+              <li><a href="./sobre.html">Sobre</a></li>
+              <li><a href="./feature-api.html">API</a></li>
+            </ul>
+          </nav>
+
+          <div class="group-mobile">
+            <button class="theme-toggle" aria-label="Alternar tema">
+              <img src="./src/images/moon.svg" alt="icone-lua" />
+            </button>
+
+            <button
+              class="menu-hamburguer"
+              aria-label="Menu"
+              aria-expanded="false"
+            >
+              <span class="linha"></span>
+              <span class="linha"></span>
+              <span class="linha"></span>
+            </button>
+          </div>
+        </header>
+
+        <div class="menu-overlay"></div>
+        <nav class="nav-mobile">
+          <ul class="highlight-nav">
+            <li><a class="link-mobile" href="./index.html">Home</a></li>
+            <li>
+              <a class="link-mobile" href="./adote-um-gatinho.html"
+                >Adote um Gatinho</a
+              >
+            </li>
+            <li>
+              <a class="link-mobile" href="./anuncie-doacao.html"
+                >Anuncie Doação</a
+              >
+            </li>
+            <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
+            <li><a class="link-mobile" href="./feature-api.html">API</a></li>
           </ul>
         </nav>
-
-        <div class="group-mobile">
-          <button class="theme-toggle" aria-label="Alternar tema">
-            <img src="./src/images/moon.svg" alt="icone-lua" />
-          </button>
-
-          <button
-            class="menu-hamburguer"
-            aria-label="Menu"
-            aria-expanded="false"
-          >
-            <span class="linha"></span>
-            <span class="linha"></span>
-            <span class="linha"></span>
-          </button>
-        </div>
-      </header>
-
-      <div class="menu-overlay"></div>
-      <nav class="nav-mobile">
-        <ul class="highlight-nav">
-          <li><a class="link-mobile" href="./index.html">Home</a></li>
-          <li>
-            <a class="link-mobile" href="./adote-um-gatinho.html"
-              >Adote um Gatinho</a
-            >
-          </li>
-          <li>
-            <a class="link-mobile" href="./anuncie-doacao.html"
-              >Anuncie Doação</a
-            >
-          </li>
-          <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
-          <li><a class="link-mobile" href="./feature-api.html">API</a></li>
-        </ul>
-      </nav>
+      </section>
 
       <main>
         <section id="hero" class="hero" data-animate>
@@ -86,9 +96,10 @@
             <div class="hero-buttons">
               <a
                 href="./adote-um-gatinho.html"
-                class="btn btn-primary"
+                class="btn btn-primry"
                 data-animate
               >
+                <i class="fa-solid fa-magnifying-glass"></i>
                 Adotar um Gatinho
               </a>
               <a
@@ -96,7 +107,7 @@
                 class="btn btn-secondary"
                 data-animate
               >
-                Anunciar Doação
+                <i class="fa-regular fa-heart"></i> Anunciar Doação
               </a>
             </div>
           </div>
@@ -105,22 +116,24 @@
         <section class="metrics" data-animate>
           <div class="metrics-inner" data-animate>
             <div class="metrics-icon" aria-hidden="true">
-              <i class="fa-solid fa-paw" style="color: #e3743d"></i>
+              <i class="fa-solid fa-paw"></i>
             </div>
             <h2 class="metrics-number">
               <span class="number-highlight">234</span>
               <span class="metrics-title">Gatinhos Adotados</span>
             </h2>
 
-            <p class="metrics-desc">
-              Através da nossa plataforma, já conectamos centenas de gatinhos
-              com lares amorosos.
-            </p>
+            <div class="metric-group">
+              <p class="metrics-desc">
+                Através da nossa plataforma, já conectamos centenas de gatinhos
+                com lares amorosos.
+              </p>
 
-            <p class="metrics-small">
-              <span class="small-highlight">18</span> adoções realizadas neste
-              mês!
-            </p>
+              <p class="metrics-small">
+                <span class="small-highlight">18</span> adoções realizadas neste
+                mês!
+              </p>
+            </div>
           </div>
         </section>
 
@@ -130,10 +143,7 @@
             <div class="inf-cards">
               <article class="inf-card" data-animate>
                 <div class="inf-card-icon" aria-hidden="true">
-                  <i
-                    class="fa-solid fa-magnifying-glass"
-                    style="color: #e3743d"
-                  ></i>
+                  <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <h3 class="inf-card-title">1. Busque</h3>
                 <p class="inf-card-desc">
@@ -144,7 +154,7 @@
 
               <article class="inf-card" data-animate>
                 <div class="inf-card-icon" aria-hidden="true">
-                  <i class="fa-regular fa-heart" style="color: #e3743d"></i>
+                  <i class="fa-regular fa-heart"></i>
                 </div>
                 <h3 class="inf-card-title">2. Conecte-se</h3>
                 <p class="inf-card-desc">
@@ -155,7 +165,7 @@
 
               <article class="inf-card" data-animate>
                 <div class="inf-card-icon" aria-hidden="true">
-                  <i class="fa-solid fa-shield-cat" style="color: #e3743d"></i>
+                  <i class="fa-solid fa-shield-cat"></i>
                 </div>
                 <h3 class="inf-card-title">3. Adote</h3>
                 <p class="inf-card-desc">
@@ -165,7 +175,7 @@
               </article>
             </div>
 
-            <div class="responsible">
+            <section class="responsible">
               <h3 class="responsible-title">Adoção Responsável</h3>
               <p class="responsible-desc">
                 Na LoveCats, acreditamos que cada gatinho merece um lar cheio de
@@ -174,65 +184,74 @@
               </p>
 
               <ul class="responsible-list">
-                <li>
-                  <span class="li-icon" aria-hidden="true">♡</span>
-                  Certifique-se de ter tempo e recursos para cuidar do gatinho
+                <li class="list-require">
+                  <i class="fa-regular fa-heart"></i>
+                  <span class="require"
+                    >Certifique-se de ter tempo e recursos para cuidar do
+                    gatinho</span
+                  >
                 </li>
-                <li>
-                  <span class="li-icon" aria-hidden="true">♡</span> Prepare sua
-                  casa com segurança e conforto
+                <li class="list-require">
+                  <i class="fa-regular fa-heart"></i>
+                  <span class="require">
+                    Prepare sua casa com segurança e conforto</span
+                  >
                 </li>
-                <li>
-                  <span class="li-icon" aria-hidden="true">♡</span>
-                  Comprometa-se com cuidados veterinários regulares
+                <li class="list-require">
+                  <i class="fa-regular fa-heart"></i>
+                  <span class="require"
+                    >Comprometa-se com cuidados veterinários regulares</span
+                  >
                 </li>
-                <li>
-                  <span class="li-icon" aria-hidden="true">♡</span> Ofereça
-                  amor, atenção e carinho diariamente
+                <li class="list-require">
+                  <i class="fa-regular fa-heart"></i>
+                  <span class="require">
+                    Ofereça amor, atenção e carinho diariamente</span
+                  >
                 </li>
               </ul>
 
-              <div class="responsible-cta">
-                <a href="#sobre" class="btn btn-primary-inf"
-                  >Saiba Mais Sobre Nós</a
-                >
-              </div>
-            </div>
+              <button href="#sobre" class="btn">Saiba Mais Sobre Nós</button>
+            </section>
           </div>
         </section>
       </main>
 
       <!-- FOOTER -->
       <footer class="site-footer">
-        <div class="footer-content">
-          <div class="footer-block">
-            <div class="footer-title">
-              <span class="footer-heart" aria-hidden="true">♥</span>
-              <span>LoveCats</span>
+        <section class="footer-content">
+          <div class="footer-group">
+            <div>
+              <span class="heart"><i class="fa-regular fa-heart"></i></span>
+              <span class="footer-lovecats">LoveCats</span>
             </div>
-            <p>Conectando corações felinos com lares amorosos desde 2025.</p>
+            <p class="footer-description">
+              Conectando corações felinos com lares amorosos desde 2025.
+            </p>
           </div>
 
-          <div class="footer-block">
-            <div class="footer-title">Navegação</div>
-            <a href="./index.html">Home</a>
-            <a href="./adote-um-gatinho.html">Adote um Gatinho</a>
-            <a href="./anuncie-doacao.html">Anuncie Doação</a>
-            <a href="#sobre">Sobre Nós</a>
-            <a href="#api">API</a>
+          <div class="footer-group">
+            <h3 class="footer-title">Navegação</h3>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+              <li><a href="#sobre">Sobre Nós</a></li>
+              <li><a href="#api">API</a></li>
+            </ul>
           </div>
 
-          <div class="footer-block">
-            <div class="footer-title">Trabalhe Conosco</div>
-            <p>É desenvolvedor e quer ajudar a criar/manter nossa API?</p>
-            <a class="footer-link" href="mailto:contato@lovecats.com"
-              >Envie uma mensagem →</a
+          <div class="footer-group">
+            <h3 class="footer-title">Trabalhe Conosco</h3>
+            <span class="footer-colaborate"
+              >É desenvolvedor e quer ajudar a criar/manter nossa API?</span
             >
+            <button class="footer-message">Envie uma mensagem</button>
           </div>
-        </div>
+        </section>
         <div class="footer-bottom">
           © 2025 LoveCats. Todos os direitos reservados. Feito com
-          <span aria-hidden="true">♥</span> para os gatinhos.
+          <span aria-hidden="true">❤️</span> para os gatinhos.
         </div>
       </footer>
     </div>
