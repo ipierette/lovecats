@@ -39,8 +39,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
@@ -52,7 +52,6 @@
 
 .menu-overlay.active {
   opacity: 1;
-  visibility: visible;
 }
 
 .nav-mobile {
@@ -69,7 +68,7 @@
 }
 
 .nav-mobile.active {
-  top: 4rem;
+  top: 5.05rem;
 }
 
 .nav-mobile ul {
@@ -116,11 +115,6 @@
   transition: all 0.2s ease;
   position: relative;
 }
-
-/* .nav-mobile li:first-child a, .nav-desktop li:first-child a {
-  color: #6fb4b4;
-  font-weight: 600;
-} */
 
 .nav-mobile .link-mobile:hover {
   color: #6fb4b4;
