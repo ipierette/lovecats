@@ -11,7 +11,7 @@
   z-index: 1001;
 }
 
-.menu-hamburguer .linha {
+.menu-hamburguer .row {
   width: 100%;
   height: 2px;
   background-color: #5a4631;
@@ -19,19 +19,19 @@
   transition: all 0.3s ease;
 }
 
-.menu-hamburguer:hover .linha {
+.menu-hamburguer:hover .row {
   background-color: #6fb4b4;
 }
 
-.menu-hamburguer.active .linha:nth-child(1) {
+.menu-hamburguer.active .row:nth-child(1) {
   transform: translateY(4.2px) rotate(45deg);
 }
 
-.menu-hamburguer.active .linha:nth-child(2) {
+.menu-hamburguer.active .row:nth-child(2) {
   opacity: 0;
 }
 
-.menu-hamburguer.active .linha:nth-child(3) {
+.menu-hamburguer.active .row:nth-child(3) {
   transform: translateY(-9.5px) rotate(-45deg);
 }
 
