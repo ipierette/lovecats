@@ -39,8 +39,6 @@ if (menuHamburguer && navMobile && overlay && header) {
   });
 
   window.addEventListener("resize", () => {
-    ajustarPosicaoMenu();
-
     if (window.innerWidth > 768) {
       fecharMenu();
     }
