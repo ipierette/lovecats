@@ -40,34 +40,35 @@ linha 226, deletado o seletor 'response-section', classe ausente no html
 linha (229 parameter-name, 235 parameter-type, 241 optional-badge, 147 parameter-description) excluido seletores inexistentes no arquivo html, esses seletores provavelmente deveriam estar conectado as linhas 13, 14 e 15 documentadas nesse arquivo readme, mas como as nomeclaturas não eram iguais, ambos seletores css / classes html estavam inativas
 SELETORES COMPLETOS DELETADOS: method-badge, description, 
 
+# 8. adote-um-gatinho.html
+git add adote-um-gatinho.html
+git commit -m "Refactor: Atualizar adote-um-gatinho.html ao novo padrão
 
+- Envolver header com section.group-header
+- Remover link desnecessário ao header.css
+- Mover menu-overlay e nav-mobile dentro do group-header
+- Aplicar mesma estrutura do index.html"
 
+# adote-um-gatinho.html, problemas detectados, tinha outras tags não fechadas mas quando decidi escrever aqui, eram essas
+Encontrei mais problemas! Há um </div> extra (linha 291) e a indentação dos cards Mia e Thor está errada:
 
+Problemas encontrados:
 
+Linha 291 - Tem um </div> extra que fecha a div.container prematuramente:
 
+Linhas 242-293 - Mia e Thor têm indentação errada (não estão dentro da .cards-gatinhos):
 
+✅ Problemas Encontrados e Corrigidos:
 
+Indentação e posicionamento dos cards Mia e Thor - Estavam com indentação incorreta (fora da .cards-gatinhos)
+Fechamento de tags do card Caramelo - Adicionada a </div> que faltava para fechar o card-gatinho
+Estrutura do div wrapper - Corrigida a indentação para que Mia e Thor estejam dentro de .cards-gatinhos
+A estrutura agora está correta:
 
+O arquivo agora está com todas as tags fechadas corretamente!
 
+###### Evitar usar nomes de classes misturado portugues com inglês, exemplo que eu vi, filtro-group, ou filtro-grupo ou filter-group seria melhor, se começou escrevendo classes em inglês, vá até o fim do projeto em inglês e vice versa, seguir um padrão ajuda tanto você quanto outros desenvolvedores a entender melhor o código 
 
+## Invés de usar input[type="checkbox"] dar uma classe ao elemento além de ser uma melhor prática,  atribui mais especificidade e evita futuros bugs caso nasçam novos inputs
 
-/* a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-a:hover {
-  color: var(--color-primary-dark);
-  text-decoration: underline;
-}
-
-a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: var(--border-radius-sm);
-} */
-
-
-
-/* ==================== Header & Navigation ==================== */
+![alt text](image.png) . - pra ver essa imagem clique na janela com lupa, para pré-visualização do readme; Jamais façam isso pessoal, a não ser que esteja trabalhando com tailwind, mas ai a sintaxe será diferente
