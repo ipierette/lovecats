@@ -5,7 +5,8 @@ body {
   background-color: #f5eee3;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   scroll-behavior: smooth;
 }
@@ -43,7 +44,7 @@ header {
 .group-mobile {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .logo {
@@ -74,7 +75,6 @@ nav a {
   font-size: clamp(0.8rem, 2.5vw, 1.125rem);
   font-weight: 500;
   position: relative;
-  padding: 6px 0;
   transition: color 0.24s ease;
 }
 
@@ -129,7 +129,7 @@ nav a.is-active::after {
 
 .site-footer {
   background: #e1c1b6;
-  background-image: 
+  background-image:
     repeating-linear-gradient(
       45deg,
       rgba(0, 0, 0, 0.05) 0px,
@@ -296,5 +296,11 @@ html.has-js [data-animate].is-visible {
 
   .footer-content {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-message {
+    width: 100%;
   }
 }
