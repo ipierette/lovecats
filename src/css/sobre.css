@@ -1,0 +1,491 @@
+.section-about,
+.cta,
+.work-with-us {
+    width: 100%;
+}
+
+
+.section-about {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcf8f1;
+}
+
+.section-about h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.container-about,
+.lovecats-api {
+    background-color: #fff9f9;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.presentation {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.presentation i {
+    min-width: 50px;
+    padding-top: 18px;
+}
+
+.presentation h2,
+.lovecats-api h2,
+.info-member h2,
+.info-member h3,
+.our-team h2 {
+    color: #333;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.presentation p,
+.lovecats-api p,
+.info-member p {
+    color: #555;
+    line-height: 1.3;
+}
+
+.presentation h2,
+.presentation p {
+    text-align: left;
+}
+
+.info-member p {
+    text-align: justify;
+}
+
+.lovecats-api {
+    margin-top: 60px;
+}
+
+.lovecats-api a {
+    margin-top: 15px;
+}
+
+.our-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-team {
+    display: flex;
+    flex-direction: row;
+    gap: 30px; /* Gap fixo para o cálculo do JS bater */
+    width: 100%; /* Ocupa o container pai */
+    max-width: 900px; /* 3 cards de 280px + 2 gaps de 30px */
+    overflow-x: hidden; /* Esconde a barra para as setas controlarem */
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+}
+
+.card-team {
+    background-color: #fff9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    
+    /* Largura fixa para manter consistência no cálculo */
+    width: 280px;
+    flex: 0 0 280px; 
+    
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+    scroll-snap-align: center;
+}
+
+.info-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-member img {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px;
+}
+
+.info-member h2 {
+    font-size: 18px;
+}
+
+.info-member h3 {
+    font-size: 15px;
+    color: #f47c2a;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: #f47c2a;
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.tags-member {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 18px;
+}
+
+.tags-member span {
+    background-color: #f47c2a;
+    border-radius: 50px;
+    padding: 5px 10px;
+}
+
+.networks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.networks a {
+    font-size: 18px;
+}
+
+.team-carousel-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px; 
+    position: relative;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.arrow {
+    background: #333;
+    color: rgb(255, 254, 254);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.arrow:first-of-type {
+    left: -50px;
+}
+
+.arrow.next {
+    right: -50px;
+}
+
+.arrow:hover {
+    background: #f47c2a;
+}
+
+.btn-api {
+    text-decoration: none;
+    color: #ff6b6b;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ===== CTA ===== */
+.cta {
+    background-color: #fcf8f1;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.cta-text {
+    max-width: 640px;
+    margin: 0 auto 32px;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* Botões */
+.cta-btn {
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid #e6e1d8;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.25s ease;
+}
+
+.cta-btn:hover {
+    background-color: #f5f1ea;
+}
+
+/* Botão principal */
+.cta-primary {
+    background-color: #f47c2a;
+    border-color: #f47c2a;
+    color: #fff;
+}
+
+.cta-primary:hover {
+    background-color: #e56f22;
+}
+
+/* ===== TRABALHE CONOSCO ===== */
+.work-with-us {
+    background-color: #fcf8f1;
+    padding: 60px 20px 90px;
+    display: flex;
+    justify-content: center;
+}
+
+.work-card {
+    background-color: #fff7f3;
+    max-width: 720px;
+    width: 100%;
+    padding: 50px 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Ícone */
+.work-icon {
+    width: 56px;
+    height: 56px;
+    background-color: #ffe3dc;
+    color: #f47c2a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 1.3rem;
+}
+
+.work-card h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.work-card p {
+    max-width: 520px;
+    margin: 0 auto 28px;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Botão */
+.work-btn {
+    display: inline-block;
+    background-color: #f47c2a;
+    color: #fff;
+    padding: 12px 26px;
+    border-radius: 26px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.25s ease;
+}
+
+.work-btn:hover {
+    background-color: #e56f22;
+}
+
+@media (max-width: 768px) {
+
+    /* ===== SEÇÃO SOBRE ===== */
+    .section-about {
+        padding: 30px 16px;
+    }
+
+    .section-about h1 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .container-about,
+    .lovecats-api {
+        padding: 16px;
+    }
+
+    .presentation {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .presentation h2,
+    .presentation p {
+        text-align: center;
+    }
+
+    .presentation i {
+        padding-top: 0;
+    }
+
+    .presentation p {
+        text-align: center;
+    }
+
+/* ===== EQUIPE ===== */
+    .our-team {
+        padding: 0 45px; /* CRUCIAL: Abre espaço nas laterais para as setas aparecerem dentro da tela */
+        overflow: hidden; /* Evita que as setas criem barra de rolagem no site */
+    }
+
+    .info-team {
+        max-width: 280px; 
+        overflow-x: auto; 
+        scrollbar-width: none; 
+        gap: 20px; /* Reduzi um pouco o gap no mobile */
+    }
+
+    .info-team::-webkit-scrollbar {
+        display: none; 
+    }
+
+    .team-carousel-container {
+        max-width: 100%; /* Permite que ele use o espaço do padding do pai */
+        position: relative;
+    }
+
+    .arrow {
+        display: flex; 
+        width: 35px;
+        height: 35px;
+        position: absolute; /* Garante o posicionamento em relação ao container */
+        z-index: 10;
+    }
+
+    /* Ajuste de posição para não sumir da tela */
+    .arrow:first-of-type { 
+        left: -40px; 
+    }
+
+    .arrow.next { 
+        right: -40px; 
+    }
+
+    .card-team {
+        scroll-snap-align: center;
+        flex: 0 0 280px; /* Garante que o card mantenha o tamanho */
+    }
+
+    .info-member p {
+        text-align: center;
+    }
+
+    /* Esconde setas no mobile */
+
+    /* ===== CTA ===== */
+    .cta {
+        padding: 50px 16px;
+    }
+
+    .cta h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* ===== TRABALHE CONOSCO ===== */
+    .work-card {
+        padding: 30px 20px;
+    }
+
+    .work-card h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .section-about {
+        padding: 40px 24px;
+    }
+
+    .presentation {
+        gap: 15px;
+    }
+
+    .info-team {
+        max-width: 590px; /* 2 cards de 280px + 1 gap de 30px */
+    }
+    .team-carousel-container {
+        max-width: 650px;
+    }
+    .arrow {
+        display: flex; /* Garante que a seta apareça no tablet */
+    }
+
+    .arrow:first-of-type { left: -40px; }
+    .arrow.next { right: -40px; }
+
+    .cta h2 {
+        font-size: 1.8rem;
+    }
+
+}

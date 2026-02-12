@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoveCats</title>
+  <script src="https://kit.fontawesome.com/3b2cdf92a0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./src/css/reset.css" />
+  <link rel="stylesheet" href="./src/css/header.css" />
+  <!-- <link rel="stylesheet" href="./src/css/hero.css" /> -->
+  <!-- <link rel="stylesheet" href="./src/css/metrics.css" /> -->
+  <!-- <link rel="stylesheet" href="./src/css/information.css" /> -->
+  <link rel="stylesheet" href="./src/css/style.css" />
+  <!-- <link rel="stylesheet" href="./src/css/adote-um-gatinho.css" /> -->
+  <link rel="stylesheet" href="./src/css/sobre.css">
+</head>
+
+<body>
+  <div class="page">
+    <section class="group-header">
+        <header>
+          <a href="./index.html" class="logo">
+            <img
+              class="cat-image"
+              src="./src/images/logo-icone.png"
+              alt="Ícone LoveCats"
+            />
+            <img
+              class="logo-image"
+              src="./src/images/texto-logo.png"
+              alt="Texto LoveCats"
+            />
+          </a>
+          <nav class="nav-desktop">
+            <ul id="highlight-nav">
+              <li><a class="active" href="./index.html">Home</a></li>
+              <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
+              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+              <li><a href="./sobre.html">Sobre</a></li>
+              <li><a href="./feature-api.html">API</a></li>
+            </ul>
+          </nav>
+
+          <div class="group-mobile">
+            <button class="theme-toggle" aria-label="Alternar tema">
+              <img src="./src/images/moon.svg" alt="icone-lua" />
+            </button>
+
+            <button
+              class="menu-hamburguer"
+              aria-label="Menu"
+              aria-expanded="false"
+            >
+              <span class="row"></span>
+              <span class="row"></span>
+              <span class="row"></span>
+            </button>
+          </div>
+        </header>
+
+        <div class="menu-overlay"></div>
+        <nav class="nav-mobile">
+          <ul class="highlight-nav">
+            <li><a class="link-mobile" href="./index.html">Home</a></li>
+            <li>
+              <a class="link-mobile" href="./adote-um-gatinho.html"
+                >Adote um Gatinho</a
+              >
+            </li>
+            <li>
+              <a class="link-mobile" href="./anuncie-doacao.html"
+                >Anuncie Doação</a
+              >
+            </li>
+            <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
+            <li><a class="link-mobile" href="./feature-api.html">API</a></li>
+          </ul>
+        </nav>
+      </section>
+
+    <main>
+      <section class="section-about">
+        <h1>Sobre a LoveCats</h1>
+
+        <div class="container-about">
+          <div class="presentation">
+            <i class="fa-regular fa-heart fa-2xl" style="color: #ff6b6b;"></i>
+            <div class="info-presentation">
+              <h2>Nossa Visão</h2>
+              <p>Acreditamos em um mundo onde cada gatinho encontra um lar amoroso. A LoveCats nasceu do desejo de
+                facilitar a adoção responsável, conectando pessoas que querem oferecer um lar com gatinhos que precisam
+                de cuidado e carinho.</p>
+            </div>
+          </div>
+
+          <div class="presentation">
+            <i class="fa-solid fa-bullseye fa-2xl" style="color: #ff6b6b;"></i>
+            <div class="info-presentation">
+              <h2>Nossa Missão</h2>
+              <p>Promover a adoção responsável através de uma plataforma intuitiva e segura, garantindo que cada
+                gatinho seja encaminhado para um lar adequado às suas necessidades. Educamos sobre os cuidados
+                necessários e incentivamos o compromisso de longo prazo.</p>
+            </div>
+          </div>
+
+          <div class="presentation">
+            <i class="fa-solid fa-hand-holding-heart fa-2xl" style="color: #ff6b6b;"></i>
+            <div class="info-presentation">
+              <h2>Adoção Responsável</h2>
+              <p>Defendemos a adoção consciente e ética. Isso significa preparação adequada do lar, compromisso com
+                cuidados veterinários, tempo e recursos para oferecer qualidade de vida, e amor condicional durante toda
+                a vida do gatinho.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lovecats-api" id="api">
+          <div class="presentation">
+            <i class="fa-solid fa-gears" style="color: #ff6b6b;"></i>
+            <div class="info-presentation">
+              <h2>LoveCats API</h2>
+              <p>Nossa plataforma é alimentada pela LoveCats API, uma interface de programação aberta e gratuita que
+                permite a integração com sistemas externos. A API será criada para alimentar esse site e também poderá
+                ser
+                alimentada por ele e por qualquer outra fonte interessada, como ONGs, abrigos e protetores
+                independentes.
+              </p>
+              <br>
+              <p>Com a LoveCats API, organizações podem integrar seus próprios sistemas de gestão de animais,
+                sincronizar
+                dados de adoção em tempo real e expandir o alcance dos gatinhos que precisam de um lar. A API oferece
+                endpoints REST completos para consulta, cadastro e atualização de anúncios.</p>
+
+              <a href="#api" class="btn-api">Conhecer a LoveCats API → </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="our-team">
+        <h2>Nossa Equipe</h2>
+
+        <div class="team-carousel-container">
+
+          <button class="arrow" aria-label="Membro anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <div class="info-team">
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">IC<!-- <img src="#" alt="Izadora Cury"> --></div>
+                <h2>Izadora Cury Pierrete</h2>
+                <h3>Fundadora & Líder do projeto</h3>
+                <div class="tags-member">
+                  <span>Dev Sênior</span>
+                  <span>Líder do projeto</span>
+                  <span>Fundadora</span>
+                </div>
+                <p>Arquiteta de software focada em transformar tecnologia em impacto social e adoção responsável através
+                  da LoveCats. Apaixonada por gatos e tecnologia, criou a LoveCats para conectar corações felinos com
+                  lares
+                  amorosos.</p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/ipierette" target="_blank" rel="noopener noreferrer" style="color: #333;"
+                  title="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/izadora-cury-pierette-7a7754253/" target="_blank"
+                  rel="noopener noreferrer" style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">CR<!-- <img src="#" alt="Carlos Renato"> --></div>
+                <h2>Carlos Renato Sa dos Santos</h2>
+                <h3>Colaborador</h3>
+                <div class="tags-member">
+                  <span>Dev Pleno</span>
+                  <span>Colaborador</span>
+                </div>
+                <p>Desenvolvedor Fullstack com foco em escalabilidade e arquitetura, transformando desafios técnicos em
+                  soluções eficientes para a comunidade LoveCats. </p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/carlossdossantos" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/carlos-renato-874543a8/" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">CM<!-- <img src="#" alt="Cledeocir Marafão"> --></div>
+                <h2>Cledeocir Marafão da Silva</h2>
+                <h3>Colaborador</h3>
+                <div class="tags-member">
+                  <span>Dev Pleno</span>
+                  <span>Colaborador</span>
+                </div>
+                <p>Desenvolvedor focado em performance e segurança para garantir que a LoveCats cresça com robustez
+                  técnica, sempre mantendo a integridade dos dados. </p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/cledeocirmarafao" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cledeocir-marafão-267768193/" target="_blank"
+                  rel="noopener noreferrer" style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">CS<!-- <img src="#" alt="Cristian Mendonça"> --></div>
+                <h2>Cristian Maqui Mendonça de Souza</h2>
+                <h3>Colaborador</h3>
+                <div class="tags-member">
+                  <span>Dev Pleno</span>
+                  <span>Colaborador</span>
+                </div>
+                <p>Com um olhar atento para a experiência do usuário, transforma linhas de código em interfaces
+                  intuitivas, que conectam usuários e felinos com fluidez.</p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/cristian-souza" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cristian-mm-souza/" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">JG<!-- <img src="#" alt="Jaqueline Gotardi"> --></div>
+                <h2>Jaqueline Ribeiro Gotardi</h2>
+                <h3>Colaboradora</h3>
+                <div class="tags-member">
+                  <span>Dev Junior</span>
+                  <span>Colaboradora</span>
+                </div>
+                <p>Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, unindo curiosidade e código
+                  para criar experiências que salvam vidas.</p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/Jaqueline-Gotardi" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jaqueline-gotardi-833454365/" target="_blank"
+                  rel="noopener noreferrer" style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">VM<!-- <img src="#" alt="Jaqueline Gotardi"> --></div>
+                <h2>Victória Muniz</h2>
+                <h3>Colaboradora</h3>
+                <div class="tags-member">
+                  <span>Dev Junior</span>
+                  <span>Colaboradora</span>
+                </div>
+                <p>Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, unindo curiosidade e código
+                  para criar experiências que salvam vidas.</p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/Victoria-muniz" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/victoria-m-silva-471566397/" target="_blank"
+                  rel="noopener noreferrer" style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">YC<!-- <img src="#" alt="Jaqueline Gotardi"> --></div>
+                <h2>Yan Chapetta</h2>
+                <h3>Colaborador</h3>
+                <div class="tags-member">
+                  <span>Dev Sênior</span>
+                  <span>Colaborador</span>
+                </div>
+                <p>Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, unindo curiosidade e código
+                  para criar experiências que salvam vidas.</p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/chapetta" target="_blank" rel="noopener noreferrer" style="color: #333;"
+                  title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/yan-chapetta/" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">JV<!-- <img src="#" alt="Jaqueline Gotardi"> --></div>
+                <h2>João V. Brizolla Gonçalves</h2>
+                <h3>Colaborador</h3>
+                <div class="tags-member">
+                  <span>Dev Junior</span>
+                  <span>Colaborador</span>
+                </div>
+                <p>Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, unindo curiosidade e código
+                  para criar experiências que salvam vidas.</p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/joaoVBG" target="_blank" rel="noopener noreferrer" style="color: #333;"
+                  title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ojoaovbg" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">KG<!-- <img src="#" alt="Jaqueline Gotardi"> --></div>
+                <h2>Keven Gomes</h2>
+                <h3>Colaborador</h3>
+                <div class="tags-member">
+                  <span>Dev Junior</span>
+                  <span>Colaborador</span>
+                </div>
+                <p>Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, unindo curiosidade e código
+                  para criar experiências que salvam vidas.</p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/Keven-Gomes" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/kevengomes/" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-team">
+              <div class="info-member">
+                <div class="avatar">JP<!-- <img src="#" alt="Jaqueline Gotardi"> --></div>
+                <h2>João Paulo Martinss</h2>
+                <h3>Colaborador</h3>
+                <div class="tags-member">
+                  <span>Dev Junior</span>
+                  <span>Colaborador</span>
+                </div>
+                <p>Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, unindo curiosidade e código
+                  para criar experiências que salvam vidas.</p>
+              </div>
+              <div class="networks">
+                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #333;" title="Portfolio">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/Joao-Paulo-Martins" target="_blank" rel="noopener noreferrer"
+                  style="color: #333;" title="Github">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jo%C3%A3o-paulo-martins-sena-48aa81151/" target="_blank"
+                  rel="noopener noreferrer" style="color: #333;" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="arrow next" aria-label="Próximo membro">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+      <section class="cta">
+        <h2>Faça Parte Dessa História</h2>
+
+        <p class="cta-text">
+          Seja adotando um gatinho ou anunciando uma doação, você está contribuindo
+          para um mundo com mais amor e menos animais abandonados.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="./adote-um-gatinho.html" class="cta-btn cta-primary">Adotar Agora</a>
+          <a href="./anuncie-doacao.html" class="cta-btn">Anunciar Doação</a>
+          <a href="mailto:contato@lovecats.com" class="cta-btn">Trabalhe Conosco</a>
+        </div>
+      </section>
+
+      <section class="work-with-us">
+        <div class="work-card">
+          <div class="work-icon">
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+
+          <h2>Trabalhe Conosco</h2>
+
+          <p>
+            É desenvolvedor e quer ajudar a criar e manter nossa API?
+            Junte-se à nossa missão de conectar gatinhos com lares amorosos!
+          </p>
+
+          <a href="mailto:contato@lovecats.com" class="work-btn">
+            Envie sua Mensagem
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <section class="footer-content">
+          <div class="footer-group">
+            <div>
+              <span class="heart"><i class="fa-regular fa-heart"></i></span>
+              <span class="footer-lovecats">LoveCats</span>
+            </div>
+            <p class="footer-description">
+              Conectando corações felinos com lares amorosos desde 2025.
+            </p>
+          </div>
+
+          <div class="footer-group">
+            <h3 class="footer-title">Navegação</h3>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+              <li><a href="#sobre">Sobre Nós</a></li>
+              <li><a href="#api">API</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-group">
+            <h3 class="footer-title">Trabalhe Conosco</h3>
+            <span class="footer-colaborate"
+              >É desenvolvedor e quer ajudar a criar/manter nossa API?</span
+            >
+            <button class="footer-message">Envie uma mensagem</button>
+          </div>
+        </section>
+        <div class="footer-bottom">
+          © 2025 LoveCats. Todos os direitos reservados. Feito com
+          <span aria-hidden="true">❤️</span> para os gatinhos.
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="./src/js/index.js"></script>
+  <script src="./src/js/hamburguer.js"></script>
+  <script src="./src/js/sobre.js"></script>
+</body>
+
+</html>
