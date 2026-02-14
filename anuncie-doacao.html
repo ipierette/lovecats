@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoveCats</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/hamburguer.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/anuncie-doacao.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <section class="group-header">
+        <header>
+          <a href="./index.html" class="logo">
+            <img
+              class="cat-image"
+              src="./src/images/logo-icone.png"
+              alt="Ícone LoveCats"
+            />
+            <img
+              class="logo-image"
+              src="./src/images/texto-logo.png"
+              alt="Texto LoveCats"
+            />
+          </a>
+          <nav class="nav-desktop">
+            <ul id="highlight-nav">
+              <li><a class="active" href="./index.html">Home</a></li>
+              <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
+              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+              <li><a href="./sobre.html">Sobre</a></li>
+              <li><a href="./feature-api.html">API</a></li>
+            </ul>
+          </nav>
+
+          <div class="group-mobile">
+            <button class="theme-toggle" aria-label="Alternar tema">
+              <img src="./src/images/moon.svg" alt="icone-lua" />
+            </button>
+
+            <button
+              class="menu-hamburguer"
+              aria-label="Menu"
+              aria-expanded="false"
+            >
+              <span class="row"></span>
+              <span class="row"></span>
+              <span class="row"></span>
+            </button>
+          </div>
+        </header>
+
+        <div class="menu-overlay"></div>
+        <nav class="nav-mobile">
+          <ul class="highlight-nav">
+            <li><a class="link-mobile" href="./index.html">Home</a></li>
+            <li>
+              <a class="link-mobile" href="./adote-um-gatinho.html"
+                >Adote um Gatinho</a
+              >
+            </li>
+            <li>
+              <a class="link-mobile" href="./anuncie-doacao.html"
+                >Anuncie Doação</a
+              >
+            </li>
+            <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
+            <li><a class="link-mobile" href="./feature-api.html">API</a></li>
+          </ul>
+        </nav>
+      </section>
+      <main class="container-form">
+        <section class="form-wrapper">
+          <div class="main-form">
+            <h1 class="form-title">Anuncie Doação de Gatinho</h1>
+            <p class="form-subtitle">
+              Preencha as informações do gatinho que você deseja doar. Seja
+              honesto e detalhado para encontrar o melhor lar!
+            </p>
+          </div>
+
+          <form action="#" method="POST" class="form-anuncie-doacao">
+            <div class="cat-informations">
+              <div class="field">
+                <label class="info_cat disable" for="name-cat">Nome *</label>
+                <input
+                  class="search-options"
+                  type="text"
+                  placeholder="Ex: Mel"
+                  id="name-cat"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label class="info_cat disable" for="years-cat">Idade *</label>
+                <input
+                  class="search-options"
+                  type="text"
+                  placeholder="Ex: 3 meses"
+                  id="years-cat"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="cat-informations">
+              <div class="field">
+                <label class="info_cat disable" for="sex-cat">Sexo *</label>
+                <div class="custom-dropdown">
+                  <button
+                    type="button"
+                    class="dropdown-button"
+                    id="sex-dropdown"
+                  >
+                    <span class="dropdown-text">Selecione</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <div class="dropdown-menu" id="sex-menu">
+                    <div class="dropdown-item" data-value="macho">
+                      <i class="fa-solid fa-check"></i>
+                      <span>Macho</span>
+                    </div>
+                    <div class="dropdown-item" data-value="femea">
+                      <i class="fa-solid fa-check"></i>
+                      <span>Fêmea</span>
+                    </div>
+                  </div>
+                </div>
+                <input type="hidden" name="sexo" id="sex-cat" required />
+              </div>
+              <div class="field">
+                <label class="info_cat disable" for="color-cat">Cor *</label>
+                <input
+                  class="search-options"
+                  type="text"
+                  name="cor-do-gatinho"
+                  placeholder="Ex: Laranja"
+                  id="color-cat"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="label-with-ai">
+                <label class="info_cat disable" for="descricao">Descrição *</label>
+                <button type="button" class="btn-ai">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Ajuda da IA
+                </button>
+              </div>
+              <textarea
+                class="search-options"
+                id="descricao"
+                name="descricao"
+                rows="5"
+                placeholder="Conte sobre a personalidade, comportamento e características especiais do gatinho..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="cat-informations">
+              <div class="field">
+                <label class="info_cat disable" for="whatsapp"
+                  >Telefone (WhatsApp) *</label
+                >
+                <input
+                  class="search-options"
+                  type="tel"
+                  id="whatsapp"
+                  name="whatsapp"
+                  placeholder="Ex: 11 99999-9999"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label class="info_cat disable" for="localizacao">Localização *</label>
+                <input
+                  class="search-options"
+                  type="text"
+                  id="localizacao"
+                  name="localizacao"
+                  placeholder="Ex: São Paulo, SP"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="info_cat disable" for="foto">URL da Foto (opcional)</label>
+              <input
+                class="search-options"
+                type="url"
+                id="foto"
+                name="foto"
+                placeholder="https://exemplo.com/foto.jpg"
+                required
+              />
+            </div>
+
+            <div class="check-group">
+              <div class="centralize">
+                <input
+                  class="vaccinated-neutered"
+                  type="checkbox"
+                  id="filtro-vacinado"
+                />
+                <label for="filtro-vacinado">Vacinado</label>
+              </div>
+
+              <div class="centralize">
+                <input
+                  class="vaccinated-neutered"
+                  type="checkbox"
+                  id="filtro-castrado"
+                />
+                <label for="filtro-castrado">Castrado</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Publicar Anúncio</button>
+          </form>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <section class="footer-content">
+          <div class="footer-group">
+            <div>
+              <span class="heart"><i class="fa-regular fa-heart"></i></span>
+              <span class="footer-lovecats">LoveCats</span>
+            </div>
+            <p class="footer-description">
+              Conectando corações felinos com lares amorosos desde 2025.
+            </p>
+          </div>
+
+          <div class="footer-group">
+            <h3 class="footer-title">Navegação</h3>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+              <li><a href="#sobre">Sobre Nós</a></li>
+              <li><a href="#api">API</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-group">
+            <h3 class="footer-title">Trabalhe Conosco</h3>
+            <span class="footer-colaborate"
+              >É desenvolvedor e quer ajudar a criar/manter nossa API?</span
+            >
+            <button class="footer-message">Envie uma mensagem</button>
+          </div>
+        </section>
+        <div class="footer-bottom">
+          © 2025 LoveCats. Todos os direitos reservados. Feito com
+          <span aria-hidden="true">❤️</span> para os gatinhos.
+        </div>
+      </footer>
+    </div>
+    <script src="./src/js/index.js"></script>
+    <script src="./src/js/anuncie-doacao.js"></script>
+    <script src="./src/js/hamburguer.js"></script>
+    <script src="./src/js/dropdown-anuncie-doacao.js"></script>
+  </body>
+</html>

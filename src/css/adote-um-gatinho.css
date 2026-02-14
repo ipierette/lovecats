@@ -1,0 +1,404 @@
+body {
+  background: #f8f5ef;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  padding: 2rem 1.5rem;
+  margin: 0 auto;
+}
+
+.adoption-cats h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 900;
+  line-height: 2;
+  margin-bottom: 1rem;
+  color: #4a3728;
+}
+
+.cats-found {
+  color: #8a6f5c;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.adoption-content {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.filter {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem 1rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 1rem;
+  min-width: 250px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.filter-group .event-none {
+  pointer-events: none;
+}
+
+.filter-title {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  color: #47301e;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.magnifying-glass {
+  position: absolute;
+  left: 0.75rem;
+  color: #572807;
+  opacity: 0.6;
+  z-index: 1;
+  display: block !important;
+}
+
+.filter-group .input-search {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  padding-left: 2.5rem;
+  border: 1px solid #e2e2e2;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  outline: none;
+  transition: border 0.2s;
+  background-color: #f4e7e1;
+}
+
+.filter-group label {
+  font-size: 0.8rem;
+  color: #47301e;
+  font-weight: 500;
+}
+
+input::placeholder {
+  color: #8a6f5c;
+  opacity: 0.7;
+}
+
+.custom-dropdown {
+  width: 100%;
+}
+
+.dropdown-button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e2e2e2;
+  border-radius: 0.8rem;
+  background: #f4e7e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.8em;
+  color: #4a3728;
+  transition: all 0.2s;
+}
+
+.dropdown-button:hover {
+  background: #f8f5ec;
+}
+
+.dropdown-button.active {
+  border-color: #75bcac;
+  background: #fff;
+}
+
+.dropdown-button i {
+  transition: transform 0.2s;
+}
+
+.dropdown-button.active i {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+  padding: 0.5rem 0;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #47301e;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-item:hover {
+  background: #f8f5ec;
+}
+
+.dropdown-item i {
+  color: #75bcac;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  width: 1rem;
+}
+
+.dropdown-item.active i {
+  opacity: 1;
+  visibility: visible;
+}
+
+.check-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.centralize {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.check-group .vaccinated-neutered {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #75bcac;
+  border-radius: 50%;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.check-group .vaccinated-neutered:checked::before,
+.adopted-check .adopted-input:checked::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #75bcac;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.check-group label {
+  font-size: 0.9rem;
+  color: #47301e;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 100%;
+  gap: 1.5rem;
+}
+
+.card_cat {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  border: 1px solid #e5dacd;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.contain-image {
+  overflow: hidden;
+}
+
+.card_cat img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: 0.3s ease-in-out;
+  display: block;
+}
+
+.card_cat img:hover {
+  transform: scale(1.1);
+}
+
+.card-info {
+  padding: 1.2rem;
+  display: grid;
+  grid-template-rows:
+    auto
+    auto
+    auto
+    1fr
+    auto
+    auto
+    auto;
+  gap: 0.5rem;
+}
+
+.card-info h4 {
+  font-size: clamp(1rem, 5vw, 1.3rem);
+  font-weight: 500;
+  color: #47301e;
+}
+
+.card-info-details {
+  font-size: 0.9rem;
+  color: #8a6f5c;
+}
+
+.badges {
+  min-height: 35px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6em 0.8rem;
+  border-radius: 30px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge.vaccinated {
+  color: #3a7c3a;
+  background: #dcfce7;
+}
+
+.badge.neutered {
+  color: #2a6cf4;
+  background: #dbeafe;
+}
+
+.card-info .description {
+  font-size: 0.95rem;
+  color: #8a6f5c;
+  line-height: 1.5;
+}
+
+.location {
+  font-size: 0.9rem;
+  color: #47301e;
+  font-weight: 600;
+}
+
+.btn-contato {
+  background: #75bcac;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.btn-contato:hover {
+  opacity: 0.9;
+}
+
+.adopted-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #47301e;
+  background: #f8f5ec;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #ede7de;
+}
+
+.adopted-check .adopted-input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #75bcac;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.adopted-check .adopted-label {
+  font-size: 0.85rem;
+  color: #47301e;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+@media (min-width: 1200px) {
+  .cats-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (769px <= width <= 1199px) {
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .adoption-content {
+    display: block;
+  }
+
+  .filter {
+    position: inherit;
+    margin-bottom: 1rem;
+  }
+
+  .cats-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .contain-image img {
+    height: 678px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contain-image img {
+    height: 370px;
+  }
+}
