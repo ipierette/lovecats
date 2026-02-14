@@ -1,46 +1,70 @@
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".info-team");
-  const cards = document.querySelectorAll(".card-team");
   const prevBtn = document.querySelector(".arrow:not(.next)");
   const nextBtn = document.querySelector(".arrow.next");
+  let isTransitioning = false;
 
-  // 1. Define quantos cards saltar por clique
-  function getScrollStep() {
-    const width = window.innerWidth;
-    if (width <= 768) {
-      return 1; // No mobile, pula de 1 em 1
-    } else if (width <= 1024) {
-      return 2; // No tablet, pula de 2 em 2
-    } else {
-      return 3; // No desktop, pula o bloco de 3
+  const originalCards = Array.from(container.children).map((card) =>
+    card.cloneNode(true),
+  );
+  const totalCards = originalCards.length;
+
+  function init() {
+    container.innerHTML = "";
+
+    for (let i = 0; i < 5; i++) {
+      originalCards.forEach((card) =>
+        container.appendChild(card.cloneNode(true)),
+      );
+    }
+
+    const gap = parseFloat(getComputedStyle(container).gap) || 0;
+    const cardWidth = container.children[0].offsetWidth + gap;
+
+    container.scrollLeft = totalCards * 2 * cardWidth;
+  }
+
+  function checkBuffer() {
+    const gap = parseFloat(getComputedStyle(container).gap) || 0;
+    const cardWidth = container.children[0].offsetWidth + gap;
+    const { scrollLeft, scrollWidth, offsetWidth } = container;
+
+    if (scrollLeft + offsetWidth > scrollWidth - totalCards * cardWidth * 1.5) {
+      originalCards.forEach((card) =>
+        container.appendChild(card.cloneNode(true)),
+      );
+    }
+
+    if (scrollLeft < totalCards * cardWidth * 1.5) {
+      const currentScroll = scrollLeft;
+      originalCards.forEach((card) =>
+        container.insertBefore(card.cloneNode(true), container.firstChild),
+      );
+      container.scrollLeft = currentScroll + totalCards * cardWidth;
     }
   }
 
-  function moveSlider(direction) {
-    // Pegamos a largura real do card + o gap de 30px definido no CSS
-    const cardFullWidth = cards[0].offsetWidth + 30; 
-    const step = getScrollStep();
-    const scrollAmount = cardFullWidth * step;
-
-    if (direction === "next") {
-      // Verifica se chegou ao fim (com margem de erro de 10px)
-      const isEnd = container.scrollLeft + container.offsetWidth >= container.scrollWidth - 10;
-      
-      if (isEnd) {
-        container.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-      }
-    } else {
-      // Verifica se está no início
-      if (container.scrollLeft <= 5) {
-        container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
-      } else {
-        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-      }
-    }
+  function move(direction) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    const gap = parseFloat(getComputedStyle(container).gap) || 0;
+    const cardWidth = container.children[0].offsetWidth + gap;
+    container.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+    setTimeout(() => {
+      checkBuffer();
+      isTransitioning = false;
+    }, 300);
   }
 
-  nextBtn.addEventListener("click", () => moveSlider("next"));
-  prevBtn.addEventListener("click", () => moveSlider("prev"));
+  nextBtn.addEventListener("click", () => move(1));
+  prevBtn.addEventListener("click", () => move(-1));
+
+  window.addEventListener("resize", () => {
+    const gap = parseFloat(getComputedStyle(container).gap) || 0;
+    const cardWidth = container.children[0].offsetWidth + gap;
+    const currentPosition = container.scrollLeft;
+    const currentIndex = Math.round(currentPosition / cardWidth);
+    container.scrollLeft = currentIndex * cardWidth;
+  });
+  init();
 });
