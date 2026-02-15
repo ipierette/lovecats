@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/hamburguer.css">
+    <link rel="stylesheet" href="./src/css/hamburguer.css" />
     <link rel="stylesheet" href="./src/css/api.css" />
     <link rel="stylesheet" href="./src/css/style.css" />
 
@@ -16,10 +16,19 @@
   </head>
 
   <body>
-    <header>
+    <section class="group-header">
+      <header>
         <a href="./index.html" class="logo">
-          <img src="./src/images/logo-icone.png" alt="Ícone LoveCats" />
-          <img src="./src/images/texto-logo.png" alt="Texto LoveCats" />
+          <img
+            class="cat-image"
+            src="./src/images/logo-icone.png"
+            alt="Ícone LoveCats"
+          />
+          <img
+            class="logo-image"
+            src="./src/images/texto-logo.png"
+            alt="Texto LoveCats"
+          />
         </a>
         <nav class="nav-desktop">
           <ul id="highlight-nav">
@@ -41,9 +50,9 @@
             aria-label="Menu"
             aria-expanded="false"
           >
-            <span class="linha"></span>
-            <span class="linha"></span>
-            <span class="linha"></span>
+            <span class="row"></span>
+            <span class="row"></span>
+            <span class="row"></span>
           </button>
         </div>
       </header>
@@ -66,6 +75,7 @@
           <li><a class="link-mobile" href="./feature-api.html">API</a></li>
         </ul>
       </nav>
+    </section>
     <section class="page-api">
       <section class="container">
         <div class="header-section">
@@ -539,55 +549,119 @@ curl -X POST https://api.lovecats.com/api/cats \
           </div>
         </section>
 
-        <section class="agradecimentos">
-          <section class="thanks-container">
-    <div class="thanks-box">
-        <div class="heart-icon">
-            <i class="fa-regular fa-heart"></i>
-        </div>
-        <h2>Agradecimentos</h2>
-        <p><strong>Izadora Cury Pierette</strong>, líder do projeto, agradece especialmente a toda equipe principal da LoveCats pelo comprometimento e dedicação em construir esta plataforma.</p>
-        <p>Agradecemos também a todos os desenvolvedores que contribuíram ou venham a contribuir com melhorias e manutenção da nossa API. Cada linha de código faz diferença na vida de um gatinho! ❤️</p>
-    </div>
-</section>
+          <section class="thanks">
+            <div class="thanks-box">
+              <span class="heart-icon">
+                <i class="fa-regular fa-heart"></i>
+              </span>
+              <h2 class="thanks-title">Agradecimentos</h2>
+              <div class="group-thanks">
+                <p class="this">
+                <strong class="creator">Izadora Cury Pierette</strong>, líder do projeto,
+                agradece especialmente a toda equipe principal da LoveCats pelo
+                comprometimento e dedicação em construir esta plataforma.
+              </p>
+              <p>
+                Agradecemos também a todos os desenvolvedores que contribuíram
+                ou venham a contribuir com melhorias e manutenção da nossa API.
+                Cada linha de código faz diferença na vida de um gatinho! ❤️
+              </p>
+              </div>
+            </div>
+          </section>
 
-<section class="honors-section">
-    <h2>Menções Honrosas</h2>
-    <p class="honors-subtitle">Desenvolvedores que contribuíram para a LoveCats API</p>
-    
-    <div class="carousel-container">
-        <div class="dev-card">
-            <div class="dev-avatar">
-                <span>JS</span>
-            </div>
-            <h3>João Silva</h3>
-            <p class="dev-role">Colaborador</p>
-            <div class="dev-tags">
-                <span class="tag-api">API</span>
-                <span class="tag-backend">Backend</span>
-            </div>
-            <p class="dev-contribution">Contribuiu com melhorias na API de busca e filtros.</p>
-            <div class="dev-social">
-                <i class="fa-brands fa-github"></i>
-                <i class="fa-brands fa-linkedin"></i>
-            </div>
-        </div>
-    </div>
-</section>
+           <section class="honors-section">
+            <h2 class="honors-title">Menções Honrosas</h2>
+            <p class="honors-subtitle">
+              Desenvolvedores que contribuíram para a LoveCats API
+            </p>
 
-<section class="cta-banner">
-    <h2>Comece a Usar Agora</h2>
-    <p>A LoveCats API é gratuita para ONGs, abrigos e projetos sociais. Para uso comercial, entre em contato para obter sua chave de API.</p>
-    <div class="cta-buttons">
-        <button class="btn-primary">Solicitar Chave API</button>
-        <button class="btn-secondary">Saiba Mais</button>
-    </div>
-</section>
-        </section>
+            <div class="carousel-container">
+              <button class="carousel-arrow prev" aria-label="Membro anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              
+              <div class="dev-card">
+                <div class="info-dev">
+                  <div class="dev-avatar">
+                    <span>JS</span>
+                  </div>
+                  <h3>João Silva</h3>
+                  <p class="dev-role">Colaborador</p>
+                  <div class="dev-tags">
+                    <span class="tag-api">API</span>
+                    <span class="tag-backend">Backend</span>
+                  </div>
+                  <p class="dev-contribution">
+                    Contribuiu com melhorias na API de busca e filtros.
+                  </p>
+                </div>
+                <div class="dev-social">
+                  <i class="fa-brands fa-github"></i>
+                  <i class="fa-brands fa-linkedin"></i>
+                </div>
+              </div>
+
+              <button class="carousel-arrow next" aria-label="Próximo membro">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <section class="cta-banner">
+            <h2>Comece a Usar Agora</h2>
+            <p>
+              A LoveCats API é gratuita para ONGs, abrigos e projetos sociais.
+              Para uso comercial, entre em contato para obter sua chave de API.
+            </p>
+            <div class="cta-buttons">
+              <button class="btn-primary">Solicitar Chave API</button>
+              <button class="btn-secondary">Saiba Mais</button>
+            </div>
+          </section>
       </main>
     </section>
+
+     <footer class="site-footer">
+        <section class="footer-content">
+          <div class="footer-group">
+            <div>
+              <span class="heart"><i class="fa-regular fa-heart"></i></span>
+              <span class="footer-lovecats">LoveCats</span>
+            </div>
+            <p class="footer-description">
+              Conectando corações felinos com lares amorosos desde 2025.
+            </p>
+          </div>
+
+          <div class="footer-group">
+            <h3 class="footer-title">Navegação</h3>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+              <li><a href="#sobre">Sobre Nós</a></li>
+              <li><a href="#api">API</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-group">
+            <h3 class="footer-title">Trabalhe Conosco</h3>
+            <span class="footer-colaborate"
+              >É desenvolvedor e quer ajudar a criar/manter nossa API?</span
+            >
+            <button class="footer-message">Envie uma mensagem</button>
+          </div>
+        </section>
+        <div class="footer-bottom">
+          © 2025 LoveCats. Todos os direitos reservados. Feito com
+          <span aria-hidden="true">❤️</span> para os gatinhos.
+        </div>
+      </footer>
+    </div>
+
+    <script src="./src/js/feature-api.js"></script>
     <script src="./src/js/hamburguer.js"></script>
     <script src="./src/js/index.js"></script>
-    <script type="module" src="./src/js/api.js"></script>
   </body>
 </html>
