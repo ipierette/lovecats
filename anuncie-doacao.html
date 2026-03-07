@@ -1,274 +1,298 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LoveCats</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <meta name="description" content="LoveCats — Anuncie a doacao do seu gatinho e encontre um lar amoroso." />
+    <title>Anunciar Doacao — LoveCats</title>
+    <link rel="stylesheet" href="./src/css/tokens.css" />
     <link rel="stylesheet" href="./src/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/hamburguer.css" />
     <link rel="stylesheet" href="./src/css/style.css" />
-    <link rel="stylesheet" href="./src/css/anuncie-doacao.css" />
+    <link rel="stylesheet" href="./src/css/header.css" />
+    <link rel="stylesheet" href="./src/css/form.css" />
+    <link rel="stylesheet" href="./src/css/upload.css" />
+    <link rel="stylesheet" href="./src/css/footer.css" />
   </head>
 
-  <body>
-    <div class="page">
-      <section class="group-header">
-        <header>
-          <a href="./index.html" class="logo">
-            <img
-              class="cat-image"
-              src="./src/images/logo-icone.png"
-              alt="Ícone LoveCats"
-            />
-            <img
-              class="logo-image"
-              src="./src/images/texto-logo.png"
-              alt="Texto LoveCats"
-            />
-          </a>
-          <nav class="nav-desktop">
-            <ul id="highlight-nav">
-              <li><a class="active" href="./index.html">Home</a></li>
-              <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
-              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
-              <li><a href="./sobre.html">Sobre</a></li>
-              <li><a href="./feature-api.html">API</a></li>
-            </ul>
-          </nav>
+  <body data-page="announce">
 
-          <div class="group-mobile">
-            <button class="theme-toggle" aria-label="Alternar tema">
-              <img src="./src/images/moon.svg" alt="icone-lua" />
-            </button>
-
-            <button
-              class="menu-hamburguer"
-              aria-label="Menu"
-              aria-expanded="false"
-            >
-              <span class="row"></span>
-              <span class="row"></span>
-              <span class="row"></span>
-            </button>
-          </div>
-        </header>
-
-        <div class="menu-overlay"></div>
-        <nav class="nav-mobile">
-          <ul class="highlight-nav">
-            <li><a class="link-mobile" href="./index.html">Home</a></li>
-            <li>
-              <a class="link-mobile" href="./adote-um-gatinho.html"
-                >Adote um Gatinho</a
-              >
-            </li>
-            <li>
-              <a class="link-mobile" href="./anuncie-doacao.html"
-                >Anuncie Doação</a
-              >
-            </li>
-            <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
-            <li><a class="link-mobile" href="./feature-api.html">API</a></li>
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+      <div class="header-inner">
+        <a href="./index.html" class="logo" aria-label="LoveCats — pagina inicial">
+          <img class="logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="36" height="36" />
+          <img class="logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="100" height="26" />
+        </a>
+        <nav class="site-nav" aria-label="Navegacao principal">
+          <ul class="site-nav__list" role="list">
+            <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar</a></li>
+            <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
+            <li><a class="site-nav__link" href="./feature-api.html">API</a></li>
           </ul>
         </nav>
-      </section>
-      <main class="container-form">
-        <section class="form-wrapper">
-          <div class="main-form">
-            <h1 class="form-title">Anuncie Doação de Gatinho</h1>
-            <p class="form-subtitle">
-              Preencha as informações do gatinho que você deseja doar. Seja
-              honesto e detalhado para encontrar o melhor lar!
-            </p>
+        <div class="header-actions">
+          <button class="btn-theme" aria-label="Ativar modo claro" aria-pressed="false">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+          <button class="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">
+            <span class="btn-menu__bar"></span>
+            <span class="btn-menu__bar"></span>
+            <span class="btn-menu__bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Menu de navegacao" aria-modal="true">
+      <div class="drawer-inner">
+        <button class="btn-drawer-close" aria-label="Fechar menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <nav aria-label="Navegacao mobile">
+          <ul class="site-nav__list" role="list">
+            <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar um Gatinho</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doacao</a></li>
+            <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
+            <li><a class="site-nav__link" href="./feature-api.html">API</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <main id="main-content">
+      <div class="announce-page">
+
+        <div class="announce-page__header" data-animate>
+          <p class="section-eyebrow">Doe com amor</p>
+          <h1 class="section-title">Anuncie a Doacao</h1>
+          <p class="section-desc">Preencha as informacoes abaixo para publicar o anuncio de doacao do seu gatinho. O processo e simples e gratuito.</p>
+        </div>
+
+        <div class="form-card">
+
+          <!-- SUCCESS STATE -->
+          <div class="form-success" aria-live="polite">
+            <div class="form-success__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2 class="form-success__title">Anuncio publicado!</h2>
+            <p class="form-success__desc">Seu gatinho ja esta na vitrine da LoveCats. Boa sorte na busca pelo lar perfeito!</p>
+            <a href="./adote-um-gatinho.html" class="btn btn-primary">Ver todos os gatinhos</a>
           </div>
 
-          <form action="#" method="POST" class="form-anuncie-doacao">
-            <div class="cat-informations">
-              <div class="field">
-                <label class="info_cat disable" for="name-cat">Nome *</label>
-                <input
-                  class="search-options"
-                  type="text"
-                  placeholder="Ex: Mel"
-                  id="name-cat"
-                  required
-                />
-              </div>
-              <div class="field">
-                <label class="info_cat disable" for="years-cat">Idade *</label>
-                <input
-                  class="search-options"
-                  type="text"
-                  placeholder="Ex: 3 meses"
-                  id="years-cat"
-                  required
-                />
-              </div>
-            </div>
+          <!-- FORM -->
+          <form class="form-announce" novalidate>
 
-            <div class="cat-informations">
-              <div class="field">
-                <label class="info_cat disable" for="sex-cat">Sexo *</label>
-                <div class="custom-dropdown">
-                  <button
-                    type="button"
-                    class="dropdown-button"
-                    id="sex-dropdown"
-                  >
-                    <span class="dropdown-text">Selecione</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                  </button>
-                  <div class="dropdown-menu" id="sex-menu">
-                    <div class="dropdown-item" data-value="macho">
-                      <i class="fa-solid fa-check"></i>
-                      <span>Macho</span>
-                    </div>
-                    <div class="dropdown-item" data-value="femea">
-                      <i class="fa-solid fa-check"></i>
-                      <span>Fêmea</span>
-                    </div>
+            <!-- Informacoes do gatinho -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Informacoes do gatinho</legend>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="nome-gatinho" class="field-required">Nome do gatinho</label>
+                  <input type="text" id="nome-gatinho" name="nome" placeholder="Ex: Bolinha" required />
+                </div>
+                <div class="field">
+                  <label for="cor-gatinho" class="field-required">Cor / Pelagem</label>
+                  <div class="select-wrap">
+                    <select id="cor-gatinho" name="cor" required>
+                      <option value="">Selecione...</option>
+                      <option>Laranja</option>
+                      <option>Preto</option>
+                      <option>Branco</option>
+                      <option>Cinza</option>
+                      <option>Tigrado</option>
+                      <option>Malhado</option>
+                      <option>Outro</option>
+                    </select>
                   </div>
                 </div>
-                <input type="hidden" name="sexo" id="sex-cat" required />
               </div>
-              <div class="field">
-                <label class="info_cat disable" for="color-cat">Cor *</label>
-                <input
-                  class="search-options"
-                  type="text"
-                  name="cor-do-gatinho"
-                  placeholder="Ex: Laranja"
-                  id="color-cat"
-                  required
-                />
-              </div>
-            </div>
 
-            <div class="field">
-              <div class="label-with-ai">
-                <label class="info_cat disable" for="descricao">Descrição *</label>
-                <button type="button" class="btn-ai">
-                  <i class="fa-solid fa-wand-magic-sparkles"></i> Ajuda da IA
+              <div class="form-row form-row--3">
+                <div class="field">
+                  <label for="sexo-gatinho" class="field-required">Sexo</label>
+                  <div class="select-wrap">
+                    <select id="sexo-gatinho" name="sexo" required>
+                      <option value="">Selecione...</option>
+                      <option>Macho</option>
+                      <option>Femea</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="idade-gatinho" class="field-required">Idade</label>
+                  <input type="text" id="idade-gatinho" name="idade" placeholder="Ex: 3 meses" required />
+                </div>
+                <div class="field">
+                  <label for="porte-gatinho">Porte</label>
+                  <div class="select-wrap">
+                    <select id="porte-gatinho" name="porte">
+                      <option value="">Selecione...</option>
+                      <option>Pequeno</option>
+                      <option>Medio</option>
+                      <option>Grande</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Descricao -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Descricao</legend>
+              <div class="field field--full">
+                <label for="descricao">Conte sobre o gatinho</label>
+                <textarea id="descricao" name="descricao" placeholder="Personalidade, habitos, historinha..."></textarea>
+                <button type="button" class="btn-ai" aria-label="Gerar descricao com IA">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  Gerar com IA
                 </button>
               </div>
-              <textarea
-                class="search-options"
-                id="descricao"
-                name="descricao"
-                rows="5"
-                placeholder="Conte sobre a personalidade, comportamento e características especiais do gatinho..."
-                required
-              ></textarea>
+            </fieldset>
+
+            <!-- Fotos -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Fotos do gatinho</legend>
+              <div class="field field--full">
+                <label>Adicione ate 6 fotos (JPG, PNG, WebP &mdash; max 5 MB cada)</label>
+                <div class="dropzone" role="button" tabindex="0" aria-label="Clique ou arraste imagens aqui">
+                  <input class="dropzone__input" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-label="Selecionar imagens" />
+                  <div class="dropzone__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
+                      <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+                    </svg>
+                  </div>
+                  <p class="dropzone__title">Arraste suas fotos aqui</p>
+                  <p class="dropzone__hint">ou clique para selecionar arquivos</p>
+                  <span class="dropzone__browse">Escolher fotos</span>
+                </div>
+                <div class="upload-preview" aria-live="polite" aria-label="Fotos adicionadas"></div>
+                <p class="upload-status" aria-live="polite"></p>
+              </div>
+            </fieldset>
+
+            <!-- Contato -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Contato do doador</legend>
+              <div class="form-row">
+                <div class="field">
+                  <label for="nome-doador" class="field-required">Seu nome</label>
+                  <input type="text" id="nome-doador" name="nome-doador" placeholder="Seu nome completo" required />
+                </div>
+                <div class="field">
+                  <label for="cidade-doador" class="field-required">Cidade / Estado</label>
+                  <input type="text" id="cidade-doador" name="cidade" placeholder="Ex: Sao Paulo, SP" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="whatsapp-doador" class="field-required">WhatsApp</label>
+                  <input type="tel" id="whatsapp-doador" name="whatsapp" placeholder="(11) 99999-9999" required />
+                </div>
+                <div class="field">
+                  <label for="email-doador" class="field-required">E-mail</label>
+                  <input type="email" id="email-doador" name="email" placeholder="voce@email.com" required />
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Saude -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Saude</legend>
+              <div class="checkbox-grid">
+                <label class="check-item">
+                  <input type="checkbox" name="vacinado" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  Vacinado
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="castrado" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  Castrado / Castrada
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="vermifugado" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  Vermifugado
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="micropchip" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  Com microchip
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="fiv-felv" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  Testado FIV/FeLV
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="socializavel" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  Socializavel com outros pets
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Submit -->
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Publicar Anuncio
+              </button>
+              <p class="form-note">Ao publicar voce concorda com nossos <a href="#">Termos de Uso</a> e confirma que e o responsavel pelo gatinho.</p>
             </div>
 
-            <div class="cat-informations">
-              <div class="field">
-                <label class="info_cat disable" for="whatsapp"
-                  >Telefone (WhatsApp) *</label
-                >
-                <input
-                  class="search-options"
-                  type="tel"
-                  id="whatsapp"
-                  name="whatsapp"
-                  placeholder="Ex: 11 99999-9999"
-                  required
-                />
-              </div>
-              <div class="field">
-                <label class="info_cat disable" for="localizacao">Localização *</label>
-                <input
-                  class="search-options"
-                  type="text"
-                  id="localizacao"
-                  name="localizacao"
-                  placeholder="Ex: São Paulo, SP"
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="info_cat disable" for="foto">URL da Foto (opcional)</label>
-              <input
-                class="search-options"
-                type="url"
-                id="foto"
-                name="foto"
-                placeholder="https://exemplo.com/foto.jpg"
-                required
-              />
-            </div>
-
-            <div class="check-group">
-              <div class="centralize">
-                <input
-                  class="vaccinated-neutered"
-                  type="checkbox"
-                  id="filtro-vacinado"
-                />
-                <label for="filtro-vacinado">Vacinado</label>
-              </div>
-
-              <div class="centralize">
-                <input
-                  class="vaccinated-neutered"
-                  type="checkbox"
-                  id="filtro-castrado"
-                />
-                <label for="filtro-castrado">Castrado</label>
-              </div>
-            </div>
-
-            <button type="submit" class="btn-submit">Publicar Anúncio</button>
           </form>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <section class="footer-content">
-          <div class="footer-group">
-            <div>
-              <span class="heart"><i class="fa-regular fa-heart"></i></span>
-              <span class="footer-lovecats">LoveCats</span>
-            </div>
-            <p class="footer-description">
-              Conectando corações felinos com lares amorosos desde 2025.
-            </p>
-          </div>
-
-          <div class="footer-group">
-            <h3 class="footer-title">Navegação</h3>
-            <ul class="footer-links">
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
-              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
-              <li><a href="#sobre">Sobre Nós</a></li>
-              <li><a href="#api">API</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-group">
-            <h3 class="footer-title">Trabalhe Conosco</h3>
-            <span class="footer-colaborate"
-              >É desenvolvedor e quer ajudar a criar/manter nossa API?</span
-            >
-            <button class="footer-message">Envie uma mensagem</button>
-          </div>
-        </section>
-        <div class="footer-bottom">
-          © 2025 LoveCats. Todos os direitos reservados. Feito com
-          <span aria-hidden="true">❤️</span> para os gatinhos.
         </div>
-      </footer>
-    </div>
-    <script src="./src/js/index.js"></script>
-    <script src="./src/js/anuncie-doacao.js"></script>
-    <script src="./src/js/hamburguer.js"></script>
-    <script src="./src/js/dropdown-anuncie-doacao.js"></script>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-grid container">
+        <div class="footer-brand">
+          <a href="./index.html" class="footer-logo" aria-label="LoveCats">
+            <img class="footer-logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="32" height="32" />
+            <img class="footer-logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="88" height="22" />
+          </a>
+          <p class="footer-brand__desc">Conectando coracoes felinos com lares amorosos desde 2025.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Navegacao</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+            <li><a href="./anuncie-doacao.html">Anuncie Doacao</a></li>
+            <li><a href="./sobre.html">Sobre Nos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Trabalhe Conosco</h3>
+          <p class="footer-brand__desc">E desenvolvedor e quer ajudar a criar e manter nossa plataforma?</p>
+          <a href="mailto:contato@lovecats.com.br" class="footer-contact__link">Envie uma mensagem</a>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <span>&copy; 2025 LoveCats. Todos os direitos reservados.</span>
+        <span>Feito com <span class="footer-heart" aria-label="amor">&#9829;</span> para os gatinhos.</span>
+      </div>
+    </footer>
+
+    <script src="./src/js/app.js" type="module"></script>
   </body>
 </html>

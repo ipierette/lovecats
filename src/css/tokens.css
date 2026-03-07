@@ -1,0 +1,154 @@
+/* ═══════════════════════════════════════════════════════════════
+   LoveCats — Design Tokens
+   Dark mode is the default. Light mode overrides via [data-theme="light"].
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+/* ── Dark Theme (default) ── */
+:root {
+  /* Background scale */
+  --c-bg:             #0f0d0b;
+  --c-surface:        #1c1815;
+  --c-surface-raised: #252019;
+  --c-surface-high:   #2e2820;
+  --c-border:         rgba(255, 255, 255, 0.07);
+  --c-border-strong:  rgba(255, 255, 255, 0.14);
+
+  /* Brand — warm amber-orange (cat-themed) */
+  --c-primary:        #e07535;
+  --c-primary-hover:  #f08545;
+  --c-primary-dim:    rgba(224, 117, 53, 0.16);
+  --c-primary-shadow: rgba(224, 117, 53, 0.28);
+
+  /* Accent — soft warm beige */
+  --c-accent:         #c4a07a;
+  --c-accent-dim:     rgba(196, 160, 122, 0.14);
+
+  /* Text scale */
+  --c-text-1:         #f0e6d8;
+  --c-text-2:         #b09880;
+  --c-text-3:         #7a6858;
+  --c-text-inv:       #0f0d0b;
+
+  /* Semantic */
+  --c-success:        #4e9a67;
+  --c-success-dim:    rgba(78, 154, 103, 0.16);
+  --c-error:          #c45858;
+  --c-error-dim:      rgba(196, 88, 88, 0.16);
+  --c-warning:        #d4a532;
+
+  /* Badge colours */
+  --c-badge-vac:      #2a7a56;
+  --c-badge-vac-text: #8de0ae;
+  --c-badge-neu:      #2a567a;
+  --c-badge-neu-text: #8dbfe0;
+
+  /* ── Typography ── */
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-serif:   'Playfair Display', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+
+  --text-xs:   clamp(0.6875rem, 1.4vw, 0.75rem);
+  --text-sm:   clamp(0.8125rem, 1.8vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 2vw, 1rem);
+  --text-md:   clamp(1.0625rem, 2.2vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 2.5vw, 1.25rem);
+  --text-xl:   clamp(1.25rem, 3vw, 1.5rem);
+  --text-2xl:  clamp(1.5rem, 4vw, 2rem);
+  --text-3xl:  clamp(1.875rem, 5vw, 2.5rem);
+  --text-4xl:  clamp(2.25rem, 6vw, 3.25rem);
+  --text-5xl:  clamp(2.75rem, 8vw, 4.25rem);
+
+  /* ── Spacing (4-px grid) ── */
+  --s-1:    0.25rem;
+  --s-1-5:  0.375rem;
+  --s-2:    0.5rem;
+  --s-2-5:  0.625rem;
+  --s-3:    0.75rem;
+  --s-4:  1rem;
+  --s-5:  1.25rem;
+  --s-6:  1.5rem;
+  --s-7:  1.75rem;
+  --s-8:  2rem;
+  --s-10: 2.5rem;
+  --s-12: 3rem;
+  --s-14: 3.5rem;
+  --s-16: 4rem;
+  --s-20: 5rem;
+  --s-24: 6rem;
+  --s-32: 8rem;
+
+  /* ── Border radius ── */
+  --r-xs:   4px;
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-xl:   24px;
+  --r-2xl:  32px;
+  --r-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-sm:  0 2px 6px rgba(0, 0, 0, 0.5);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.55);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-xl:  0 16px 48px rgba(0, 0, 0, 0.65);
+  --shadow-primary: 0 4px 24px var(--c-primary-shadow);
+
+  /* ── Transitions ── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:    150ms;
+  --dur-base:    250ms;
+  --dur-slow:    400ms;
+  --trans-base:  var(--dur-base) var(--ease-out);
+
+  /* ── Layout ── */
+  --max-w:       1140px;
+  --header-h:    68px;
+
+  /* ── Icon stroke (for inline SVG) ── */
+  --icon-stroke: 1.75;
+}
+
+/* ── Light Theme ── */
+[data-theme="light"] {
+  --c-bg:             #fdf6ef;
+  --c-surface:        #fff9f4;
+  --c-surface-raised: #fff1e6;
+  --c-surface-high:   #ffe8d6;
+  --c-border:         rgba(0, 0, 0, 0.09);
+  --c-border-strong:  rgba(0, 0, 0, 0.18);
+
+  --c-primary:        #c05a1a;
+  --c-primary-hover:  #d56822;
+  --c-primary-dim:    rgba(192, 90, 26, 0.12);
+  --c-primary-shadow: rgba(192, 90, 26, 0.22);
+
+  --c-accent:         #8b6a46;
+  --c-accent-dim:     rgba(139, 106, 70, 0.12);
+
+  --c-text-1:         #1a1008;
+  --c-text-2:         #4a3828;
+  --c-text-3:         #8a7060;
+  --c-text-inv:       #fdf6ef;
+
+  --c-success:        #2e7a4e;
+  --c-success-dim:    rgba(46, 122, 78, 0.12);
+  --c-error:          #a83232;
+  --c-error-dim:      rgba(168, 50, 50, 0.12);
+
+  --c-badge-vac:      #d4f0e0;
+  --c-badge-vac-text: #1a6640;
+  --c-badge-neu:      #d4e6f0;
+  --c-badge-neu-text: #1a4a66;
+
+  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-sm:  0 2px 6px rgba(0, 0, 0, 0.1);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.14);
+  --shadow-xl:  0 16px 48px rgba(0, 0, 0, 0.16);
+  --shadow-primary: 0 4px 24px var(--c-primary-shadow);
+}

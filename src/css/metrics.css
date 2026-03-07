@@ -1,81 +1,81 @@
+/* ═══════════════════════════════════════════════════════════════
+   LoveCats — Metrics Section
+   ═══════════════════════════════════════════════════════════════ */
+
 .metrics {
-  width: 100%;
-  height: auto;
-  padding: 4rem 0;
-  display: flex;
-  justify-content: center;
+  padding-block: var(--s-20);
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
 }
 
 .metrics-inner {
-  max-width: 1025px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--c-border);
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(var(--s-4), 5vw, var(--s-12));
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.metric-card {
+  background: var(--c-surface-raised);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-}
-
-.metric-group {
   text-align: center;
+  gap: var(--s-3);
+  padding: var(--s-10) var(--s-8);
+  transition: background var(--dur-base);
+}
+.metric-card:hover { background: var(--c-surface-high); }
+
+.metric-card__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  background: var(--c-primary-dim);
+  border-radius: var(--r-lg);
 }
 
-.metrics-icon {
- font-size: 3rem;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-  background-color: #5ecfb142;
-  color: #37a588;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 18px auto;
-  box-shadow: 0 6px 18px rgba(91, 68, 49, 0.06);
+.metric-card__icon svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  stroke: var(--c-primary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.metrics-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+.metric-card__num {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--c-primary);
+  line-height: 1;
 }
 
-.number-highlight {
-  background: linear-gradient(90deg, #5ECFB1 0%, #8B9D7A 35%, #B8885A 65%, #E86E3F 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: clamp(2.5rem, 4vw, 3rem);
-  font-weight: 900;
-}
-
-.metrics-title {
-  color: #4a3728;
-  font-size: clamp(2rem, 3vw, 3rem);
-  font-weight: 900;
-}
-
-.metrics-desc {
-  color: #7d6757;
-  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.metrics-small {
-  color: #7d6757;
-  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
-  font-family: monospace;
-}
-
-.small-highlight {
-  color: #6fb4b4;
+.metric-card__label {
+  font-size: var(--text-md);
   font-weight: 700;
-  margin-right: 6px;
+  color: var(--c-text-1);
 }
 
-@media (max-width: 480px) {
-  .metrics-desc {
-    line-height: 2;
+.metric-card__desc {
+  font-size: var(--text-sm);
+  color: var(--c-text-2);
+  max-width: 22ch;
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .metrics-inner {
+    grid-template-columns: 1fr;
+    border-radius: var(--r-lg);
   }
 }

@@ -1,0 +1,101 @@
+/* ═══════════════════════════════════════════════════════════════
+   LoveCats — Footer
+   ═══════════════════════════════════════════════════════════════ */
+
+.site-footer {
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+  padding-block: var(--s-16) var(--s-8);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--s-10);
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(var(--s-4), 5vw, var(--s-12));
+  margin-bottom: var(--s-10);
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: var(--s-4);
+}
+.footer-logo__icon { height: 2rem; }
+.footer-logo__text { height: 2.2rem; }
+
+.footer-brand__desc {
+  font-size: var(--text-sm);
+  color: var(--c-text-2);
+  line-height: 1.7;
+  max-width: 28ch;
+}
+
+.footer-col__title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--c-text-1);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--s-5);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.footer-links a {
+  font-size: var(--text-sm);
+  color: var(--c-text-2);
+  transition: color var(--dur-fast);
+}
+.footer-links a:hover { color: var(--c-primary); }
+
+.footer-contact__desc {
+  font-size: var(--text-sm);
+  color: var(--c-text-2);
+  line-height: 1.6;
+  margin-bottom: var(--s-4);
+}
+
+.footer-contact__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--c-primary);
+  transition: gap var(--dur-fast);
+}
+.footer-contact__link:hover { gap: var(--s-3); }
+
+.footer-bottom {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(var(--s-4), 5vw, var(--s-12));
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--c-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  font-size: var(--text-xs);
+  color: var(--c-text-3);
+}
+
+.footer-heart { color: var(--c-primary); }
+
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
