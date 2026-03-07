@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (body.dataset.page === 'adopt') {
-    initFilters();
+    import('./adote-um-gatinho.js').then(m => m.init());
   }
 
   if (body.dataset.page === 'announce') {

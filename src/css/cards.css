@@ -157,8 +157,22 @@
   flex-wrap: wrap;
 }
 
-.cats-count { font-size: var(--text-sm); color: var(--c-text-2); }
-.cats-count strong { color: var(--c-text-1); }
+.cats-count {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--text-sm);
+  color: var(--c-text-2);
+  background: var(--c-surface-raised);
+  border: 1px solid var(--c-border);
+  padding: var(--s-1-5) var(--s-4);
+  border-radius: var(--r-full);
+}
+.cats-count strong {
+  color: var(--c-primary);
+  font-size: var(--text-base);
+  font-weight: 800;
+}
 
 .cats-grid {
   display: grid;

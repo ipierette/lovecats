@@ -24,8 +24,8 @@
   gap: 4px;
   margin-bottom: var(--s-4);
 }
-.footer-logo__icon { height: 2rem; }
-.footer-logo__text { height: 2.2rem; }
+.footer-logo__icon { height: 3.0rem;  width: auto; }
+.footer-logo__text { height: 5.0rem;  width: auto;}
 
 .footer-brand__desc {
   font-size: var(--text-sm);

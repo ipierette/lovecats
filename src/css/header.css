@@ -44,8 +44,8 @@
 }
 .logo:hover { opacity: 0.82; }
 
-.logo__icon { height: 2.75rem; width: auto; }
-.logo__text { height: 1.6rem;  width: auto; }
+.logo__icon { height: 3.0rem;  width: auto; }
+.logo__text { height: 5.0rem;  width: auto; }
 
 /* ── Desktop Nav ── */
 .site-nav {

@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="LoveCats — Guia Essencial de Adocao: tudo o que voce precisa saber antes de adotar um gatinho." />
+    <title>Guia Essencial — LoveCats</title>
+    <link rel="stylesheet" href="./src/css/tokens.css" />
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/header.css" />
+    <link rel="stylesheet" href="./src/css/guia-essencial.css" />
+    <link rel="stylesheet" href="./src/css/footer.css" />
+  </head>
+
+  <body data-page="guia">
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+      <div class="header-inner">
+        <a href="./index.html" class="logo" aria-label="LoveCats — pagina inicial">
+          <img class="logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="36" height="36" />
+          <img class="logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="100" height="26" />
+        </a>
+        <nav class="site-nav" aria-label="Navegacao principal">
+          <ul class="site-nav__list" role="list">
+            <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link site-nav__link--active" href="./guia-essencial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar</a></li>
+            <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
+            <li><a class="site-nav__link" href="./feature-api.html">API</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-theme" aria-label="Ativar modo claro" aria-pressed="false">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+          <button class="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">
+            <span class="btn-menu__bar"></span>
+            <span class="btn-menu__bar"></span>
+            <span class="btn-menu__bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Menu de navegacao" aria-modal="true">
+      <div class="drawer-inner">
+        <button class="btn-drawer-close" aria-label="Fechar menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <nav aria-label="Navegacao mobile">
+          <ul class="site-nav__list" role="list">
+            <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link site-nav__link--active" href="./guia-essencial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar um Gatinho</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doacao</a></li>
+            <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
+            <li><a class="site-nav__link" href="./feature-api.html">API</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <main id="main-content">
+
+      <!-- HERO -->
+      <section class="guide-hero" aria-labelledby="guide-hero-title">
+        <div class="container">
+          <p class="guide-hero__eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Passo 01 antes de adotar
+          </p>
+          <h1 id="guide-hero-title" class="guide-hero__title" data-animate>
+            Guia <em>Essencial</em><br>de Adocao
+          </h1>
+          <p class="guide-hero__desc" data-animate data-delay="60">
+            Tudo o que voce precisa saber para adotar com responsabilidade — desde a preparacao do lar ate o cuidado com gatinhos idosos e com deficiencia.
+          </p>
+          <a href="./adote-um-gatinho.html" class="guide-hero__cta" data-animate data-delay="120">
+            Buscar gatinhos
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <div class="container">
+
+        <!-- ANTES DE ADOTAR -->
+        <div class="before-adopt" data-animate>
+          <p class="before-adopt__title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Antes de adotar, considere:
+          </p>
+          <ul class="before-adopt__list">
+            <li>Gatos vivem em media 12 a 20 anos — e um compromisso de longo prazo.</li>
+            <li>Exigem atencao, enriquecimento ambiental, visitas regulares ao veterinario e carinho diario.</li>
+            <li>Certifique-se de que todos os moradores da casa estao de acordo e que nao ha alergias graves.</li>
+            <li>Custos mensais incluem racao, areia, vacinas, vermifugos e consultas preventivas.</li>
+            <li>Animal adotado nao e presente — a decisao deve ser consciente e definitiva.</li>
+          </ul>
+        </div>
+
+        <!-- INDEX CARDS -->
+        <section class="guide-index" aria-label="Topicos do guia">
+          <h2 class="guide-index__title">Escolha um topico</h2>
+          <div class="guide-cards">
+
+            <a class="guide-card" href="#primeira-adocao" data-animate>
+              <span class="guide-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </span>
+              <span class="guide-card__tag">Iniciante</span>
+              <p class="guide-card__title">Primeira Adocao</p>
+              <p class="guide-card__desc">Prepare sua casa, monte o enxoval e entenda os primeiros dias com seu novo companheiro.</p>
+              <span class="guide-card__link" aria-hidden="true">Ler mais
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </a>
+
+            <a class="guide-card" href="#adocao-responsavel" data-animate data-delay="60">
+              <span class="guide-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </span>
+              <span class="guide-card__tag">Essencial</span>
+              <p class="guide-card__title">Adocao Responsavel</p>
+              <p class="guide-card__desc">Compromisso, bem-estar animal e o que significa adotar para a vida toda.</p>
+              <span class="guide-card__link" aria-hidden="true">Ler mais
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </a>
+
+            <a class="guide-card" href="#gatinhos-especiais" data-animate data-delay="120">
+              <span class="guide-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </span>
+              <span class="guide-card__tag">Especial</span>
+              <p class="guide-card__title">Gatinhos com Deficiencia</p>
+              <p class="guide-card__desc">Como adaptar o lar e oferecer vida plena a gatinhos cegos, surdos ou com mobilidade reduzida.</p>
+              <span class="guide-card__link" aria-hidden="true">Ler mais
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </a>
+
+            <a class="guide-card" href="#gatinhos-idosos" data-animate data-delay="180">
+              <span class="guide-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </span>
+              <span class="guide-card__tag">Idoso 9+</span>
+              <p class="guide-card__title">Gatinhos Idosos</p>
+              <p class="guide-card__desc">Cuidados geriatricos, sinais de envelhecimento e por que adotar um gato senior e uma escolha incrivel.</p>
+              <span class="guide-card__link" aria-hidden="true">Ler mais
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </a>
+
+          </div>
+        </section>
+
+      </div><!-- /.container -->
+
+      <!-- TWO-COLUMN: sidebar TOC + articles -->
+      <div class="guide-page-layout container">
+
+        <!-- Sticky TOC sidebar -->
+        <nav class="guide-toc" aria-label="Sumario do guia">
+          <div class="guide-sidebar__card">
+            <p class="guide-sidebar__title">Artigos neste guia</p>
+            <ul class="guide-sidebar__list" role="list">
+              <li><a href="#primeira-adocao">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Primeira Adocao
+              </a></li>
+              <li><a href="#adocao-responsavel">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                Adocao Responsavel
+              </a></li>
+              <li><a href="#gatinhos-especiais">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Gatinhos com Deficiencia
+              </a></li>
+              <li><a href="#gatinhos-idosos">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Gatinhos Idosos (9+)
+              </a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main articles -->
+        <div class="guide-articles">
+
+          <!-- ── ARTICLE 1: PRIMEIRA ADOCAO ──────────────────────────── -->
+          <section class="guide-section" id="primeira-adocao" aria-labelledby="art1-title">
+            <div class="guide-section__header">
+              <div class="guide-section__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <p class="guide-section__num">Artigo 01</p>
+                <h2 class="guide-section__title" id="art1-title">Primeira Adocao</h2>
+              </div>
+            </div>
+
+            <div class="guide-content">
+              <p>
+                Adotar um gato pela primeira vez e uma experiencia emocionante, mas exige preparacao. Antes de buscar seu novo companheiro, e fundamental organizar o ambiente para que ele se sinta seguro desde o primeiro momento.
+              </p>
+
+              <h3>Preparando o lar</h3>
+              <p>
+                Gatos precisam de espaco vertical — instale prateleiras, arranhadores e esconderijos. Identifique e remova plantas toxicas como lirio, avenca, azaleia e filodendro. Instale protetores de janelas (telas mosquiteiras) para evitar quedas.
+              </p>
+
+              <h3>Lista de itens essenciais</h3>
+              <ul class="checklist">
+                <li>Caixa de areia (pelo menos 1 por gato, mais 1 extra)</li>
+                <li>Areia granulada de boa qualidade (silica ou aglomerante)</li>
+                <li>Tigelas separadas para agua e racao</li>
+                <li>Arranhador (vertical e horizontal)</li>
+                <li>Cama ou toca acolhedora em local tranquilo</li>
+                <li>Brinquedos interativos (varinhas, bolinhas, tunnel)</li>
+                <li>Caixa de transporte (kennel) para visitas ao veterinario</li>
+                <li>Comedouro de ceramica (evite plastico — pode causar acne felina)</li>
+              </ul>
+
+              <h3>Os primeiros dias</h3>
+              <p>
+                Isole o gato em um comodo tranquilo com todos os recursos necessarios por 3 a 7 dias. Deixe-o explorar no ritmo dele, sem forcar contato. Ofeca a sua roupa usada para que ele se acostume ao seu cheiro. Gradualmente, abra o acesso ao resto da casa.
+              </p>
+
+              <div class="guide-tip">
+                <span class="guide-tip__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <div>
+                  <p class="guide-tip__label">Dica de especialista</p>
+                  <p>Nunca puna um gato por comportamentos indesejaveis nos primeiros dias — o estresse da adaptacao e real. Redirecione o comportamento com brinquedos e recompensas positivas.</p>
+                </div>
+              </div>
+
+              <h3>Primeira consulta veterinaria</h3>
+              <p>
+                Agende a consulta logo nas primeiras semanas. O veterinario ira avaliar o estado geral, checar vacinas, fazer a vermifugacao e recomendar a castracao (realizada a partir dos 4 meses). Peca tambem o cartao de vacinacao atualizado ao adotante.
+              </p>
+
+              <div class="guide-references">
+                <p class="guide-references__title">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Referencias
+                </p>
+                <ol>
+                  <li>WSAVA — <a href="https://wsava.org/global-guidelines/vaccination-guidelines/" target="_blank" rel="noopener">Vaccination Guidelines for New Puppy and Kitten Owners</a>, 2022.</li>
+                  <li>CFMV — <a href="https://www.cfmv.gov.br" target="_blank" rel="noopener">Codigo de Etica e Bem-Estar Animal</a>, Conselho Federal de Medicina Veterinaria.</li>
+                  <li>International Cat Care — <a href="https://icatcare.org/advice/bringing-your-new-cat-home/" target="_blank" rel="noopener">Bringing your new cat home</a>, 2023.</li>
+                  <li>AVMA — <a href="https://www.avma.org/resources-tools/pet-owners/petcare/cat-care" target="_blank" rel="noopener">Cat Care</a>, American Veterinary Medical Association.</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <!-- ── ARTICLE 2: ADOCAO RESPONSAVEL ─────────────────────────── -->
+          <section class="guide-section" id="adocao-responsavel" aria-labelledby="art2-title">
+            <div class="guide-section__header">
+              <div class="guide-section__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <div>
+                <p class="guide-section__num">Artigo 02</p>
+                <h2 class="guide-section__title" id="art2-title">Adocao Responsavel</h2>
+              </div>
+            </div>
+
+            <div class="guide-content">
+              <p>
+                Adocao responsavel vai muito alem de "pegar" um animal. E um compromisso vitalicio que envolve cuidado fisico, emocional e financeiro. No Brasil, abandonar um animal e crime previsto na Lei Federal 9.605/1998 (Lei de Crimes Ambientais).
+              </p>
+
+              <h3>O que significa adotar para a vida toda?</h3>
+              <p>
+                Significa que o animal vai compartilhar sua vida em todos os cenarios: mudancas de cidade, novos membros na familia, crises financeiras. Antes de adotar, pondere honestamente sobre sua estabilidade de vida nos proximos 15 a 20 anos.
+              </p>
+
+              <h3>Cuidado preventivo obrigatorio</h3>
+              <ul>
+                <li><strong>Castracao:</strong> reduz comportamentos indesejaveis, previne cancer de mama e piometra (femeas), e marcacao urinaria (machos).</li>
+                <li><strong>Vacinacao:</strong> V4 ou V5 (raiva, panleucopenia, rinotraqueite, calicivirus, leucemia felina) anual ou conforme protocolo do veterinario.</li>
+                <li><strong>Vermifugacao:</strong> a cada 3 a 6 meses.</li>
+                <li><strong>Antipulgas/carrapatos:</strong> mensalmente com produto indicado pelo veterinario.</li>
+                <li><strong>Microchipagem:</strong> facilita a identificacao em caso de fuga.</li>
+              </ul>
+
+              <h3>Enriquecimento ambiental</h3>
+              <p>
+                Gatos sao predadores — precisam de estimulo mental e fisico. Ofeca jogos de caca, comedouros de quebra-cabeca (puzzle feeder), janelas com acesso visual ao exterior e ao menos 20 minutos de brinquedo interativo diario.
+              </p>
+
+              <div class="guide-tip">
+                <span class="guide-tip__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </span>
+                <div>
+                  <p class="guide-tip__label">Checklist de responsabilidade</p>
+                  <p>Voce tem espaco, tempo, budget mensal (R$ 200-500/mes estimado) e disposicao para cuidar por 15-20 anos? Se a resposta for sim para tudo, voce esta pronto.</p>
+                </div>
+              </div>
+
+              <h3>Adotar e para a vida</h3>
+              <p>
+                Devolucao gera trauma psicologico severo — gatos sao animais territoriais e perder o lar e extremamente estressante. Se surgirem dificuldades comportamentais, procure um medico veterinario comportamentalista antes de considerar devolucao.
+              </p>
+
+              <div class="guide-references">
+                <p class="guide-references__title">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Referencias
+                </p>
+                <ol>
+                  <li>Lei 9.605/1998 — <a href="http://www.planalto.gov.br/ccivil_03/leis/l9605.htm" target="_blank" rel="noopener">Lei de Crimes Ambientais</a>, Presidencia da Republica.</li>
+                  <li>CFMV — <a href="https://www.cfmv.gov.br/bem-estar-animal/bem-estar-animal/" target="_blank" rel="noopener">Bem-Estar Animal</a>, 2023.</li>
+                  <li>International Cat Care — <a href="https://icatcare.org/advice/the-indoor-cat/" target="_blank" rel="noopener">The Indoor Cat</a>, 2023.</li>
+                  <li>WSAVA — <a href="https://wsava.org/global-guidelines/animal-welfare-guidelines/" target="_blank" rel="noopener">Animal Welfare Guidelines</a>, 2021.</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <!-- ── ARTICLE 3: GATINHOS COM DEFICIENCIA ───────────────────── -->
+          <section class="guide-section" id="gatinhos-especiais" aria-labelledby="art3-title">
+            <div class="guide-section__header">
+              <div class="guide-section__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              </div>
+              <div>
+                <p class="guide-section__num">Artigo 03</p>
+                <h2 class="guide-section__title" id="art3-title">Gatinhos com Deficiencia</h2>
+              </div>
+            </div>
+
+            <div class="guide-content">
+              <p>
+                Gatos com deficiencia visual, auditiva, motora ou neurologica levam vidas plenas e felizes quando recebem o ambiente adequado e tutores dedicados. Muitas vezes, apresentam comportamento mais calmo e maior vinculo com os humanos.
+              </p>
+
+              <h3>Gatos cegos</h3>
+              <p>
+                Adaptam-se rapidamente usando olfato, audicao e bigodes (vibrissas). O segredo e <strong>nao mudar a posicao dos moveis</strong> — eles mapeiam o espaco na memoria. Use sinais sonoros (bater palma, estalar os dedos) para comunicacao.
+              </p>
+              <ul>
+                <li>Mantenha a caixa de areia, bebedouro e cama sempre no mesmo lugar.</li>
+                <li>Evite superficies escorregadias (tapetes antiderrapantes ajudam).</li>
+                <li>Jamais deixe janelas abertas sem tela.</li>
+              </ul>
+
+              <h3>Gatos surdos</h3>
+              <p>
+                Surdez e mais comum em gatos brancos de olhos azuis. Gatos surdos se comunicam por vibracao e visao. Use lanternas ou sinais manuais no lugar do chamado verbal. Nao devem ter acesso a ambientes externos sem supervisao, pois nao ouvem carros ou predadores.
+              </p>
+
+              <h3>Gatos com mobilidade reduzida (paraplegia, triplegia)</h3>
+              <p>
+                Gatos paraplégicos podem necessitar de cadeiras de rodas adaptadas (disponiveis no Brasil por R$ 300-800). Cuidados extras incluem: higienizacao frequente da area perianal e fisiocinesioterapia para manter a massa muscular.
+              </p>
+
+              <div class="guide-tip">
+                <span class="guide-tip__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </span>
+                <div>
+                  <p class="guide-tip__label">Mito derrubado</p>
+                  <p>Gatos com deficiencia NAO sofrem mais do que gatos saudaveis. Eles nao tem nocao de "limitacao" — simplesmente vivem. O que precisam e de um tutor comprometido.</p>
+                </div>
+              </div>
+
+              <h3>Condicoes cronicas comuns</h3>
+              <ul>
+                <li><strong>FIV e FeLV:</strong> portadores podem viver muitos anos com qualidade de vida normal. Nao transmitem para humanos.</li>
+                <li><strong>Diabetes felina:</strong> requer insulina diaria, mas e manejavel.</li>
+                <li><strong>Sindrome vestibular:</strong> causa desequilibrio aparente — melhora em dias/semanas.</li>
+                <li><strong>Cerebelar hipoplasia:</strong> movimento "tropego" nao e dor — gatos com CH tem vida normal e longa.</li>
+              </ul>
+
+              <div class="guide-references">
+                <p class="guide-references__title">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Referencias
+                </p>
+                <ol>
+                  <li>Cornell Feline Health Center — <a href="https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center" target="_blank" rel="noopener">Feline Health Topics</a>, 2024.</li>
+                  <li>WSAVA — <a href="https://wsava.org/global-guidelines/rehabilitation-guidelines/" target="_blank" rel="noopener">Rehabilitation and Physical Therapy Guidelines</a>, 2022.</li>
+                  <li>International Cat Care — <a href="https://icatcare.org/advice/deaf-cats/" target="_blank" rel="noopener">Deaf Cats</a>, 2023.</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <!-- ── ARTICLE 4: GATINHOS IDOSOS ────────────────────────────── -->
+          <section class="guide-section" id="gatinhos-idosos" aria-labelledby="art4-title">
+            <div class="guide-section__header">
+              <div class="guide-section__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0z" stroke-width="1.5"/><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              </div>
+              <div>
+                <p class="guide-section__num">Artigo 04</p>
+                <h2 class="guide-section__title" id="art4-title">Gatinhos Idosos (9+ anos)</h2>
+              </div>
+            </div>
+
+            <div class="guide-content">
+              <p>
+                Gatos com 9 anos ou mais entram na fase senior — equivalente a aproximadamente 52 anos humanos. Sao frequentemente preteridos nas adocoes, mas oferecem algo unico: calma, carinho e uma conexao imediata profunda.
+              </p>
+
+              <h3>Por que adotar um gato idoso?</h3>
+              <ul>
+                <li>Personalidade ja formada — sem surpresas.</li>
+                <li>Geralmente ja castrados e vacinados.</li>
+                <li>Menos energia destrutiva — nao sobem em armarios ou mordem cabos.</li>
+                <li>Mais afetivos e apegados ao tutor.</li>
+                <li>Gratidao perceptivel — como se soubessem que estao sendo resgatados.</li>
+              </ul>
+
+              <h3>Principais mudancas fisiologicas</h3>
+              <p>Com o envelhecimento, os rins trabalham menos eficientemente, o metabolismo desacelera e as articulacoes ficam mais rigidas. Comunique ao veterinario os seguintes sinais:</p>
+              <ul>
+                <li>Perda de peso progressiva mesmo comendo bem.</li>
+                <li>Mudanca no padrao de urina (mais frequente ou menos).</li>
+                <li>Dificuldade de saltar em superficies altas.</li>
+                <li>Alteracao vocal (miar mais a noite pode indicar hipertireoidismo).</li>
+                <li>Pelagem opaca ou presenca de nodulos.</li>
+              </ul>
+
+              <h3>Cuidados preventivos para gatos senior</h3>
+              <ul class="checklist">
+                <li>Consulta veterinaria a cada 6 meses (em vez de anual)</li>
+                <li>Exame de sangue e urina semestral (funcao renal, tireoide, glicemia)</li>
+                <li>Afericion de pressao arterial — hipertensao felina e subdiagnosticada</li>
+                <li>Racao formulada para gatos senior (menos fosforo, mais proteina de qualidade)</li>
+                <li>Acesso facilitado a caixa de areia e cama (rampas, bordas baixas)</li>
+                <li>Sessoes de escovacao suave — ajudam a detectar nodulos e fortalecem o vinculo</li>
+              </ul>
+
+              <div class="guide-tip">
+                <span class="guide-tip__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <div>
+                  <p class="guide-tip__label">Doencas mais comuns em gatos idosos</p>
+                  <p>Doenca renal cronica (DRC), hipertireoidismo, diabetes, hipertensao e artrose sao as mais prevalentes. Todas tem tratamento e permitem boa qualidade de vida com acompanhamento veterinario regular.</p>
+                </div>
+              </div>
+
+              <h3>Adaptando o ambiente</h3>
+              <p>
+                Instale rampas ou escadinhas para que o gato acesse camas e sofas com facilidade. Use caixas de areia com abertura lateral (borda baixa). Mantenha a temperatura do ambiente confortavel — idosos tem menos habilidade termorreguladora.
+              </p>
+
+              <h3>Os ultimos anos — qualidade acima de quantidade</h3>
+              <p>
+                Converse com seu veterinario sobre cuidados paliativos quando necessario. Decisoes como internacao ou eutanasia nunca sao faceis — mas fazem parte da responsabilidade de ser tutor. O amor inclui saber a hora de deixar ir sem sofrimento.
+              </p>
+
+              <div class="guide-references">
+                <p class="guide-references__title">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Referencias
+                </p>
+                <ol>
+                  <li>WSAVA — <a href="https://wsava.org/global-guidelines/senior-care-guidelines/" target="_blank" rel="noopener">Senior Care Guidelines</a>, 2023.</li>
+                  <li>Cornell Feline Health Center — <a href="https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/caring-your-older-cat" target="_blank" rel="noopener">Caring for Your Older Cat</a>, 2024.</li>
+                  <li>IRIS — <a href="https://www.iris-kidney.com" target="_blank" rel="noopener">IRIS Staging of CKD</a>, 2023.</li>
+                  <li>International Cat Care — <a href="https://icatcare.org/advice/older-cats/" target="_blank" rel="noopener">Older Cats</a>, 2023.</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /.guide-articles -->
+      </div><!-- /.guide-page-layout -->
+
+      <!-- CTA BOTTOM -->
+      <div class="container">
+        <section class="guide-cta" aria-labelledby="guide-cta-title">
+          <h2 class="guide-cta__title" id="guide-cta-title">Pronto para encontrar<br>seu companheiro?</h2>
+          <p class="guide-cta__desc">Agora que voce tem tudo o que precisa saber, e hora de conhecer os gatinhos disponiveis para adocao!</p>
+          <a href="./adote-um-gatinho.html" class="guide-cta__btn">
+            Ver gatinhos disponiveis
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </section>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid container">
+        <div class="footer-brand">
+          <a href="./index.html" class="footer-logo" aria-label="LoveCats">
+            <img class="footer-logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="32" height="32" />
+            <img class="footer-logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="88" height="22" />
+          </a>
+          <p class="footer-brand__desc">Conectando coracoes felinos com lares amorosos desde 2025.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Navegacao</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./guia-essencial.html">Guia Essencial</a></li>
+            <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+            <li><a href="./anuncie-doacao.html">Anuncie Doacao</a></li>
+            <li><a href="./sobre.html">Sobre Nos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Trabalhe Conosco</h3>
+          <p class="footer-brand__desc">E desenvolvedor e quer ajudar a criar e manter nossa plataforma?</p>
+          <a href="mailto:contato@lovecats.com.br" class="footer-contact__link">Envie uma mensagem</a>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <span>&copy; 2025 LoveCats. Todos os direitos reservados.</span>
+        <span>Feito com <span class="footer-heart" aria-label="amor">&#9829;</span> para os gatinhos.</span>
+      </div>
+    </footer>
+
+    <script src="./src/js/app.js" type="module"></script>
+  </body>
+</html>

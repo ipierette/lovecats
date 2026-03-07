@@ -26,6 +26,7 @@
         <nav class="site-nav" aria-label="Navegacao principal">
           <ul class="site-nav__list" role="list">
             <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
             <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar</a></li>
             <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar</a></li>
             <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
@@ -64,6 +65,7 @@
         <nav aria-label="Navegacao mobile">
           <ul class="site-nav__list" role="list">
             <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
             <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar um Gatinho</a></li>
             <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doacao</a></li>
             <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
@@ -247,6 +249,48 @@
                   Socializavel com outros pets
                 </label>
               </div>
+
+              <!-- Tags especiais: idoso + condição especial -->
+              <div class="special-tags-group">
+                <p class="special-tags-group__label">Caracteristicas especiais</p>
+
+                <label class="check-item check-item--highlight">
+                  <input type="checkbox" name="idoso" id="tag-idoso" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  <span>
+                    <strong>Gatinho idoso</strong>
+                    <small>9 anos ou mais — cuidados especificos de saude senior</small>
+                  </span>
+                </label>
+
+                <label class="check-item check-item--highlight" id="check-especial-label">
+                  <input type="checkbox" name="condicao-especial" id="tag-especial" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  <span>
+                    <strong>Possui condicao especial / deficiencia</strong>
+                    <small>Ex: mobilidade reduzida, cegueira, surdez, doenga cronica...</small>
+                  </span>
+                </label>
+
+                <!-- Campo de descricao da condicao especial (revelado via JS) -->
+                <div class="special-condition-wrap" id="especial-desc-wrap" hidden>
+                  <label for="especial-desc" class="field-required" style="font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--c-text-2);">
+                    Descreva a condicao especial
+                  </label>
+                  <input
+                    type="text"
+                    id="especial-desc"
+                    name="especial-desc"
+                    placeholder="Ex: Cego do olho direito, usa cadeira de rodas..."
+                    maxlength="100"
+                  />
+                  <p class="special-condition-hint">Uma tag personalizada sera criada automaticamente com base na sua descricao.</p>
+                  <div class="custom-tag-preview" id="custom-tag-preview" hidden>
+                    <span class="badge badge-special" id="custom-tag-badge"></span>
+                    <small>Essa tag aparecera no perfil do gatinho</small>
+                  </div>
+                </div>
+              </div>
             </fieldset>
 
             <!-- Submit -->
@@ -276,6 +320,7 @@
           <h3 class="footer-col__title">Navegacao</h3>
           <ul class="footer-links" role="list">
             <li><a href="./index.html">Home</a></li>
+            <li><a href="./guia-essencial.html">Guia Essencial</a></li>
             <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
             <li><a href="./anuncie-doacao.html">Anuncie Doacao</a></li>
             <li><a href="./sobre.html">Sobre Nos</a></li>
@@ -294,5 +339,37 @@
     </footer>
 
     <script src="./src/js/app.js" type="module"></script>
+    <script>
+      // Reveal special-condition description field and build live tag preview
+      const specialCheck = document.getElementById('tag-especial');
+      const descWrap     = document.getElementById('especial-desc-wrap');
+      const descInput    = document.getElementById('especial-desc');
+      const tagPreview   = document.getElementById('custom-tag-preview');
+      const tagBadge     = document.getElementById('custom-tag-badge');
+
+      if (specialCheck) {
+        specialCheck.addEventListener('change', () => {
+          descWrap.hidden = !specialCheck.checked;
+          if (!specialCheck.checked) {
+            descInput.value = '';
+            tagPreview.hidden = true;
+            tagBadge.textContent = '';
+          }
+        });
+      }
+
+      if (descInput) {
+        descInput.addEventListener('input', () => {
+          const val = descInput.value.trim();
+          if (val.length > 0) {
+            tagBadge.textContent = '★ ' + val;
+            tagPreview.hidden = false;
+          } else {
+            tagPreview.hidden = true;
+            tagBadge.textContent = '';
+          }
+        });
+      }
+    </script>
   </body>
 </html>

@@ -27,6 +27,7 @@
         <nav class="site-nav" aria-label="Navegacao principal">
           <ul class="site-nav__list" role="list">
             <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
             <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar</a></li>
             <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar</a></li>
             <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
@@ -65,6 +66,7 @@
         <nav aria-label="Navegacao mobile">
           <ul class="site-nav__list" role="list">
             <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
             <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar um Gatinho</a></li>
             <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doacao</a></li>
             <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
@@ -104,20 +106,7 @@
             </a>
           </div>
         </div>
-        <div class="hero-stats" aria-label="Estatisticas">
-          <div class="hero-stat">
-            <span class="hero-stat__num" data-count="234">234</span>
-            <span class="hero-stat__label">Gatinhos adotados</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat__num" data-count="18">18</span>
-            <span class="hero-stat__label">Adocoes este mes</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat__num" data-count="47">47</span>
-            <span class="hero-stat__label">Familias felizes</span>
-          </div>
-        </div>
+
       </section>
 
       <!-- METRICS -->
@@ -129,7 +118,7 @@
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
               </svg>
             </div>
-            <span class="metric-card__num">234</span>
+            <span class="metric-card__num" data-count="234">234</span>
             <strong class="metric-card__label">Gatinhos Adotados</strong>
             <p class="metric-card__desc">Conectamos centenas de gatinhos com lares amorosos</p>
           </div>
@@ -139,7 +128,7 @@
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
               </svg>
             </div>
-            <span class="metric-card__num">47</span>
+            <span class="metric-card__num" data-count="47">47</span>
             <strong class="metric-card__label">Familias Felizes</strong>
             <p class="metric-card__desc">Lares que se tornaram mais completos com um gatinho</p>
           </div>
@@ -149,7 +138,7 @@
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
               </svg>
             </div>
-            <span class="metric-card__num">18</span>
+            <span class="metric-card__num" data-count="18">18</span>
             <strong class="metric-card__label">Adocoes Este Mes</strong>
             <p class="metric-card__desc">Reafirmando nosso compromisso com o bem-estar felino</p>
           </div>
@@ -163,9 +152,35 @@
           <h2 id="how-title" class="section-title">Como Funciona</h2>
           <p class="section-desc">Nosso processo foi criado para garantir que cada adocao seja segura, responsavel e cheia de amor.</p>
         </div>
-        <div class="inf-cards" role="list">
-          <article class="inf-card" role="listitem" data-animate>
-            <div class="inf-card__step" aria-hidden="true">1</div>
+
+        <div class="inf-steps" role="list">
+
+          <!-- STEP 1: Guia -->
+          <article class="inf-card inf-card--featured" role="listitem" data-animate>
+            <div class="inf-card__step" aria-label="Passo 1">01</div>
+            <span class="inf-card__num" aria-hidden="true">01</span>
+            <div class="inf-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+            </div>
+            <h3 class="inf-card__title">Leia o Guia</h3>
+            <p class="inf-card__desc">Prepare-se com nossos guias de adocao responsavel antes de escolher seu companheiro.</p>
+            <a href="./guia-essencial.html" class="inf-card__link">
+              Ver guia completo
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </article>
+
+          <!-- Connector -->
+          <div class="step-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+
+          <!-- STEP 2: Busque -->
+          <article class="inf-card" role="listitem" data-animate data-delay="80">
+            <div class="inf-card__step" aria-label="Passo 2">02</div>
+            <span class="inf-card__num" aria-hidden="true">02</span>
             <div class="inf-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -174,8 +189,16 @@
             <h3 class="inf-card__title">Busque</h3>
             <p class="inf-card__desc">Navegue pelos perfis de gatinhos disponiveis usando nossos filtros inteligentes de cor, idade e localizacao.</p>
           </article>
-          <article class="inf-card" role="listitem" data-animate data-delay="80">
-            <div class="inf-card__step" aria-hidden="true">2</div>
+
+          <!-- Connector -->
+          <div class="step-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+
+          <!-- STEP 3: Conecte-se -->
+          <article class="inf-card" role="listitem" data-animate data-delay="160">
+            <div class="inf-card__step" aria-label="Passo 3">03</div>
+            <span class="inf-card__num" aria-hidden="true">03</span>
             <div class="inf-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -184,8 +207,16 @@
             <h3 class="inf-card__title">Conecte-se</h3>
             <p class="inf-card__desc">Entre em contato direto com o doador via WhatsApp. Sem intermediarios, tudo rapido e transparente.</p>
           </article>
-          <article class="inf-card" role="listitem" data-animate data-delay="160">
-            <div class="inf-card__step" aria-hidden="true">3</div>
+
+          <!-- Connector -->
+          <div class="step-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+
+          <!-- STEP 4: Adote -->
+          <article class="inf-card" role="listitem" data-animate data-delay="240">
+            <div class="inf-card__step" aria-label="Passo 4">04</div>
+            <span class="inf-card__num" aria-hidden="true">04</span>
             <div class="inf-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -194,7 +225,8 @@
             <h3 class="inf-card__title">Adote</h3>
             <p class="inf-card__desc">Complete o processo de adocao responsavel e ganhe um novo membro da familia para sempre.</p>
           </article>
-        </div>
+
+        </div><!-- /.inf-steps -->
         <div class="responsible">
           <div class="responsible__image" data-animate>
             <img src="https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Gatinho sendo cuidado com carinho" loading="lazy" />
@@ -228,12 +260,13 @@
           <p class="footer-brand__desc">Conectando coracoes felinos com lares amorosos desde 2025.</p>
         </div>
         <div class="footer-col">
-          <h3 class="footer-col__title">Navegacao</h3>
+          <h3 class="footer-col__title">Navegação</h3>
           <ul class="footer-links" role="list">
             <li><a href="./index.html">Home</a></li>
+            <li><a href="./guia-essencial.html">Guia Essencial</a></li>
             <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
-            <li><a href="./anuncie-doacao.html">Anuncie Doacao</a></li>
-            <li><a href="./sobre.html">Sobre Nos</a></li>
+            <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+            <li><a href="./sobre.html">Sobre Nós</a></li>
           </ul>
         </div>
         <div class="footer-col">

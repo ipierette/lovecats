@@ -136,6 +136,7 @@ main { flex: 1; }
   line-height: 1.7;
   margin-top: var(--s-4);
   max-width: 56ch;
+  margin-inline: auto;
 }
 
 /* ── Page Hero (inner pages) ── */

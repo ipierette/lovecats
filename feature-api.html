@@ -1,667 +1,289 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="LoveCats API — Interface REST publica e gratuita para integracao com sistemas de adocao felina." />
+    <title>API — LoveCats</title>
+    <link rel="stylesheet" href="./src/css/tokens.css" />
     <link rel="stylesheet" href="./src/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/hamburguer.css" />
-    <link rel="stylesheet" href="./src/css/api.css" />
     <link rel="stylesheet" href="./src/css/style.css" />
-
-    <script
-      src="https://kit.fontawesome.com/e946045f4a.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>LoveCats API</title>
+    <link rel="stylesheet" href="./src/css/header.css" />
+    <link rel="stylesheet" href="./src/css/api.css" />
+    <link rel="stylesheet" href="./src/css/footer.css" />
   </head>
 
-  <body>
-    <section class="group-header">
-      <header>
-        <a href="./index.html" class="logo">
-          <img
-            class="cat-image"
-            src="./src/images/logo-icone.png"
-            alt="Ícone LoveCats"
-          />
-          <img
-            class="logo-image"
-            src="./src/images/texto-logo.png"
-            alt="Texto LoveCats"
-          />
+  <body data-page="api">
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+      <div class="header-inner">
+        <a href="./index.html" class="logo" aria-label="LoveCats — pagina inicial">
+          <img class="logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="36" height="36" />
+          <img class="logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="100" height="26" />
         </a>
-        <nav class="nav-desktop">
-          <ul id="highlight-nav">
-            <li><a class="active" href="./index.html">Home</a></li>
-            <li><a href="./adote-um-gatinho.html">Adote um gatinho</a></li>
-            <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
-            <li><a href="./sobre.html">Sobre</a></li>
-            <li><a href="./feature-api.html">API</a></li>
+        <nav class="site-nav" aria-label="Navegacao principal">
+          <ul class="site-nav__list" role="list">
+            <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar</a></li>
+            <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
+            <li><a class="site-nav__link site-nav__link--active" href="./feature-api.html">API</a></li>
           </ul>
         </nav>
-
-        <div class="group-mobile">
-          <button class="theme-toggle" aria-label="Alternar tema">
-            <img src="./src/images/moon.svg" alt="icone-lua" />
+        <div class="header-actions">
+          <button class="btn-theme" aria-label="Ativar modo claro" aria-pressed="false">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
           </button>
-
-          <button
-            class="menu-hamburguer"
-            aria-label="Menu"
-            aria-expanded="false"
-          >
-            <span class="row"></span>
-            <span class="row"></span>
-            <span class="row"></span>
+          <button class="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">
+            <span class="btn-menu__bar"></span>
+            <span class="btn-menu__bar"></span>
+            <span class="btn-menu__bar"></span>
           </button>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <div class="menu-overlay"></div>
-      <nav class="nav-mobile">
-        <ul class="highlight-nav">
-          <li><a class="link-mobile" href="./index.html">Home</a></li>
-          <li>
-            <a class="link-mobile" href="./adote-um-gatinho.html"
-              >Adote um Gatinho</a
-            >
-          </li>
-          <li>
-            <a class="link-mobile" href="./anuncie-doacao.html"
-              >Anuncie Doação</a
-            >
-          </li>
-          <li><a class="link-mobile" href="./sobre.html">Sobre</a></li>
-          <li><a class="link-mobile" href="./feature-api.html">API</a></li>
-        </ul>
-      </nav>
-    </section>
-    <section class="page-api">
-      <section class="container">
-        <div class="header-section">
-          <h1>LoveCats API</h1>
-          <p>
-            API pública e gratuita para integração com sistemas de adoção de
-            gatinhos. Conecte seu site, aplicativo ou sistema de gestão à nossa
-            plataforma.
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Menu de navegacao" aria-modal="true">
+      <div class="drawer-inner">
+        <button class="btn-drawer-close" aria-label="Fechar menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <nav aria-label="Navegacao mobile">
+          <ul class="site-nav__list" role="list">
+            <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar um Gatinho</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doacao</a></li>
+            <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
+            <li><a class="site-nav__link site-nav__link--active" href="./feature-api.html">API</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <main id="main-content">
+    <!-- ⚑ WIP BANNER -->
+    <div class="wip-banner" role="status" aria-live="polite">
+      <div class="wip-banner__inner container">
+        <svg class="wip-banner__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <p><strong>Página em desenvolvimento</strong> — A documentação completa da API estará disponível em breve. Os endpoints descritos abaixo refletem a especificação planejada.</p>
+      </div>
+    </div>
+
+
+
+      <section class="api-hero" aria-labelledby="api-hero-title">
+        <div class="container">
+          <p class="api-hero__eyebrow"><span aria-hidden="true">&#x1F310;</span> Integracao aberta</p>
+          <h1 id="api-hero-title" class="api-hero__title" data-animate>LoveCats <em>API</em></h1>
+          <p class="api-hero__desc" data-animate data-delay="60">
+            API publica e gratuita para integracao com sistemas de adocao de gatinhos. Conecte seu site, app ou sistema de gestao a nossa plataforma.
           </p>
-        </div>
-
-        <section class="features-section">
-          <h2>Recursos da API</h2>
-
-          <div class="features-grid">
-            <div class="feature-card">
-              <span class="feature-icon"
-                ><i class="fa-solid fa-globe"></i
-              ></span>
-              <h3>API RESTful</h3>
-              <p>Interface REST padronizada com respostas JSON</p>
-            </div>
-
-            <div class="feature-card">
-              <span class="feature-icon">
-                <i class="fa-solid fa-shield-halved"></i>
-              </span>
-              <h3>Segurança</h3>
-              <p>Autenticação via API Key e validação de dados</p>
-            </div>
-
-            <div class="feature-card">
-              <span class="feature-icon">
-                <i class="fa-solid fa-bolt"></i>
-              </span>
-              <h3>Alta Performance</h3>
-              <p>Resposta rápida e cache inteligente</p>
-            </div>
-
-            <div class="feature-card">
-              <span class="feature-icon">
-                <i class="fa-solid fa-database"></i>
-              </span>
-              <h3>Dados Confiáveis</h3>
-              <p>Informações validadas e atualizadas em tempo real</p>
-            </div>
-
-            <div class="feature-card">
-              <span class="feature-icon">
-                <i class="fa-solid fa-key"></i>
-              </span>
-              <h3>Fácil Integração</h3>
-              <p>Documentação completa e exemplos práticos</p>
-            </div>
-
-            <div class="feature-card">
-              <span class="feature-icon">
-                <i class="fa-solid fa-code"></i>
-              </span>
-              <h3>Open Source</h3>
-              <p>Gratuita para ONGs e projetos sociais</p>
-            </div>
+          <div class="api-hero__badges" data-animate data-delay="120">
+            <span class="api-badge">&#x2713; REST / JSON</span>
+            <span class="api-badge">&#x2713; Gratuita para ONGs</span>
+            <span class="api-badge">&#x2713; Autenticacao API Key</span>
+            <span class="api-badge">&#x2713; Docs completa</span>
           </div>
-        </section>
+        </div>
       </section>
 
-      <main class="container-endpoint">
-        <section class="endpoints">
-          <h1 class="endpoint-title">Endpoints Disponíveis</h1>
-          <p class="subtitle-endpoint">
-            Todos os endpoints retornam dados em formato JSON
-          </p>
+      <div class="container">
+
+        <section class="api-features" aria-labelledby="features-title">
+          <h2 class="api-features__title" id="features-title">Recursos da API</h2>
+          <div class="features-grid">
+            <div class="feature-card" data-animate><span class="feature-card__icon">&#x1F310;</span><p class="feature-card__title">API RESTful</p><p class="feature-card__desc">Interface REST padronizada com respostas JSON.</p></div>
+            <div class="feature-card" data-animate data-delay="40"><span class="feature-card__icon">&#x1F6E1;&#xFE0F;</span><p class="feature-card__title">Seguranca</p><p class="feature-card__desc">Autenticacao via API Key e validacao de dados.</p></div>
+            <div class="feature-card" data-animate data-delay="80"><span class="feature-card__icon">&#x26A1;</span><p class="feature-card__title">Alta Performance</p><p class="feature-card__desc">Resposta rapida e cache inteligente.</p></div>
+            <div class="feature-card" data-animate data-delay="120"><span class="feature-card__icon">&#x1F5C4;&#xFE0F;</span><p class="feature-card__title">Dados Confiaveis</p><p class="feature-card__desc">Informacoes validadas e atualizadas em tempo real.</p></div>
+            <div class="feature-card" data-animate data-delay="160"><span class="feature-card__icon">&#x1F511;</span><p class="feature-card__title">Facil Integracao</p><p class="feature-card__desc">Documentacao completa e exemplos praticos.</p></div>
+            <div class="feature-card" data-animate data-delay="200"><span class="feature-card__icon">&#x1F4BB;</span><p class="feature-card__title">Open Source</p><p class="feature-card__desc">Gratuita para ONGs e projetos sociais.</p></div>
+          </div>
+        </section>
+
+        <section class="endpoints-section" aria-labelledby="endpoints-title">
+          <h2 class="endpoints-section__title" id="endpoints-title">Endpoints Disponiveis</h2>
+          <p class="endpoints-section__sub">Todos os endpoints retornam dados em formato JSON.</p>
 
           <article class="endpoint-card">
-            <div>
-              <span class="get">GET</span>
-              <span class="endpoint-path">/api/cats</span>
+            <div class="endpoint-header">
+              <span class="method-badge method-badge--get">GET</span>
+              <code class="endpoint-path">/api/cats</code>
             </div>
-            <p class="endpoint-description">
-              Lista todos os gatinhos disponíveis para adoção
-            </p>
-            <h3 class="params-title">Parâmetros:</h3>
-            <section class="parameters">
-              <div class="param-itens">
-                <div class="param-group">
-                  <span class="param-name">color</span>
-                  <span class="param-type">( string )</span>
-                  <span class="param-optional">opcional</span>
-                </div>
-                <p class="param-filter">Filtrar por cor</p>
-              </div>
-
-              <div class="param-itens">
-                <div class="param-group">
-                  <span class="param-name">sex</span>
-                  <span class="param-type">( string )</span>
-                  <span class="param-optional">opcional</span>
-                </div>
-                <p class="param-filter">Filtrar por sexo (Macho/Fêmea)</p>
-              </div>
-
-              <div class="param-itens">
-                <div class="param-group">
-                  <span class="param-name">age</span>
-                  <span class="param-type">( string )</span>
-                  <span class="param-optional">opcional</span>
-                </div>
-                <p class="param-filter">Filtrar por idade</p>
-              </div>
-
-              <div class="param-itens">
-                <div class="param-group">
-                  <span class="param-name">vaccinated</span>
-                  <span class="param-type">( boolean )</span>
-                  <span class="param-optional">opcional</span>
-                </div>
-                <p class="param-filter">Filtrar por vacinação</p>
-              </div>
-
-              <div class="param-itens">
-                <div class="param-group">
-                  <span class="param-name">neutered</span>
-                  <span class="param-type">( boolean )</span>
-                  <span class="param-optional">opcional</span>
-                </div>
-                <p class="param-filter">Filtrar por castração</p>
-              </div>
-            </section>
-
-            <h3 class="response-title">Resposta:</h3>
-            <pre class="response-json">
-              <code>
-    {
-      "id": "string",
-      "name": "string",
-      "age": "string",
-      "sex": "Macho | Fêmea",
-      "color": "string",
-      "description": "string",
-      "location": "string",
-      "contact": "string",
-      "photo": "string",
-      "vaccinated": "boolean",
-      "neutered": "boolean"
-    }
-              </code>
-            </pre>
+            <p class="endpoint-desc">Lista todos os gatinhos disponiveis para adocao.</p>
+            <p class="params-title">Parametros</p>
+            <div class="param-list">
+              <div class="param-item"><span class="param-name">color</span><span class="param-type">( string )</span><span class="param-optional">opcional</span><span class="param-filter">Filtrar por cor</span></div>
+              <div class="param-item"><span class="param-name">sex</span><span class="param-type">( string )</span><span class="param-optional">opcional</span><span class="param-filter">Filtrar por sexo</span></div>
+              <div class="param-item"><span class="param-name">age</span><span class="param-type">( string )</span><span class="param-optional">opcional</span><span class="param-filter">Filtrar por idade</span></div>
+              <div class="param-item"><span class="param-name">vaccinated</span><span class="param-type">( boolean )</span><span class="param-optional">opcional</span><span class="param-filter">Filtrar por vacinacao</span></div>
+              <div class="param-item"><span class="param-name">neutered</span><span class="param-type">( boolean )</span><span class="param-optional">opcional</span><span class="param-filter">Filtrar por castracao</span></div>
+            </div>
+            <p class="response-title">Resposta</p>
+            <pre class="response-json"><code>{ "id":"string","name":"string","age":"string","sex":"Macho|Femea","color":"string","vaccinated":"boolean","neutered":"boolean" }</code></pre>
           </article>
 
           <article class="endpoint-card">
-            <div>
-              <span class="get">GET</span>
-              <span class="endpoint-path">/api/cats/:id</span>
-            </div>
-            <p class="endpoint-description">
-              Retorna detalhes de um gatinho específico
-            </p>
-
-            <h3 class="params-title">Parâmetros:</h3>
-
-            <div class="parameters">
-              <div>
-                <span class="param-name">id</span>
-                <span class="param-type">( string )</span>
-                <span class="param-required">obrigatório</span>
-              </div>
-              <p class="param-filter">ID único do gatinho</p>
-            </div>
-
-            <h3 class="response-title">Resposta:</h3>
-            <pre class="response-json">
-              <code>
-    {
-      "id": 1,
-      "name": "Miau",
-      "color": "Laranja",
-      "sex": "Macho",
-      "age": "2 anos",
-      "vaccinated": true,
-      "location": "São Paulo, SP",
-      "description": "Gatinho carinhoso e brincalhão",
-      "photos": ["url1.jpg", "url2.jpg"]
-    }
-              </code>
-            </pre>
+            <div class="endpoint-header"><span class="method-badge method-badge--get">GET</span><code class="endpoint-path">/api/cats/:id</code></div>
+            <p class="endpoint-desc">Retorna detalhes de um gatinho especifico.</p>
+            <p class="params-title">Parametros</p>
+            <div class="param-list"><div class="param-item"><span class="param-name">id</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span><span class="param-filter">ID unico do gatinho</span></div></div>
+            <p class="response-title">Resposta</p>
+            <pre class="response-json"><code>{ "id":1,"name":"Miau","color":"Laranja","sex":"Macho","age":"2 anos","vaccinated":true,"location":"Sao Paulo, SP" }</code></pre>
           </article>
 
           <article class="endpoint-card">
-            <div>
-              <span class="post">POST</span>
-              <span class="endpoint-path">/api/cats</span>
+            <div class="endpoint-header"><span class="method-badge method-badge--post">POST</span><code class="endpoint-path">/api/cats</code></div>
+            <p class="endpoint-desc">Cria um novo anuncio de doacao.</p>
+            <p class="params-title">Parametros</p>
+            <div class="param-list">
+              <div class="param-item"><span class="param-name">name</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div>
+              <div class="param-item"><span class="param-name">age</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div>
+              <div class="param-item"><span class="param-name">sex</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div>
+              <div class="param-item"><span class="param-name">color</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div>
+              <div class="param-item"><span class="param-name">location</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div>
+              <div class="param-item"><span class="param-name">contact</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div>
+              <div class="param-item"><span class="param-name">photo</span><span class="param-type">( string )</span><span class="param-optional">opcional</span></div>
             </div>
-            <p class="endpoint-description">Cria um novo anúncio de doação</p>
-
-            <h3 class="params-title">Parâmetros:</h3>
-            <section class="parameters">
-              <div class="param-itens">
-                <div>
-                  <span class="param-name">name</span>
-                  <span class="param-type">(string)</span>
-                  <span class="param-required">obrigatório</span>
-                </div>
-                <p class="param-filter">Nome do gatinho</p>
-              </div>
-
-              <div class="param-itens">
-                <div>
-                  <span class="param-name">age</span>
-                  <span class="param-type">(string)</span>
-                  <span class="param-required">obrigatório</span>
-                </div>
-                <p class="param-filter">Idade do gatinho</p>
-              </div>
-
-              <div class="param-itens">
-                <div>
-                  <span class="param-name">sex</span>
-                  <span class="param-type">(string)</span>
-                  <span class="param-required">obrigatório</span>
-                </div>
-                <p class="param-filter">Sexo (Macho/Fêmea)</p>
-              </div>
-
-              <div class="param-itens">
-                <div>
-                  <span class="param-name">color</span>
-                  <span class="param-type">(string)</span>
-                  <span class="param-required">obrigatório</span>
-                </div>
-                <p class="param-filter">Cor do gatinho</p>
-              </div>
-
-              <div class="param-itens">
-                <div>
-                  <span class="param-name">description</span>
-                  <span class="param-type">(string)</span>
-                  <span class="param-required">obrigatório</span>
-                </div>
-                <p class="param-filter">Descrição do gatinho</p>
-              </div>
-
-              <div class="param-itens">
-                <div>
-                  <span class="param-name">location</span>
-                  <span class="param-type">(string)</span>
-                  <span class="param-required">obrigatório</span>
-                </div>
-                <p class="param-filter">Localização do gatinho</p>
-              </div>
-
-              <div class="param-itens">
-                <div>
-                  <span class="param-name">contact</span>
-                  <span class="param-type">(string)</span>
-                  <span class="param-required">obrigatório</span>
-                </div>
-                <p class="param-filter">Contato</p>
-              </div>
-
-              <div class="param-itens">
-                <div>
-                  <span class="param-name">photo</span>
-                  <span class="param-type">(string)</span>
-                  <span class="param-optional">opcional</span>
-                </div>
-                <p class="param-filter">Foto do gatinho</p>
-              </div>
-
-              <div class="param-itens">
-                <div class="param-group">
-                  <span class="param-name">vaccinated</span>
-                  <span class="param-type">( boolean )</span>
-                  <span class="param-optional">opcional</span>
-                </div>
-                <p class="param-filter">Filtrar por vacinação</p>
-              </div>
-
-              <div class="param-itens">
-                <div class="param-group">
-                  <span class="param-name">neutered</span>
-                  <span class="param-type">( boolean )</span>
-                  <span class="param-optional">opcional</span>
-                </div>
-                <p class="param-filter">Filtrar por castração</p>
-              </div>
-            </section>
-
-            <h3 class="response-title">Resposta:</h3>
-            <pre class="response-json">
-              <code>
-  {
-    "name": "Miau",
-    "age": "2 anos",
-    "sex": "Macho",
-    "color": "Laranja",
-    "description": "Gatinho carinhoso e brincalhão",
-    "location": "São Paulo, SP",
-    "contact": "contato@lovecats.com",
-    "vaccinated": true,
-  }
-                </code>
-              </pre>
+            <p class="response-title">Resposta</p>
+            <pre class="response-json"><code>{ "name":"Mel","age":"3 meses","sex":"Femea","color":"Laranja","vaccinated":true }</code></pre>
           </article>
 
           <article class="endpoint-card">
-            <div>
-              <span class="put">PUT</span>
-              <span class="endpoint-path">/api/cats/:id</span>
-            </div>
-            <p class="endpoint-description">
-              Atualiza informações de um anúncio existente
-            </p>
-
-            <h3 class="params-title">Parâmetros:</h3>
-
-            <div class="parameters">
-              <div>
-                <span class="param-name">id</span>
-                <span class="param-type">( string )</span>
-                <span class="param-required">obrigatório</span>
-              </div>
-              <p class="param-filter">ID único do gatinho</p>
-            </div>
-
-            <h3 class="response-title">Resposta:</h3>
-            <pre class="response-json">
-              <code>
-    {
-      "success": "boolean",
-      "message": "string",
-      "data": "Cat"
-    }
-              </code>
-            </pre>
+            <div class="endpoint-header"><span class="method-badge method-badge--put">PUT</span><code class="endpoint-path">/api/cats/:id</code></div>
+            <p class="endpoint-desc">Atualiza informacoes de um anuncio existente.</p>
+            <p class="params-title">Parametros</p>
+            <div class="param-list"><div class="param-item"><span class="param-name">id</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div></div>
+            <p class="response-title">Resposta</p>
+            <pre class="response-json"><code>{ "success":"boolean","message":"string","data":"Cat" }</code></pre>
           </article>
 
           <article class="endpoint-card">
-            <div>
-              <span class="del">DELETE</span>
-              <span class="endpoint-path">/api/cats/:id</span>
-            </div>
-            <p class="endpoint-description">Remove um anúncio de doação</p>
-
-            <h3 class="params-title">Parâmetros:</h3>
-
-            <div class="parameters">
-              <div>
-                <span class="param-name">id</span>
-                <span class="param-type">( string )</span>
-                <span class="param-required">obrigatório</span>
-              </div>
-              <p class="param-filter">ID único do gatinho</p>
-            </div>
-
-            <h3 class="response-title">Resposta:</h3>
-            <pre class="response-json">
-              <code>
-    {
-      "success": "boolean",
-      "message": "string"
-    }
-              </code>
-            </pre>
+            <div class="endpoint-header"><span class="method-badge method-badge--delete">DELETE</span><code class="endpoint-path">/api/cats/:id</code></div>
+            <p class="endpoint-desc">Remove um anuncio de doacao.</p>
+            <p class="params-title">Parametros</p>
+            <div class="param-list"><div class="param-item"><span class="param-name">id</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div></div>
+            <p class="response-title">Resposta</p>
+            <pre class="response-json"><code>{ "success":"boolean","message":"string" }</code></pre>
           </article>
         </section>
 
-        <section class="code-examples-section">
-          <div class="container-endpoint">
-            <h2 class="example-title">Exemplos de Código</h2>
-            <p class="example-subtitle">
-              Veja como integrar a API em diferentes linguagens
-            </p>
-
-            <div class="code-container">
-              <nav class="code-tabs">
-                <button class="tab-btn active" data-lang="js">
-                  JavaScript
-                </button>
-                <button class="tab-btn" data-lang="py">Python</button>
-                <button class="tab-btn" data-lang="curl">cURL</button>
-              </nav>
-            </div>
-            <div class="code-content">
-              <pre
-                class="code-block js active"
-              ><code>// Buscar todos os gatinhos
+        <section class="code-examples" aria-labelledby="code-title">
+          <h2 class="code-examples__title" id="code-title">Exemplos de Codigo</h2>
+          <p class="code-examples__sub">Veja como integrar a API em diferentes linguagens.</p>
+          <div class="code-tabs" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true" data-lang="js">JavaScript</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-lang="py">Python</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-lang="curl">cURL</button>
+          </div>
+          <pre class="code-block js active" role="tabpanel"><code>// Buscar todos os gatinhos
 fetch('https://api.lovecats.com/api/cats')
   .then(res => res.json())
   .then(data => console.log(data));
 
-// Buscar com filtros
-fetch('https://api.lovecats.com/api/cats?color=Laranja&vaccinated=true')
-  .then(res => res.json())
-  .then(data => console.log(data));
-
-// Criar novo anúncio
+// Criar novo anuncio
 fetch('https://api.lovecats.com/api/cats', {
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'X-API-Key': 'sua-chave-api'
-  },
-  body: JSON.stringify({
-    name: 'Mel',
-    age: '3 meses',
-    sex: 'Fêmea',
-    color: 'Laranja',
-    description: 'Gatinha super carinhosa',
-    location: 'São Paulo, SP',
-    contact: '11999999999',
-    vaccinated: true,
-    neutered: false
-  })
-})
-.then(res => res.json())
-.then(data => console.log(data));</code></pre>
+  headers: { 'Content-Type': 'application/json', 'X-API-Key': 'sua-chave-api' },
+  body: JSON.stringify({ name: 'Mel', age: '3 meses', sex: 'Femea', color: 'Laranja' })
+}).then(res => res.json()).then(console.log);</code></pre>
+          <pre class="code-block py" role="tabpanel"><code>import requests
 
-              <pre class="code-block py"><code>import requests
-
-# Buscar todos os gatinhos
 response = requests.get('https://api.lovecats.com/api/cats')
 cats = response.json()
 
-# Buscar com filtros
-params = {'color': 'Laranja', 'vaccinated': True}
-response = requests.get('https://api.lovecats.com/api/cats', params=params)
-cats = response.json()
-
-# Criar novo anúncio
-headers = {
-    'Content-Type': 'application/json',
-    'X-API-Key': 'sua-chave-api'
-}
-data = {
-    'name': 'Mel',
-    'age': '3 meses',
-    'sex': 'Fêmea',
-    'color': 'Laranja',
-    'description': 'Gatinha super carinhosa',
-    'location': 'São Paulo, SP',
-    'contact': '11999999999',
-    'vaccinated': True,
-    'neutered': False
-}
-response = requests.post('https://api.lovecats.com/api/cats', 
-                        json=data, headers=headers)
+data = { 'name': 'Mel', 'age': '3 meses', 'sex': 'Femea', 'color': 'Laranja' }
+response = requests.post('https://api.lovecats.com/api/cats',
+    json=data, headers={'X-API-Key': 'sua-chave-api'})
 result = response.json()</code></pre>
-
-              <pre class="code-block curl"><code># Buscar todos os gatinhos
+          <pre class="code-block curl" role="tabpanel"><code># Buscar todos os gatinhos
 curl https://api.lovecats.com/api/cats
 
-# Buscar com filtros
-curl "https://api.lovecats.com/api/cats?color=Laranja&vaccinated=true"
+# Criar novo anuncio
+curl -X POST https://api.lovecats.com/api/cats   -H "X-API-Key: sua-chave-api"   -H "Content-Type: application/json"   -d '{"name":"Mel","age":"3 meses","sex":"Femea","color":"Laranja"}'</code></pre>
+        </section>
 
-# Criar novo anúncio
-curl -X POST https://api.lovecats.com/api/cats \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: sua-chave-api" \
-  -d '{
-    "name": "Mel",
-    "age": "3 meses",
-    "sex": "Fêmea",
-    "color": "Laranja",
-    "description": "Gatinha super carinhosa",
-    "location": "São Paulo, SP",
-    "contact": "11999999999",
-    "vaccinated": true,
-    "neutered": false
-  }'</code></pre>
-            </div>
+        <section class="thanks-section" aria-labelledby="thanks-title">
+          <h2 class="thanks-section__title" id="thanks-title">&#x2764;&#xFE0F; Agradecimentos</h2>
+          <p class="thanks-section__text">
+            <strong>Izadora Cury Pierette</strong>, lider do projeto, agradece especialmente a toda a equipe da LoveCats pelo comprometimento e dedicacao em construir esta plataforma.
+          </p>
+          <p class="thanks-section__text">
+            Agradecemos tambem a todos os desenvolvedores que contribuiram ou venham a contribuir com melhorias e manutencao da nossa API. Cada linha de codigo faz diferenca na vida de um gatinho!
+          </p>
+        </section>
+
+        <section class="api-cta" aria-labelledby="api-cta-title">
+          <h2 class="api-cta__title" id="api-cta-title">Comece a Usar Agora</h2>
+          <p class="api-cta__desc">A LoveCats API e gratuita para ONGs, abrigos e projetos sociais. Para uso comercial, entre em contato.</p>
+          <div class="api-cta__buttons">
+            <button class="api-cta__btn--primary">Solicitar Chave API</button>
+            <a href="./sobre.html" class="api-cta__btn--secondary">Saiba mais sobre nos</a>
           </div>
         </section>
 
-          <section class="thanks">
-            <div class="thanks-box">
-              <span class="heart-icon">
-                <i class="fa-regular fa-heart"></i>
-              </span>
-              <h2 class="thanks-title">Agradecimentos</h2>
-              <div class="group-thanks">
-                <p class="this">
-                <strong class="creator">Izadora Cury Pierette</strong>, líder do projeto,
-                agradece especialmente a toda equipe principal da LoveCats pelo
-                comprometimento e dedicação em construir esta plataforma.
-              </p>
-              <p>
-                Agradecemos também a todos os desenvolvedores que contribuíram
-                ou venham a contribuir com melhorias e manutenção da nossa API.
-                Cada linha de código faz diferença na vida de um gatinho! ❤️
-              </p>
-              </div>
-            </div>
-          </section>
+      </div>
+    </main>
 
-           <section class="honors-section">
-            <h2 class="honors-title">Menções Honrosas</h2>
-            <p class="honors-subtitle">
-              Desenvolvedores que contribuíram para a LoveCats API
-            </p>
-
-            <div class="carousel-container">
-              <button class="carousel-arrow prev" aria-label="Membro anterior">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              
-              <div class="dev-card">
-                <div class="info-dev">
-                  <div class="dev-avatar">
-                    <span>JS</span>
-                  </div>
-                  <h3>João Silva</h3>
-                  <p class="dev-role">Colaborador</p>
-                  <div class="dev-tags">
-                    <span class="tag-api">API</span>
-                    <span class="tag-backend">Backend</span>
-                  </div>
-                  <p class="dev-contribution">
-                    Contribuiu com melhorias na API de busca e filtros.
-                  </p>
-                </div>
-                <div class="dev-social">
-                  <i class="fa-brands fa-github"></i>
-                  <i class="fa-brands fa-linkedin"></i>
-                </div>
-              </div>
-
-              <button class="carousel-arrow next" aria-label="Próximo membro">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-            </div>
-          </section>
-
-          <section class="cta-banner">
-            <h2>Comece a Usar Agora</h2>
-            <p>
-              A LoveCats API é gratuita para ONGs, abrigos e projetos sociais.
-              Para uso comercial, entre em contato para obter sua chave de API.
-            </p>
-            <div class="cta-buttons">
-              <button class="btn-primary">Solicitar Chave API</button>
-              <button class="btn-secondary">Saiba Mais</button>
-            </div>
-          </section>
-      </main>
-    </section>
-
-     <footer class="site-footer">
-        <section class="footer-content">
-          <div class="footer-group">
-            <div>
-              <span class="heart"><i class="fa-regular fa-heart"></i></span>
-              <span class="footer-lovecats">LoveCats</span>
-            </div>
-            <p class="footer-description">
-              Conectando corações felinos com lares amorosos desde 2025.
-            </p>
-          </div>
-
-          <div class="footer-group">
-            <h3 class="footer-title">Navegação</h3>
-            <ul class="footer-links">
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
-              <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
-              <li><a href="#sobre">Sobre Nós</a></li>
-              <li><a href="#api">API</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-group">
-            <h3 class="footer-title">Trabalhe Conosco</h3>
-            <span class="footer-colaborate"
-              >É desenvolvedor e quer ajudar a criar/manter nossa API?</span
-            >
-            <button class="footer-message">Envie uma mensagem</button>
-          </div>
-        </section>
-        <div class="footer-bottom">
-          © 2025 LoveCats. Todos os direitos reservados. Feito com
-          <span aria-hidden="true">❤️</span> para os gatinhos.
+    <footer class="site-footer">
+      <div class="footer-grid container">
+        <div class="footer-brand">
+          <a href="./index.html" class="footer-logo" aria-label="LoveCats">
+            <img class="footer-logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="32" height="32" />
+            <img class="footer-logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="88" height="22" />
+          </a>
+          <p class="footer-brand__desc">Conectando coracoes felinos com lares amorosos desde 2025.</p>
         </div>
-      </footer>
-    </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Navegacao</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./guia-essencial.html">Guia Essencial</a></li>
+            <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+            <li><a href="./anuncie-doacao.html">Anuncie Doacao</a></li>
+            <li><a href="./sobre.html">Sobre Nos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Trabalhe Conosco</h3>
+          <p class="footer-brand__desc">E desenvolvedor e quer ajudar a criar e manter nossa plataforma?</p>
+          <a href="mailto:contato@lovecats.com.br" class="footer-contact__link">Envie uma mensagem</a>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <span>&copy; 2025 LoveCats. Todos os direitos reservados.</span>
+        <span>Feito com <span class="footer-heart" aria-label="amor">&#9829;</span> para os gatinhos.</span>
+      </div>
+    </footer>
 
-    <script src="./src/js/feature-api.js"></script>
-    <script src="./src/js/hamburguer.js"></script>
-    <script src="./src/js/index.js"></script>
+    <script src="./src/js/app.js" type="module"></script>
+    <script>
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const codeBlocks = document.querySelectorAll('.code-block');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+          codeBlocks.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+          document.querySelector('.code-block.' + btn.dataset.lang)?.classList.add('active');
+        });
+      });
+    </script>
   </body>
 </html>
