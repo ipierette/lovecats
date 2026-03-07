@@ -70,7 +70,8 @@
   transition: border-color 220ms, transform 220ms;
 }
 .mission-card:hover { border-color: var(--c-primary); transform: translateY(-4px); }
-.mission-card__icon { width: 52px; height: 52px; display: grid; place-items: center; background: color-mix(in srgb, var(--c-primary) 14%, var(--c-surface)); border: 1px solid color-mix(in srgb, var(--c-primary) 30%, transparent); border-radius: var(--r-xl); font-size: 1.4rem; }
+.mission-card__icon { width: 52px; height: 52px; display: grid; place-items: center; background: color-mix(in srgb, var(--c-primary) 14%, var(--c-surface)); border: 1px solid color-mix(in srgb, var(--c-primary) 30%, transparent); border-radius: var(--r-xl); font-size: 1.4rem; color: var(--c-primary); }
+.mission-card__icon svg { width: 28px; height: 28px; }
 .mission-card__title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--c-text-1); }
 .mission-card__desc { font-size: var(--text-sm); color: var(--c-text-2); line-height: 1.75; flex: 1; }
 
@@ -129,6 +130,6 @@
 .team-social { display: flex; gap: var(--s-3); margin-top: auto; }
 .team-social__link {
   width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--c-border);
-  border-radius: 50%; text-decoration: none; font-size: 0.75rem; color: var(--c-text-2); transition: border-color 180ms, color 180ms;
+  border-radius: 50%; text-decoration: none; font-size: 1rem; color: var(--c-text-2); transition: border-color 180ms, color 180ms;
 }
 .team-social__link:hover { border-color: var(--c-primary); color: var(--c-primary); }

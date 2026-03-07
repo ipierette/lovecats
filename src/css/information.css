@@ -24,7 +24,7 @@
   display: grid;
   grid-template-columns: 1fr 28px 1fr 28px 1fr 28px 1fr;
   gap: 0;
-  align-items: center;
+  align-items: stretch;
 }
 
 /* ── Connector arrow between steps ──────────────────────────── */
@@ -32,6 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
 }
 
 .step-connector svg {
@@ -80,29 +81,44 @@
 
 .inf-card:hover::after { opacity: 1; }
 
-/* ── Step badge — visually hidden, screen-reader only ────────── */
+/* ── Step badge — small numbered badge top-left ─────────────── */
 .inf-card__step {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: var(--s-3);
+  left: var(--s-4);
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--c-primary-dim);
+  border: 1px solid color-mix(in srgb, var(--c-primary) 30%, transparent);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--c-primary);
+  z-index: 2;
 }
 
-/* Big ghost number — bottom-left watermark ───────────────────── */
+/* Big ghost number — top-right watermark ────────────────────── */
 .inf-card__num {
   font-family: var(--font-display);
   font-size: 5rem;
   font-weight: 700;
   line-height: 0.85;
   color: var(--c-primary);
-  opacity: 0.10;
+  opacity: 0.22;
   position: absolute;
-  bottom: var(--s-3);
-  left: var(--s-4);
+  top: var(--s-2);
+  right: var(--s-3);
   letter-spacing: -0.05em;
   pointer-events: none;
   user-select: none;
   transition: opacity var(--dur-base);
 }
 
-.inf-card:hover .inf-card__num { opacity: 0.24; }
+.inf-card:hover .inf-card__num { opacity: 0.38; }
 
 /* ── Icon box ───────────────────────────────────────────────── */
 .inf-card__icon {

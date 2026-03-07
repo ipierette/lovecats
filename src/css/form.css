@@ -35,6 +35,24 @@
   z-index: 1;
 }
 
+/* Pill eyebrow — same style as sobre/api/guia heroes */
+.announce-page__header .section-eyebrow {
+  padding: var(--s-2) var(--s-4);
+  background: var(--c-primary-dim);
+  border: 1px solid rgba(224, 117, 53, 0.28);
+  border-radius: var(--r-full);
+  margin-bottom: var(--s-6);
+}
+.announce-page__header .section-eyebrow::before { display: none; }
+
+/* Larger title to match guia/sobre/api heroes */
+.announce-page__header .section-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.15;
+  margin-bottom: var(--s-4);
+}
+.announce-page__header .section-title em { font-style: italic; color: var(--c-primary); }
+
 /* Card shell */
 .form-card {
   max-width: 720px;
@@ -211,7 +229,7 @@ textarea { resize: vertical; min-height: 110px; }
   gap: var(--s-3);
   padding-top: var(--s-2);
 }
-.form-actions .btn-primary { min-width: 240px; }
+.form-actions .btn-primary { min-width: 160px; }
 
 .form-note {
   font-size: var(--text-xs);

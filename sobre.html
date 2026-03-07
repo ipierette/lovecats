@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./src/css/header.css" />
     <link rel="stylesheet" href="./src/css/sobre.css" />
     <link rel="stylesheet" href="./src/css/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
   </head>
 
   <body data-page="sobre">
@@ -26,7 +27,7 @@
         <nav class="site-nav" aria-label="Navegação principal">
           <ul class="site-nav__list" role="list">
             <li><a class="site-nav__link" href="./index.html">Home</a></li>
-            <li><a class="site-nav__link" href="./guia-essêncial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
             <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar</a></li>
             <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar</a></li>
             <li><a class="site-nav__link site-nav__link--active" href="./sobre.html">Sobre</a></li>
@@ -56,7 +57,7 @@
     </header>
 
     <!-- MOBILE DRAWER -->
-    <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Menu de navegacao" aria-modal="true">
+    <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Menu de navegação" aria-modal="true">
       <div class="drawer-inner">
         <button class="btn-drawer-close" aria-label="Fechar menu">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -66,7 +67,7 @@
         <nav aria-label="Navegação mobile">
           <ul class="site-nav__list" role="list">
             <li><a class="site-nav__link" href="./index.html">Home</a></li>
-            <li><a class="site-nav__link" href="./guia-essêncial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
             <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar um Gatinho</a></li>
             <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doação</a></li>
             <li><a class="site-nav__link site-nav__link--active" href="./sobre.html">Sobre</a></li>
@@ -102,7 +103,9 @@
           <div class="mission-grid">
 
             <div class="mission-card" data-animate>
-              <div class="mission-card__icon" aria-hidden="true">&#x2764;&#xFE0F;</div>
+              <div class="mission-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
             <p class="mission-card__title">Nossa Visão</p>
               <p class="mission-card__desc">
                 Acreditamos em um mundo onde cada gatinho encontra um lar amoroso. A LoveCats nasceu do desejo de facilitar a adoção responsável, conectando pessoas que querem oferecer um lar com gatinhos que precisam de cuidado e carinho.
@@ -110,7 +113,9 @@
             </div>
 
             <div class="mission-card" data-animate data-delay="60">
-              <div class="mission-card__icon" aria-hidden="true">&#x1F3AF;</div>
+              <div class="mission-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+              </div>
               <p class="mission-card__title">Nossa Missão</p>
               <p class="mission-card__desc">
                 Promover a adoção responsável através de uma plataforma intuitiva e segura, garantindo que cada gatinho seja encaminhado para um lar adequado às suas necessidades. Educamos sobre os cuidados necessários e incentivamos o compromisso de longo prazo.
@@ -118,7 +123,9 @@
             </div>
 
             <div class="mission-card" data-animate data-delay="120">
-              <div class="mission-card__icon" aria-hidden="true">&#x1F6E1;&#xFE0F;</div>
+              <div class="mission-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
               <p class="mission-card__title">Adoção Responsável</p>
               <p class="mission-card__desc">
                 Defendemos a adoção consciente e ética. Isso significa preparação adequada do lar, compromisso com cuidados veterinários, tempo e recursos para oferecer qualidade de vida, e amor durante toda a vida do gatinho.
@@ -131,13 +138,16 @@
         <!-- API STRIP -->
         <div class="api-strip" data-animate>
           <div>
-            <p class="api-strip__title">&#x1F310; LoveCats API</p>
+            <p class="api-strip__title">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              LoveCats API
+            </p>
             <p class="api-strip__desc">
               Nossa plataforma é alimentada pela LoveCats API — uma interface aberta e gratuita que permite integração com sistemas externos. ONGs, abrigos e protetores independentes podem sincronizar dados de adoção em tempo real.
             </p>
           </div>
           <a href="./feature-api.html" class="api-strip__btn">
-            Conhecer a API &#x2192;
+            Conhecer a API &rarr;
           </a>
         </div>
 
@@ -159,8 +169,8 @@
               </div>
               <p class="team-card__desc">Arquiteta de software focada em transformar tecnologia em impacto social e adoção responsável através da LoveCats.</p>
               <div class="team-social">
-                <a class="team-social__link" href="https://github.com/ipierette" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub de Izadora">GH</a>
-                <a class="team-social__link" href="https://www.linkedin.com/in/izadora-cury-pierette-7a7754253/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn de Izadora">LI</a>
+                <a class="team-social__link" href="https://github.com/ipierette" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub de Izadora"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a class="team-social__link" href="https://www.linkedin.com/in/izadora-cury-pierette-7a7754253/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn de Izadora"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
               </div>
             </div>
 
@@ -174,8 +184,8 @@
               </div>
               <p class="team-card__desc">Desenvolvedor Fullstack com foco em escalabilidade e arquitetura, transformando desafios técnicos em soluções eficientes.</p>
               <div class="team-social">
-                <a class="team-social__link" href="https://github.com/carlossdossantos" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Carlos">GH</a>
-                <a class="team-social__link" href="https://www.linkedin.com/in/carlos-renato-874543a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Carlos">LI</a>
+                <a class="team-social__link" href="https://github.com/carlossdossantos" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Carlos"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a class="team-social__link" href="https://www.linkedin.com/in/carlos-renato-874543a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Carlos"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
               </div>
             </div>
 
@@ -189,8 +199,8 @@
               </div>
               <p class="team-card__desc">Desenvolvedor focado em performance e segurança para garantir que a LoveCats cresca com robustez técnica.</p>
               <div class="team-social">
-                <a class="team-social__link" href="https://github.com/cledeocirmarafao" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Cledeocir">GH</a>
-                <a class="team-social__link" href="https://www.linkedin.com/in/cledeocir-maraf%C3%A3o-267768193/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Cledeocir">LI</a>
+                <a class="team-social__link" href="https://github.com/cledeocirmarafao" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Cledeocir"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a class="team-social__link" href="https://www.linkedin.com/in/cledeocir-maraf%C3%A3o-267768193/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Cledeocir"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
               </div>
             </div>
 
@@ -204,8 +214,8 @@
               </div>
               <p class="team-card__desc">Com olhar atento à experiência do usuário, transforma linhas de código em interfaces intuitivas que conectam usuários e felinos.</p>
               <div class="team-social">
-                <a class="team-social__link" href="https://github.com/cristian-souza" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Cristian">GH</a>
-                <a class="team-social__link" href="https://www.linkedin.com/in/cristian-mm-souza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Cristian">LI</a>
+                <a class="team-social__link" href="https://github.com/cristian-souza" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Cristian"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a class="team-social__link" href="https://www.linkedin.com/in/cristian-mm-souza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Cristian"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
               </div>
             </div>
 
@@ -219,8 +229,8 @@
               </div>
               <p class="team-card__desc">Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, unindo curiosidade e código para criar experiências que salvam vidas.</p>
               <div class="team-social">
-                <a class="team-social__link" href="https://github.com/Jaqueline-Gotardi" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Jaqueline">GH</a>
-                <a class="team-social__link" href="https://www.linkedin.com/in/jaqueline-gotardi-833454365/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Jaqueline">LI</a>
+                <a class="team-social__link" href="https://github.com/Jaqueline-Gotardi" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Jaqueline"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a class="team-social__link" href="https://www.linkedin.com/in/jaqueline-gotardi-833454365/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Jaqueline"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
               </div>
             </div>
 
@@ -234,8 +244,8 @@
               </div>
               <p class="team-card__desc">Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, criando experiências que salvam vidas.</p>
               <div class="team-social">
-                <a class="team-social__link" href="https://github.com/Victoria-muniz" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Victoria">GH</a>
-                <a class="team-social__link" href="https://www.linkedin.com/in/victoria-m-silva-471566397/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Victoria">LI</a>
+                <a class="team-social__link" href="https://github.com/Victoria-muniz" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Victoria"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a class="team-social__link" href="https://www.linkedin.com/in/victoria-m-silva-471566397/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Victoria"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
               </div>
             </div>
 
@@ -249,8 +259,8 @@
               </div>
               <p class="team-card__desc">Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, criando experiências que salvam vidas.</p>
               <div class="team-social">
-                <a class="team-social__link" href="https://github.com/chapetta" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Yan">GH</a>
-                <a class="team-social__link" href="https://www.linkedin.com/in/yan-chapetta/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Yan">LI</a>
+                <a class="team-social__link" href="https://github.com/chapetta" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Yan"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a class="team-social__link" href="https://www.linkedin.com/in/yan-chapetta/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Yan"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
               </div>
             </div>
 
@@ -264,7 +274,7 @@
               </div>
               <p class="team-card__desc">Dev em formação e entusiasta de UI/UX. Atua no Front-end da LoveCats, criando experiências que salvam vidas.</p>
               <div class="team-social">
-                <a class="team-social__link" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub de João">GH</a>
+                <a class="team-social__link" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub de João"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
               </div>
             </div>
 
