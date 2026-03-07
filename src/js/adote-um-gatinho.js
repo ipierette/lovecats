@@ -52,7 +52,7 @@ const CATS = [
     vacinado: true,
     castrado: false,
     city: 'Sao Paulo, SP',
-    img: 'https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-adorable-45170.jpeg?auto=compress&cs=tinysrgb&w=400',
+    img: 'https://placecats.com/neo/300/200',
     imgAlt: 'Tigre — gato tigrado de 6 meses',
     whatsapp: '5511999999994',
   },

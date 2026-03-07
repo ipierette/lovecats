@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LoveCats API — Interface REST publica e gratuita para integracao com sistemas de adocao felina." />
+    <meta name="description" content="LoveCats API — Interface REST publica e gratuita para integração com sistemas de adoção felina." />
     <title>API — LoveCats</title>
     <link rel="stylesheet" href="./src/css/tokens.css" />
     <link rel="stylesheet" href="./src/css/reset.css" />
@@ -22,10 +22,10 @@
           <img class="logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="36" height="36" />
           <img class="logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="100" height="26" />
         </a>
-        <nav class="site-nav" aria-label="Navegacao principal">
+        <nav class="site-nav" aria-label="Navegação principal">
           <ul class="site-nav__list" role="list">
             <li><a class="site-nav__link" href="./index.html">Home</a></li>
-            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./guia-essêncial.html">Guia</a></li>
             <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar</a></li>
             <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar</a></li>
             <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
@@ -61,12 +61,12 @@
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </button>
-        <nav aria-label="Navegacao mobile">
+        <nav aria-label="Navegação mobile">
           <ul class="site-nav__list" role="list">
             <li><a class="site-nav__link" href="./index.html">Home</a></li>
-            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./guia-essêncial.html">Guia</a></li>
             <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar um Gatinho</a></li>
-            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doacao</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doação</a></li>
             <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
             <li><a class="site-nav__link site-nav__link--active" href="./feature-api.html">API</a></li>
           </ul>
@@ -81,7 +81,7 @@
         <svg class="wip-banner__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
           <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
-        <p><strong>Página em desenvolvimento</strong> — A documentação completa da API estará disponível em breve. Os endpoints descritos abaixo refletem a especificação planejada.</p>
+        <p><strong>Função em desenvolvimento</strong> — A documentação completa da API estará disponível em breve. Os endpoints descritos abaixo refletem a especificação planejada.</p>
       </div>
     </div>
 
@@ -89,15 +89,18 @@
 
       <section class="api-hero" aria-labelledby="api-hero-title">
         <div class="container">
-          <p class="api-hero__eyebrow"><span aria-hidden="true">&#x1F310;</span> Integracao aberta</p>
+          <p class="api-hero__eyebrow">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Integração aberta
+          </p>
           <h1 id="api-hero-title" class="api-hero__title" data-animate>LoveCats <em>API</em></h1>
           <p class="api-hero__desc" data-animate data-delay="60">
-            API publica e gratuita para integracao com sistemas de adocao de gatinhos. Conecte seu site, app ou sistema de gestao a nossa plataforma.
+            API pública e gratuita para integração com sistemas de adoção de gatinhos. Conecte seu site, app ou sistema de gestão à nossa plataforma.
           </p>
           <div class="api-hero__badges" data-animate data-delay="120">
             <span class="api-badge">&#x2713; REST / JSON</span>
             <span class="api-badge">&#x2713; Gratuita para ONGs</span>
-            <span class="api-badge">&#x2713; Autenticacao API Key</span>
+            <span class="api-badge">&#x2713; Autenticação API Key</span>
             <span class="api-badge">&#x2713; Docs completa</span>
           </div>
         </div>
@@ -109,10 +112,10 @@
           <h2 class="api-features__title" id="features-title">Recursos da API</h2>
           <div class="features-grid">
             <div class="feature-card" data-animate><span class="feature-card__icon">&#x1F310;</span><p class="feature-card__title">API RESTful</p><p class="feature-card__desc">Interface REST padronizada com respostas JSON.</p></div>
-            <div class="feature-card" data-animate data-delay="40"><span class="feature-card__icon">&#x1F6E1;&#xFE0F;</span><p class="feature-card__title">Seguranca</p><p class="feature-card__desc">Autenticacao via API Key e validacao de dados.</p></div>
+            <div class="feature-card" data-animate data-delay="40"><span class="feature-card__icon">&#x1F6E1;&#xFE0F;</span><p class="feature-card__title">Segurança</p><p class="feature-card__desc">Autenticação via API Key e validação de dados.</p></div>
             <div class="feature-card" data-animate data-delay="80"><span class="feature-card__icon">&#x26A1;</span><p class="feature-card__title">Alta Performance</p><p class="feature-card__desc">Resposta rapida e cache inteligente.</p></div>
-            <div class="feature-card" data-animate data-delay="120"><span class="feature-card__icon">&#x1F5C4;&#xFE0F;</span><p class="feature-card__title">Dados Confiaveis</p><p class="feature-card__desc">Informacoes validadas e atualizadas em tempo real.</p></div>
-            <div class="feature-card" data-animate data-delay="160"><span class="feature-card__icon">&#x1F511;</span><p class="feature-card__title">Facil Integracao</p><p class="feature-card__desc">Documentacao completa e exemplos praticos.</p></div>
+            <div class="feature-card" data-animate data-delay="120"><span class="feature-card__icon">&#x1F5C4;&#xFE0F;</span><p class="feature-card__title">Dados Confiáveis</p><p class="feature-card__desc">Informações validadas e atualizadas em tempo real.</p></div>
+            <div class="feature-card" data-animate data-delay="160"><span class="feature-card__icon">&#x1F511;</span><p class="feature-card__title">Fácil Integração</p><p class="feature-card__desc">Documentação completa e exemplos práticos.</p></div>
             <div class="feature-card" data-animate data-delay="200"><span class="feature-card__icon">&#x1F4BB;</span><p class="feature-card__title">Open Source</p><p class="feature-card__desc">Gratuita para ONGs e projetos sociais.</p></div>
           </div>
         </section>
@@ -126,7 +129,7 @@
               <span class="method-badge method-badge--get">GET</span>
               <code class="endpoint-path">/api/cats</code>
             </div>
-            <p class="endpoint-desc">Lista todos os gatinhos disponiveis para adocao.</p>
+            <p class="endpoint-desc">Lista todos os gatinhos disponíveis para adoção.</p>
             <p class="params-title">Parametros</p>
             <div class="param-list">
               <div class="param-item"><span class="param-name">color</span><span class="param-type">( string )</span><span class="param-optional">opcional</span><span class="param-filter">Filtrar por cor</span></div>
@@ -150,7 +153,7 @@
 
           <article class="endpoint-card">
             <div class="endpoint-header"><span class="method-badge method-badge--post">POST</span><code class="endpoint-path">/api/cats</code></div>
-            <p class="endpoint-desc">Cria um novo anuncio de doacao.</p>
+            <p class="endpoint-desc">Cria um novo anúncio de doação.</p>
             <p class="params-title">Parametros</p>
             <div class="param-list">
               <div class="param-item"><span class="param-name">name</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div>
@@ -167,7 +170,7 @@
 
           <article class="endpoint-card">
             <div class="endpoint-header"><span class="method-badge method-badge--put">PUT</span><code class="endpoint-path">/api/cats/:id</code></div>
-            <p class="endpoint-desc">Atualiza informacoes de um anuncio existente.</p>
+            <p class="endpoint-desc">Atualiza informações de um anúncio existente.</p>
             <p class="params-title">Parametros</p>
             <div class="param-list"><div class="param-item"><span class="param-name">id</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div></div>
             <p class="response-title">Resposta</p>
@@ -176,7 +179,7 @@
 
           <article class="endpoint-card">
             <div class="endpoint-header"><span class="method-badge method-badge--delete">DELETE</span><code class="endpoint-path">/api/cats/:id</code></div>
-            <p class="endpoint-desc">Remove um anuncio de doacao.</p>
+            <p class="endpoint-desc">Remove um anúncio de doação.</p>
             <p class="params-title">Parametros</p>
             <div class="param-list"><div class="param-item"><span class="param-name">id</span><span class="param-type">( string )</span><span class="param-required">obrigatorio</span></div></div>
             <p class="response-title">Resposta</p>
@@ -225,7 +228,7 @@ curl -X POST https://api.lovecats.com/api/cats   -H "X-API-Key: sua-chave-api"  
             <strong>Izadora Cury Pierette</strong>, lider do projeto, agradece especialmente a toda a equipe da LoveCats pelo comprometimento e dedicacao em construir esta plataforma.
           </p>
           <p class="thanks-section__text">
-            Agradecemos tambem a todos os desenvolvedores que contribuiram ou venham a contribuir com melhorias e manutencao da nossa API. Cada linha de codigo faz diferenca na vida de um gatinho!
+            Agradecemos também a todos os desenvolvedores que contribuíram ou venham a contribuir com melhorias e manutenção da nossa API. Cada linha de código faz diferença na vida de um gatinho!
           </p>
         </section>
 
@@ -251,12 +254,12 @@ curl -X POST https://api.lovecats.com/api/cats   -H "X-API-Key: sua-chave-api"  
           <p class="footer-brand__desc">Conectando coracoes felinos com lares amorosos desde 2025.</p>
         </div>
         <div class="footer-col">
-          <h3 class="footer-col__title">Navegacao</h3>
+          <h3 class="footer-col__title">Navegação</h3>
           <ul class="footer-links" role="list">
             <li><a href="./index.html">Home</a></li>
-            <li><a href="./guia-essencial.html">Guia Essencial</a></li>
+            <li><a href="./guia-essêncial.html">Guia Essêncial</a></li>
             <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
-            <li><a href="./anuncie-doacao.html">Anuncie Doacao</a></li>
+            <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
             <li><a href="./sobre.html">Sobre Nos</a></li>
           </ul>
         </div>

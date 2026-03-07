@@ -14,6 +14,28 @@
   padding-inline: clamp(var(--s-4), 5vw, var(--s-12));
   margin-bottom: var(--s-10);
   text-align: center;
+  position: relative;
+  padding-block: var(--s-14) var(--s-10);
+}
+
+.adopt-page__header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 65% 55% at 50% -5%,
+    color-mix(in srgb, var(--c-primary) 16%, transparent) 0%,
+    transparent 72%
+  );
+  pointer-events: none;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.adopt-page__header .section-eyebrow,
+.adopt-page__header .section-title,
+.adopt-page__header .section-desc {
+  position: relative;
+  z-index: 1;
 }
 
 /* Layout: sidebar + main */

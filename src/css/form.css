@@ -6,6 +6,23 @@
   background: var(--c-bg);
   min-height: 100dvh;
   padding-block: var(--s-12) var(--s-24);
+  position: relative;
+}
+
+.announce-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 420px;
+  background: radial-gradient(
+    ellipse 65% 55% at 50% -5%,
+    color-mix(in srgb, var(--c-primary) 14%, transparent) 0%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .announce-page__header {
@@ -14,6 +31,8 @@
   text-align: center;
   margin-bottom: var(--s-12);
   padding-inline: var(--s-4);
+  position: relative;
+  z-index: 1;
 }
 
 /* Card shell */
