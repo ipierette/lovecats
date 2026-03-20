@@ -229,6 +229,16 @@ html.has-js [data-animate].is-visible {
   to   { opacity: 1; transform: none; }
 }
 
+/* ── Light-mode: hero descriptions bold & high-contrast ──────── */
+[data-theme="light"] .section-desc,
+[data-theme="light"] .guide-hero__desc,
+[data-theme="light"] .sobre-hero__desc,
+[data-theme="light"] .api-hero__desc,
+[data-theme="light"] .page-hero__desc {
+  color: var(--c-text-1);
+  font-weight: 600;
+}
+
 /* ── Visually hidden (for screen readers) ── */
 .sr-only {
   position: absolute;

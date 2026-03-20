@@ -13,6 +13,8 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   tab-size: 4;
+  /* Prevents blank overscroll area on macOS rubber-band scrolling */
+  background-color: var(--c-bg);
 }
 
 body {
@@ -34,6 +36,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: var(--c-text-1);
 }
+
+/* Ensure [hidden] always wins even when author styles set display: flex/grid/block */
+[hidden] { display: none !important; }
 
 p { max-width: 68ch; }
 

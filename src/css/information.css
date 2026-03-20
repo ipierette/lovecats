@@ -358,3 +358,71 @@
 @media (max-width: 560px) {
   .inf-cards { grid-template-columns: 1fr; }
 }
+
+/* ── Safety Banner ─────────────────────────────────────────── */
+.safety-banner {
+  background: hsl(38 90% 50% / 0.07);
+  border-top: 1px solid hsl(38 90% 50% / 0.22);
+  border-bottom: 1px solid hsl(38 90% 50% / 0.22);
+  padding: var(--s-8) 0;
+}
+
+.safety-banner__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-6);
+}
+
+.safety-banner__icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: hsl(38 90% 50% / 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(38 90% 55%);
+}
+.safety-banner__icon svg { width: 26px; height: 26px; }
+
+.safety-banner__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.safety-banner__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: hsl(38 90% 55%);
+  line-height: 1.3;
+}
+
+.safety-banner__desc {
+  font-size: var(--text-sm);
+  color: var(--c-text-2);
+  line-height: 1.75;
+  max-width: 66ch;
+}
+
+.safety-banner__link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: hsl(38 90% 55%);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 150ms;
+}
+.safety-banner__link:hover { opacity: 0.75; }
+.safety-banner__link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+@media (max-width: 620px) {
+  .safety-banner__inner { flex-direction: column; gap: var(--s-4); }
+  .safety-banner__icon { width: 40px; height: 40px; }
+  .safety-banner__icon svg { width: 20px; height: 20px; }
+}

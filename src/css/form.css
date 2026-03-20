@@ -178,8 +178,9 @@ textarea { resize: vertical; min-height: 110px; }
 /* Health checkboxes */
 .checkbox-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
   gap: var(--s-2-5);
+  align-items: stretch; /* every cell in a row shares the row's height */
 }
 
 .check-item {
@@ -191,6 +192,7 @@ textarea { resize: vertical; min-height: 110px; }
   color: var(--c-text-2);
   user-select: none;
   padding: var(--s-2-5) var(--s-3);
+  min-height: 52px; /* keeps every card the same baseline height */
   border: 1px solid var(--c-border);
   border-radius: var(--r-md);
   transition: background var(--dur-fast), border-color var(--dur-fast);
@@ -385,4 +387,261 @@ textarea { resize: vertical; min-height: 110px; }
   font-weight: 700;
   padding: 0.2em 0.75em;
   border-radius: var(--r-full);
+}
+
+/* ── Tooltip (?) on health checkboxes ────────────────────────── */
+.check-item-tip {
+  display: contents; /* participates in the grid as if it wasn't there */
+}
+
+.check-item-tip__inner {
+  display: flex;
+  align-items: stretch; /* stretch so inner .check-item fills the full cell height */
+  gap: var(--s-2);
+}
+
+/* The actual check-item inside a tip wrapper must grow to fill */
+.check-item-tip__inner .check-item {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The tip button stays vertically centered regardless of cell height */
+.check-item-tip__inner .tip-btn {
+  align-self: center;
+  flex-shrink: 0;
+}
+
+@keyframes tip-pulse {
+  0%, 100% {
+    border-color: color-mix(in srgb, var(--c-primary) 35%, var(--c-border));
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-primary) 0%, transparent);
+  }
+  50% {
+    border-color: color-mix(in srgb, var(--c-primary) 80%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-primary) 22%, transparent);
+  }
+}
+
+.tip-btn {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--c-primary) 10%, var(--c-surface-high));
+  border: 1px solid color-mix(in srgb, var(--c-primary) 35%, var(--c-border));
+  color: var(--c-primary);
+  font-size: 0.63rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  animation: tip-pulse 2.8s ease-in-out infinite;
+  transition: border-color var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
+}
+
+.tip-btn:hover,
+.tip-btn:focus-visible {
+  color: var(--c-primary);
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-primary) 28%, transparent);
+  animation-play-state: paused;
+  outline: none;
+}
+
+.tip-popup {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  background: var(--c-surface-raised);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: var(--s-3) var(--s-4);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--c-text-2);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms var(--ease-out);
+  z-index: 80;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  text-align: left;
+}
+
+.tip-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--c-border);
+}
+
+.tip-btn:hover .tip-popup,
+.tip-btn:focus-visible .tip-popup {
+  opacity: 1;
+}
+
+/* ── Doc-upload reveal blocks ─────────────────────────────────── */
+.doc-upload-reveal {
+  grid-column: 1 / -1;
+  margin-top: var(--s-1);
+  padding: var(--s-4) var(--s-5);
+  background: color-mix(in srgb, var(--c-primary) 5%, var(--c-surface));
+  border: 1px dashed color-mix(in srgb, var(--c-primary) 38%, transparent);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  animation: expandDown 0.2s var(--ease-out) both;
+}
+
+.doc-upload-reveal[hidden] { display: none !important; }
+
+.doc-upload-reveal__label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--c-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--s-1-5);
+}
+
+.doc-upload-reveal__hint {
+  font-size: var(--text-xs);
+  color: var(--c-text-3);
+  line-height: 1.5;
+  margin-top: -var(--s-1);
+}
+
+.doc-upload-reveal input[type="file"] {
+  font-size: var(--text-xs);
+  color: var(--c-text-2);
+  cursor: pointer;
+  padding: var(--s-2);
+  background: var(--c-surface-high);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+}
+
+.doc-upload-reveal input[type="file"]::-webkit-file-upload-button {
+  background: var(--c-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 0.3em 0.9em;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: var(--s-2);
+}
+
+/* ── Form section hint ─────────────────────────────────── */
+.form-section__hint {
+  font-size: var(--text-sm);
+  color: var(--c-text-3);
+  margin-top: calc(var(--s-1) * -1);
+  margin-bottom: var(--s-4);
+  line-height: 1.6;
+}
+
+/* ── Field label row (label + inline tooltip) ────────────────── */
+.field-label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  /* No margin-bottom — gap is already provided by parent .field's gap */
+}
+
+.field-label-row label {
+  margin-bottom: 0;
+}
+
+/* ── Donor-type card selector ──────────────────────────── */
+.donor-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+
+.donor-type-card {
+  display: block;
+  cursor: pointer;
+}
+
+.donor-type-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.donor-type-card__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--s-2);
+  padding: var(--s-5) var(--s-3);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-xl);
+  background: var(--c-surface);
+  transition: border-color 150ms, background 150ms, box-shadow 150ms;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.donor-type-card:hover .donor-type-card__inner {
+  border-color: color-mix(in srgb, var(--c-primary) 60%, transparent);
+  background: color-mix(in srgb, var(--c-primary) 4%, var(--c-surface));
+}
+
+.donor-type-card input:checked + .donor-type-card__inner {
+  border-color: var(--c-primary);
+  background: color-mix(in srgb, var(--c-primary) 8%, var(--c-surface));
+  box-shadow: 0 0 0 1px var(--c-primary);
+}
+
+.donor-type-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--c-primary) 12%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-primary);
+  transition: background 150ms;
+}
+
+.donor-type-card input:checked + .donor-type-card__inner .donor-type-card__icon {
+  background: color-mix(in srgb, var(--c-primary) 22%, transparent);
+}
+
+.donor-type-card__title {
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--c-text-1);
+}
+
+.donor-type-card__desc {
+  font-size: var(--text-xs);
+  color: var(--c-text-3);
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .donor-type-grid { grid-template-columns: 1fr; }
 }

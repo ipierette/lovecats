@@ -8,6 +8,7 @@ import { initNav }         from './modules/nav.js';
 import { initAnimations, initCounters } from './modules/animations.js';
 import { initFilters }     from './modules/filters.js';
 import { initImageUpload } from './modules/imageUpload.js';
+import { initTeamAccordion } from './modules/teamAccordion.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // ── Global (every page) ────────────────────────────────────
@@ -21,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (body.dataset.page === 'home') {
     initCounters();
   }
-
+  if (body.dataset.page === 'sobre') {
+    initTeamAccordion();
+  }
   if (body.dataset.page === 'adopt') {
     import('./adote-um-gatinho.js').then(m => m.init());
   }

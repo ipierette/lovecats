@@ -108,10 +108,15 @@
 
 .hero-desc {
   font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--c-text-1);
   line-height: 1.7;
   margin: 0 auto var(--s-10);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .hero-desc {
+  font-weight: 600;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.6);
 }
 
 .hero-actions {

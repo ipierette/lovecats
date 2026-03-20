@@ -109,23 +109,22 @@
                   <input type="text" id="nome-gatinho" name="nome" placeholder="Ex: Bolinha" required />
                 </div>
                 <div class="field">
-                  <label for="cor-gatinho" class="field-required">Cor / Pelagem</label>
+                  <label for="cor-gatinho" class="field-required">Padrão de Pelagem</label>
                   <div class="select-wrap">
                     <select id="cor-gatinho" name="cor" required>
                       <option value="">Selecione...</option>
-                      <option>Laranja</option>
-                      <option>Preto</option>
-                      <option>Branco</option>
-                      <option>Cinza</option>
-                      <option>Tigrado</option>
-                      <option>Malhado</option>
-                      <option>Outro</option>
+                      <option value="solido">Sólido (cor uniforme)</option>
+                      <option value="tigrado">Tigrado / Tabby (listras)</option>
+                      <option value="bicolor">Bicolor (dois tons)</option>
+                      <option value="tricolor">Tricolor / Calico</option>
+                      <option value="tartaruga">Tartaruga / Tortie</option>
+                      <option value="colorpoint">Colorpoint (pontas escuras)</option>
                     </select>
                   </div>
                 </div>
               </div>
 
-              <div class="form-row form-row--3">
+              <div class="form-row form-row--2">
                 <div class="field">
                   <label for="sexo-gatinho" class="field-required">Sexo</label>
                   <div class="select-wrap">
@@ -139,17 +138,6 @@
                 <div class="field">
                   <label for="idade-gatinho" class="field-required">Idade</label>
                   <input type="text" id="idade-gatinho" name="idade" placeholder="Ex: 3 meses" required />
-                </div>
-                <div class="field">
-                  <label for="porte-gatinho">Porte</label>
-                  <div class="select-wrap">
-                    <select id="porte-gatinho" name="porte">
-                      <option value="">Selecione...</option>
-                      <option>Pequeno</option>
-                      <option>Medio</option>
-                      <option>Grande</option>
-                    </select>
-                  </div>
                 </div>
               </div>
             </fieldset>
@@ -189,6 +177,58 @@
               </div>
             </fieldset>
 
+            <!-- Tipo de doador -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Quem est&aacute; doando?</legend>
+              <p class="form-section__hint">Isso ajuda os adotantes a entender a origem do gatinho e define como o contato ser&aacute; feito.</p>
+              <div class="donor-type-grid">
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="resgate-informal" required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">Resgate Informal</span>
+                    <span class="donor-type-card__desc">Pessoa f&iacute;sica que resgatou ou est&aacute; cuidando temporariamente do gatinho</span>
+                  </span>
+                </label>
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="protetor-registrado" required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">Protetor Registrado</span>
+                    <span class="donor-type-card__desc">Protetor com registro em entidade de prote&ccedil;&atilde;o animal ou prefeitura</span>
+                  </span>
+                </label>
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="ong" required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">ONG</span>
+                    <span class="donor-type-card__desc">Organiza&ccedil;&atilde;o sem fins lucrativos com CNPJ e site ou p&aacute;gina pr&oacute;prios</span>
+                  </span>
+                </label>
+
+              </div>
+
+              <!-- Protetor: comprovante de registro (revelado via JS) -->
+              <div class="doc-upload-reveal" id="doc-protetor-wrap" hidden>
+                <p class="doc-upload-reveal__label">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Comprovante de registro como protetor <span style="color:var(--c-text-3);font-weight:400;font-style:italic;">&mdash; obrigat&oacute;rio</span>
+                </p>
+                <p class="doc-upload-reveal__hint">Envie cart&atilde;o, certificado, of&iacute;cio ou qualquer documento que comprove seu registro como protetor animal. Formatos: JPG, PNG, PDF. M&aacute;x. 5 MB.</p>
+                <input type="file" id="doc-protetor" name="doc-protetor" accept="image/*,.pdf" />
+              </div>
+            </fieldset>
+
             <!-- Contato -->
             <fieldset class="form-section">
               <legend class="form-section__title">Contato do doador</legend>
@@ -203,12 +243,24 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="field">
+                <div class="field" id="whatsapp-field-wrap">
                   <label for="whatsapp-doador" class="field-required">WhatsApp</label>
                   <input type="tel" id="whatsapp-doador" name="whatsapp" placeholder="(11) 99999-9999" required />
                 </div>
+                <div class="field" id="ong-link-field-wrap" hidden>
+                  <label for="ong-link-contact" class="field-required">Link do anúncio na ONG</label>
+                  <input type="url" id="ong-link-contact" name="ong-link-contact" placeholder="https://suaong.com.br/adocao/nome-do-gato" />
+                </div>
                 <div class="field">
-                  <label for="email-doador" class="field-required">E-mail</label>
+                  <div class="field-label-row">
+                    <label for="email-doador" class="field-required">E-mail</label>
+                    <button type="button" class="tip-btn" aria-label="Por que o e-mail é importante para protetores e ONGs?" tabindex="0">
+                      ?
+                      <span class="tip-popup" role="tooltip">
+                        Para <strong>protetores registrados</strong> e <strong>ONGs</strong>, a LoveCats envia um e-mail semanal pedindo confirmação sobre a disponibilidade do gatinho. Isso mantém os anúncios sempre atualizados para os adotantes.
+                      </span>
+                    </button>
+                  </div>
                   <input type="email" id="email-doador" name="email" placeholder="voce@email.com" required />
                 </div>
               </div>
@@ -218,16 +270,59 @@
             <fieldset class="form-section">
               <legend class="form-section__title">Saude</legend>
               <div class="checkbox-grid">
-                <label class="check-item">
-                  <input type="checkbox" name="vacinado" />
-                  <span class="check-box" aria-hidden="true"></span>
-                  Vacinado
-                </label>
-                <label class="check-item">
-                  <input type="checkbox" name="castrado" />
-                  <span class="check-box" aria-hidden="true"></span>
-                  Castrado / Castrada
-                </label>
+
+                <!-- Vacinado + tooltip + doc upload -->
+                <div class="check-item-tip">
+                  <div class="check-item-tip__inner">
+                    <label class="check-item">
+                      <input type="checkbox" name="vacinado" id="chk-vacinado" />
+                      <span class="check-box" aria-hidden="true"></span>
+                      Vacinado
+                    </label>
+                    <button type="button" class="tip-btn" aria-label="Por que enviar comprovante de vacinação?" tabindex="0">
+                      ?
+                      <span class="tip-popup" role="tooltip">
+                        Solicitamos a caderneta de vacinação para garantir que as datas e doses informadas são reais. Isso protege o adotante e aumenta a confiabilidade do anúncio.
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Castrado + tooltip + doc upload -->
+                <div class="check-item-tip">
+                  <div class="check-item-tip__inner">
+                    <label class="check-item">
+                      <input type="checkbox" name="castrado" id="chk-castrado" />
+                      <span class="check-box" aria-hidden="true"></span>
+                      Castrado / Castrada
+                    </label>
+                    <button type="button" class="tip-btn" aria-label="Por que enviar atestado de castração?" tabindex="0">
+                      ?
+                      <span class="tip-popup" role="tooltip">
+                        O atestado de castração emitido pelo veterinário confirma o procedimento e protege o adotante contra informações falsas no anúncio.
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <!-- Doc-upload reveals (shown by JS when checkbox is checked) -->
+                <div class="doc-upload-reveal" id="doc-vacina-wrap" hidden>
+                  <p class="doc-upload-reveal__label">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Caderneta de vacinação <span style="color:var(--c-text-3);font-weight:400;font-style:italic;">— obrigatório</span>
+                  </p>
+                  <p class="doc-upload-reveal__hint">Envie foto ou PDF da caderneta (frente + página com as vacinas aplicadas). Formatos aceitos: JPG, PNG, PDF. Máx. 5 MB.</p>
+                  <input type="file" id="doc-vacina" name="doc-vacina" accept="image/*,.pdf" required />
+                </div>
+
+                <div class="doc-upload-reveal" id="doc-castracao-wrap" hidden>
+                  <p class="doc-upload-reveal__label">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Atestado de castração <span style="color:var(--c-text-3);font-weight:400;font-style:italic;">— obrigatório</span>
+                  </p>
+                  <p class="doc-upload-reveal__hint">Envie o atestado emitido pelo médico veterinário responsável. Formatos aceitos: JPG, PNG, PDF. Máx. 5 MB.</p>
+                  <input type="file" id="doc-castracao" name="doc-castracao" accept="image/*,.pdf" required />
+                </div>
+
                 <label class="check-item">
                   <input type="checkbox" name="vermifugado" />
                   <span class="check-box" aria-hidden="true"></span>
@@ -340,7 +435,70 @@
 
     <script src="./src/js/app.js" type="module"></script>
     <script>
-      // Reveal special-condition description field and build live tag preview
+      // ── Helpers
+      function currentDonorType() {
+        return document.querySelector('input[name="tipo-doador"]:checked')?.value ?? '';
+      }
+
+      // ── Donor-type selector: ONG / Protetor conditional reveals
+      const donorRadios    = document.querySelectorAll('input[name="tipo-doador"]');
+      const docProtWrap    = document.getElementById('doc-protetor-wrap');
+      const docProtInput   = document.getElementById('doc-protetor');
+      const waFieldWrap    = document.getElementById('whatsapp-field-wrap');
+      const waInput        = document.getElementById('whatsapp-doador');
+      const ongContactWrap = document.getElementById('ong-link-field-wrap');
+      const ongContactInput= document.getElementById('ong-link-contact');
+
+      // Doc-upload inputs (needed for cross-reference with donor type)
+      const docVacinaWrap  = document.getElementById('doc-vacina-wrap');
+      const docVacinaInput = document.getElementById('doc-vacina');
+      const docCastWrap    = document.getElementById('doc-castracao-wrap');
+      const docCastInput   = document.getElementById('doc-castracao');
+      const chkVacinado    = document.getElementById('chk-vacinado');
+      const chkCastrado    = document.getElementById('chk-castrado');
+
+      function syncDocUploads() {
+        const isOng = currentDonorType() === 'ong';
+        // Vacinado doc
+        const showVacina = !!(chkVacinado?.checked && !isOng);
+        if (docVacinaWrap) docVacinaWrap.hidden = !showVacina;
+        if (docVacinaInput) docVacinaInput.required = showVacina;
+        // Castrado doc
+        const showCast = !!(chkCastrado?.checked && !isOng);
+        if (docCastWrap) docCastWrap.hidden = !showCast;
+        if (docCastInput) docCastInput.required = showCast;
+      }
+
+      function handleDonorTypeChange() {
+        const val = currentDonorType();
+        const isOng = val === 'ong';
+
+        // Protetor doc
+        docProtWrap.hidden = val !== 'protetor-registrado';
+        if (docProtInput) docProtInput.required = val === 'protetor-registrado';
+
+        // WhatsApp vs ONG link in Contato section
+        waFieldWrap.hidden = isOng;
+        if (waInput) waInput.required = !isOng;
+        if (ongContactWrap)  ongContactWrap.hidden  = !isOng;
+        if (ongContactInput) ongContactInput.required = isOng;
+
+        // Re-evaluate doc uploads (ONG = never required)
+        syncDocUploads();
+      }
+
+      donorRadios.forEach(r => r.addEventListener('change', handleDonorTypeChange));
+
+      // ── Doc-upload toggles for vacinado / castrado (respect donor type)
+      if (chkVacinado) {
+        chkVacinado.addEventListener('change', syncDocUploads);
+      }
+
+      if (chkCastrado) {
+        chkCastrado.addEventListener('change', syncDocUploads);
+      }
+
+      // ── Reveal special-condition description field and build live tag preview
       const specialCheck = document.getElementById('tag-especial');
       const descWrap     = document.getElementById('especial-desc-wrap');
       const descInput    = document.getElementById('especial-desc');
