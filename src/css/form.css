@@ -274,6 +274,42 @@ textarea { resize: vertical; min-height: 110px; }
 }
 .form-success__desc { font-size: var(--text-md); color: var(--c-text-2); }
 
+
+/* termos de uso */
+.modal-termos-uso {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--c-surface-raised);
+  border-radius: var(--r-2xl);
+  padding: clamp(var(--s-6), 5vw, var(--s-12));
+  gap: var(--s-10);
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.modal-termos-uso:hover {
+  border: 1px solid var(--c-primary);
+}
+
+.modal-content h2 {
+  color: rgba(224, 117, 53, 0.28);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Responsive */
 @media (max-width: 600px) {
   .form-row,
