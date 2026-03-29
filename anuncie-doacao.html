@@ -393,7 +393,7 @@
               <button type="submit" class="btn btn-primary btn-lg">
                 Publicar Anúncio
               </button>
-              <p class="form-note">Ao publicar você concorda com nossos <a href="#" id="open-terms">Termos de Uso</a> e confirma que é o responsável pelo gatinho.</p>
+              <p class="form-note">Ao publicar você concorda com nossos <a href="#" id="open-terms" class="open-terms">Termos de Uso</a> e confirma que é o responsável pelo gatinho.</p>
             </div>
 
           </form>
@@ -532,8 +532,9 @@
     </script>
 
     <!-- modal de termos de uso -->
-     <div class="modal-termos-uso">
+     <div class="modal-termos-uso" style="display: none;">
       <div class="modal-content">
+        <button type="button" class="btn-fechar-modal" id="btn-fechar-modal">X</button>
         <h2>Termos de Compromisso LoveCats</h2>
           <p>Ao publicar este anúncio, você declara estar ciente e de acordo que:</p>
           <ul>
