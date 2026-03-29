@@ -275,28 +275,26 @@ textarea { resize: vertical; min-height: 110px; }
 .form-success__desc { font-size: var(--text-md); color: var(--c-text-2); }
 
 
+
+
+
 /* termos de uso */
 .modal-termos-uso {
   display: flex;
- /*  position: fixed; */
+  position: fixed;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: rgba(20, 20, 20, 0.85);
-  border-radius: var(--r-2xl);
   padding: 2rem;
-  cursor: pointer;
   transition: opacity .3s ease-in-out;
   z-index: 9999;
+  inset: 0;
 }
-.modal-termos-uso:hover {
-  border: 1px solid var(--c-primary);
-}
-
 
 .modal-termos-uso .modal-content {
   position: relative;
-  background-color: var(--c-bg-2, #23272f);
+  background: var(--c-bg-2, #23272f);
   color: var(--c-text-1, #fff);
   max-width: 490px;
   width: 100%;
@@ -304,6 +302,11 @@ textarea { resize: vertical; min-height: 110px; }
   border-radius: 1.2rem;
   padding: 2.5rem 2rem;
   box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  animation: modalOpen 0.3s;
+}
+@keyframes modalOpen {
+  from { transform: translateY(40px) scale(0.98); opacity: 0;} 
+  to { transform: translateY(0) scale(1); opacity: 1;}
 }
 
 .modal-content h2 {
@@ -328,7 +331,6 @@ textarea { resize: vertical; min-height: 110px; }
 .modal-content li {
   color: var(--c-text-2);
   margin-bottom: 0.7rem;
-  /* font-size: 1rem; */
 }
 
 .modal-content strong {
