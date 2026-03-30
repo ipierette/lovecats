@@ -401,6 +401,22 @@
       </div>
     </main>
 
+    <!-- modal de termos de uso -->
+     <div class="modal-termos-uso" id="modal-termos-uso" style="display: none;">
+      <div class="modal-content">
+        <button type="button" class="btn-fechar-modal" id="btn-fechar-modal">X</button>
+        <h2>Termos de Compromisso LoveCats</h2>
+          <p>Ao publicar este anúncio, você declara estar ciente e de acordo que:</p>
+          <ul>
+            <li><strong>Doação Gratuita:</strong> É expressamente proibida a venda de animais ou a cobrança de "taxas de reserva" através desta plataforma.</li>
+            <li><strong>Veracidade:</strong> Todas as informações sobre a saúde do gatinho (vacinas, castração, exames) são verdadeiras e de sua inteira responsabilidade.</li>
+            <li><strong>Responsabilidade Legal:</strong> Você confirma que é o tutor legal ou resgatista autorizado a doar o animal e que não está infringindo nenhuma lei ambiental ou de maus-tratos.</li>
+            <li><strong>Uso de Dados:</strong> Seus dados de contato (WhatsApp/E-mail) serão exibidos publicamente para que possíveis adotantes entrem em contato.</li>
+            <li><strong>Segurança:</strong> A LoveCats é uma ponte de conexão. Recomendamos sempre encontrar o adotante em local público e seguro para a entrega do animal.</li>
+          </ul>
+      </div>
+     </div>
+
     <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-grid container">
@@ -419,7 +435,7 @@
             <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
             <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
             <li><a href="./sobre.html">Sobre Nós</a></li>
-            <li><a href="#" id="open-terms">Termos de uso</a></li>
+            <li><a href="#" id="link-open-terms">Termos de uso</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -529,22 +545,28 @@
           }
         });
       }
-    </script>
 
-    <!-- modal de termos de uso -->
-     <div class="modal-termos-uso" style="display: none;">
-      <div class="modal-content">
-        <button type="button" class="btn-fechar-modal" id="btn-fechar-modal">X</button>
-        <h2>Termos de Compromisso LoveCats</h2>
-          <p>Ao publicar este anúncio, você declara estar ciente e de acordo que:</p>
-          <ul>
-            <li><strong>Doação Gratuita:</strong> É expressamente proibida a venda de animais ou a cobrança de "taxas de reserva" através desta plataforma.</li>
-            <li><strong>Veracidade:</strong> Todas as informações sobre a saúde do gatinho (vacinas, castração, exames) são verdadeiras e de sua inteira responsabilidade.</li>
-            <li><strong>Responsabilidade Legal:</strong> Você confirma que é o tutor legal ou resgatista autorizado a doar o animal e que não está infringindo nenhuma lei ambiental ou de maus-tratos.</li>
-            <li><strong>Uso de Dados:</strong> Seus dados de contato (WhatsApp/E-mail) serão exibidos publicamente para que possíveis adotantes entrem em contato.</li>
-            <li><strong>Segurança:</strong> A LoveCats é uma ponte de conexão. Recomendamos sempre encontrar o adotante em local público e seguro para a entrega do animal.</li>
-          </ul>
-      </div>
-     </div>
+      //termos de uso
+      const openTerms = document.getElementById("open-terms");
+      const modalTermosUso = document.getElementById("modal-termos-uso");
+      const btnFecharModal = document.getElementById("btn-fechar-modal");
+      const linkOpenTermos = document.getElementById("link-open-terms");
+      
+      openTerms.addEventListener("click", function(e) {
+        e.preventDefault();
+        modalTermosUso.style.display = "flex";
+      });
+
+      btnFecharModal.addEventListener("click", function(e) {
+        e.preventDefault();
+        modalTermosUso.style.display = "none";
+      });
+
+      linkOpenTermos.addEventListener("click", function(e) {
+        e.preventDefault();
+        modalTermosUso.style.display = "flex";
+      });
+
+    </script>
   </body>
 </html>
