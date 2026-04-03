@@ -133,8 +133,8 @@
 
 .guide-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: var(--s-5);
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--s-4);
 }
 
 .guide-card {
@@ -217,6 +217,10 @@
 }
 .guide-card:hover .guide-card__link { gap: var(--s-2); }
 .guide-card__link svg { stroke: currentColor; fill: none; flex-shrink: 0; }
+
+/* Cards servem como navegação — descrições vivem nos artigos */
+.guide-card__desc,
+.guide-card__link { display: none; }
 
 /* ── Two-column page layout: TOC + Articles ────────────────── */
 .guide-page-layout {
@@ -316,6 +320,13 @@
   margin-bottom: var(--s-1);
 }
 
+.guide-read-time {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--c-text-3);
+}
+
 .guide-section__title {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 3vw, 1.9rem);
@@ -337,6 +348,14 @@
   line-height: 1.8;
   text-align: justify;
   hyphens: auto;
+}
+
+.guide-content__lead {
+  font-size: clamp(0.975rem, 1.4vw, 1.075rem);
+  color: var(--c-text-1);
+  line-height: 1.85;
+  font-weight: 400;
+  text-align: left !important;
 }
 
 .guide-content h3 {
@@ -545,12 +564,14 @@
   }
 }
 
-@media (max-width: 640px) {
-  .guide-cards { grid-template-columns: 1fr 1fr; }
+@media (max-width: 680px) {
+  .guide-cards { grid-template-columns: repeat(3, 1fr); }
+  .guide-card:last-child:nth-child(3n+2) { grid-column: 2; }
 }
 
 @media (max-width: 420px) {
-  .guide-cards { grid-template-columns: 1fr; }
+  .guide-cards { grid-template-columns: 1fr 1fr; }
+  .guide-card:last-child:nth-child(2n+1) { grid-column: 1 / -1; }
 }
 
 /* ══════════════════════════════════════════════════════════════
