@@ -152,6 +152,11 @@
   transition: border-color 220ms, background 220ms, transform 220ms;
   flex-shrink: 0;
 }
+img.card-avatar {
+  object-fit: cover;
+  object-position: center top;
+  font-size: 0;
+}
 .team-card:hover .card-avatar {
   border-color: var(--c-primary);
   background: color-mix(in srgb, var(--c-primary) 24%, var(--c-surface));
@@ -165,6 +170,7 @@
   color: var(--c-text-1);
   line-height: 1.3;
   margin: 0;
+  min-height: calc(var(--text-sm, 0.875rem) * 1.3 * 2);
 }
 
 .card-role {
@@ -184,7 +190,8 @@
 .card-social {
   display: flex;
   gap: var(--s-2);
-  margin-top: var(--s-1);
+  margin-top: auto;
+  padding-top: var(--s-1);
 }
 .card-social__link {
   width: 28px;
@@ -202,6 +209,14 @@
   border-color: var(--c-primary);
   color: var(--c-primary);
   background: color-mix(in srgb, var(--c-primary) 10%, transparent);
+}
+.card-social__link--portfolio {
+  border-color: color-mix(in srgb, var(--c-primary) 55%, transparent);
+  color: var(--c-primary);
+  background: color-mix(in srgb, var(--c-primary) 10%, transparent);
+}
+.card-social__link--portfolio:hover {
+  background: color-mix(in srgb, var(--c-primary) 22%, transparent);
 }
 
 /* Shared: tags */

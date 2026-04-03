@@ -227,6 +227,12 @@
   align-items: center;
 }
 
+.responsible__figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
 .responsible__image {
   border-radius: var(--r-2xl);
   overflow: hidden;
@@ -238,10 +244,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   transition: transform var(--dur-slow) var(--ease-out);
 }
 
 .responsible__image:hover img { transform: scale(1.04); }
+
+.responsible__caption {
+  font-size: var(--text-xs);
+  color: var(--c-text-3);
+  font-style: italic;
+  text-align: center;
+  line-height: 1.5;
+  padding-inline: var(--s-2);
+  opacity: 0.75;
+}
 
 .responsible__content { display: flex; flex-direction: column; gap: var(--s-5); }
 
@@ -315,6 +332,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
 }
 
 .responsible__content { display: flex; flex-direction: column; gap: var(--s-5); }

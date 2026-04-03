@@ -28,9 +28,24 @@ export function initAnimations() {
 
 /**
  * initCounters — animates [data-count] elements from 0 to their target value.
- * Call this after the hero / metrics section is in the DOM.
+ * If live values are passed (e.g. fetched from Supabase), they override the
+ * static data-count attributes before the animation starts.
+ *
+ * @param {{ adotados?: number, disponiveis?: number, mes?: number }} [live]
  */
-export function initCounters() {
+export function initCounters(live = {}) {
+  // Override static data-count values with live DB data when available
+  const overrides = [
+    { id: 'metric-adotados',   value: live.adotados    },
+    { id: 'metric-disponiveis', value: live.disponiveis },
+    { id: 'metric-mes',        value: live.mes         },
+  ];
+  overrides.forEach(({ id, value }) => {
+    if (value == null) return;
+    const el = document.getElementById(id);
+    if (el) { el.dataset.count = value; el.textContent = value; }
+  });
+
   const counters = document.querySelectorAll('[data-count]');
   if (!counters.length) return;
 

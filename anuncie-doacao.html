@@ -82,6 +82,13 @@
           <p class="section-eyebrow">Doe com amor</p>
           <h1 class="section-title">Anuncie a <em>Doação</em></h1>
           <p class="section-desc">Preencha as informações abaixo para publicar o anúncio de doação do seu gatinho. O processo é simples e gratuito.</p>
+          <div class="announce-page__meta" aria-hidden="true">
+            <span>6 etapas</span>
+            <span>·</span>
+            <span>Gratuito</span>
+            <span>·</span>
+            <span>~5 minutos</span>
+          </div>
         </div>
 
         <div class="form-card">
@@ -93,6 +100,10 @@
             </div>
             <h2 class="form-success__title">Anúncio publicado!</h2>
             <p class="form-success__desc">Seu gatinho já está na vitrine da LoveCats. Boa sorte na busca pelo lar perfeito!</p>
+            <div class="form-success__email-tip" id="email-whitelist-tip" role="alert">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0 1.1.9 2 2 2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <p>Para garantir o recebimento dos nossos avisos, adicione <strong>equipelovecats@gmail.com</strong> à sua lista de contatos.</p>
+            </div>
             <a href="./adote-um-gatinho.html" class="btn btn-primary">Ver todos os gatinhos</a>
           </div>
 
@@ -105,8 +116,8 @@
 
               <div class="form-row">
                 <div class="field">
-                  <label for="nome-gatinho" class="field-required">Nome do gatinho</label>
-                  <input type="text" id="nome-gatinho" name="nome" placeholder="Ex: Bolinha" required />
+                  <label for="nome-gatinho">Nome do gatinho</label>
+                  <input type="text" id="nome-gatinho" name="nome" placeholder="Ex: Bolinha (deixe em branco para &quot;Sem nome&quot;)" maxlength="60" autocomplete="off" />
                 </div>
                 <div class="field">
                   <label for="cor-gatinho" class="field-required">Padrão de Pelagem</label>
@@ -136,139 +147,23 @@
                   </div>
                 </div>
                 <div class="field">
-                  <label for="idade-gatinho" class="field-required">Idade</label>
-                  <input type="text" id="idade-gatinho" name="idade" placeholder="Ex: 3 meses" required />
-                </div>
-              </div>
-            </fieldset>
-
-            <!-- Descricao -->
-            <fieldset class="form-section">
-              <legend class="form-section__title">Descricao</legend>
-              <div class="field field--full">
-                <label for="descricao">Conte sobre o gatinho</label>
-                <textarea id="descricao" name="descricao" placeholder="Personalidade, habitos, historinha..."></textarea>
-                <button type="button" class="btn-ai" aria-label="Gerar descricao com IA">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                  Gerar com IA
-                </button>
-              </div>
-            </fieldset>
-
-            <!-- Fotos -->
-            <fieldset class="form-section">
-              <legend class="form-section__title">Fotos do gatinho</legend>
-              <div class="field field--full">
-                <label>Adicione ate 6 fotos (JPG, PNG, WebP &mdash; max 5 MB cada)</label>
-                <div class="dropzone" role="button" tabindex="0" aria-label="Clique ou arraste imagens aqui">
-                  <input class="dropzone__input" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-label="Selecionar imagens" />
-                  <div class="dropzone__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
-                      <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
-                    </svg>
-                  </div>
-                  <p class="dropzone__title">Arraste suas fotos aqui</p>
-                  <p class="dropzone__hint">ou clique para selecionar arquivos</p>
-                  <span class="dropzone__browse">Escolher fotos</span>
-                </div>
-                <div class="upload-preview" aria-live="polite" aria-label="Fotos adicionadas"></div>
-                <p class="upload-status" aria-live="polite"></p>
-              </div>
-            </fieldset>
-
-            <!-- Tipo de doador -->
-            <fieldset class="form-section">
-              <legend class="form-section__title">Quem est&aacute; doando?</legend>
-              <p class="form-section__hint">Isso ajuda os adotantes a entender a origem do gatinho e define como o contato ser&aacute; feito.</p>
-              <div class="donor-type-grid">
-
-                <label class="donor-type-card">
-                  <input type="radio" name="tipo-doador" value="resgate-informal" required />
-                  <span class="donor-type-card__inner">
-                    <span class="donor-type-card__icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                    </span>
-                    <span class="donor-type-card__title">Resgate Informal</span>
-                    <span class="donor-type-card__desc">Pessoa f&iacute;sica que resgatou ou est&aacute; cuidando temporariamente do gatinho</span>
-                  </span>
-                </label>
-
-                <label class="donor-type-card">
-                  <input type="radio" name="tipo-doador" value="protetor-registrado" required />
-                  <span class="donor-type-card__inner">
-                    <span class="donor-type-card__icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </span>
-                    <span class="donor-type-card__title">Protetor Registrado</span>
-                    <span class="donor-type-card__desc">Protetor com registro em entidade de prote&ccedil;&atilde;o animal ou prefeitura</span>
-                  </span>
-                </label>
-
-                <label class="donor-type-card">
-                  <input type="radio" name="tipo-doador" value="ong" required />
-                  <span class="donor-type-card__inner">
-                    <span class="donor-type-card__icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-                    </span>
-                    <span class="donor-type-card__title">ONG</span>
-                    <span class="donor-type-card__desc">Organiza&ccedil;&atilde;o sem fins lucrativos com CNPJ e site ou p&aacute;gina pr&oacute;prios</span>
-                  </span>
-                </label>
-
-              </div>
-
-              <!-- Protetor: comprovante de registro (revelado via JS) -->
-              <div class="doc-upload-reveal" id="doc-protetor-wrap" hidden>
-                <p class="doc-upload-reveal__label">
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                  Comprovante de registro como protetor <span style="color:var(--c-text-3);font-weight:400;font-style:italic;">&mdash; obrigat&oacute;rio</span>
-                </p>
-                <p class="doc-upload-reveal__hint">Envie cart&atilde;o, certificado, of&iacute;cio ou qualquer documento que comprove seu registro como protetor animal. Formatos: JPG, PNG, PDF. M&aacute;x. 5 MB.</p>
-                <input type="file" id="doc-protetor" name="doc-protetor" accept="image/*,.pdf" />
-              </div>
-            </fieldset>
-
-            <!-- Contato -->
-            <fieldset class="form-section">
-              <legend class="form-section__title">Contato do doador</legend>
-              <div class="form-row">
-                <div class="field">
-                  <label for="nome-doador" class="field-required">Seu nome</label>
-                  <input type="text" id="nome-doador" name="nome-doador" placeholder="Seu nome completo" required />
-                </div>
-                <div class="field">
-                  <label for="cidade-doador" class="field-required">Cidade / Estado</label>
-                  <input type="text" id="cidade-doador" name="cidade" placeholder="Ex: Sao Paulo, SP" required />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="field" id="whatsapp-field-wrap">
-                  <label for="whatsapp-doador" class="field-required">WhatsApp</label>
-                  <input type="tel" id="whatsapp-doador" name="whatsapp" placeholder="(11) 99999-9999" required />
-                </div>
-                <div class="field" id="ong-link-field-wrap" hidden>
-                  <label for="ong-link-contact" class="field-required">Link do anúncio na ONG</label>
-                  <input type="url" id="ong-link-contact" name="ong-link-contact" placeholder="https://suaong.com.br/adocao/nome-do-gato" />
-                </div>
-                <div class="field">
                   <div class="field-label-row">
-                    <label for="email-doador" class="field-required">E-mail</label>
-                    <button type="button" class="tip-btn" aria-label="Por que o e-mail é importante para protetores e ONGs?" tabindex="0">
+                    <label for="idade-gatinho" class="field-required">Idade</label>
+                    <button type="button" class="tip-btn" aria-label="Dica sobre a idade" tabindex="0">
                       ?
                       <span class="tip-popup" role="tooltip">
-                        Para <strong>protetores registrados</strong> e <strong>ONGs</strong>, a LoveCats envia um e-mail semanal pedindo confirmação sobre a disponibilidade do gatinho. Isso mantém os anúncios sempre atualizados para os adotantes.
+                        Idade aproximada est&aacute; &oacute;timo! Ex: &ldquo;2 a 3 meses&rdquo;, &ldquo;cerca de 1 ano&rdquo; ou &ldquo;5 anos&rdquo;.
                       </span>
                     </button>
                   </div>
-                  <input type="email" id="email-doador" name="email" placeholder="voce@email.com" required />
+                  <input type="text" id="idade-gatinho" name="idade" placeholder="Ex: 3 meses (aproximada está ok)" maxlength="30" required />
                 </div>
               </div>
             </fieldset>
 
-            <!-- Saude -->
+            <!-- Saúde e características -->
             <fieldset class="form-section">
-              <legend class="form-section__title">Saude</legend>
+              <legend class="form-section__title">Saúde e características</legend>
               <div class="checkbox-grid">
 
                 <!-- Vacinado + tooltip + doc upload -->
@@ -367,10 +262,10 @@
                   </span>
                 </label>
 
-                <!-- Campo de descricao da condicao especial (revelado via JS) -->
+                <!-- Campo de descrição da condição especial (revelado via JS) -->
                 <div class="special-condition-wrap" id="especial-desc-wrap" hidden>
                   <label for="especial-desc" class="field-required" style="font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--c-text-2);">
-                    Descreva a condicao especial
+                    Descreva a condição especial
                   </label>
                   <input
                     type="text"
@@ -379,11 +274,136 @@
                     placeholder="Ex: Cego do olho direito, usa cadeira de rodas..."
                     maxlength="100"
                   />
-                  <p class="special-condition-hint">Uma tag personalizada sera criada automaticamente com base na sua descricao.</p>
+                  <p class="special-condition-hint">Uma tag personalizada será criada automaticamente com base na sua descrição.</p>
                   <div class="custom-tag-preview" id="custom-tag-preview" hidden>
                     <span class="badge badge-special" id="custom-tag-badge"></span>
                     <small>Essa tag aparecera no perfil do gatinho</small>
                   </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Descrição -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Descrição</legend>
+              <div class="field field--full">
+                <label for="descricao">Conte sobre o gatinho</label>
+                <textarea id="descricao" name="descricao" placeholder="Personalidade, hábitos, historinha..." maxlength="800"></textarea>
+                <button type="button" class="btn-ai" aria-label="Gerar descrição com IA">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  Gerar com IA
+                </button>
+              </div>
+            </fieldset>
+
+            <!-- Fotos -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Fotos do gatinho</legend>
+              <div class="field field--full">
+                <label>Adicione ate 6 fotos (JPG, PNG, WebP &mdash; max 5 MB cada)</label>
+                <div class="dropzone" role="button" tabindex="0" aria-label="Clique ou arraste imagens aqui">
+                  <input class="dropzone__input" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-label="Selecionar imagens" />
+                  <div class="dropzone__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
+                      <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+                    </svg>
+                  </div>
+                  <p class="dropzone__title">Arraste suas fotos aqui</p>
+                  <p class="dropzone__hint">ou clique para selecionar arquivos</p>
+                  <span class="dropzone__browse">Escolher fotos</span>
+                </div>
+                <div class="upload-preview" aria-live="polite" aria-label="Fotos adicionadas"></div>
+                <p class="upload-status" aria-live="polite"></p>
+              </div>
+            </fieldset>
+
+            <!-- Quem está doando? -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Quem est&aacute; doando?</legend>
+              <p class="form-section__hint">Isso ajuda os adotantes a entender a origem do gatinho e define como o contato ser&aacute; feito.</p>
+              <div class="donor-type-grid">
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="resgate-informal" required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">Resgate Informal</span>
+                    <span class="donor-type-card__desc">Pessoa f&iacute;sica que resgatou ou est&aacute; cuidando temporariamente do gatinho</span>
+                  </span>
+                </label>
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="protetor-registrado" required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">Protetor Registrado</span>
+                    <span class="donor-type-card__desc">Protetor com registro em entidade de prote&ccedil;&atilde;o animal ou prefeitura</span>
+                  </span>
+                </label>
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="ong" required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">ONG</span>
+                    <span class="donor-type-card__desc">Organiza&ccedil;&atilde;o sem fins lucrativos com CNPJ e site ou p&aacute;gina pr&oacute;prios</span>
+                  </span>
+                </label>
+
+              </div>
+
+              <!-- Protetor: comprovante de registro (revelado via JS) -->
+              <div class="doc-upload-reveal" id="doc-protetor-wrap" hidden>
+                <p class="doc-upload-reveal__label">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Comprovante de registro como protetor <span style="color:var(--c-text-3);font-weight:400;font-style:italic;">&mdash; obrigat&oacute;rio</span>
+                </p>
+                <p class="doc-upload-reveal__hint">Envie cart&atilde;o, certificado, of&iacute;cio ou qualquer documento que comprove seu registro como protetor animal. Formatos: JPG, PNG, PDF. M&aacute;x. 5 MB.</p>
+                <input type="file" id="doc-protetor" name="doc-protetor" accept="image/*,.pdf" />
+              </div>
+            </fieldset>
+
+            <!-- Contato -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Contato do doador</legend>
+              <div class="form-row">
+                <div class="field">
+                  <label for="nome-doador" class="field-required">Seu nome</label>
+                  <input type="text" id="nome-doador" name="nome-doador" placeholder="Seu nome completo" maxlength="100" autocomplete="name" required />
+                </div>
+                <div class="field">
+                  <label for="cidade-doador" class="field-required">Cidade / Estado</label>
+                  <input type="text" id="cidade-doador" name="cidade" placeholder="Ex: Sao Paulo, SP" maxlength="80" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field" id="whatsapp-field-wrap">
+                  <label for="whatsapp-doador" class="field-required">WhatsApp</label>
+                  <input type="tel" id="whatsapp-doador" name="whatsapp" placeholder="(11) 99999-9999" maxlength="20" autocomplete="tel" pattern="[\d\s()\-+]{8,20}" required />
+                </div>
+                <div class="field" id="ong-link-field-wrap" hidden>
+                  <label for="ong-link-contact" class="field-required">Link do anúncio na ONG</label>
+                  <input type="url" id="ong-link-contact" name="ong-link-contact" placeholder="https://suaong.com.br/adocao/nome-do-gato" maxlength="300" />
+                </div>
+                <div class="field">
+                  <div class="field-label-row">
+                    <label for="email-doador" id="email-label" class="field-required">E-mail</label>
+                    <button type="button" class="tip-btn" aria-label="Por que o e-mail é importante?" tabindex="0">
+                      ?
+                      <span class="tip-popup" role="tooltip">
+                        Para <strong>protetores registrados</strong> e <strong>resgates informais</strong>, a LoveCats envia um e-mail semanal pedindo confirmação sobre a disponibilidade do gatinho. <strong>ONGs</strong> são verificadas automaticamente pelo nosso sistema — e-mail não obrigatório.
+                      </span>
+                    </button>
+                  </div>
+                  <input type="email" id="email-doador" name="email" placeholder="voce@email.com" autocomplete="email" />
+                  <p class="field-hint" id="email-ong-note" hidden>ONGs são verificadas automaticamente — e-mail opcional.</p>
                 </div>
               </div>
             </fieldset>
@@ -402,20 +422,142 @@
     </main>
 
     <!-- modal de termos de uso -->
-     <div class="modal-termos-uso" id="modal-termos-uso" style="display: none;">
-      <div class="modal-content">
-        <button type="button" class="btn-fechar-modal" id="btn-fechar-modal">X</button>
-        <h2>Termos de Compromisso LoveCats</h2>
-          <p>Ao publicar este anúncio, você declara estar ciente e de acordo que:</p>
+    <div class="modal-termos-uso" id="modal-termos-uso" role="dialog" aria-modal="true" aria-labelledby="modal-terms-title" style="display:none;">
+      <div class="modal-termos-panel">
+        <div class="modal-termos-header">
+          <div>
+            <span class="modal-termos-badge">Documento Legal</span>
+            <h2 id="modal-terms-title" class="modal-termos-title">Termos de Uso &ndash; LoveCats</h2>
+          </div>
+          <button type="button" class="btn-fechar-modal" id="btn-fechar-modal" aria-label="Fechar">&times;</button>
+        </div>
+        <div class="modal-termos-body">
+          <p class="terms-updated">Última atualização: 03 de abril de 2026</p>
+          <p>Bem-vindo(a) à LoveCats. Estes Termos de Uso estabelecem as regras para utilização da plataforma, que conecta pessoas interessadas em adotar gatos a usuários que disponibilizam animais para adoção. Ao acessar ou utilizar a plataforma, você concorda com estes termos. Caso não concorde, recomendamos que não utilize o serviço.</p>
+
+          <hr>
+          <h3>1. Sobre a Plataforma</h3>
+          <p>A LoveCats é uma plataforma digital aberta que atua exclusivamente como intermediadora de contato entre usuários, não sendo responsável direta pela disponibilização, verificação ou entrega dos animais anunciados.</p>
+          <p>A plataforma:</p>
           <ul>
-            <li><strong>Doação Gratuita:</strong> É expressamente proibida a venda de animais ou a cobrança de "taxas de reserva" através desta plataforma.</li>
-            <li><strong>Veracidade:</strong> Todas as informações sobre a saúde do gatinho (vacinas, castração, exames) são verdadeiras e de sua inteira responsabilidade.</li>
-            <li><strong>Responsabilidade Legal:</strong> Você confirma que é o tutor legal ou resgatista autorizado a doar o animal e que não está infringindo nenhuma lei ambiental ou de maus-tratos.</li>
-            <li><strong>Uso de Dados:</strong> Seus dados de contato (WhatsApp/E-mail) serão exibidos publicamente para que possíveis adotantes entrem em contato.</li>
-            <li><strong>Segurança:</strong> A LoveCats é uma ponte de conexão. Recomendamos sempre encontrar o adotante em local público e seguro para a entrega do animal.</li>
+            <li>Não é uma ONG;</li>
+            <li>Não realiza visitas domiciliares;</li>
+            <li>Não verifica identidade, antecedentes ou documentos dos usuários;</li>
+            <li>Não autentica documentos apresentados nos anúncios;</li>
+            <li>Não participa das negociações ou do processo de adoção.</li>
           </ul>
+          <p>Os anúncios são publicados por usuários independentes, que podem ser protetores, tutores ou organizações. Em alguns casos, o usuário poderá ser redirecionado para plataformas externas.</p>
+
+          <hr>
+          <h3>2. Responsabilidade dos Usuários</h3>
+          <p>Ao utilizar a plataforma, você declara estar ciente de que:</p>
+          <ul>
+            <li>Toda interação ocorre por sua conta e risco;</li>
+            <li>A veracidade das informações dos anúncios deve ser verificada pelo próprio usuário;</li>
+            <li>A LoveCats não se responsabiliza por informações falsas, enganosas ou incompletas;</li>
+            <li>O contato entre as partes pode ocorrer por meios externos (como WhatsApp), sem qualquer monitoramento da plataforma.</li>
+          </ul>
+          <p>O usuário compromete-se a:</p>
+          <ul>
+            <li>Agir com boa-fé;</li>
+            <li>Não publicar informações falsas ou enganosas;</li>
+            <li>Não utilizar a plataforma para fins ilícitos ou fraudulentos.</li>
+          </ul>
+
+          <hr>
+          <h3>3. Segurança na Adoção</h3>
+          <p>A LoveCats recomenda fortemente que os usuários adotem práticas de segurança, incluindo, mas não se limitando a:</p>
+          <ul>
+            <li>Nunca buscar um animal sozinho(a) em local desconhecido;</li>
+            <li>Priorizar encontros em locais públicos e durante o dia;</li>
+            <li>Solicitar fotos, vídeos e videochamadas antes de encontros presenciais;</li>
+            <li>Verificar a coerência das informações fornecidas pelo anunciante;</li>
+            <li>Não realizar qualquer tipo de pagamento para adoção;</li>
+            <li>Conferir documentos diretamente com clínicas ou profissionais responsáveis;</li>
+            <li>Compartilhar sua localização e informações do encontro com pessoas de confiança.</li>
+          </ul>
+          <p>A decisão de prosseguir com uma adoção é inteiramente do usuário.</p>
+
+          <hr>
+          <h3>4. Documentação e Informações dos Animais</h3>
+          <p>A plataforma pode solicitar documentos como:</p>
+          <ul>
+            <li>Comprovantes de vacinação;</li>
+            <li>Comprovantes de castração;</li>
+            <li>Exames laboratoriais;</li>
+            <li>Registro de protetores.</li>
+          </ul>
+          <p>Entretanto, a LoveCats não garante a autenticidade desses documentos. A verificação deve ser feita diretamente pelo adotante junto às fontes emissoras.</p>
+
+          <hr>
+          <h3>5. Encontros e Adoção</h3>
+          <p>A LoveCats não participa da entrega do animal nem garante a segurança dos encontros.</p>
+          <p>O usuário é integralmente responsável por:</p>
+          <ul>
+            <li>Avaliar as condições do animal;</li>
+            <li>Verificar o ambiente em que ele está inserido;</li>
+            <li>Decidir pela continuidade ou não da adoção.</li>
+          </ul>
+          <p>A plataforma não se responsabiliza por quaisquer danos, prejuízos ou incidentes decorrentes desses encontros.</p>
+
+          <hr>
+          <h3>6. Obrigações do Adotante</h3>
+          <p>Ao concluir uma adoção, o usuário torna-se o tutor legal do animal, assumindo total responsabilidade por:</p>
+          <ul>
+            <li>Garantir o bem-estar físico e emocional do animal;</li>
+            <li>Manter vacinação e cuidados veterinários atualizados;</li>
+            <li>Proporcionar ambiente seguro e adequado;</li>
+            <li>Não transferir a posse sem garantir um processo responsável;</li>
+            <li>Cumprir a legislação vigente sobre proteção animal.</li>
+          </ul>
+
+          <hr>
+          <h3>7. Conteúdo e Anúncios</h3>
+          <p>A LoveCats se reserva o direito de remover, a qualquer momento e sem aviso prévio, anúncios que:</p>
+          <ul>
+            <li>Apresentem indícios de fraude;</li>
+            <li>Contenham informações falsas;</li>
+            <li>Estejam em desacordo com estes termos;</li>
+            <li>Possam colocar usuários ou animais em risco.</li>
+          </ul>
+
+          <hr>
+          <h3>8. Denúncias</h3>
+          <p>Usuários podem denunciar anúncios suspeitos ou comportamentos inadequados por meio do canal oficial informado na plataforma.</p>
+          <p>As denúncias devem conter, sempre que possível:</p>
+          <ul>
+            <li>Capturas de tela do anúncio;</li>
+            <li>Registros de conversa;</li>
+            <li>Informações relevantes que auxiliem na análise.</li>
+          </ul>
+          <p>A LoveCats analisará as denúncias, mas não garante investigação completa ou resolução do caso.</p>
+
+          <hr>
+          <h3>9. Limitação de Responsabilidade</h3>
+          <p>A LoveCats não se responsabiliza por:</p>
+          <ul>
+            <li>A veracidade dos anúncios;</li>
+            <li>A conduta dos usuários;</li>
+            <li>Qualquer dano direto ou indireto decorrente do uso da plataforma;</li>
+            <li>Problemas ocorridos durante negociações, encontros ou adoções.</li>
+          </ul>
+          <p>O uso da plataforma é de inteira responsabilidade do usuário.</p>
+
+          <hr>
+          <h3>10. Modificações dos Termos</h3>
+          <p>A LoveCats poderá atualizar estes Termos de Uso a qualquer momento. Recomendamos a revisão periódica deste documento. O uso contínuo da plataforma após alterações implica concordância com os novos termos.</p>
+
+          <hr>
+          <h3>11. Disposições Gerais</h3>
+          <p>Estes Termos são regidos pelas leis brasileiras. Qualquer controvérsia será resolvida no foro da comarca do usuário ou conforme previsto em lei.</p>
+
+          <p class="terms-closing"><strong>Ao utilizar a LoveCats, você declara estar ciente e de acordo com todos os termos acima, assumindo total responsabilidade por suas ações dentro e fora da plataforma.</strong></p>
+        </div>
+        <div class="modal-termos-footer">
+          <button type="button" class="btn btn-primary" id="btn-aceitar-termos">Li e entendi</button>
+        </div>
       </div>
-     </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="site-footer">
@@ -435,7 +577,7 @@
             <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
             <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
             <li><a href="./sobre.html">Sobre Nós</a></li>
-            <li><a href="#" id="link-open-terms">Termos de uso</a></li>
+            <li><a href="./feature-api.html">API</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -446,6 +588,7 @@
       </div>
       <div class="footer-bottom container">
         <span>&copy; 2025 LoveCats. Todos os direitos reservados.</span>
+        <a href="#" id="link-open-terms" class="footer-terms-cta">Termos de Uso</a>
         <span>Feito com <span class="footer-heart" aria-label="amor">&#9829;</span> para os gatinhos.</span>
       </div>
     </footer>
@@ -498,7 +641,15 @@
         waFieldWrap.hidden = isOng;
         if (waInput) waInput.required = !isOng;
         if (ongContactWrap)  ongContactWrap.hidden  = !isOng;
-        if (ongContactInput) ongContactInput.required = isOng;
+        if (ongContactInput) { ongContactInput.required = isOng; ongContactInput.setCustomValidity(''); }
+
+        // Email: opcional para ONGs (verificadas via scraper); obrigatório para os demais
+        const emailInput   = document.getElementById('email-doador');
+        const emailLabel   = document.getElementById('email-label');
+        const emailOngNote = document.getElementById('email-ong-note');
+        if (emailInput)   { emailInput.required = !isOng; emailInput.setCustomValidity(''); }
+        if (emailLabel)   emailLabel.classList.toggle('field-required', !isOng);
+        if (emailOngNote) emailOngNote.hidden = !isOng;
 
         // Re-evaluate doc uploads (ONG = never required)
         syncDocUploads();
@@ -546,25 +697,53 @@
         });
       }
 
-      //termos de uso
-      const openTerms = document.getElementById("open-terms");
-      const modalTermosUso = document.getElementById("modal-termos-uso");
-      const btnFecharModal = document.getElementById("btn-fechar-modal");
-      const linkOpenTermos = document.getElementById("link-open-terms");
-      
-      openTerms.addEventListener("click", function(e) {
-        e.preventDefault();
-        modalTermosUso.style.display = "flex";
-      });
+      // Gerar com IA — validação dos campos do gatinho
+      const btnAi = document.querySelector('.btn-ai');
+      const aiHint = document.createElement('span');
+      aiHint.className = 'btn-ai__hint';
+      aiHint.setAttribute('role', 'alert');
+      aiHint.textContent = 'Preencha a pelagem, sexo e idade do gatinho primeiro.';
+      btnAi.insertAdjacentElement('afterend', aiHint);
 
-      btnFecharModal.addEventListener("click", function(e) {
-        e.preventDefault();
-        modalTermosUso.style.display = "none";
-      });
+      btnAi.addEventListener('click', function () {
+        const nome   = document.getElementById('nome-gatinho').value.trim() || 'Sem nome';
+        const cor    = document.getElementById('cor-gatinho').value;
+        const sexo   = document.getElementById('sexo-gatinho').value;
+        const idade  = document.getElementById('idade-gatinho').value.trim();
 
-      linkOpenTermos.addEventListener("click", function(e) {
-        e.preventDefault();
-        modalTermosUso.style.display = "flex";
+        if (!cor || !sexo || !idade) {
+          btnAi.classList.remove('btn-ai--shake');
+          void btnAi.offsetWidth; // reflow para reiniciar animação
+          btnAi.classList.add('btn-ai--shake');
+          aiHint.classList.add('btn-ai__hint--visible');
+          btnAi.addEventListener('animationend', function handler() {
+            btnAi.classList.remove('btn-ai--shake');
+            btnAi.removeEventListener('animationend', handler);
+          });
+          return;
+        }
+
+        aiHint.classList.remove('btn-ai__hint--visible');
+
+        // Coletar todas as informações disponíveis do gatinho
+        const dadosGatinho = {
+          nome,
+          cor,
+          sexo,
+          idade,
+          vacinado:        document.getElementById('chk-vacinado')?.checked  || false,
+          castrado:        document.getElementById('chk-castrado')?.checked  || false,
+          vermifugado:     document.querySelector('[name="vermifugado"]')?.checked || false,
+          microchip:       document.querySelector('[name="micropchip"]')?.checked || false,
+          fivFelv:         document.querySelector('[name="fiv-felv"]')?.checked   || false,
+          socializavel:    document.querySelector('[name="socializavel"]')?.checked || false,
+          idoso:           document.getElementById('tag-idoso')?.checked    || false,
+          condicaoEspecial: document.getElementById('tag-especial')?.checked || false,
+          condicaoEspecialDesc: document.getElementById('especial-desc')?.value.trim() || null,
+        };
+
+        // TODO: chamar /api/gerar-descricao com dadosGatinho
+        console.log('Gerar descrição:', dadosGatinho);
       });
 
     </script> 

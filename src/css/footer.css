@@ -91,6 +91,22 @@
 
 .footer-heart { color: var(--c-primary); }
 
+.footer-terms-cta {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--c-primary);
+  padding: 3px var(--s-3);
+  border: 1px solid rgba(224, 117, 53, 0.35);
+  border-radius: var(--r-full);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--dur-fast), border-color var(--dur-fast);
+}
+.footer-terms-cta:hover {
+  background: var(--c-primary-dim);
+  border-color: var(--c-primary);
+}
+
 @media (max-width: 860px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
