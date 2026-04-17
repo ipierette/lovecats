@@ -1,5 +1,6 @@
-import { GoogleGenAI } from '@google/genai';
 import { GenerateDescriptionSchema } from './_lib/schemas.js';
+
+const GEMINI_API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent';
 
 const PELAGEM_LABEL = {
   solido:     'sólido (cor uniforme)',
@@ -12,7 +13,7 @@ const PELAGEM_LABEL = {
 
 /**
  * POST /api/generate-description
- * Gera uma descrição de adoção usando o Gemini.
+ * Gera uma descrição de adoção usando o Gemini via REST (sem SDK).
  * Mínimo obrigatório: padrao_pelagem, sexo, idade.
  */
 export default async function handler(req, res) {
@@ -66,22 +67,35 @@ Instruções:
 - Termine com um convite gentil à adoção responsável`;
 
   try {
-    const ai       = new GoogleGenAI({ apiKey });
-    const response = await ai.models.generateContent({
-      model:    'gemini-2.0-flash-lite',
-      contents: prompt,
+    const geminiRes = await fetch(`${GEMINI_API_BASE}?key=${apiKey}`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { maxOutputTokens: 512, temperature: 0.8 },
+      }),
     });
-    const text = response.text?.trim();
+
+    if (!geminiRes.ok) {
+      const errorBody = await geminiRes.json().catch(() => ({}));
+      const code    = errorBody?.error?.code ?? geminiRes.status;
+      const message = errorBody?.error?.message ?? '';
+      console.error('[generate-description] Gemini API error:', code, message);
+      if (code === 429 || message.includes('RESOURCE_EXHAUSTED')) {
+        return res.status(429).json({ error: 'Limite de uso da IA atingido. Aguarde alguns minutos e tente novamente, ou escreva a descrição manualmente.' });
+      }
+      return res.status(500).json({ error: 'Falha ao gerar descrição com IA' });
+    }
+
+    const data = await geminiRes.json();
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
     if (!text) return res.status(500).json({ error: 'IA retornou resposta vazia' });
     return res.status(200).json({ description: text });
+
   } catch (err) {
-    console.error('[generate-description] Gemini error:', err.message, err.stack);
-    const isQuota = err.message?.includes('RESOURCE_EXHAUSTED') || err.message?.includes('exceeded your current quota') || err.message?.includes('"code":429');
-    if (isQuota) {
-      return res.status(429).json({ error: 'Limite de uso da IA atingido. Aguarde alguns minutos e tente novamente, ou escreva a descrição manualmente.' });
-    }
-    const msg = err.message?.includes('API_KEY') ? 'Chave de API da IA inválida ou sem permissão.' : 'Falha ao gerar descrição com IA';
-    return res.status(500).json({ error: msg });
+    console.error('[generate-description] fetch error:', err.message);
+    return res.status(500).json({ error: 'Falha ao contactar o serviço de IA' });
   }
 }
+
 

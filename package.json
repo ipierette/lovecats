@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@google/genai": "^1.0.0",
     "@supabase/supabase-js": "^2.39.0",
     "cheerio": "^1.0.0",
     "node-fetch": "^3.3.2",
