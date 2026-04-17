@@ -46,7 +46,7 @@ export default async function handler(req, res) {
     vermifugado:                 d.vermifugado,
     microchip:                   d.microchipado,
     testado_fiv_felv:            d.fiv_felv,
-    aceita_outros_animais:       d.aceita_outros_animais,
+    socializavel:                 d.socializavel,
     idoso:                       d.idoso,
     condicao_especial:           d.condicao_especial,
     condicao_especial_descricao: d.especial_desc            ?? null,

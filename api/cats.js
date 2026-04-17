@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     .from('anuncios_doacao')
     .select(
       'id, nome_gatinho, padrao_pelagem, sexo, idade, descricao, foto_url, ' +
-      'cidade, castrado, vacinado, bom_com_criancas, aceita_outros_animais, criado_em',
+      'cidade, castrado, vacinado, socializavel, criado_em',
       { count: 'exact' }
     )
     .eq('status', 'disponivel')

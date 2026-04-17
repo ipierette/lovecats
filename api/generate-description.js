@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     d.vermifugado           && `vermifugado${isFemea ? 'a' : ''}`,
     d.fiv_felv              && 'testado(a) para FIV/FeLV (resultado negativo)',
     d.microchipado          && 'com microchip',
-    d.aceita_outros_animais && 'convive bem com outros pets',
+    d.socializavel && 'convive bem com outros pets',
   ].filter(Boolean).join(', ');
 
   const userPrompt = `Dados do gatinho:
