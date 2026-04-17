@@ -454,8 +454,13 @@ ALTER TABLE anuncios_doacao ADD CONSTRAINT doc_castracao_required CHECK (
 */
 
 -- MIGRAÇÃO: Permitir email NULL (ONGs não precisam informar email)
+-- Execute AMBOS os comandos abaixo no Supabase Dashboard > SQL Editor:
 /*
-ALTER TABLE anuncios_doacao DROP CONSTRAINT valid_email;
+-- 1. Remove o NOT NULL da coluna (constraint implícita de coluna)
+ALTER TABLE anuncios_doacao ALTER COLUMN email DROP NOT NULL;
+
+-- 2. Recria a CHECK constraint para aceitar NULL explicitamente
+ALTER TABLE anuncios_doacao DROP CONSTRAINT IF EXISTS valid_email;
 ALTER TABLE anuncios_doacao ADD CONSTRAINT valid_email CHECK (
     email IS NULL OR email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
 );

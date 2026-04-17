@@ -89,7 +89,7 @@ CREATE TABLE anuncios_doacao (
   cidade VARCHAR(200) NOT NULL,
   whatsapp VARCHAR(20),
   ong_link_contact TEXT,
-  email VARCHAR(255) NOT NULL,
+  email VARCHAR(255),                        -- nullable: ONGs não precisam informar email
   
   -- -------------------------
   -- SAÚDE
