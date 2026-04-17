@@ -7,7 +7,7 @@ import { z } from 'zod';
 export const UploadUrlSchema = z.object({
   filename:    z.string().min(1).max(255),
   contentType: z.enum([
-    'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'application/pdf',
+    'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif', 'application/pdf',
   ]),
   bucketType: z.enum(['foto', 'doc']).default('foto'),
 });
