@@ -68,7 +68,7 @@ Instruções:
   try {
     const ai       = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
-      model:    'gemini-2.0-flash',
+      model:    'gemini-2.0-flash-lite',
       contents: prompt,
     });
     const text = response.text?.trim();
