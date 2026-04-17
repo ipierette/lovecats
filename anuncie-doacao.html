@@ -697,55 +697,6 @@
         });
       }
 
-      // Gerar com IA — validação dos campos do gatinho
-      const btnAi = document.querySelector('.btn-ai');
-      const aiHint = document.createElement('span');
-      aiHint.className = 'btn-ai__hint';
-      aiHint.setAttribute('role', 'alert');
-      aiHint.textContent = 'Preencha a pelagem, sexo e idade do gatinho primeiro.';
-      btnAi.insertAdjacentElement('afterend', aiHint);
-
-      btnAi.addEventListener('click', function () {
-        const nome   = document.getElementById('nome-gatinho').value.trim() || 'Sem nome';
-        const cor    = document.getElementById('cor-gatinho').value;
-        const sexo   = document.getElementById('sexo-gatinho').value;
-        const idade  = document.getElementById('idade-gatinho').value.trim();
-
-        if (!cor || !sexo || !idade) {
-          btnAi.classList.remove('btn-ai--shake');
-          void btnAi.offsetWidth; // reflow para reiniciar animação
-          btnAi.classList.add('btn-ai--shake');
-          aiHint.classList.add('btn-ai__hint--visible');
-          btnAi.addEventListener('animationend', function handler() {
-            btnAi.classList.remove('btn-ai--shake');
-            btnAi.removeEventListener('animationend', handler);
-          });
-          return;
-        }
-
-        aiHint.classList.remove('btn-ai__hint--visible');
-
-        // Coletar todas as informações disponíveis do gatinho
-        const dadosGatinho = {
-          nome,
-          cor,
-          sexo,
-          idade,
-          vacinado:        document.getElementById('chk-vacinado')?.checked  || false,
-          castrado:        document.getElementById('chk-castrado')?.checked  || false,
-          vermifugado:     document.querySelector('[name="vermifugado"]')?.checked || false,
-          microchip:       document.querySelector('[name="micropchip"]')?.checked || false,
-          fivFelv:         document.querySelector('[name="fiv-felv"]')?.checked   || false,
-          socializavel:    document.querySelector('[name="socializavel"]')?.checked || false,
-          idoso:           document.getElementById('tag-idoso')?.checked    || false,
-          condicaoEspecial: document.getElementById('tag-especial')?.checked || false,
-          condicaoEspecialDesc: document.getElementById('especial-desc')?.value.trim() || null,
-        };
-
-        // TODO: chamar /api/gerar-descricao com dadosGatinho
-        console.log('Gerar descrição:', dadosGatinho);
-      });
-
     </script> 
   </body>
 </html>
