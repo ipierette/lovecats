@@ -75,8 +75,9 @@ Instruções:
     if (!text) return res.status(500).json({ error: 'IA retornou resposta vazia' });
     return res.status(200).json({ description: text });
   } catch (err) {
-    console.error('[generate-description] Gemini error:', err.message);
-    return res.status(500).json({ error: 'Falha ao gerar descrição com IA' });
+    console.error('[generate-description] Gemini error:', err.message, err.stack);
+    const msg = err.message?.includes('API_KEY') ? 'Chave de API da IA inválida ou sem permissão.' : 'Falha ao gerar descrição com IA';
+    return res.status(500).json({ error: msg });
   }
 }
 

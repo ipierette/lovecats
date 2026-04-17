@@ -22,6 +22,9 @@ function verifyToken(id, status, timestamp, token) {
 
 // GET — clique no link do e-mail enviado ao doador
 async function handleGet(req, res) {
+  if (!supabaseAdmin) {
+    return res.status(503).json({ error: 'Banco de dados não configurado.' });
+  }
   const { id, status, ts, token } = req.query;
   if (!id || !status || !ts || !token) {
     return res.status(400).json({ error: 'Parâmetros ausentes' });
@@ -52,6 +55,9 @@ async function handleGet(req, res) {
 
 // POST — cron do Vercel (toda segunda-feira), varre páginas de ONGs
 async function handlePost(req, res) {
+  if (!supabaseAdmin) {
+    return res.status(503).json({ error: 'Banco de dados não configurado.' });
+  }
   const authHeader = req.headers.authorization ?? '';
   if (authHeader !== `Bearer ${HMAC_SECRET}`) {
     return res.status(401).json({ error: 'Não autorizado' });

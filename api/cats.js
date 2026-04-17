@@ -20,6 +20,9 @@ export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Método não permitido' });
   }
+  if (!supabaseAdmin) {
+    return res.status(503).json({ error: 'Banco de dados não configurado. Verifique SUPABASE_URL e SUPABASE_SECRET_KEY nas variáveis de ambiente do Vercel.' });
+  }
 
   const { cidade, sexo, castrado, vacinado, page = '1', limit: rawLimit = String(DEFAULT_LIMIT) } = req.query;
   const pageNum  = Math.max(1, parseInt(page, 10) || 1);

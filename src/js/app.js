@@ -52,8 +52,15 @@ function initAnnounceForm() {
   form.addEventListener('input', e => { clearFieldError(e.target); });
   form.addEventListener('change', e => {
     clearFieldError(e.target);
-    if (e.target.name === 'tipo-doador') clearDonorGridError(form);
+    if (e.target.name === 'tipo-doador') {
+      clearDonorGridError(form);
+      applyDonorTypeUI(e.target.value);
+    }
   });
+
+  // Apply UI state for the default checked donor type
+  const initialDonorType = form.querySelector('input[name="tipo-doador"]:checked')?.value ?? '';
+  if (initialDonorType) applyDonorTypeUI(initialDonorType);
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -290,6 +297,25 @@ function initAnnounceForm() {
   });
 
   // ── Helpers ──────────────────────────────────────────────────────────
+
+  function applyDonorTypeUI(type) {
+    const isOng  = type === 'ong';
+    const isProt = type === 'protetor-registrado';
+
+    const whatsappWrap    = document.getElementById('whatsapp-field-wrap');
+    const ongLinkWrap     = document.getElementById('ong-link-field-wrap');
+    const docProtetorWrap = document.getElementById('doc-protetor-wrap');
+    const emailLabel      = document.getElementById('email-label');
+    const emailOngNote    = document.getElementById('email-ong-note');
+    const whatsappInput   = document.getElementById('whatsapp-doador');
+
+    if (whatsappWrap)    whatsappWrap.hidden    = isOng;
+    if (ongLinkWrap)     ongLinkWrap.hidden     = !isOng;
+    if (docProtetorWrap) docProtetorWrap.hidden = !isProt;
+    if (emailLabel)      emailLabel.classList.toggle('field-required', !isOng);
+    if (emailOngNote)    emailOngNote.hidden    = !isOng;
+    if (whatsappInput)   whatsappInput.required = !isOng;
+  }
 
   function addIfEmpty(id, msg, errors) {
     const el = document.getElementById(id);
