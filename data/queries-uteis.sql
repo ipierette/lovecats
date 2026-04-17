@@ -363,7 +363,7 @@ FROM anuncios_doacao
 WHERE status = 'disponivel'
 ORDER BY foto_url ASC NULLS FIRST;
 
--- Verificar documentos obrigatórios
+-- Verificar documentos obrigatórios (ONGs são isentas de doc veterinário)
 SELECT 
   id,
   nome_gatinho,
@@ -377,8 +377,8 @@ FROM anuncios_doacao
 WHERE status = 'disponivel'
   AND (
     (tipo_doador = 'protetor-registrado' AND doc_protetor_url IS NULL)
-    OR (vacinado = true AND doc_vacina_url IS NULL)
-    OR (castrado = true AND doc_castracao_url IS NULL)
+    OR (tipo_doador != 'ong' AND vacinado = true AND doc_vacina_url IS NULL)
+    OR (tipo_doador != 'ong' AND castrado = true AND doc_castracao_url IS NULL)
   );
 
 -- Verificar emails duplicados (possível fraude)
@@ -433,6 +433,25 @@ SELECT
   n_tup_del as delecoes
 FROM pg_stat_user_tables
 WHERE relname = 'anuncios_doacao';
+
+-- -----------------------------------------------------------------------------
+-- 8. MIGRAÇÕES — execute no SQL Editor do Supabase quando necessário
+-- -----------------------------------------------------------------------------
+
+-- MIGRAÇÃO: Isentar ONGs de comprovação documental veterinária
+-- Motive: ONGs não precisam enviar documentos de vacinação/castração.
+-- Execute este bloco UMA vez no Supabase Dashboard > SQL Editor:
+/*
+ALTER TABLE anuncios_doacao DROP CONSTRAINT doc_vacina_required;
+ALTER TABLE anuncios_doacao ADD CONSTRAINT doc_vacina_required CHECK (
+    (vacinado = FALSE) OR (tipo_doador = 'ong') OR (doc_vacina_url IS NOT NULL)
+);
+
+ALTER TABLE anuncios_doacao DROP CONSTRAINT doc_castracao_required;
+ALTER TABLE anuncios_doacao ADD CONSTRAINT doc_castracao_required CHECK (
+    (castrado = FALSE) OR (tipo_doador = 'ong') OR (doc_castracao_url IS NOT NULL)
+);
+*/
 
 -- =============================================================================
 -- FIM DAS QUERIES

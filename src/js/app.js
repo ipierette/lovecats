@@ -56,6 +56,8 @@ function initAnnounceForm() {
       clearDonorGridError(form);
       applyDonorTypeUI(e.target.value);
     }
+    if (e.target.id === 'chk-vacinado') updateDocReveal('vacina',    e.target.checked);
+    if (e.target.id === 'chk-castrado') updateDocReveal('castracao', e.target.checked);
   });
 
   // Apply UI state for the default checked donor type
@@ -122,6 +124,30 @@ function initAnnounceForm() {
         addFieldError(emailEl, 'E-mail é obrigatório', errors);
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal)) {
         addFieldError(emailEl, 'Informe um e-mail válido (ex: voce@gmail.com)', errors);
+      }
+    }
+
+    // 7. Documentos veterinários — obrigatórios para não-ONGs quando marcados
+    if (donorType !== 'ong') {
+      if (form.querySelector('#chk-vacinado')?.checked && !document.getElementById('doc-vacina')?.files[0]) {
+        const wrap = document.getElementById('doc-vacina-wrap');
+        if (wrap && !wrap.querySelector('.field-error-msg')) {
+          const p = document.createElement('p');
+          p.className = 'field-error-msg';
+          p.textContent = 'Envie a caderneta de vacinação';
+          wrap.appendChild(p);
+        }
+        errors.push('doc-vacina');
+      }
+      if (form.querySelector('#chk-castrado')?.checked && !document.getElementById('doc-castracao')?.files[0]) {
+        const wrap = document.getElementById('doc-castracao-wrap');
+        if (wrap && !wrap.querySelector('.field-error-msg')) {
+          const p = document.createElement('p');
+          p.className = 'field-error-msg';
+          p.textContent = 'Envie o atestado de castração';
+          wrap.appendChild(p);
+        }
+        errors.push('doc-castracao');
       }
     }
 
@@ -309,6 +335,12 @@ function initAnnounceForm() {
 
   // ── Helpers ──────────────────────────────────────────────────────────
 
+  function updateDocReveal(type, checked) {
+    const isOng = form.querySelector('input[name="tipo-doador"]:checked')?.value === 'ong';
+    const wrap  = document.getElementById(`doc-${type}-wrap`);
+    if (wrap) wrap.hidden = isOng || !checked;
+  }
+
   function applyDonorTypeUI(type) {
     const isOng  = type === 'ong';
     const isProt = type === 'protetor-registrado';
@@ -326,6 +358,14 @@ function initAnnounceForm() {
     if (emailLabel)      emailLabel.classList.toggle('field-required', !isOng);
     if (emailOngNote)    emailOngNote.hidden    = !isOng;
     if (whatsappInput)   whatsappInput.required = !isOng;
+
+    // ONGs são isentas de comprovação documental veterinária
+    const vacinadoChecked = document.getElementById('chk-vacinado')?.checked ?? false;
+    const castradoChecked = document.getElementById('chk-castrado')?.checked ?? false;
+    const docVacinaWrap    = document.getElementById('doc-vacina-wrap');
+    const docCastracaoWrap = document.getElementById('doc-castracao-wrap');
+    if (docVacinaWrap)    docVacinaWrap.hidden    = isOng || !vacinadoChecked;
+    if (docCastracaoWrap) docCastracaoWrap.hidden = isOng || !castradoChecked;
   }
 
   function addIfEmpty(id, msg, errors) {
@@ -372,6 +412,7 @@ function initAnnounceForm() {
       f.classList.remove('field--error');
       f.querySelector('.field-error-msg')?.remove();
     });
+    form.querySelectorAll('.doc-upload-reveal .field-error-msg').forEach(el => el.remove());
     clearDonorGridError(form);
   }
 

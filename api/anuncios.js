@@ -60,10 +60,19 @@ export default async function handler(req, res) {
 
   if (error) {
     console.error('[anuncios] Supabase error:', error);
-    // Remove a foto do Storage se o insert falhou para não deixar arquivo órfão
+    // Remove todos os arquivos enviados ao Storage para não deixar arquivos órfãos
+    const fotoBucket = process.env.STORAGE_BUCKET_FOTOS ?? 'fotos-gatinhos';
     if (record.foto_url) {
-      const bucket = process.env.STORAGE_BUCKET_FOTOS ?? 'fotos-gatinhos';
-      await supabaseAdmin.storage.from(bucket).remove([record.foto_url]).catch(() => {});
+      await supabaseAdmin.storage.from(fotoBucket).remove([record.foto_url])
+        .then(({ error: rmErr }) => { if (rmErr) console.warn('[anuncios] Falha ao remover foto órfã:', rmErr); })
+        .catch(e => console.warn('[anuncios] Exceção ao remover foto órfã:', e));
+    }
+    const docBucket = process.env.STORAGE_BUCKET_DOCS ?? 'documentos-doacao';
+    const orphanDocs = [record.doc_vacina_url, record.doc_castracao_url, record.doc_protetor_url].filter(Boolean);
+    if (orphanDocs.length) {
+      await supabaseAdmin.storage.from(docBucket).remove(orphanDocs)
+        .then(({ error: rmErr }) => { if (rmErr) console.warn('[anuncios] Falha ao remover docs órfãos:', rmErr); })
+        .catch(e => console.warn('[anuncios] Exceção ao remover docs órfãos:', e));
     }
     return res.status(500).json({ error: 'Falha ao criar anúncio' });
   }

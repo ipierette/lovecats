@@ -127,11 +127,12 @@ CREATE TABLE anuncios_doacao (
   CONSTRAINT doc_protetor_required CHECK (
     (tipo_doador != 'protetor-registrado') OR (doc_protetor_url IS NOT NULL)
   ),
+  -- ONGs são isentas de comprovação documental veterinária
   CONSTRAINT doc_vacina_required CHECK (
-    (vacinado = FALSE) OR (doc_vacina_url IS NOT NULL)
+    (vacinado = FALSE) OR (tipo_doador = 'ong') OR (doc_vacina_url IS NOT NULL)
   ),
   CONSTRAINT doc_castracao_required CHECK (
-    (castrado = FALSE) OR (doc_castracao_url IS NOT NULL)
+    (castrado = FALSE) OR (tipo_doador = 'ong') OR (doc_castracao_url IS NOT NULL)
   ),
   CONSTRAINT condicao_especial_desc_required CHECK (
     (condicao_especial = FALSE) OR (condicao_especial_descricao IS NOT NULL)
