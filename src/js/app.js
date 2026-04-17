@@ -201,7 +201,18 @@ function initAnnounceForm() {
         body:    JSON.stringify(payload),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? 'Erro ao publicar anúncio');
+      if (!res.ok) {
+        let msg = 'Erro ao publicar anúncio';
+        if (typeof json.error === 'string') {
+          msg = json.error;
+        } else if (json.error?.fieldErrors || json.error?.formErrors) {
+          const fieldMsgs = Object.entries(json.error.fieldErrors ?? {})
+            .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`)
+            .join('; ');
+          msg = `Dados inválidos — ${fieldMsgs || (json.error.formErrors ?? []).join(', ') || 'verifique os campos'}`;
+        }
+        throw new Error(msg);
+      }
 
       // 4. Sucesso
       const tip = document.getElementById('email-whitelist-tip');

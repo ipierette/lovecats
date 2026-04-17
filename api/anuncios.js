@@ -14,9 +14,12 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'Banco de dados não configurado. Verifique SUPABASE_URL e SUPABASE_SECRET_KEY nas variáveis de ambiente do Vercel.' });
   }
 
+  console.log('[anuncios] req.body:', JSON.stringify(req.body));
   const parsed = AnuncioSchema.safeParse(req.body);
   if (!parsed.success) {
-    return res.status(400).json({ error: parsed.error.flatten() });
+    const flat = parsed.error.flatten();
+    console.error('[anuncios] Zod validation error:', JSON.stringify(flat));
+    return res.status(400).json({ error: flat });
   }
 
   const { data, error } = await supabaseAdmin

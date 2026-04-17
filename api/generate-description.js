@@ -76,6 +76,10 @@ Instruções:
     return res.status(200).json({ description: text });
   } catch (err) {
     console.error('[generate-description] Gemini error:', err.message, err.stack);
+    const isQuota = err.message?.includes('RESOURCE_EXHAUSTED') || err.message?.includes('exceeded your current quota') || err.message?.includes('"code":429');
+    if (isQuota) {
+      return res.status(429).json({ error: 'Limite de uso da IA atingido. Aguarde alguns minutos e tente novamente, ou escreva a descrição manualmente.' });
+    }
     const msg = err.message?.includes('API_KEY') ? 'Chave de API da IA inválida ou sem permissão.' : 'Falha ao gerar descrição com IA';
     return res.status(500).json({ error: msg });
   }
