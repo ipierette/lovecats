@@ -318,3 +318,6 @@ EMAIL_APP_PASSWORD=<app-password-gerada-no-google>
 - [ ] **Double opt-in**: ao criar o anúncio, enviar email de verificação antes de ativar (`status = 'pendente_email'`). O anúncio só fica `'disponivel'` após o doador confirmar o email. Isso elimina endereços inválidos E melhora entregabilidade futura (usuário interagiu ativamente com o email).
 - [ ] No frontend (`anuncie-doacao.html`): após envio do formulário, exibir banner: *"Verifique sua caixa de entrada — e adicione lovecats.doacao@gmail.com aos seus contatos para garantir o recebimento."* Não é possível forçar o whitelist via browser; a instrução visual é o máximo que o frontend pode fazer.
 - [ ] Validação de formato de email no campo do formulário (regex + feedback visual) para evitar erros de digitação antes do envio.
+
+
+Quando a api for liberada vamos disponibilizar a inclusão de lotes de anuncios.

@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/adoption-check",
+      "schedule": "0 9 * * 1"
+    }
+  ]
+}

@@ -229,10 +229,27 @@
         </div><!-- /.inf-steps -->
         <div class="responsible">
           <figure class="responsible__figure" data-animate>
-            <div class="responsible__image">
-              <img src="./src/images/adocao-responsavel.webp" alt="Dois gatinhos siameses adotados por membro da equipe" loading="lazy" />
+            <div class="responsible__gallery" aria-live="polite" aria-label="Galeria — gatinhos da equipe">
+
+              <div class="gallery-slide active" role="group" aria-label="Slide 1 de 2">
+                <div class="responsible__image">
+                  <img src="./src/images/adocao-responsavel.webp" alt="Gatinhos adotados por Cledeocir Mafrão, membro da equipe de Desenvolvimento" loading="lazy" />
+                </div>
+                <figcaption class="responsible__caption">Gatinhos adotados por Cledeocir Mafrão, membro da equipe de desenvolvimento</figcaption>
+              </div>
+
+              <div class="gallery-slide" role="group" aria-label="Slide 2 de 2">
+                <div class="responsible__image">
+                  <img src="./src/images/gatinho-jaque.jpg" alt="Gatinho adotado pela Dev Jaqueline Gotardi, membro do time de desenvolvimento" loading="lazy" />
+                </div>
+                <figcaption class="responsible__caption">Gatinho adotado por Jaqueline Gotardi, membro do time de Desenvolvimento</figcaption>
+              </div>
+
             </div>
-            <figcaption class="responsible__caption">Curiosidade: gatinhos adotados por um membro da equipe, Cledeocir Mafrão</figcaption>
+            <div class="gallery-dots" role="tablist" aria-label="Navegar entre fotos">
+              <button class="gallery-dot active" role="tab" aria-selected="true" aria-label="Foto 1"></button>
+              <button class="gallery-dot" role="tab" aria-selected="false" aria-label="Foto 2"></button>
+            </div>
           </figure>
           <div class="responsible__content" data-animate data-delay="80">
             <p class="section-eyebrow">Nosso compromisso</p>

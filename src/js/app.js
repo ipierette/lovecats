@@ -7,7 +7,7 @@ import { initTheme }       from './modules/theme.js';
 import { initNav }         from './modules/nav.js';
 import { initAnimations, initCounters } from './modules/animations.js';
 import { initFilters }     from './modules/filters.js';
-import { initImageUpload } from './modules/imageUpload.js';
+import { initImageUpload, getUploadedFiles } from './modules/imageUpload.js';
 import { initTeamAccordion } from './modules/teamAccordion.js';
 import { initTermsModal }  from './modules/termsModal.js';
 
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //   const { data } = await supabase.from('stats_anuncios').select('*').single();
     //   initCounters({ adotados: data.total_adotados, disponiveis: data.total_disponiveis, mes: data.adocoes_mes_atual });
     initCounters();
+    initResponsibleGallery();
   }
   if (body.dataset.page === 'sobre') {
     initTeamAccordion();
@@ -54,7 +55,7 @@ function initAnnounceForm() {
     if (e.target.name === 'tipo-doador') clearDonorGridError(form);
   });
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     clearAllErrors(form);
 
@@ -132,12 +133,160 @@ function initAnnounceForm() {
       return;
     }
 
-    // All valid
-    const tip = document.getElementById('email-whitelist-tip');
-    if (tip) tip.hidden = donorType === 'ong' || !emailVal;
-    form.style.display = 'none';
-    success?.classList.add('is-visible');
-    success?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // All valid — envia ao backend
+    const submitBtn = form.querySelector('[type="submit"]');
+    submitBtn.disabled    = true;
+    submitBtn.textContent = 'Publicando…';
+
+    try {
+      // 1a. Upload foto (primeira imagem selecionada, se houver)
+      const fotos  = getUploadedFiles();
+      const fotoUrl = fotos.length ? await uploadFile(fotos[0], 'foto') : null;
+
+      // 1b. Upload de documentos veterinários (opcionais)
+      const docVacinaFile    = document.getElementById('doc-vacina')?.files[0]    ?? null;
+      const docCastracaoFile = document.getElementById('doc-castracao')?.files[0] ?? null;
+      const docProtetorFile  = document.getElementById('doc-protetor')?.files[0]  ?? null;
+
+      const [docVacinaUrl, docCastracaoUrl, docProtetorUrl] = await Promise.all([
+        docVacinaFile    ? uploadFile(docVacinaFile,    'doc') : Promise.resolve(null),
+        docCastracaoFile ? uploadFile(docCastracaoFile, 'doc') : Promise.resolve(null),
+        docProtetorFile  ? uploadFile(docProtetorFile,  'doc') : Promise.resolve(null),
+      ]);
+
+      // 2. Monta payload
+      const payload = {
+        nome_gatinho:          document.getElementById('nome-gatinho')?.value.trim() || 'Sem nome',
+        padrao_pelagem:        document.getElementById('cor-gatinho')?.value,
+        sexo:                  document.getElementById('sexo-gatinho')?.value,
+        idade:                 document.getElementById('idade-gatinho')?.value.trim(),
+        descricao:             document.getElementById('descricao')?.value.trim() || '',
+        foto_url:              fotoUrl,
+        nome_doador:           document.getElementById('nome-doador')?.value.trim(),
+        cidade:                document.getElementById('cidade-doador')?.value.trim(),
+        castrado:              form.querySelector('#chk-castrado')?.checked        ?? false,
+        vacinado:              form.querySelector('#chk-vacinado')?.checked        ?? false,
+        vermifugado:           form.querySelector('[name="vermifugado"]')?.checked  ?? false,
+        microchipado:          form.querySelector('[name="micropchip"]')?.checked   ?? false,
+        fiv_felv:              form.querySelector('[name="fiv-felv"]')?.checked     ?? false,
+        aceita_outros_animais: form.querySelector('[name="socializavel"]')?.checked ?? false,
+        idoso:                 form.querySelector('#tag-idoso')?.checked            ?? false,
+        condicao_especial:     form.querySelector('#tag-especial')?.checked         ?? false,
+        especial_desc:         document.getElementById('especial-desc')?.value.trim() || undefined,
+        doc_vacina_url:    docVacinaUrl,
+        doc_castracao_url: docCastracaoUrl,
+        tipo_doador:       donorType,
+      };
+
+      if (donorType === 'ong') {
+        payload.ong_link_contact = document.getElementById('ong-link-contact')?.value.trim();
+        if (emailVal) payload.email = emailVal;
+      } else {
+        payload.whatsapp = (document.getElementById('whatsapp-doador')?.value ?? '').replace(/\D/g, '');
+        payload.email    = emailVal;
+        if (donorType === 'protetor-registrado') payload.doc_protetor_url = docProtetorUrl;
+      }
+
+      // 3. Cria o anúncio
+      const res  = await fetch('/api/anuncios', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? 'Erro ao publicar anúncio');
+
+      // 4. Sucesso
+      const tip = document.getElementById('email-whitelist-tip');
+      if (tip) tip.hidden = donorType === 'ong' || !emailVal;
+      form.style.display = 'none';
+      success?.classList.add('is-visible');
+      success?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    } catch (err) {
+      form.querySelector('.form-error-banner')?.remove();
+      const banner = document.createElement('div');
+      banner.className = 'form-error-banner';
+      banner.setAttribute('role', 'alert');
+      banner.textContent = err.message || 'Ocorreu um erro inesperado. Tente novamente.';
+      form.prepend(banner);
+      banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      submitBtn.disabled    = false;
+      submitBtn.textContent = 'Publicar Anúncio';
+    }
+  });
+
+  // ── Gerar descrição com IA ───────────────────────────────────────────
+  form.querySelector('.btn-ai')?.addEventListener('click', async function () {
+    const btn     = this;
+    const pelagem = document.getElementById('cor-gatinho')?.value;
+    const sexo    = document.getElementById('sexo-gatinho')?.value;
+    const idade   = document.getElementById('idade-gatinho')?.value.trim();
+
+    // Valida campos mínimos
+    const missing = [];
+    if (!pelagem) missing.push('Padrão de Pelagem');
+    if (!sexo)    missing.push('Sexo');
+    if (!idade)   missing.push('Idade');
+
+    document.getElementById('ai-field-error')?.remove();
+    if (missing.length) {
+      const p = Object.assign(document.createElement('p'), {
+        id:        'ai-field-error',
+        className: 'field-hint',
+        textContent: `Preencha antes de usar a IA: ${missing.join(', ')}`,
+      });
+      p.style.cssText = 'color:var(--c-error,#cc3333);margin-top:.25rem';
+      btn.insertAdjacentElement('afterend', p);
+      return;
+    }
+
+    const originalHTML = btn.innerHTML;
+    btn.disabled  = true;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Gerando…';
+
+    try {
+      const body = {
+        padrao_pelagem:        pelagem,
+        sexo,
+        idade,
+        nome_gatinho:          document.getElementById('nome-gatinho')?.value.trim()       || undefined,
+        vacinado:              form.querySelector('#chk-vacinado')?.checked                 ?? false,
+        castrado:              form.querySelector('#chk-castrado')?.checked                 ?? false,
+        vermifugado:           form.querySelector('[name="vermifugado"]')?.checked           ?? false,
+        fiv_felv:              form.querySelector('[name="fiv-felv"]')?.checked              ?? false,
+        microchipado:          form.querySelector('[name="micropchip"]')?.checked            ?? false,
+        aceita_outros_animais: form.querySelector('[name="socializavel"]')?.checked          ?? false,
+        idoso:                 form.querySelector('#tag-idoso')?.checked                     ?? false,
+        condicao_especial:     form.querySelector('#tag-especial')?.checked                  ?? false,
+        especial_desc:         document.getElementById('especial-desc')?.value.trim()        || undefined,
+      };
+
+      const res  = await fetch('/api/generate-description', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(body),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || 'Erro ao gerar descrição');
+
+      const textarea = document.getElementById('descricao');
+      if (textarea) {
+        textarea.value = json.description;
+        textarea.dispatchEvent(new Event('input'));
+      }
+    } catch (err) {
+      const p = Object.assign(document.createElement('p'), {
+        id:        'ai-field-error',
+        className: 'field-hint',
+        textContent: err.message || 'Não foi possível gerar a descrição. Tente novamente.',
+      });
+      p.style.cssText = 'color:var(--c-error,#cc3333);margin-top:.25rem';
+      btn.insertAdjacentElement('afterend', p);
+    } finally {
+      btn.disabled  = false;
+      btn.innerHTML = originalHTML;
+    }
   });
 
   // ── Helpers ──────────────────────────────────────────────────────────
@@ -197,4 +346,66 @@ function initAnnounceForm() {
       return !/^(localhost|127\.\d+\.\d+\.\d+|0\.0\.0\.0|::1|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)$/.test(h);
     } catch { return false; }
   }
+}
+
+// ---------------------------------------------------------------------------
+// Envia um File para o Supabase Storage via URL assinada.
+// Retorna o path do arquivo dentro do bucket.
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Galeria de fotos na seção "Adoção Responsável" — rotação a cada 30s
+// Começa num slide aleatório para variar a cada carregamento de página.
+// ---------------------------------------------------------------------------
+function initResponsibleGallery() {
+  const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+  const dots   = Array.from(document.querySelectorAll('.gallery-dot'));
+  if (slides.length < 2) return;
+
+  let current = Math.floor(Math.random() * slides.length);
+
+  // Apply random starting slide (HTML already has slide 0 as active)
+  slides.forEach((s, i) => s.classList.toggle('active', i === current));
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', i === current);
+    d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+  });
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    dots[current].setAttribute('aria-selected', 'false');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    dots[current].setAttribute('aria-selected', 'true');
+  }
+
+  setInterval(() => goTo(current + 1), 30_000);
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+}
+
+async function uploadFile(file, bucketType) {
+  const urlRes = await fetch('/api/upload-url', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify({
+      filename:    file.name,
+      contentType: file.type,
+      bucketType,
+    }),
+  });
+  if (!urlRes.ok) {
+    const e = await urlRes.json().catch(() => ({}));
+    throw new Error(e.error ?? 'Falha ao preparar upload do arquivo');
+  }
+  const { signedUrl, path } = await urlRes.json();
+
+  const uploadRes = await fetch(signedUrl, {
+    method:  'PUT',
+    headers: { 'Content-Type': file.type },
+    body:    file,
+  });
+  if (!uploadRes.ok) throw new Error(`Falha ao enviar ${file.name}`);
+
+  return path;
 }

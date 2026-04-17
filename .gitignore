@@ -26,9 +26,10 @@ $RECYCLE.BIN/
 *.userosscache
 *.sln.docstates
 
-# Env files
+# Env files — ignora todos exceto o template
 .env
 .env.*
+!.env.example
 .env.local
 .env.development
 .env.production
