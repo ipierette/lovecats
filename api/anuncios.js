@@ -1,6 +1,33 @@
-// CJS wrapper — importa o handler ESM do backend via dynamic import()
-module.exports = async function handler(req, res) {
-  const { default: h } = await import('../backend/api/anuncios.js');
-  return h(req, res);
-};
+import { supabaseAdmin } from './_lib/supabaseAdmin.js';
+import { AnuncioSchema }  from './_lib/schemas.js';
+
+/**
+ * POST /api/anuncios
+ * Cria um novo anúncio de doação de gatinho.
+ * O anúncio é criado com status='pendente_email' até o doador confirmar pelo e-mail.
+ */
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Método não permitido' });
+  }
+
+  const parsed = AnuncioSchema.safeParse(req.body);
+  if (!parsed.success) {
+    return res.status(400).json({ error: parsed.error.flatten() });
+  }
+
+  const { data, error } = await supabaseAdmin
+    .from('anuncios_doacao')
+    .insert({ ...parsed.data, status: 'pendente_email' })
+    .select('id')
+    .single();
+
+  if (error) {
+    console.error('[anuncios] Supabase error:', error);
+    return res.status(500).json({ error: 'Falha ao criar anúncio' });
+  }
+
+  // TODO (Fase 3): disparar e-mail de verificação para o doador.
+  return res.status(201).json({ id: data.id });
+}
 
