@@ -110,6 +110,96 @@
           <!-- FORM -->
           <form class="form-announce" novalidate>
 
+            <!-- Quem está doando? -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Quem est&aacute; doando?</legend>
+              <p class="form-section__hint">Isso ajuda os adotantes a entender a origem do gatinho e define quais campos ser&atilde;o pedidos a seguir.</p>
+              <div class="donor-type-grid">
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="resgate-informal" checked required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">Resgate Informal</span>
+                    <span class="donor-type-card__desc">Pessoa f&iacute;sica que resgatou ou est&aacute; cuidando temporariamente do gatinho</span>
+                  </span>
+                </label>
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="protetor-registrado" required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">Protetor Registrado</span>
+                    <span class="donor-type-card__desc">Protetor com registro em entidade de prote&ccedil;&atilde;o animal ou prefeitura</span>
+                  </span>
+                </label>
+
+                <label class="donor-type-card">
+                  <input type="radio" name="tipo-doador" value="ong" required />
+                  <span class="donor-type-card__inner">
+                    <span class="donor-type-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                    </span>
+                    <span class="donor-type-card__title">ONG</span>
+                    <span class="donor-type-card__desc">Organiza&ccedil;&atilde;o sem fins lucrativos com CNPJ e site ou p&aacute;gina pr&oacute;prios</span>
+                  </span>
+                </label>
+
+              </div>
+
+              <!-- Protetor: comprovante de registro (revelado via JS) -->
+              <div class="doc-upload-reveal" id="doc-protetor-wrap" hidden>
+                <p class="doc-upload-reveal__label">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Comprovante de registro como protetor <span style="color:var(--c-text-3);font-weight:400;font-style:italic;">&mdash; obrigat&oacute;rio</span>
+                </p>
+                <p class="doc-upload-reveal__hint">Envie cart&atilde;o, certificado, of&iacute;cio ou qualquer documento que comprove seu registro como protetor animal. Formatos: JPG, PNG, PDF. M&aacute;x. 5 MB.</p>
+                <input type="file" id="doc-protetor" name="doc-protetor" accept="image/*,.pdf" />
+              </div>
+            </fieldset>
+
+            <!-- Contato -->
+            <fieldset class="form-section">
+              <legend class="form-section__title">Contato do doador</legend>
+              <div class="form-row">
+                <div class="field">
+                  <label for="nome-doador" class="field-required">Seu nome</label>
+                  <input type="text" id="nome-doador" name="nome-doador" placeholder="Seu nome completo" maxlength="100" autocomplete="name" required />
+                </div>
+                <div class="field">
+                  <label for="cidade-doador" class="field-required">Cidade / Estado</label>
+                  <input type="text" id="cidade-doador" name="cidade" placeholder="Ex: Sao Paulo, SP" maxlength="80" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field" id="whatsapp-field-wrap">
+                  <label for="whatsapp-doador" class="field-required">WhatsApp</label>
+                  <input type="tel" id="whatsapp-doador" name="whatsapp" placeholder="(11) 99999-9999" maxlength="20" autocomplete="tel" pattern="[\d\s\(\)\+\-]{8,20}" required />
+                </div>
+                <div class="field" id="ong-link-field-wrap" hidden>
+                  <label for="ong-link-contact" class="field-required">Link do anúncio na ONG</label>
+                  <input type="url" id="ong-link-contact" name="ong-link-contact" placeholder="https://suaong.com.br/adocao/nome-do-gato" maxlength="300" />
+                </div>
+                <div class="field">
+                  <div class="field-label-row">
+                    <label for="email-doador" id="email-label" class="field-required">E-mail</label>
+                    <button type="button" class="tip-btn" aria-label="Por que o e-mail é importante?" tabindex="0">
+                      ?
+                      <span class="tip-popup" role="tooltip">
+                        Para <strong>protetores registrados</strong> e <strong>resgates informais</strong>, a LoveCats envia um e-mail semanal pedindo confirmação sobre a disponibilidade do gatinho. <strong>ONGs</strong> são verificadas automaticamente pelo nosso sistema — e-mail não obrigatório.
+                      </span>
+                    </button>
+                  </div>
+                  <input type="email" id="email-doador" name="email" placeholder="voce@email.com" autocomplete="email" />
+                  <p class="field-hint" id="email-ong-note" hidden>ONGs são verificadas automaticamente — e-mail opcional.</p>
+                </div>
+              </div>
+            </fieldset>
+
             <!-- Informações do gatinho -->
             <fieldset class="form-section">
               <legend class="form-section__title">Informações do gatinho</legend>
@@ -315,96 +405,6 @@
                 </div>
                 <div class="upload-preview" aria-live="polite" aria-label="Foto adicionada"></div>
                 <p class="upload-status" aria-live="polite"></p>
-              </div>
-            </fieldset>
-
-            <!-- Quem está doando? -->
-            <fieldset class="form-section">
-              <legend class="form-section__title">Quem est&aacute; doando?</legend>
-              <p class="form-section__hint">Isso ajuda os adotantes a entender a origem do gatinho e define como o contato ser&aacute; feito.</p>
-              <div class="donor-type-grid">
-
-                <label class="donor-type-card">
-                  <input type="radio" name="tipo-doador" value="resgate-informal" checked required />
-                  <span class="donor-type-card__inner">
-                    <span class="donor-type-card__icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                    </span>
-                    <span class="donor-type-card__title">Resgate Informal</span>
-                    <span class="donor-type-card__desc">Pessoa f&iacute;sica que resgatou ou est&aacute; cuidando temporariamente do gatinho</span>
-                  </span>
-                </label>
-
-                <label class="donor-type-card">
-                  <input type="radio" name="tipo-doador" value="protetor-registrado" required />
-                  <span class="donor-type-card__inner">
-                    <span class="donor-type-card__icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </span>
-                    <span class="donor-type-card__title">Protetor Registrado</span>
-                    <span class="donor-type-card__desc">Protetor com registro em entidade de prote&ccedil;&atilde;o animal ou prefeitura</span>
-                  </span>
-                </label>
-
-                <label class="donor-type-card">
-                  <input type="radio" name="tipo-doador" value="ong" required />
-                  <span class="donor-type-card__inner">
-                    <span class="donor-type-card__icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-                    </span>
-                    <span class="donor-type-card__title">ONG</span>
-                    <span class="donor-type-card__desc">Organiza&ccedil;&atilde;o sem fins lucrativos com CNPJ e site ou p&aacute;gina pr&oacute;prios</span>
-                  </span>
-                </label>
-
-              </div>
-
-              <!-- Protetor: comprovante de registro (revelado via JS) -->
-              <div class="doc-upload-reveal" id="doc-protetor-wrap" hidden>
-                <p class="doc-upload-reveal__label">
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                  Comprovante de registro como protetor <span style="color:var(--c-text-3);font-weight:400;font-style:italic;">&mdash; obrigat&oacute;rio</span>
-                </p>
-                <p class="doc-upload-reveal__hint">Envie cart&atilde;o, certificado, of&iacute;cio ou qualquer documento que comprove seu registro como protetor animal. Formatos: JPG, PNG, PDF. M&aacute;x. 5 MB.</p>
-                <input type="file" id="doc-protetor" name="doc-protetor" accept="image/*,.pdf" />
-              </div>
-            </fieldset>
-
-            <!-- Contato -->
-            <fieldset class="form-section">
-              <legend class="form-section__title">Contato do doador</legend>
-              <div class="form-row">
-                <div class="field">
-                  <label for="nome-doador" class="field-required">Seu nome</label>
-                  <input type="text" id="nome-doador" name="nome-doador" placeholder="Seu nome completo" maxlength="100" autocomplete="name" required />
-                </div>
-                <div class="field">
-                  <label for="cidade-doador" class="field-required">Cidade / Estado</label>
-                  <input type="text" id="cidade-doador" name="cidade" placeholder="Ex: Sao Paulo, SP" maxlength="80" required />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="field" id="whatsapp-field-wrap">
-                  <label for="whatsapp-doador" class="field-required">WhatsApp</label>
-                  <input type="tel" id="whatsapp-doador" name="whatsapp" placeholder="(11) 99999-9999" maxlength="20" autocomplete="tel" pattern="[\d\s\(\)\+\-]{8,20}" required />
-                </div>
-                <div class="field" id="ong-link-field-wrap" hidden>
-                  <label for="ong-link-contact" class="field-required">Link do anúncio na ONG</label>
-                  <input type="url" id="ong-link-contact" name="ong-link-contact" placeholder="https://suaong.com.br/adocao/nome-do-gato" maxlength="300" />
-                </div>
-                <div class="field">
-                  <div class="field-label-row">
-                    <label for="email-doador" id="email-label" class="field-required">E-mail</label>
-                    <button type="button" class="tip-btn" aria-label="Por que o e-mail é importante?" tabindex="0">
-                      ?
-                      <span class="tip-popup" role="tooltip">
-                        Para <strong>protetores registrados</strong> e <strong>resgates informais</strong>, a LoveCats envia um e-mail semanal pedindo confirmação sobre a disponibilidade do gatinho. <strong>ONGs</strong> são verificadas automaticamente pelo nosso sistema — e-mail não obrigatório.
-                      </span>
-                    </button>
-                  </div>
-                  <input type="email" id="email-doador" name="email" placeholder="voce@email.com" autocomplete="email" />
-                  <p class="field-hint" id="email-ong-note" hidden>ONGs são verificadas automaticamente — e-mail opcional.</p>
-                </div>
               </div>
             </fieldset>
 

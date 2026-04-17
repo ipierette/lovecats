@@ -123,7 +123,7 @@ CREATE TABLE anuncios_doacao (
   ultima_confirmacao TIMESTAMP WITH TIME ZONE,
   
   -- Verificações
-  CONSTRAINT valid_email CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
+  CONSTRAINT valid_email CHECK (email IS NULL OR email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
   CONSTRAINT doc_protetor_required CHECK (
     (tipo_doador != 'protetor-registrado') OR (doc_protetor_url IS NOT NULL)
   ),

@@ -453,6 +453,14 @@ ALTER TABLE anuncios_doacao ADD CONSTRAINT doc_castracao_required CHECK (
 );
 */
 
+-- MIGRAÇÃO: Permitir email NULL (ONGs não precisam informar email)
+/*
+ALTER TABLE anuncios_doacao DROP CONSTRAINT valid_email;
+ALTER TABLE anuncios_doacao ADD CONSTRAINT valid_email CHECK (
+    email IS NULL OR email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+);
+*/
+
 -- =============================================================================
 -- FIM DAS QUERIES
 -- =============================================================================

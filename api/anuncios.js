@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     nome_doador:                 d.nome_doador,
     cidade:                      d.cidade,
     whatsapp:                    d.whatsapp                 ?? null,
-    email:                       d.email                    ?? '',
+    email:                       d.email                    || null,
     ong_link_contact:            d.ong_link_contact         ?? null,
     doc_protetor_url:            d.doc_protetor_url         ?? null,
     vacinado:                    d.vacinado,
