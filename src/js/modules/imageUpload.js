@@ -1,14 +1,21 @@
 /**
  * imageUpload.js — Drag-and-drop image upload for anuncie-doacao.html
  *
- * Accepted: jpeg, png, webp, gif
+ * Accepted: jpeg, png, webp, gif, avif
  * Max file size: 5 MB per file
- * Max files: 6
+ * Max files: 1
  */
 
 const ACCEPTED = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'];
-const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
-const MAX_FILES = 6;
+// Fallback por extensão para navegadores que não detectam MIME de AVIF corretamente
+const ACCEPTED_EXT = /\.(jpe?g|png|webp|gif|avif)$/i;
+const MAX_SIZE  = 5 * 1024 * 1024; // 5 MB
+const MAX_FILES = 1;
+
+function isAccepted(file) {
+  if (ACCEPTED.includes(file.type)) return true;
+  return ACCEPTED_EXT.test(file.name);
+}
 
 let uploadedFiles = [];
 
@@ -53,7 +60,7 @@ function handleFiles(files, preview, status) {
   const errors = [];
 
   files.slice(0, remaining).forEach((file) => {
-    if (!ACCEPTED.includes(file.type)) {
+    if (!isAccepted(file)) {
       errors.push(`${file.name}: tipo não suportado`);
     } else if (file.size > MAX_SIZE) {
       errors.push(`${file.name}: tamanho máximo é 5 MB`);

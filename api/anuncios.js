@@ -60,6 +60,11 @@ export default async function handler(req, res) {
 
   if (error) {
     console.error('[anuncios] Supabase error:', error);
+    // Remove a foto do Storage se o insert falhou para não deixar arquivo órfão
+    if (record.foto_url) {
+      const bucket = process.env.STORAGE_BUCKET_FOTOS ?? 'fotos-gatinhos';
+      await supabaseAdmin.storage.from(bucket).remove([record.foto_url]).catch(() => {});
+    }
     return res.status(500).json({ error: 'Falha ao criar anúncio' });
   }
 
