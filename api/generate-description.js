@@ -52,14 +52,8 @@ export default async function handler(req, res) {
 - Sexo: ${d.sexo}
 - Idade: ${d.idade}
 ${saude ? `- Saúde / cuidados confirmados: ${saude}` : ''}
-${d.idoso ? '- É um gato maduro/sênior (7 anos ou mais) que sonha com um lar tranquilo' : ''}
-${d.condicao_especial && d.especial_desc ? `- Condição especial: ${d.especial_desc}` : ''}
-
-Instruções:
-- Mencione a pelagem de forma descritiva e poética
-- Use pronomes corretos conforme o sexo (${isFemea ? 'ela/dela' : 'ele/dele'})
-- Não invente características além das fornecidas
-- Termine com um convite gentil à adoção responsável`;
+${d.idoso ? '- Gato maduro/sênior (7 anos ou mais)' : ''}
+${d.condicao_especial && d.especial_desc ? `- Condição especial: ${d.especial_desc}` : ''}`;
 
   try {
     const groqRes = await fetch(GROQ_API_URL, {
@@ -73,12 +67,19 @@ Instruções:
         messages: [
           {
             role:    'system',
-            content: 'Você é um redator carinhoso especializado em anúncios de adoção de gatos no Brasil. Escreva descrições atraentes com tom acolhedor, otimista e próximo do leitor. Responda APENAS com o texto da descrição — sem título, sem marcadores, sem markdown. Máximo de 280 palavras.',
+            content: `Você escreve textos de adoção de gatos para o site LoveCats. Seu estilo é aconchegante e direto — como se um amigo estivesse apresentando o gatinho. Siga estas regras sem exceção:
+- Escreva em 2 parágrafos curtos, no máximo 120 palavras no total
+- Use pronomes ${isFemea ? 'femininos (ela/dela)' : 'masculinos (ele/dele)'} consistentemente
+- Mencione a pelagem de forma natural, sem metáforas exageradas
+- Inclua apenas informações dos dados fornecidos; não invente personalidade, comportamento ou características
+- Sem frases de efeito, sem superlativo em excesso, sem linguagem comercial ("companheiro perfeito", "espetáculo", "coração cheio de amor")
+- Termine com um convite simples e gentil à adoção responsável
+- Responda APENAS com o texto, sem título nem marcadores`,
           },
           { role: 'user', content: userPrompt },
         ],
-        max_tokens:  512,
-        temperature: 0.8,
+        max_tokens:  300,
+        temperature: 0.5,
       }),
     });
 
