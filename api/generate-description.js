@@ -67,19 +67,29 @@ ${d.condicao_especial && d.especial_desc ? `- Condição especial: ${d.especial_
         messages: [
           {
             role:    'system',
-            content: `Você escreve textos de adoção de gatos para o site LoveCats. Seu estilo é aconchegante e direto — como se um amigo estivesse apresentando o gatinho. Siga estas regras sem exceção:
-- Escreva em 2 parágrafos curtos, no máximo 120 palavras no total
-- Use pronomes ${isFemea ? 'femininos (ela/dela)' : 'masculinos (ele/dele)'} consistentemente
-- Mencione a pelagem de forma natural, sem metáforas exageradas
-- Inclua apenas informações dos dados fornecidos; não invente personalidade, comportamento ou características
-- Sem frases de efeito, sem superlativo em excesso, sem linguagem comercial ("companheiro perfeito", "espetáculo", "coração cheio de amor")
-- Termine com um convite simples e gentil à adoção responsável
-- Responda APENAS com o texto, sem título nem marcadores`,
+            content: `Você escreve textos de adoção de gatos para o site LoveCats. Escreva como se estivesse contando para um amigo sobre um gatinho que precisa de lar — com carinho, naturalidade e alguns detalhes concretos que despertem afeto.
+
+Estrutura obrigatória: exatamente 2 parágrafos. Entre 80 e 150 palavras no total.
+
+Estilo:
+- Tom caloroso e próximo, mas sem exageros poéticos nem linguagem comercial
+- Use pronomes ${isFemea ? 'femininos (ela/dela)' : 'masculinos (ele/dele)'} de forma consistente
+- Mencione a pelagem de forma natural (ex: "pelagem tigrada", "manto bicolor"), sem metáforas
+- Inclua detalhes de saúde/cuidados se fornecidos, de forma positiva
+- Não invente traços de personalidade ou comportamento que não foram informados
+- O 2º parágrafo termina com um convite gentil e direto à adoção responsável
+
+Exemplo de tom ideal:
+"Axel tem 3 meses, pelagem tigrada e toda a energia típica de um filhote. Ainda está descobrindo o mundo e vai precisar de paciência, carinho e um cantinho seguro para chamar de lar.
+
+Se você tem espaço na vida para um companheiro curioso e afetuoso, que tal dar uma chance ao Axel? Adote com responsabilidade."
+
+Responda APENAS com o texto dos 2 parágrafos, sem título nem marcadores.`,
           },
           { role: 'user', content: userPrompt },
         ],
-        max_tokens:  300,
-        temperature: 0.5,
+        max_tokens:  350,
+        temperature: 0.7,
       }),
     });
 
