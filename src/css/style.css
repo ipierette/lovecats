@@ -96,8 +96,10 @@ main { flex: 1; }
   line-height: 1;
 }
 
-.badge-vac  { background: var(--c-badge-vac); color: var(--c-badge-vac-text); }
-.badge-neu  { background: var(--c-badge-neu); color: var(--c-badge-neu-text); }
+.badge-vac     { background: var(--c-badge-vac);     color: var(--c-badge-vac-text); }
+.badge-neu     { background: var(--c-badge-neu);     color: var(--c-badge-neu-text); }
+.badge-senior  { background: var(--c-badge-senior);  color: var(--c-badge-senior-text); }
+.badge-special { background: var(--c-badge-special); color: var(--c-badge-special-text); }
 
 /* ── Section Labels ── */
 .section-eyebrow {

@@ -105,8 +105,10 @@ function catCardHTML(cat, index) {
   const neuLabel = cat.sex === 'femea' ? 'Castrada' : 'Castrado';
 
   const badges = [
-    cat.vacinado ? `<span class="badge badge-vac">${vacLabel}</span>` : '',
-    cat.castrado ? `<span class="badge badge-neu">${neuLabel}</span>` : '',
+    cat.vacinado        ? `<span class="badge badge-vac">${vacLabel}</span>` : '',
+    cat.castrado        ? `<span class="badge badge-neu">${neuLabel}</span>` : '',
+    cat.idoso           ? `<span class="badge badge-senior">Sênior</span>` : '',
+    cat.condicaoEspecial ? `<span class="badge badge-special">Cond. Especial</span>` : '',
   ].filter(Boolean).join('\n');
 
   const colorLabel = {
@@ -219,17 +221,21 @@ function openModal(cat) {
     tricolor: 'Tricolor / Calico', tartaruga: 'Tartaruga', colorpoint: 'Colorpoint',
   }[cat.color] ?? cat.color;
 
-  const vacBadge = cat.vacinado
+  const vacBadge     = cat.vacinado
     ? `<span class="badge badge-vac">${cat.sex === 'femea' ? 'Vacinada' : 'Vacinado'}</span>` : '';
-  const neuBadge = cat.castrado
+  const neuBadge     = cat.castrado
     ? `<span class="badge badge-neu">${cat.sex === 'femea' ? 'Castrada' : 'Castrado'}</span>` : '';
+  const seniorBadge  = cat.idoso
+    ? `<span class="badge badge-senior">Sênior</span>` : '';
+  const specialBadge = cat.condicaoEspecial
+    ? `<span class="badge badge-special">Cond. Especial</span>` : '';
 
   const imgSrc = cat.img ?? FALLBACK_IMG;
   modal.querySelector('.modal__img').src              = imgSrc;
   modal.querySelector('.modal__img').alt              = `${cat.name}`;
   modal.querySelector('.modal__img').onerror          = function () { this.src = FALLBACK_IMG; };
   modal.querySelector('.modal__name').textContent     = cat.name;
-  modal.querySelector('.modal__badges').innerHTML     = vacBadge + neuBadge;
+  modal.querySelector('.modal__badges').innerHTML     = vacBadge + neuBadge + seniorBadge + specialBadge;
   modal.querySelector('.modal__description').textContent = cat.description;
 
   const healthRows = [

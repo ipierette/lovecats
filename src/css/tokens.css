@@ -43,6 +43,10 @@
   --c-badge-vac-text: #8de0ae;
   --c-badge-neu:      #2a567a;
   --c-badge-neu-text: #8dbfe0;
+  --c-badge-senior:      #6b3e1e;
+  --c-badge-senior-text: #f4b97a;
+  --c-badge-special:     #5a2e6b;
+  --c-badge-special-text:#d9a3f0;
 
   /* ── Typography ── */
   --font-sans:    'Inter', system-ui, sans-serif;
@@ -144,6 +148,10 @@
   --c-badge-vac-text: #1a6640;
   --c-badge-neu:      #d4e6f0;
   --c-badge-neu-text: #1a4a66;
+  --c-badge-senior:      #fde8cc;
+  --c-badge-senior-text: #7a3a0a;
+  --c-badge-special:     #eeddf8;
+  --c-badge-special-text:#5a1e78;
 
   --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.08);
   --shadow-sm:  0 2px 6px rgba(0, 0, 0, 0.1);
