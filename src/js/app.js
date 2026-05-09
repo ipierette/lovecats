@@ -23,24 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (body.dataset.page === 'home') {
     initResponsibleGallery();
-    // Start counter animation immediately with static data-count values —
-    // no need to wait for the API. Live values are applied below once ready.
-    initCounters();
+    // Counters stay at 0 until the fetch resolves — no mock ghost.
     fetch('/api/metrics')
       .then(r => r.ok ? r.json() : null)
       .then(data => {
-        if (!data) return;
-        [
-          ['metric-adotados',    data.adotados],
-          ['metric-disponiveis', data.disponiveis],
-          ['metric-mes',         data.adotados_mes],
-        ].forEach(([id, value]) => {
-          if (value == null) return;
-          const el = document.getElementById(id);
-          if (el) el.textContent = value;
-        });
+        initCounters(data
+          ? { adotados: data.adotados, disponiveis: data.disponiveis, mes: data.adotados_mes }
+          : {});
       })
-      .catch(() => {});
+      .catch(() => initCounters());
   }
   if (body.dataset.page === 'sobre') {
     initTeamAccordion();
