@@ -24,7 +24,10 @@ CREATE TABLE IF NOT EXISTS adoption_intents (
   adoption_token   text        NOT NULL UNIQUE,
   status           text        NOT NULL DEFAULT 'pending'
                                CHECK (status IN ('pending', 'confirmed', 'denied')),
-  created_at       timestamptz NOT NULL DEFAULT now()
+  created_at       timestamptz NOT NULL DEFAULT now(),
+
+  -- Impede que o mesmo email se registre duas vezes para o mesmo anuncio
+  CONSTRAINT uq_intent_anuncio_email UNIQUE (anuncio_id, email_adotante)
 );
 
 

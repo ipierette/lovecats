@@ -1,11 +1,22 @@
-import { randomBytes } from 'crypto';
-import { Resend }       from 'resend';
-import { supabaseAdmin } from './_lib/supabaseAdmin.js';
+import { randomBytes }   from 'crypto';
+import nodemailer         from 'nodemailer';
+import { supabaseAdmin }  from './_lib/supabaseAdmin.js';
 
-const resend    = new Resend(process.env.RESEND_API_KEY);
-const FROM      = process.env.FROM_EMAIL    ?? 'LoveCats <noreply@lovecats.com.br>';
-const REPLY_TO  = process.env.REPLY_TO_EMAIL ?? 'equipelovecats@gmail.com';
-const BASE_URL  = (process.env.BASE_URL ?? 'https://lovecats.com.br').replace(/\/$/, '');
+// ── Gmail SMTP transporter ───────────────────────────────────
+// Usa a conta Gmail dedicada do projeto (nao exige dominio verificado).
+// Configure EMAIL_USER e EMAIL_APP_PASSWORD na Vercel e no .env local.
+// Gere um App Password em: https://myaccount.google.com/apppasswords
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_APP_PASSWORD,
+  },
+});
+
+const FROM     = `LoveCats <${process.env.EMAIL_USER ?? 'lovecats.doacao@gmail.com'}>`;
+const REPLY_TO = process.env.REPLY_TO_EMAIL ?? 'equipelovecats@gmail.com';
+const BASE_URL = (process.env.BASE_URL ?? 'https://lovecats.vercel.app').replace(/\/$/, '');
 
 // ── Email template ───────────────────────────────────────────
 function adoptionEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter }) {
@@ -158,6 +169,10 @@ export default async function handler(req, res) {
     });
 
   if (insertErr) {
+    // Código 23505 = unique_violation: mesmo email já se registrou para este anúncio
+    if (insertErr.code === '23505') {
+      return res.status(409).json({ error: 'Você já registrou interesse neste gatinho. Verifique seu e-mail!' });
+    }
     console.error('[adoption-intent] Erro ao salvar intent:', insertErr);
     return res.status(500).json({ error: 'Erro interno ao registrar interesse.' });
   }
@@ -167,23 +182,14 @@ export default async function handler(req, res) {
   const confirmUrl = `${BASE_URL}/api/adoption-confirm?token=${token}`;
   const denyUrl    = `${BASE_URL}/api/adoption-deny?token=${token}`;
 
-  // Envia emails (não bloqueia a resposta em caso de falha)
-  // ATENÇÃO se receber 403 do Resend: o domínio remetente (FROM_EMAIL) precisa
-  // estar verificado em resend.com/domains. Enquanto não estiver, use
-  // FROM_EMAIL=onboarding@resend.dev (só funciona para envio ao próprio email
-  // do dono da conta Resend, útil em testes).
+  // Envia emails via Gmail SMTP (nodemailer).
+  // Nao exige dominio verificado — funciona com qualquer conta Gmail + App Password.
   const sendEmail = async ({ to, subject, html, label }) => {
-    const { data, error } = await resend.emails.send({
-      from:     FROM,
-      reply_to: REPLY_TO,
-      to:       [to],
-      subject,
-      html,
-    });
-    if (error) {
-      console.warn(`[adoption-intent] Falha ao enviar email ${label}:`, JSON.stringify(error));
-    } else {
-      console.log(`[adoption-intent] Email ${label} enviado: ${data?.id}`);
+    try {
+      const info = await transporter.sendMail({ from: FROM, replyTo: REPLY_TO, to, subject, html });
+      console.log(`[adoption-intent] Email ${label} enviado: ${info.messageId}`);
+    } catch (err) {
+      console.warn(`[adoption-intent] Falha ao enviar email ${label}:`, err.message);
     }
   };
 

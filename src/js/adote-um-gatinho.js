@@ -335,7 +335,16 @@ async function submitModalAdoption(btn, destUrl) {
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      throw new Error(err.error ?? 'Erro ao registrar interesse.');
+      // 409 = email já registrado para este anuncio
+      if (res.status === 409 && err.error?.includes('já registrou')) {
+        errorEl.textContent = err.error;
+      } else {
+        throw new Error(err.error ?? 'Erro ao registrar interesse.');
+      }
+      errorEl.hidden = false;
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+      return;
     }
   } catch (err) {
     errorEl.textContent = err.message;
