@@ -28,24 +28,10 @@ export function initAnimations() {
 
 /**
  * initCounters — animates [data-count] elements from 0 to their target value.
- * If live values are passed (e.g. fetched from Supabase), they override the
- * static data-count attributes before the animation starts.
- *
- * @param {{ adotados?: number, disponiveis?: number, mes?: number }} [live]
+ * Call immediately on page load; live values from the API are applied afterwards
+ * via direct textContent update in app.js.
  */
-export function initCounters(live = {}) {
-  // Override static data-count values with live DB data when available
-  const overrides = [
-    { id: 'metric-adotados',   value: live.adotados    },
-    { id: 'metric-disponiveis', value: live.disponiveis },
-    { id: 'metric-mes',        value: live.mes         },
-  ];
-  overrides.forEach(({ id, value }) => {
-    if (value == null) return;
-    const el = document.getElementById(id);
-    if (el) { el.dataset.count = value; el.textContent = value; }
-  });
-
+export function initCounters() {
   const counters = document.querySelectorAll('[data-count]');
   if (!counters.length) return;
 
@@ -57,7 +43,7 @@ export function initCounters(live = {}) {
         io.unobserve(entry.target);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.15 }
   );
 
   counters.forEach((el) => io.observe(el));
@@ -66,13 +52,13 @@ export function initCounters(live = {}) {
 function animateCount(el) {
   const target = parseInt(el.dataset.count, 10);
   const suffix = el.dataset.suffix ?? '';
-  const duration = 1400;
+  const duration = 800;
   const start = performance.now();
 
   function step(now) {
     const progress = Math.min((now - start) / duration, 1);
-    // ease-out cubic
-    const eased = 1 - Math.pow(1 - progress, 3);
+    // ease-out expo — fast start, soft landing
+    const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
     el.textContent = Math.floor(eased * target) + suffix;
     if (progress < 1) requestAnimationFrame(step);
   }
