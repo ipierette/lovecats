@@ -191,9 +191,6 @@
             <p class="modal__desc-label">Sobre o gatinho</p>
             <p class="modal__description"></p>
 
-            <!-- docs section — populated by JS -->
-            <div class="modal__docs" id="modal-docs" hidden></div>
-
             <!-- E-mail obrigatório antes de entrar em contato -->
             <div class="modal__email-capture">
               <label class="modal__email-label" for="modal-adopter-email">
@@ -212,7 +209,7 @@
               <p class="modal__email-error" id="modal-email-error" role="alert" hidden></p>
               <p class="modal__email-tip">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0 1.1.9 2 2 2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <span>Necessário para registrar seu interesse e para acompanharmos o processo de adoção. Adicione <strong>equipelovecats@gmail.com</strong> aos seus contatos.</span>
+                <span>Necessário para registrar seu interesse e para acompanharmos o processo de adoção. Por favor adicione <strong>equipelovecats@gmail.com</strong> aos seus contatos.</span>
               </p>
             </div>
 
@@ -225,6 +222,9 @@
               <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Ver anúncio no site da ONG
             </button>
+
+            <!-- docs section — populated by JS; appears just above "Ver Documentação" button -->
+            <div class="modal__docs" id="modal-docs" hidden></div>
 
             <div class="modal__secondary-actions">
               <a href="./guia-essencial.html#seguranca-adocao" target="_blank" rel="noopener" class="modal__safety-btn">

@@ -405,8 +405,4 @@ export function init() {
   fetchCats();
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
+// init() is called by app.js via dynamic import — do not auto-invoke here
