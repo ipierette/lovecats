@@ -147,7 +147,7 @@ function catCardHTML(cat, index) {
         </p>
         ${donorChip}
         <div class="btn-contact">
-          <button class="btn btn-secondary cat-card__details-btn" style="flex:1;" data-cat-index="${index}">
+          <button class="btn btn-primary cat-card__details-btn" style="flex:1;" data-cat-index="${index}">
             Saiba Mais
           </button>
         </div>
