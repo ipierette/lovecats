@@ -225,7 +225,7 @@
 /* ── Two-column page layout: TOC + Articles ────────────────── */
 .guide-page-layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 13.75rem 1fr;
   gap: var(--s-12);
   align-items: start;
   padding-bottom: var(--s-16);

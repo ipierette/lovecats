@@ -272,7 +272,7 @@ html.has-js [data-animate].is-visible {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 640px;
+  max-width: 40rem;
   max-height: 86vh;
   background: var(--c-surface-raised);
   border: 1px solid var(--c-border-strong);
@@ -316,8 +316,8 @@ html.has-js [data-animate].is-visible {
 
 .btn-fechar-modal {
   flex-shrink: 0;
-  width: 34px;
-  height: 34px;
+  width: 2.125rem;
+  height: 2.125rem;
   border-radius: var(--r-full);
   border: 1px solid var(--c-border-strong);
   background: var(--c-surface-high);

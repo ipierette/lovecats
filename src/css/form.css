@@ -26,7 +26,7 @@
 }
 
 .announce-page__header {
-  max-width: 640px;
+  max-width: 40rem;
   margin-inline: auto;
   text-align: center;
   margin-bottom: var(--s-12);
@@ -70,7 +70,7 @@
 
 /* Card shell */
 .form-card {
-  max-width: 720px;
+  max-width: 45rem;
   margin-inline: auto;
   padding-inline: var(--s-4);
 }
@@ -193,7 +193,7 @@ textarea:focus {
   box-shadow: 0 0 0 3px var(--c-primary-dim);
 }
 
-textarea { resize: vertical; min-height: 110px; }
+textarea { resize: vertical; min-height: 6.875rem; }
 
 /* Select wrapper with arrow */
 .select-wrap { position: relative; }
@@ -259,7 +259,7 @@ textarea { resize: vertical; min-height: 110px; }
 /* Health checkboxes */
 .checkbox-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
   gap: var(--s-2-5);
   align-items: stretch; /* every cell in a row shares the row's height */
 }
@@ -273,7 +273,7 @@ textarea { resize: vertical; min-height: 110px; }
   color: var(--c-text-2);
   user-select: none;
   padding: var(--s-2-5) var(--s-3);
-  min-height: 52px; /* keeps every card the same baseline height */
+  min-height: 3.25rem; /* keeps every card the same baseline height */
   border: 1px solid var(--c-border);
   border-radius: var(--r-md);
   transition: background var(--dur-fast), border-color var(--dur-fast);
@@ -356,7 +356,7 @@ textarea { resize: vertical; min-height: 110px; }
 }
 .form-actions .btn-primary {
   width: 100%;
-  max-width: 400px;
+  max-width: 25rem;
   margin-inline: auto;
   padding-block: var(--s-4);
   font-size: var(--text-md);

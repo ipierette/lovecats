@@ -70,8 +70,8 @@
   transition: border-color 220ms, transform 220ms;
 }
 .mission-card:hover { border-color: var(--c-primary); transform: translateY(-4px); }
-.mission-card__icon { width: 52px; height: 52px; display: grid; place-items: center; background: color-mix(in srgb, var(--c-primary) 14%, var(--c-surface)); border: 1px solid color-mix(in srgb, var(--c-primary) 30%, transparent); border-radius: var(--r-xl); font-size: 1.4rem; color: var(--c-primary); }
-.mission-card__icon svg { width: 28px; height: 28px; }
+.mission-card__icon { width: 3.25rem; height: 3.25rem; display: grid; place-items: center; background: color-mix(in srgb, var(--c-primary) 14%, var(--c-surface)); border: 1px solid color-mix(in srgb, var(--c-primary) 30%, transparent); border-radius: var(--r-xl); font-size: 1.4rem; color: var(--c-primary); }
+.mission-card__icon svg { width: 1.75rem; height: 1.75rem; }
 .mission-card__title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--c-text-1); }
 .mission-card__desc { font-size: var(--text-sm); color: var(--c-text-2); line-height: 1.75; flex: 1; }
 
@@ -138,8 +138,8 @@
 }
 
 .card-avatar {
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: color-mix(in srgb, var(--c-primary) 16%, var(--c-surface));
   border: 2px solid color-mix(in srgb, var(--c-primary) 50%, transparent);
@@ -194,8 +194,8 @@ img.card-avatar {
   padding-top: var(--s-1);
 }
 .card-social__link {
-  width: 28px;
-  height: 28px;
+  width: 1.75rem;
+  height: 1.75rem;
   display: grid;
   place-items: center;
   border: 1px solid var(--c-border);
@@ -254,5 +254,5 @@ img.card-avatar {
 }
 @media (max-width: 480px) {
   .team-grid { grid-template-columns: 1fr; }
-  .team-card { max-width: 320px; margin-inline: auto; }
+  .team-card { max-width: 20rem; margin-inline: auto; }
 }
