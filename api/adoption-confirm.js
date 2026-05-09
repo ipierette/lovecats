@@ -19,24 +19,29 @@ export default async function handler(req, res) {
     return res.redirect(302, `${BASE_URL}/adocao-confirmada.html?error=token`);
   }
 
-  // Busca o anúncio pelo token
-  const { data: anuncio, error } = await supabaseAdmin
-    .from('anuncios_doacao')
-    .select('id, status')
+  // Busca o intent pelo token
+  const { data: intent, error } = await supabaseAdmin
+    .from('adoption_intents')
+    .select('id, anuncio_id, status')
     .eq('adoption_token', token)
     .single();
 
-  if (error || !anuncio) {
+  if (error || !intent) {
     return res.redirect(302, `${BASE_URL}/adocao-confirmada.html?error=notfound`);
   }
 
-  // Marca como adotado (idempotente — se já for adotado, redireciona da mesma forma)
-  if (anuncio.status !== 'adotado') {
-    await supabaseAdmin
-      .from('anuncios_doacao')
-      .update({ status: 'adotado' })
-      .eq('id', anuncio.id);
-  }
+  // Marca o intent como confirmado
+  await supabaseAdmin
+    .from('adoption_intents')
+    .update({ status: 'confirmed' })
+    .eq('id', intent.id);
+
+  // Marca o anúncio como adotado (idempotente)
+  await supabaseAdmin
+    .from('anuncios_doacao')
+    .update({ status: 'adotado' })
+    .eq('id', intent.anuncio_id)
+    .neq('status', 'adotado');
 
   return res.redirect(302, `${BASE_URL}/adocao-confirmada.html`);
 }

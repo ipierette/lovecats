@@ -20,28 +20,22 @@ export default async function handler(req, res) {
     return res.redirect(302, `${BASE_URL}/adocao-nao-confirmada.html?error=token`);
   }
 
-  // Busca o anúncio pelo token
-  const { data: anuncio, error } = await supabaseAdmin
-    .from('anuncios_doacao')
+  // Busca o intent pelo token
+  const { data: intent, error } = await supabaseAdmin
+    .from('adoption_intents')
     .select('id, status')
     .eq('adoption_token', token)
     .single();
 
-  if (error || !anuncio) {
+  if (error || !intent) {
     return res.redirect(302, `${BASE_URL}/adocao-nao-confirmada.html?error=notfound`);
   }
 
-  // Limpa campos de adoção para que o gatinho fique disponível novamente
-  if (anuncio.status === 'disponivel') {
-    await supabaseAdmin
-      .from('anuncios_doacao')
-      .update({
-        email_adotante:     null,
-        adoption_token:     null,
-        adoption_intent_at: null,
-      })
-      .eq('id', anuncio.id);
-  }
+  // Marca o intent como negado — o anúncio permanece 'disponivel'
+  await supabaseAdmin
+    .from('adoption_intents')
+    .update({ status: 'denied' })
+    .eq('id', intent.id);
 
   return res.redirect(302, `${BASE_URL}/adocao-nao-confirmada.html`);
 }

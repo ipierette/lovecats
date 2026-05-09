@@ -145,18 +145,20 @@ export default async function handler(req, res) {
   // Gera token criptograficamente seguro (64 chars hex)
   const token = randomBytes(32).toString('hex');
 
-  // Salva no banco
-  const { error: updateErr } = await supabaseAdmin
-    .from('anuncios_doacao')
-    .update({
-      email_adotante:     email_adotante.trim(),
-      adoption_token:     token,
-      adoption_intent_at: new Date().toISOString(),
-    })
-    .eq('id', anuncio_id);
+  // Registra o interesse numa linha própria da tabela adoption_intents.
+  // Dessa forma múltiplos adotantes podem se interessar pelo mesmo anúncio
+  // sem sobrescrever os dados uns dos outros.
+  const { error: insertErr } = await supabaseAdmin
+    .from('adoption_intents')
+    .insert({
+      anuncio_id:    anuncio_id,
+      email_adotante: email_adotante.trim(),
+      adoption_token: token,
+      status:         'pending',
+    });
 
-  if (updateErr) {
-    console.error('[adoption-intent] Erro ao salvar token:', updateErr);
+  if (insertErr) {
+    console.error('[adoption-intent] Erro ao salvar intent:', insertErr);
     return res.status(500).json({ error: 'Erro interno ao registrar interesse.' });
   }
 
@@ -166,33 +168,39 @@ export default async function handler(req, res) {
   const denyUrl    = `${BASE_URL}/api/adoption-deny?token=${token}`;
 
   // Envia emails (não bloqueia a resposta em caso de falha)
-  const emailPromises = [];
-
-  // Email para o adotante
-  emailPromises.push(
-    resend.emails.send({
+  // ATENÇÃO se receber 403 do Resend: o domínio remetente (FROM_EMAIL) precisa
+  // estar verificado em resend.com/domains. Enquanto não estiver, use
+  // FROM_EMAIL=onboarding@resend.dev (só funciona para envio ao próprio email
+  // do dono da conta Resend, útil em testes).
+  const sendEmail = async ({ to, subject, html, label }) => {
+    const { data, error } = await resend.emails.send({
       from:     FROM,
       reply_to: REPLY_TO,
-      to:       [email_adotante.trim()],
-      subject:  `Seu interesse em adotar ${catName} foi registrado! 🐱`,
-      html:     adoptionEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter: true }),
-    }).catch(err => console.warn('[adoption-intent] Erro ao enviar email adotante:', err.message))
-  );
+      to:       [to],
+      subject,
+      html,
+    });
+    if (error) {
+      console.warn(`[adoption-intent] Falha ao enviar email ${label}:`, JSON.stringify(error));
+    } else {
+      console.log(`[adoption-intent] Email ${label} enviado: ${data?.id}`);
+    }
+  };
 
-  // Email para o doador (se tiver email)
-  if (anuncio.email) {
-    emailPromises.push(
-      resend.emails.send({
-        from:     FROM,
-        reply_to: REPLY_TO,
-        to:       [anuncio.email],
-        subject:  `${catName} pode ter encontrado um lar! Confirme a adoção 🏠`,
-        html:     adoptionEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter: false }),
-      }).catch(err => console.warn('[adoption-intent] Erro ao enviar email doador:', err.message))
-    );
-  }
-
-  await Promise.allSettled(emailPromises);
+  await Promise.allSettled([
+    sendEmail({
+      to:      email_adotante.trim(),
+      subject: `Seu interesse em adotar ${catName} foi registrado! 🐱`,
+      html:    adoptionEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter: true }),
+      label:   'adotante',
+    }),
+    ...(anuncio.email ? [sendEmail({
+      to:      anuncio.email,
+      subject: `${catName} pode ter encontrado um lar! Confirme a adoção 🏠`,
+      html:    adoptionEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter: false }),
+      label:   'doador',
+    })] : []),
+  ]);
 
   return res.status(200).json({ ok: true });
 }
