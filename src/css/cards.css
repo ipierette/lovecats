@@ -397,7 +397,7 @@
   border: 1px solid var(--c-border);
   border-radius: var(--r-2xl);
   width: 100%;
-  max-width: 780px;
+  max-width: 960px;
   max-height: 90dvh;
   overflow-y: auto;
   box-shadow: var(--shadow-xl);
@@ -430,7 +430,7 @@
 
 .modal__body {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 320px 1fr;
   gap: 0;
 }
 

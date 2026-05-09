@@ -121,9 +121,8 @@ function catCardHTML(cat, index) {
   const donor = donorChipMap[cat.donorType] ?? donorChipMap['resgate-informal'];
   const donorChip = `<span class="cat-card__donor-chip cat-card__donor-chip--${donor.cls}">${donor.label}</span>`;
 
-  const contactBtn = cat.donorType === 'ong'
-    ? `<a href="${cat.ongUrl ?? '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex:1;justify-content:center;">Ver na ONG</a>`
-    : `<button class="btn btn-primary cat-card__adopt-btn" style="flex:1;justify-content:center;" data-cat-index="${index}">Adotar</button>`;
+  const contactLabel = cat.donorType === 'ong' ? 'Ver na ONG' : 'Adotar';
+  const contactBtn = `<button class="btn btn-primary cat-card__adopt-btn" style="flex:1;justify-content:center;" data-cat-index="${index}">${contactLabel}</button>`;
 
   const imgSrc = cat.img ?? FALLBACK_IMG;
   const imgAlt = `${cat.name} — ${cat.sexLabel ?? cat.sex} ${colorLabel}`;
@@ -270,7 +269,13 @@ function openModal(cat) {
       adoptBtn.dataset.whatsappUrl  = waUrl;
     }
   }
-  if (ongBtn) { ongBtn.hidden = !isOng; if (isOng && cat.ongUrl) ongBtn.href = cat.ongUrl; }
+  if (ongBtn) {
+    ongBtn.hidden = !isOng;
+    if (isOng) {
+      ongBtn.dataset.catId = cat.id;
+      ongBtn.dataset.ongUrl = cat.ongUrl ?? '';
+    }
+  }
 
   // Docs section
   const docsEl  = document.getElementById('modal-docs');
@@ -308,14 +313,16 @@ function closeModal() {
 }
 
 // ── Adoption Intent Modal ────────────────────────────────────
-function openAdoptionModal(catId, whatsappUrl) {
+function openAdoptionModal(catId, destUrl, isOng = false) {
   const modal = document.getElementById('adoption-modal');
   if (!modal) return;
-  document.getElementById('adoption-anuncio-id').value  = catId ?? '';
-  document.getElementById('adoption-whatsapp-url').value = whatsappUrl ?? '';
+  document.getElementById('adoption-anuncio-id').value   = catId ?? '';
+  document.getElementById('adoption-whatsapp-url').value = destUrl ?? '';
   document.getElementById('adopter-email').value = '';
   document.getElementById('adopter-email-error').hidden = true;
   document.getElementById('adopter-email').classList.remove('is-error');
+  const label = document.getElementById('adoption-submit-label');
+  if (label) label.textContent = isOng ? 'Confirmar e ver na ONG' : 'Confirmar e abrir WhatsApp';
   modal.removeAttribute('hidden');
   modal.setAttribute('aria-modal', 'true');
   document.body.style.overflow = 'hidden';
@@ -350,10 +357,13 @@ export function init() {
     if (adoptBtn) {
       const idx = parseInt(adoptBtn.dataset.catIndex, 10);
       if (!isNaN(idx) && allCats[idx]) {
-        const cat = allCats[idx];
+        const cat   = allCats[idx];
+        const isOng = cat.donorType === 'ong';
         const waMsg = encodeURIComponent(`Olá! Tenho interesse em adotar ${cat.sex === 'femea' ? 'a' : 'o'} ${cat.name}.`);
-        const waUrl = cat.whatsapp ? `https://wa.me/${cat.whatsapp}?text=${waMsg}` : '';
-        openAdoptionModal(cat.id, waUrl);
+        const destUrl = isOng
+          ? (cat.ongUrl ?? '')
+          : (cat.whatsapp ? `https://wa.me/${cat.whatsapp}?text=${waMsg}` : '');
+        openAdoptionModal(cat.id, destUrl, isOng);
       }
     }
   });
@@ -365,12 +375,18 @@ export function init() {
     detailModal.querySelector('.modal__overlay')?.addEventListener('click', closeModal);
 
     detailModal.addEventListener('click', e => {
-      const btn = e.target.closest('.modal__adopt-btn');
-      if (!btn) return;
-      const catId       = btn.dataset.catId;
-      const whatsappUrl = btn.dataset.whatsappUrl;
-      closeModal();
-      openAdoptionModal(catId, whatsappUrl);
+      const adoptBtn = e.target.closest('.modal__adopt-btn');
+      if (adoptBtn) {
+        closeModal();
+        openAdoptionModal(adoptBtn.dataset.catId, adoptBtn.dataset.whatsappUrl, false);
+        return;
+      }
+      const ongBtn = e.target.closest('.modal__ong-btn');
+      if (ongBtn) {
+        e.preventDefault();
+        closeModal();
+        openAdoptionModal(ongBtn.dataset.catId, ongBtn.dataset.ongUrl, true);
+      }
     });
 
     detailModal.querySelector('#modal-docs-btn')?.addEventListener('click', () => {
