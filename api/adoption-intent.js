@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const FROM     = `LoveCats <${process.env.EMAIL_USER ?? 'lovecats.doacao@gmail.com'}>`;
+const FROM     = `LoveCats <${process.env.EMAIL_USER ?? 'equipelovecats@gmail.com'}>`;
 const REPLY_TO = process.env.REPLY_TO_EMAIL ?? 'equipelovecats@gmail.com';
 const BASE_URL = (process.env.BASE_URL ?? 'https://lovecats.vercel.app').replace(/\/$/, '');
 
