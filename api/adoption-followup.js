@@ -1,12 +1,20 @@
-import { Resend } from 'resend';
+import nodemailer        from 'nodemailer';
 import { supabaseAdmin } from './_lib/supabaseAdmin.js';
 
-const resend   = new Resend(process.env.RESEND_API_KEY);
-const FROM     = process.env.FROM_EMAIL     ?? 'LoveCats <noreply@lovecats.com.br>';
-const REPLY_TO = process.env.REPLY_TO_EMAIL ?? 'equipelovecats@gmail.com';
-const BASE_URL = (process.env.BASE_URL ?? 'https://lovecats.com.br').replace(/\/$/, '');
+// ── Gmail SMTP transporter (same as adoption-intent.js) ─────
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_APP_PASSWORD,
+  },
+});
 
-// ── Resend e-mail HTML (follow-up flavour) ────────────────────────────────────
+const FROM     = `LoveCats <${process.env.EMAIL_USER ?? 'equipelovecats@gmail.com'}>`;
+const REPLY_TO = process.env.REPLY_TO_EMAIL ?? 'equipelovecats@gmail.com';
+const BASE_URL = (process.env.BASE_URL ?? 'https://lovecats-neon.vercel.app').replace(/\/$/, '');
+
+// ── Follow-up e-mail HTML ───────────────────────────────────────────────────────
 function followUpEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter }) {
   const headline = isAdopter
     ? `Lembrete: como foi a adoção de <strong>${catName}</strong>? 🐱`
@@ -122,16 +130,14 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'Banco de dados não configurado.' });
   }
 
-  // Find all pending adoptions that have been waiting for ≥ 7 days
+  // Find all pending adoption intents waiting for ≥ 7 days (cron runs weekly)
   const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
   const { data: pending, error } = await supabaseAdmin
-    .from('anuncios_doacao')
-    .select('id, nome_gato, nome_doador, email, email_adotante, adoption_token')
-    .eq('status', 'disponivel')
-    .not('adoption_token', 'is', null)
-    .not('email_adotante', 'is', null)
-    .lte('adoption_intent_at', sevenDaysAgo);
+    .from('adoption_intents')
+    .select('id, anuncio_id, email_adotante, adoption_token, anuncios_doacao(nome_gato, nome_doador, email)')
+    .eq('status', 'pending')
+    .lte('created_at', sevenDaysAgo);
 
   if (error) {
     console.error('[adoption-followup] query error', error);
@@ -145,52 +151,46 @@ export default async function handler(req, res) {
   let sent = 0;
   const failures = [];
 
-  for (const anuncio of pending) {
-    const token      = anuncio.adoption_token;
+  for (const intent of pending) {
+    const token      = intent.adoption_token;
     const confirmUrl = `${BASE_URL}/api/adoption-confirm?token=${token}`;
     const denyUrl    = `${BASE_URL}/api/adoption-deny?token=${token}`;
-    const catName    = anuncio.nome_gato ?? 'o gatinho';
-    const donorName  = anuncio.nome_doador ?? 'tutor';
+    const ad         = intent.anuncios_doacao ?? {};
+    const catName    = ad.nome_gato  ?? 'o gatinho';
+    const donorName  = ad.nome_doador ?? 'tutor';
 
     const emails = [];
 
     // E-mail para o adotante
     emails.push(
-      resend.emails.send({
-        from:     FROM,
-        reply_to: REPLY_TO,
-        to:       anuncio.email_adotante,
-        subject:  `Lembrete: como foi a adoção de ${catName}? — LoveCats`,
-        html:     followUpEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter: true }),
+      transporter.sendMail({
+        from:    FROM,
+        replyTo: REPLY_TO,
+        to:      intent.email_adotante,
+        subject: `Lembrete: como foi a adoção de ${catName}? — LoveCats`,
+        html:    followUpEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter: true }),
       })
     );
 
     // E-mail para o doador (se tiver email)
-    if (anuncio.email) {
+    if (ad.email) {
       emails.push(
-        resend.emails.send({
-          from:     FROM,
-          reply_to: REPLY_TO,
-          to:       anuncio.email,
-          subject:  `Lembrete: ${catName} encontrou um lar? — LoveCats`,
-          html:     followUpEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter: false }),
+        transporter.sendMail({
+          from:    FROM,
+          replyTo: REPLY_TO,
+          to:      ad.email,
+          subject: `Lembrete: ${catName} encontrou um lar? — LoveCats`,
+          html:    followUpEmailHTML({ catName, donorName, confirmUrl, denyUrl, isAdopter: false }),
         })
       );
     }
 
     try {
       await Promise.all(emails);
-
-      // Reset the 7-day clock so we don't spam on every run
-      await supabaseAdmin
-        .from('anuncios_doacao')
-        .update({ adoption_intent_at: new Date().toISOString() })
-        .eq('id', anuncio.id);
-
       sent++;
     } catch (emailErr) {
-      console.error(`[adoption-followup] failed for anuncio ${anuncio.id}`, emailErr);
-      failures.push(anuncio.id);
+      console.error(`[adoption-followup] failed for intent ${intent.id}`, emailErr);
+      failures.push(intent.id);
     }
   }
 
