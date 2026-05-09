@@ -476,3 +476,31 @@ ALTER TABLE anuncios_doacao ADD CONSTRAINT valid_email CHECK (
 -- 3. Use LIMIT para não sobrecarregar consultas grandes
 -- 4. Sempre teste queries de UPDATE/DELETE em ambiente de desenvolvimento primeiro
 -- 5. Faça backup antes de executar queries de manutenção
+
+-- =============================================================================
+-- MIGRACAO: Fluxo de adocao — colunas e-mail adotante, token e data intencao
+-- Execute no Supabase Dashboard > SQL Editor (uma unica vez)
+-- =============================================================================
+/*
+ALTER TABLE anuncios_doacao
+  ADD COLUMN IF NOT EXISTS email_adotante     TEXT,
+  ADD COLUMN IF NOT EXISTS adoption_token     TEXT UNIQUE,
+  ADD COLUMN IF NOT EXISTS adoption_intent_at TIMESTAMPTZ;
+
+CREATE INDEX IF NOT EXISTS idx_adoption_intent_at
+  ON anuncios_doacao (adoption_intent_at)
+  WHERE status = 'disponivel' AND adoption_token IS NOT NULL;
+
+-- Trigger para manter updated_at atualizado (necessario para /api/metrics)
+CREATE OR REPLACE FUNCTION update_updated_at()
+RETURNS TRIGGER LANGUAGE plpgsql AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ ;
+
+CREATE OR REPLACE TRIGGER trg_anuncios_updated_at
+  BEFORE UPDATE ON anuncios_doacao
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+*/

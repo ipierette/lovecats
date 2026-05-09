@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="LoveCats — Adoção confirmada! Parabéns pelo novo lar." />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Adoção Confirmada — LoveCats</title>
+    <link rel="stylesheet" href="./src/css/tokens.css" />
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/header.css" />
+    <link rel="stylesheet" href="./src/css/footer.css" />
+    <style>
+      .adoption-result-page {
+        min-height: 80dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--s-16) var(--s-4);
+        text-align: center;
+        position: relative;
+      }
+      .adoption-result-page::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 55% at 50% 0%,
+          color-mix(in srgb, var(--c-primary) 12%, transparent) 0%,
+          transparent 68%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .adoption-result__card {
+        position: relative;
+        z-index: 1;
+        max-width: 560px;
+        width: 100%;
+        background: var(--c-surface-raised);
+        border: 1px solid var(--c-border);
+        border-radius: var(--r-2xl);
+        padding: var(--s-12) var(--s-8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--s-5);
+        box-shadow: var(--shadow-xl);
+        animation: modal-in 380ms var(--ease-out) both;
+      }
+      @keyframes modal-in {
+        from { opacity: 0; transform: translateY(20px) scale(0.97); }
+        to   { opacity: 1; transform: none; }
+      }
+      .adoption-result__icon {
+        width: 5rem;
+        height: 5rem;
+        border-radius: var(--r-full);
+        background: var(--c-success-dim);
+        display: grid;
+        place-items: center;
+        color: var(--c-success);
+      }
+      .adoption-result__icon svg { width: 2.4rem; height: 2.4rem; }
+      .adoption-result__emoji {
+        font-size: 3.5rem;
+        line-height: 1;
+      }
+      .adoption-result__title {
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        font-weight: 700;
+        color: var(--c-text-1);
+        line-height: 1.2;
+        margin: 0;
+      }
+      .adoption-result__title em {
+        font-style: italic;
+        color: var(--c-primary);
+      }
+      .adoption-result__desc {
+        font-size: var(--text-base);
+        color: var(--c-text-2);
+        line-height: 1.75;
+        max-width: 420px;
+        margin: 0;
+      }
+      .adoption-result__tip {
+        font-size: var(--text-sm);
+        color: var(--c-text-3);
+        background: var(--c-surface);
+        border: 1px solid var(--c-border);
+        border-radius: var(--r-lg);
+        padding: var(--s-3) var(--s-4);
+        line-height: 1.65;
+        text-align: left;
+        width: 100%;
+      }
+      .adoption-result__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--s-3);
+        justify-content: center;
+        margin-top: var(--s-2);
+      }
+    </style>
+  </head>
+
+  <body data-page="adoption-result">
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+      <div class="header-inner">
+        <a href="./index.html" class="logo" aria-label="LoveCats — pagina inicial">
+          <img class="logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="36" height="36" />
+          <img class="logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="100" height="26" />
+        </a>
+        <nav class="site-nav" aria-label="Navegação principal">
+          <ul class="site-nav__list" role="list">
+            <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar</a></li>
+            <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-theme" aria-label="Ativar modo claro" aria-pressed="false">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+          <button class="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">
+            <span class="btn-menu__bar"></span>
+            <span class="btn-menu__bar"></span>
+            <span class="btn-menu__bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Menu de navegação" aria-modal="true">
+      <div class="drawer-inner">
+        <button class="btn-drawer-close" aria-label="Fechar menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <nav aria-label="Navegação mobile">
+          <ul class="site-nav__list" role="list">
+            <li><a class="site-nav__link" href="./index.html">Home</a></li>
+            <li><a class="site-nav__link" href="./guia-essencial.html">Guia</a></li>
+            <li><a class="site-nav__link" href="./adote-um-gatinho.html">Adotar um Gatinho</a></li>
+            <li><a class="site-nav__link" href="./anuncie-doacao.html">Anunciar Doação</a></li>
+            <li><a class="site-nav__link" href="./sobre.html">Sobre</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <main id="main-content">
+      <div class="adoption-result-page">
+        <div class="adoption-result__card">
+
+          <div class="adoption-result__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+
+          <p class="adoption-result__emoji" role="img" aria-label="Coração e gato">🐱💛</p>
+
+          <h1 class="adoption-result__title">
+            Parabéns pela adoção, <em>lar amoroso</em>!
+          </h1>
+
+          <p class="adoption-result__desc">
+            Que momento lindo! Um novo começo está sendo escrito — e ele tem patinhas. Que essa nova vida juntos seja repleta de ronronados, manhãs tranquilas e doses diárias de carinho.
+          </p>
+
+          <p class="adoption-result__desc" style="font-size: var(--text-sm); margin-top: -0.5rem;">
+            Obrigado por ter escolhido adotar e por nos informar sobre essa conquista. Sua confirmação ajuda a manter a plataforma atualizada e a dar esperança a quem ainda espera por um lar.
+          </p>
+
+          <div class="adoption-result__tip">
+            <strong style="display:block;margin-bottom:4px;">Dicas para os primeiros dias:</strong>
+            Separe um cantinho tranquilo para o gatinho se adaptar antes de explorar o resto da casa. Paciência e rotina são os melhores presentes que você pode oferecer agora. 🏡
+          </div>
+
+          <div class="adoption-result__actions">
+            <a href="./guia-essencial.html" class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Ler o Guia de Cuidados
+            </a>
+            <a href="./index.html" class="btn btn-primary">
+              Voltar à Home
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid container">
+        <div class="footer-brand">
+          <a href="./index.html" class="footer-logo" aria-label="LoveCats">
+            <img class="footer-logo__icon" src="./src/images/logo-icone.png" alt="" aria-hidden="true" width="32" height="32" />
+            <img class="footer-logo__text" src="./src/images/texto-logo.png" alt="LoveCats" width="88" height="22" />
+          </a>
+          <p class="footer-brand__desc">Conectando corações felinos com lares amorosos desde 2025.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Navegação</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./guia-essencial.html">Guia Essencial</a></li>
+            <li><a href="./adote-um-gatinho.html">Adote um Gatinho</a></li>
+            <li><a href="./anuncie-doacao.html">Anuncie Doação</a></li>
+            <li><a href="./sobre.html">Sobre Nós</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Contato</h3>
+          <p class="footer-brand__desc">Dúvidas ou sugestões? Fale com a nossa equipe.</p>
+          <a href="mailto:equipelovecats@gmail.com" class="footer-contact__link">equipelovecats@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <span>&copy; 2025 LoveCats. Todos os direitos reservados.</span>
+        <span>Feito com <span class="footer-heart" aria-label="amor">&#9829;</span> para os gatinhos.</span>
+      </div>
+    </footer>
+
+    <script src="./src/js/app.js" type="module"></script>
+  </body>
+</html>

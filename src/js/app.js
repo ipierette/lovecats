@@ -22,12 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
 
   if (body.dataset.page === 'home') {
-    // TODO: substituir pelos valores reais do Supabase quando a integração estiver ativa.
-    // Exemplo de chamada:
-    //   const { data } = await supabase.from('stats_anuncios').select('*').single();
-    //   initCounters({ adotados: data.total_adotados, disponiveis: data.total_disponiveis, mes: data.adocoes_mes_atual });
-    initCounters();
     initResponsibleGallery();
+    fetch('/api/metrics')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        initCounters(data
+          ? { adotados: data.adotados, disponiveis: data.disponiveis, mes: data.adotados_mes }
+          : {});
+      })
+      .catch(() => initCounters());
   }
   if (body.dataset.page === 'sobre') {
     initTeamAccordion();

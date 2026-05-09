@@ -408,9 +408,34 @@
               </div>
             </fieldset>
 
+            <!-- Banner de aviso importante -->
+            <div class="announce-notice-banner" role="note" aria-label="Informações importantes sobre o anúncio">
+              <div class="announce-notice-banner__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="announce-notice-banner__content">
+                <strong class="announce-notice-banner__title">Leia antes de publicar</strong>
+                <p class="announce-notice-banner__text">
+                  Nossa plataforma usa um sistema simplificado de criação de anúncios — o fluxo dispensa a necessidade de edição posterior. <strong>Confirme todas as informações fornecidas</strong> e visualize o preview miniaturizado da imagem, exibido logo abaixo da seção de upload, para garantir que a foto correta foi enviada.
+                </p>
+                <p class="announce-notice-banner__text" style="margin-top: 0.5rem;">
+                  Após a publicação, <strong>não será possível editar o anúncio</strong>. Caso precise fazer alterações, entre em contato com nossa equipe.
+                </p>
+              </div>
+            </div>
+
+            <!-- Confirmação de leitura do aviso -->
+            <div class="form-acknowledge">
+              <label class="check-item check-item--highlight">
+                <input type="checkbox" id="chk-acknowledge" name="acknowledge" required />
+                <span class="check-box" aria-hidden="true"></span>
+                <span>Li e estou ciente das informações acima — confirmo que os dados e a foto estão corretos</span>
+              </label>
+            </div>
+
             <!-- Submit -->
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-lg">
+              <button type="submit" id="btn-publicar" class="btn btn-primary btn-lg" disabled aria-disabled="true">
                 Publicar Anúncio
               </button>
               <p class="form-note">Ao publicar você concorda com nossos <a href="#" id="open-terms" class="open-terms">Termos de Uso</a> e confirma que é o responsável pelo gatinho.</p>
@@ -697,6 +722,22 @@
         });
       }
 
+      // ── Acknowledgment checkbox → habilita botão publicar ────────
+      const chkAcknowledge = document.getElementById('chk-acknowledge');
+      const btnPublicar    = document.getElementById('btn-publicar');
+
+      function syncPublishBtn() {
+        const ok = chkAcknowledge?.checked ?? false;
+        if (btnPublicar) {
+          btnPublicar.disabled    = !ok;
+          btnPublicar.setAttribute('aria-disabled', String(!ok));
+        }
+      }
+
+      if (chkAcknowledge) chkAcknowledge.addEventListener('change', syncPublishBtn);
+      syncPublishBtn(); // estado inicial
+
+    
     </script> 
   </body>
 </html>

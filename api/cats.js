@@ -13,6 +13,19 @@ function toPublicFotoUrl(path) {
 }
 
 /**
+ * Se o valor salvo for uma URL completa do Supabase Storage, extrai apenas
+ * o caminho relativo dentro do bucket (ex: "uuid/file.pdf").
+ * Isso garante que createSignedUrls receba o path correto.
+ */
+function extractDocPath(urlOrPath) {
+  if (!urlOrPath) return null;
+  if (!urlOrPath.startsWith('http')) return urlOrPath;
+  // Suporte a URLs do tipo /object/public/{bucket}/{path} e /object/sign/{bucket}/{path}
+  const match = urlOrPath.match(/\/object(?:\/public|\/sign|\/authenticated)?\/.+?\/(.+?)(?:\?|$)/);
+  return match ? match[1] : urlOrPath;
+}
+
+/**
  * GET /api/cats
  * Retorna anúncios disponíveis com todos os campos necessários para
  * a página de adoção, incluindo URLs públicas de fotos e URLs assinadas
@@ -77,9 +90,19 @@ export default async function handler(req, res) {
 
   const rows = data ?? [];
 
+  // Normaliza paths dos docs (podem ser path relativo ou URL completa)
+  const rowsWithNormalizedPaths = rows.map(cat => ({
+    ...cat,
+    doc_vacina_url:    extractDocPath(cat.doc_vacina_url),
+    doc_castracao_url: extractDocPath(cat.doc_castracao_url),
+    doc_protetor_url:  extractDocPath(cat.doc_protetor_url),
+  }));
+
   // Collect unique doc paths and sign them in one batch call
   const docPaths = [...new Set(
-    rows.flatMap(c => [c.doc_vacina_url, c.doc_castracao_url, c.doc_protetor_url].filter(Boolean))
+    rowsWithNormalizedPaths.flatMap(c =>
+      [c.doc_vacina_url, c.doc_castracao_url, c.doc_protetor_url].filter(Boolean)
+    )
   )];
 
   const signedUrlMap = {};
@@ -96,7 +119,7 @@ export default async function handler(req, res) {
     }
   }
 
-  const cats = rows.map(cat => ({
+  const cats = rowsWithNormalizedPaths.map(cat => ({
     ...cat,
     foto_url:          toPublicFotoUrl(cat.foto_url),
     doc_vacina_url:    signedUrlMap[cat.doc_vacina_url]    ?? null,

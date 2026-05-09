@@ -123,7 +123,7 @@ function catCardHTML(cat, index) {
 
   const contactBtn = cat.donorType === 'ong'
     ? `<a href="${cat.ongUrl ?? '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex:1;justify-content:center;">Ver na ONG</a>`
-    : `<a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex:1;justify-content:center;">Adotar</a>`;
+    : `<button class="btn btn-primary cat-card__adopt-btn" style="flex:1;justify-content:center;" data-cat-index="${index}">Adotar</button>`;
 
   const imgSrc = cat.img ?? FALLBACK_IMG;
   const imgAlt = `${cat.name} — ${cat.sexLabel ?? cat.sex} ${colorLabel}`;
@@ -258,12 +258,19 @@ function openModal(cat) {
     ${healthRows}
   `;
 
-  // Contact buttons
+  // Contact buttons — modal__adopt-btn now opens adoption intent modal
   const isOng    = cat.donorType === 'ong';
   const adoptBtn = modal.querySelector('.modal__adopt-btn');
   const ongBtn   = modal.querySelector('.modal__ong-btn');
-  if (adoptBtn) { adoptBtn.hidden = isOng; if (!isOng) adoptBtn.href = waUrl; }
-  if (ongBtn)   { ongBtn.hidden = !isOng; if (isOng && cat.ongUrl) ongBtn.href = cat.ongUrl; }
+  if (adoptBtn) {
+    adoptBtn.hidden = isOng;
+    // store cat data on the button for the adoption intent handler
+    if (!isOng) {
+      adoptBtn.dataset.catId        = cat.id;
+      adoptBtn.dataset.whatsappUrl  = waUrl;
+    }
+  }
+  if (ongBtn) { ongBtn.hidden = !isOng; if (isOng && cat.ongUrl) ongBtn.href = cat.ongUrl; }
 
   // Docs section
   const docsEl  = document.getElementById('modal-docs');
@@ -300,6 +307,28 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
+// ── Adoption Intent Modal ────────────────────────────────────
+function openAdoptionModal(catId, whatsappUrl) {
+  const modal = document.getElementById('adoption-modal');
+  if (!modal) return;
+  document.getElementById('adoption-anuncio-id').value  = catId ?? '';
+  document.getElementById('adoption-whatsapp-url').value = whatsappUrl ?? '';
+  document.getElementById('adopter-email').value = '';
+  document.getElementById('adopter-email-error').hidden = true;
+  document.getElementById('adopter-email').classList.remove('is-error');
+  modal.removeAttribute('hidden');
+  modal.setAttribute('aria-modal', 'true');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('adopter-email')?.focus();
+}
+
+function closeAdoptionModal() {
+  const modal = document.getElementById('adoption-modal');
+  if (!modal) return;
+  modal.setAttribute('hidden', '');
+  document.body.style.overflow = '';
+}
+
 // ── Init ─────────────────────────────────────────────────────
 export function init() {
   // Wire up filters
@@ -309,30 +338,112 @@ export function init() {
 
   document.querySelector('.filters-panel__reset')?.addEventListener('click', resetFilters);
 
-  // Modal delegation on card grid
+  // Card grid delegation: "Saiba Mais" → cat detail modal | "Adotar" → adoption intent modal
   document.querySelector('.cats-grid')?.addEventListener('click', e => {
-    const btn = e.target.closest('.cat-card__details-btn');
-    if (!btn) return;
-    const idx = parseInt(btn.dataset.catIndex, 10);
-    if (!isNaN(idx) && allCats[idx]) openModal(allCats[idx]);
+    const detailBtn = e.target.closest('.cat-card__details-btn');
+    if (detailBtn) {
+      const idx = parseInt(detailBtn.dataset.catIndex, 10);
+      if (!isNaN(idx) && allCats[idx]) openModal(allCats[idx]);
+      return;
+    }
+    const adoptBtn = e.target.closest('.cat-card__adopt-btn');
+    if (adoptBtn) {
+      const idx = parseInt(adoptBtn.dataset.catIndex, 10);
+      if (!isNaN(idx) && allCats[idx]) {
+        const cat = allCats[idx];
+        const waMsg = encodeURIComponent(`Olá! Tenho interesse em adotar ${cat.sex === 'femea' ? 'a' : 'o'} ${cat.name}.`);
+        const waUrl = cat.whatsapp ? `https://wa.me/${cat.whatsapp}?text=${waMsg}` : '';
+        openAdoptionModal(cat.id, waUrl);
+      }
+    }
   });
 
-  // Modal close handlers
-  const modal = document.getElementById('cat-modal');
-  if (modal) {
-    modal.querySelector('.modal__close')?.addEventListener('click', closeModal);
-    modal.querySelector('.modal__overlay')?.addEventListener('click', closeModal);
+  // Cat detail modal: adopt button → open adoption intent modal
+  const detailModal = document.getElementById('cat-modal');
+  if (detailModal) {
+    detailModal.querySelector('.modal__close')?.addEventListener('click', closeModal);
+    detailModal.querySelector('.modal__overlay')?.addEventListener('click', closeModal);
 
-    modal.querySelector('#modal-docs-btn')?.addEventListener('click', () => {
+    detailModal.addEventListener('click', e => {
+      const btn = e.target.closest('.modal__adopt-btn');
+      if (!btn) return;
+      const catId       = btn.dataset.catId;
+      const whatsappUrl = btn.dataset.whatsappUrl;
+      closeModal();
+      openAdoptionModal(catId, whatsappUrl);
+    });
+
+    detailModal.querySelector('#modal-docs-btn')?.addEventListener('click', () => {
       const docsEl = document.getElementById('modal-docs');
       const btn    = document.getElementById('modal-docs-btn');
       if (!docsEl || !btn) return;
-      docsEl.hidden = !docsEl.hidden;
-      btn.setAttribute('aria-expanded', String(!docsEl.hidden));
+      const opening = docsEl.hidden;
+      docsEl.hidden = !opening;
+      btn.setAttribute('aria-expanded', String(opening));
+      if (opening) {
+        setTimeout(() => docsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      }
     });
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal();
+      if (e.key === 'Escape') {
+        if (!detailModal.hasAttribute('hidden')) closeModal();
+        if (!document.getElementById('adoption-modal')?.hasAttribute('hidden')) closeAdoptionModal();
+      }
+    });
+  }
+
+  // Adoption intent modal
+  const adoptionModal = document.getElementById('adoption-modal');
+  if (adoptionModal) {
+    document.getElementById('adoption-modal-close')?.addEventListener('click', closeAdoptionModal);
+    adoptionModal.querySelector('.modal__overlay')?.addEventListener('click', closeAdoptionModal);
+
+    document.getElementById('adoption-intent-form')?.addEventListener('submit', async e => {
+      e.preventDefault();
+      const emailInput = document.getElementById('adopter-email');
+      const errorEl    = document.getElementById('adopter-email-error');
+      const submitBtn  = document.getElementById('adoption-intent-submit');
+      const anuncioId  = document.getElementById('adoption-anuncio-id').value;
+      const waUrl      = document.getElementById('adoption-whatsapp-url').value;
+
+      emailInput.classList.remove('is-error');
+      errorEl.hidden = true;
+
+      const email = emailInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        emailInput.classList.add('is-error');
+        errorEl.textContent = 'Informe um e-mail válido.';
+        errorEl.hidden = false;
+        emailInput.focus();
+        return;
+      }
+
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
+
+      try {
+        const res = await fetch('/api/adoption-intent', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ anuncio_id: anuncioId, email_adotante: email }),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error ?? 'Erro ao registrar interesse.');
+        }
+      } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHTML;
+        return;
+      }
+
+      // Sucesso: fecha modal e abre WhatsApp
+      closeAdoptionModal();
+      if (waUrl) window.open(waUrl, '_blank', 'noopener,noreferrer');
     });
   }
 

@@ -3,6 +3,10 @@
     {
       "path": "/api/adoption-check",
       "schedule": "0 9 * * 1"
+    },
+    {
+      "path": "/api/adoption-followup",
+      "schedule": "0 10 * * 1"
     }
   ]
 }
